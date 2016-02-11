@@ -1,0 +1,57 @@
+\documentclass[
+12pt         % Moar bigger
+,twoside     % fogs hates this, but they hate everything
+,openright   % fogs hates this too
+]{mythesis}
+
+% I used these in my thesis.  They're useful.  booktabs makes non-shit
+% tables.
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{booktabs}
+
+\title{Effective population size \\%
+  and its interactions with \\ population genetic processes}
+  % alternate title with adaptree version? Population genetics in a changing world: Understanding local adaptation and effective population sizes in the face of complex demographic history
+%
+\author{Kimberly Julie Gilbert}
+%
+\month{\textsc{november}} \year{2016}
+\previousdegrees{B.Sc., University of Virginia, 2010}
+\degreetitle{Doctor of Philosophy}
+\department{Zoology}
+
+\begin{document}
+
+\maketitle
+
+% I worked in different files: input them like so:
+
+\input{abstract}
+\input{preface}
+% This is because FoGS formatting pedandtry is especially accute when
+% it comes to tables of contents
+\allcontents
+\input{acknowledgements}
+\input{dedication}
+\cleardoublepage
+\mainbody
+
+\input{introduction}
+\input{incrediblediscovery}
+\input{caveats}
+\input{conclusion}
+
+\formatbibliography
+\bibliographystyle{refstyle}
+\bibliography{refs-thesis}
+
+\formatappendices
+\input{anappendix}
+
+\end{document}
+
+%%% Local Variables:
+%%% TeX-master: t
+%%% TeX-PDF-mode: t
+%%% End:

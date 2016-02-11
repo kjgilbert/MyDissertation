@@ -1,0 +1,12 @@
+TSW*
+*.aux
+*.log
+*.out
+*.gz
+*.bbl
+*.blg
+*.pdf
+*synctex.gz
+*.toc
+*.lot
+*.lof
