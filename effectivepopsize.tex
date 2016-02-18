@@ -1,0 +1,604 @@
+\chapter{Evaluating methods for estimating local effective population size with and without migration}
+\label{chap:effectivepopsize}
+
+\section{Summary}
+
+Effective population size is a fundamental parameter in population genetics, evolutionary 
+biology, and conservation biology, yet its estimation can be fraught with difficulties. 
+Several methods to estimate \emph{N}$_e$ from genetic data have been developed that take 
+advantage of various approaches for inferring Ne. The ability of these methods to accurately 
+estimate \emph{N}$_e$, however, has not been comprehensively examined. In this study, we 
+employ seven of the most cited methods for estimating \emph{N}$_e$ from genetic data 
+(\textsc{colony2}, \textsc{cone}, \textsc{estim}, \textsc{mlne}, \textsc{onesamp}, \textsc{tmvp}, 
+and \textsc{neestimator} including \textsc{ldne}) across simulated datasets with populations 
+experiencing migration or no migration. The simulated population demographies are an isolated 
+population with no immigration, an island model metapopulation with a sink population receiving 
+immigrants, and an isolation by distance stepping stone model of populations. We find considerable 
+variance in performance of these methods, both within and across demographic scenarios, with 
+some methods performing very poorly. The most accurate estimates of \emph{N}$_e$ can be 
+obtained by using \textsc{ldne}, \textsc{mlne}, or \textsc{tmvp}; however each of these 
+approaches is outperformed by another in a differing demographic scenario. Knowledge of the 
+approximate demography of population as well as the availability of temporal data largely 
+improves \emph{N}$_e$ estimates.
+
+\section{Introduction}
+Effective population size (\emph{N}$_e$) is defined by \citet{Wright:1931} as the size of 
+an ideal population that has the same properties of genetic drift as the population at hand. 
+\emph{N}$_e$ is a vital parameter used throughout population genetics and evolutionary 
+biology and applied widely in conservation genetics \citep{Schwartz:2007, Dudgeon:2012}. 
+However, determining the true \emph{N}$_e$ in a natural system can be a difficult task 
+citep{Serbezov:2012, Theunert:2012}. With the advent of affordable molecular tools 
+in nonmodel systems, it has become increasingly popular to estimate \emph{N}$_e$ using genotypic 
+data \citep{Wang:2005, Palstra:2012}, and multiple approaches to do so have been developed. 
+These methods function through a range of methodologies, which each entail one or several assumptions.
+
+\emph{N}$_e$ can be estimated by the fact that as a population decreases in effective size, 
+it is increasingly subject to allele frequency changes due to random genetic drift and increased 
+inbreeding \citep{Caballero:1994}. Quantifying these allele and genotype frequency changes can therefore 
+be used to determine its \emph{N}$_e$. Several population genetic properties can be used for 
+this purpose: change in allele frequencies over time may reflect drift, and amounts of linkage 
+disequilibrium (LD), homozygosity and heterozygosity, gene identity disequilibria, or coancestry 
+may all deviate from expectation due to drift and inbreeding. Several methods use temporal data 
+taken from two or more time points to estimate \emph{N}$_e$ \citep{Nei:1981, Pollak:1983, Beaumont:2003, 
+Wang:2003, Anderson:2005, Jorde:2007}. While allele frequency change over time gives the most 
+direct estimate of drift, obtaining samples from multiple generations 
+may be difficult in some systems. With genetic data from one point in time, \emph{N}$_e$ can be 
+estimated by inferring drift or inbreeding from the latter quantities \citep{Hill:1981, Pudovkin:1996, Vitalis:2001a, Nomura:2008, Waples:2008, Wang:2009} or even from a combination of 
+some properties \citep{Tallmon:2008}. Details on the approach each program takes to estimate 
+\emph{N}$_e$ are fully described in the Methods.
+
+Genetic drift is not the only process that may cause changes in these population genetic 
+quantities. Migration is a major evolutionary force that can also affect changes in allele 
+frequencies over time, amounts of LD, and other of the aforementioned properties. If changes 
+due to migration are not accounted for by a method when estimating \emph{N}$_e$, those 
+changes may be attributed to drift and result in a biased and inaccurate estimate of effective 
+size \citep{Wang:2003}. This bias from migration may be in either direction. If many 
+foreign alleles are introduced into a population through migration, this will create the signature 
+of a larger amount of drift than is occurring and therefore produce an underestimate of 
+\emph{N}$_e$. Migration in this case of higher population structure will also increase 
+the amount of LD in the focal population. However, if populations are genetically similar 
+(i.e., low \emph{F}$_{ST}$), then migration provides a larger number of parents than exist within the 
+focal population, leading a small population to appear to be larger than it truly is and 
+overestimating \emph{N}$_e$. It is worth noting in this case, especially with conservation 
+situations in mind, that the true \emph{N}$_e$ is not represented by this larger size, since 
+if migration were to be cut off, the focal population would again be subject to drift proportional 
+to its isolated population size. Additionally, gene identity methods depend on gene flow for their 
+calculations, and higher \emph{N}$_e$\emph{m} values create the most accurate and precise 
+\emph{N}$_e$ estimates \citep{Vitalis:2001a, Vitalis:2001b}. Therefore the ability to detect 
+whether drift alone or a combination of drift and migration is causing allele frequency 
+changes in a population is the key to accurately estimating effective population size.
+
+Method developers make every effort to clearly state the underlying assumptions for their 
+approach and test its performance to ensure appropriate application. While most methods have 
+been assessed concurrently with their publication, the test datasets used vary in design and 
+are unique to each publication. Typically, these assessments use simulated, ideal circumstances, 
+or violate only a small subset of assumptions for the method at hand (e.g., \citealt{Vitalis:2001c, 
+Beaumont:2003, Wang:2003, Anderson:2005, Wang:2009, Do:2014}). Additionally, 
+nonideal situations are generally not vetted across all possible estimation methods. In natural 
+systems, which are frequently subject to migration, it can thus be difficult to know which method 
+is best suited for the system in question to find the desired meaningful estimate of \emph{N}$_e$. 
+Several studies have therefore assessed the performance of a subset of estimators in specific 
+empirical situations \citep{Barker:2011, Serbezov:2012, Holleley:2013, Macbeth:2013, 
+Baalsrud:2014}. However, the true effective population size cannot be known in a natural 
+system. Thus, evaluating the accuracy of a method is not possible through these comparisons.
+
+Simulated datasets allow the true \emph{N}$_e$ to be known, therefore allowing estimation 
+accuracy to be assessed. By simulating more complicated demographic scenarios, nonideal situations 
+similar to those found in the real world can be addressed. Three such studies have attempted an 
+evaluation of \emph{N}$_e$ estimates in the presence of migration; however they have used only 
+a small subset of existing estimation methods in varying demographic scenarios \citep{Waples:2011, Neel:2013, Ryman:2013}. 
+These studies give valuable insight into the performance of those 
+methods when the assumption of a single isolated population is not true. They show that the performance 
+of those methods can depend on assumptions about migration rates \citep{Waples:2011}, population 
+substructure \citep{Ryman:2013}, and size of area sampled versus the typical distance within which 
+mating occurs in populations under isolation by distance \citep{Neel:2013}. Despite the vital 
+findings of these studies, the field still lacks a comprehensive comparison of existing estimation 
+methods across identical, simulated datasets, which is the only way to make an informed decision on 
+which method to apply for the most accurate answer.
+
+Our study compares the seven most cited programs (which employ 14 estimation methods) for 
+estimating effective population size. We simultaneously apply them over identical datasets 
+designed specifically to cover a wide range of simulated real world migration scenarios in 
+order to assess their performance. These programs, \textsc{colony2} \citep{Wang:2009}, \textsc{cone} \citep{Anderson:2005}, 
+\textsc{estim} \citep{Vitalis:2001c}, \textsc{mlne} \citep{Wang:2003}, 
+\textsc{neestimator} v2 \citep{Do:2014}, \textsc{onesamp} \citep{Tallmon:2008}, and 
+\textsc{tmvp} \citep{Beaumont:2003}, are specifically designed with the purpose of estimating 
+contemporary \emph{N}$_e$. Our aim is to test each of the methods in an equivalent way 
+to uncover the most accurate approach (or approaches) in estimating small scale, local 
+\emph{N}$_e$, as would be of interest in conservation studies. We only assessed programs 
+that use genetic data and did not include additional programs that calculate \emph{N}$_e$ 
+as a long-term effective size on the scale of species or as a product of other parameters, 
+such as θ, since contemporary, local \emph{N}$_e$ was our value of interest 
+(e.g., Migrate \citep{Beerli:2001}, IM \citep{Hey:2004}, and Lamarc \citep{Kuhner:2006} among others). 
+Our goal is to inform users as to which method(s) is best able to estimate \emph{N}$_e$ in natural systems.
+
+\section{Methods}
+\subsection{Population Demographies}
+Populations were simulated with the forward-time, individual-based simulation program 
+\textsc{nemo} \citep{Guillaume:2006}. We modeled demographies with all populations 
+at a constant size through time for isolation scenarios (no migration) and migration scenarios 
+having either an island model metapopulation plus a nearby sink population, or a stepping stone 
+case with linearly arrayed patches only sending migrants to the neighboring patch to represent 
+an isolation by distance (IBD) scenario. Figure 1 shows the design for the island model cases 
+that have a metapopulation of 11 patches connected equally by migration (either \emph{m} = 0.01 or 0.1 throughout) 
+and a sink population receiving unidirectional migration from a single patch in the metapopulation 
+(either \emph{m} = 0.01, 0.1, or 0.25). An isolated patch was also included in this simulation. The sampling 
+and estimation of \emph{N}$_e$ for these demographic cases (Fig. 1 for the island model) is meant 
+to represent situations one may encounter in a given real world system. In real applications, one 
+may wish to estimate the \emph{N}$_e$ of a population without realizing that it may be affected 
+by migration. The local patch may be part of a large network of populations, or alternatively, the 
+sampled population may itself be substructured. In some cases the presence of migration may be 
+difficult to detect. We therefore assessed nine sampling situations across methods: isolation, 
+sink (low, medium, and high migration from source), within metapopulation (a patch in the island 
+model or a patch in the interior of the stepping stone model), an edge patch from the stepping 
+stone model (one end of the linear array of patches), and across the whole metapopulation (sample 
+across all patches randomly within the island model and the stepping stone model). Additionally, 
+one estimation method, \textsc{mlne}, allows a migration source to be identified, for which we 
+provided a range of source patches: the correct source population, a more distantly related source 
+population, an entirely unrelated and isolated source population, the entire metapopulation combined 
+as the migration source, or a case with no contemporary migration yet a historic migration source 
+labeled incorrectly as a migration source (Fig. 1). This allowed us to further assess whether 
+correctly or incorrectly identifying a migration source affected the performance of \textsc{mlne}.
+
+In all cases we are interested in the local \emph{N}$_e$ of a patch except when sampling 
+the whole metapopulation, in which case the \emph{N}$_e$ estimation would be expected to 
+reflect the metapopulation \emph{N}$_e$. Population sizes were set per patch and constant 
+across patches with \emph{N}$_e$ equal to census size by following the Wright-Fisher model 
+(see below), and were the same across all patches within a simulation. For isolated (ideal) 
+populations, we tested \emph{N}$_e$ of 50, 500, and 5000 with 100 replicate simulations at 
+\emph{N}$_e$ = 50 and 500 and 25 replicates at \emph{N}$_e$ = 5000. In the migration scenarios, 
+only a local \emph{N}$_e$ of 50 and 500 were tested, again over 100 replicate simulations each, 
+as estimators performed poorly at \emph{N}$_e$ = 5000 in preliminary runs (due to computational 
+requirements, some methods additionally were not assessed or assessed with fewer replicates at 
+\emph{N}$_e$ = 500; see Results and Discussion). Several methods require that a prior be given 
+for the estimate of \emph{N}$_e$ for which we provided a value of true \emph{N}$_e$ $\times$ 20 as 
+the upper bound (see Table 1). Some methods we test estimate the inbreeding effective size 
+(\emph{N}$_e$I) while others estimate the variance effective size (\emph{N}$_e$V). However, 
+our only source of nonrandom mating is due to the imposed migration, making these values 
+equivalent \citep{Hill:1979}, and thus the estimates are comparable. Sample size was kept constant 
+across all simulations at 250 individuals, which were obtained by sampling individuals in the 
+desired generation who did not contribute to the next generation before regulation to carrying 
+capacity. We additionally investigated a subset of analyses with a reduced sample size of 50 
+individuals to see how this decreased performance of the methods that we found to be most accurate.
+
+Individuals were simulated to represent genotypes with neutral microsatellite markers, as 
+microsatellite data has been the main data type originally intended for programs used. The 
+life cycle modeled in \textsc{nemo} was breeding with backward migration followed by population 
+regulation. In each generation, offspring are created from randomly chosen hermaphroditic parents 
+until the population is of the desired size, \emph{N}. Generations were nonoverlapping. We simulate 
+a Wright-Fisher model where each offspring has an equal and random chance of coming from any given 
+parent. By definition, this sets our \emph{N}$_e$ equal to \emph{N}, though should clarify that 
+this value differs slightly from the number of breeders that could be captured by viewing the population 
+at a specific point in time \citep{Waples:2009}. Mutation rate was set at 10$^{-5}$ with a single 
+step microsatellite mutation model, and 40 freely recombining polymorphic loci were used per individual, 
+initialized at maximum variance randomly up to the maximum possible number of alleles of 256. Simulations 
+were run until FST was approximately 95\% of its equilibrium value (or mutation-drift balance reached 95\% 
+equilibrium for isolation demographies), calculated from \citet{Whitlock:1992}.
+
+\subsection{Temporal \emph{N}$_e$ Estimation Methods}
+We compared seven different programs that implement 14 different \emph{N}$_e$ estimation 
+methods (see Table 1). Seven of these methods employ temporal estimation using data from two 
+or more points in time. For our datasets, we used two time points separated by one generation. 
+Though it is known that increasing the number of generations between samples (up to at most eight 
+generations between samples) improves estimation \citep{Wang:2003}, in a real sampling 
+situation it is more difficult to obtain samples separated further in time. Therefore one generation 
+between is most relevant to the current study, but is expected to produce conservative results 
+in terms of performance of temporal estimators. We discuss the methods, and the defaults used, in turn.
+
+\textsc{tmvp} uses a general method of genealogical inference with temporal genetic data to 
+estimate recent changes in \emph{N}$_e$ \citep{Beaumont:2003}. It incorporates both importance 
+sampling methods and Markov chain Monte Carlo methods to sample independent genealogical 
+histories from which a posterior distribution of \emph{N}$_e$ is obtained with a Bayesian 
+framework. Parameter settings varied across runs (Table 1) to ensure proper convergence of 
+the analysis, where generally longer run times were required for higher migration cases. 
+Posterior computations were performed using R scripts to calculate the Gelman-Rubin statistic 
+to test for convergence, and the modes for the Bayes factor and the highest posterior density 
+limits \citep{Barker:2011}. \textsc{mlne} \citep{Wang:2003} also uses temporal data, performs 
+both a moment and maximum likelihood approach to estimate \emph{N}$_e$, and simultaneously 
+estimates migration rate along with \emph{N}$_e$. Migration rates are estimated by providing 
+an immigration source population at the previous temporal time point. \textsc{cone} \citep{Anderson:2005} 
+is an importance sampling method that calculates the likelihood of \emph{N}$_e$ with temporal 
+data using Monte Carlo sampling under the coalescent model of \citet{Berthier:2002}, based on 
+the coalescent of gene copies drawn from the more recent time sample.
+
+\textsc{neestimator} v2.01 \citep{Do:2014} performs six different calculation methods, three 
+of which use temporal data. These three approaches are based on calculations of variance of 
+change in allele frequencies as defined by \citet{Nei:1981} and \citet{Pollak:1983}, which 
+have slight variations in calculations and weightings of loci, and more recently by \citet{Jorde:2007} 
+who account for bias in small sample sizes and low frequency alleles by 
+weighting alleles differently.
+
+\subsection{Single Sample \emph{N}$_e$ Estimation Methods}
+The seven remaining methodologies use samples from only one point in time. \textsc{estim} \citep{Vitalis:2001c} 
+is a moment-based estimator that uses probabilities of one- and two-locus identity states. 
+It also simultaneously estimates \emph{N}$_e$ and migration. In small populations, drift 
+can result in associations between occurring gene copies \citep{Hill:1968}, so \textsc{estim} 
+defines a ``within-subpopulation identity disequilibrium`` to account for this correlation of 
+gene identities \citep{Vitalis:2001a}. Runs were performed with random mating and 
+mutation rate set to our known parameter of 10$^{-5}$. It is worth noting that the true mutation 
+rate is unlikely to be known in a natural population, and we have not tested the sensitivity 
+of the method to varying this parameter. \textsc{onesamp} is designed specifically for use 
+with microsatellites and uses approximate Bayesian computation to estimate \emph{N}$_e$ 
+\citep{Tallmon:2008, Beaumont:2009}. It combines eight summary statistics specific 
+to the inference of \emph{N}$_e$, including several allele characteristics, heterozygosity, 
+homozygosity, Wright's \emph{F}$_{IS}$, and a linkage characteristic, which are estimated for simulated 
+datasets. Due to computational limitations from long run times, \textsc{onesamp} was tested 
+on only a subset of \emph{N}$_e$ = 500 isolation replicates and not tested for \emph{N}$_e$ = 5000. 
+\textsc{colony2} \citep{Wang:2009} implements a maximum likelihood method and estimates \emph{N}$_e$ 
+with either a heterozygote-excess method or a sibship relatedness estimate. We did not provide 
+relatedness information with our data to this program, as it is not often available, and thus 
+do not include \textsc{colony}'s sibship results in our methods comparisons.
+
+The remaining three single sample estimators from \textsc{neestimator} use LD information, as previously 
+implemented in the program \textsc{ldne} \citep{Waples:2008}, another form of the heterozygote-excess 
+method as described in \citet{Pudovkin:1996}, and a method by \citet{Nomura:2008} using a parent-based coancestry 
+estimate among individuals in one cohort. \textsc{ldne} estimates \emph{N}$_e$ based on the 
+amount of LD within a deme \citep{Hill:1981} and corrects for bias in calculating over a wide range of 
+sample sizes \citep{Waples:2008}. Confidence intervals were obtained from the jackknife option, 
+as parametric CIs are believed to be too narrow when locus pairs are not entirely independent. 
+\textsc{neestimator} allows minimum allele frequency (MAF) cutoff values to be chosen for the analysis 
+for which we chose a cutoff value of 0.05 as recommended by the authors to ensure that results were 
+not being driven by the presence of rare alleles in the data.
+
+\subsection{Composite Estimates}
+Because each method uses different information from the data, we also tested if a combination of 
+the most informative methods improved the accuracy and precision of estimates. We combined
+estimates of \emph{N}$_e$ across a subset of the methods found to perform best to additionally 
+create a more fair comparison between single sample methods that would otherwise use only half as 
+much data compared to temporal methods. We averaged the estimates of 1/(2\emph{N}$_e$) to produce 
+the composite estimates. The composite estimates tested averaged the results from combinations of 
+(1) \textsc{mlne}'s likelihood method, (2) \textsc{mlne}'s moment method, (3) \textsc{ldne}'s 
+estimate calculated at each of the two time points used for the temporal methods, and (4) \textsc{tmvp}.
+
+\subsection{Analysis of Estimates}
+Estimates from each method were converted to values of 1/(2\emph{N}$_e$), as this is the rate at 
+which genetic drift occurs and therefore the value of interest against which we measure error 
+(see Wang and Whitlock 2003). We assessed methods by calculating root mean square error (RMSE) 
+of this value. RMSE accounts for both bias and precision of the methods, estimating the typical 
+error in an estimate:
+\begin{equation}
+RMSE = \sqrt{ \frac{1}{n} \displaystyle\sum_{i=1}^{n} \Big( \frac{1}{\hat{N_e}} - \frac{1}{True N_e} \Big)^2}
+\end{equation}
+where $\hat{N_e}$ equals the estimated \emph{N}$_e$ of the population and \emph{n} the
+number of replicate estimates. Because we simulated a Wright-Fisher model, true \emph{N}$_e$ 
+is known in our cases, an advantage of simulated data, allowing an accurate and precise measure of
+the error in any given method. Whole metapopulation \emph{N}$_e$ was
+calculated according to \citet{Wright:1943} where 
+$N_{e ~ metapopulation} = \frac{N_{e ~ patch} ~ \times ~ number ~ patches}{1 - F_{ST}}$
+, and \emph{F}$_{ST}$ is calculated according to \citet{Wright:1931}: 
+$F_{ST} = \frac{1}{4N_em + 1}$.
+
+The amount of drift that even an ideal population experiences in a given generation may 
+differ from the expectation of the Wright-Fisher model, because of random deviations from 
+the expected distribution of reproductive success \citep{Waples:2009}. This generates 
+an additional source of error in the estimation of the \emph{N}$_e$ of the system using 
+data from a single generation. However, the goal of most studies is to estimate the \emph{N}$_e$ 
+(or 1/\emph{N}$_e$) of a population over all instantiations of the drift process; this expected 
+\emph{N}$_e$ is what helps best predict the amount of drift in a population in future generations 
+(for conservation purposes) or for comparison to other species with different mating systems or 
+life histories (for basic science reasons). Therefore we use the expected \emph{N}$_e$ 
+(i.e., \emph{N} from a Fisher-Wright population) as our standard of comparison when calculating 1/(2\emph{N}$_e$ ).
+
+RMSE was averaged across all scenarios and then within groupings of scenarios 
+(isolation, island model, stepping stone) to describe methods that performed best overall. 
+We calculated RMSE after removing estimates where the program indicated a failed run, as 
+described in the reference for each method, or estimates that indicated invalid answers. (\textsc{estim} and the
+temporal \textsc{neestimator} methods produced zero estimates in a subset of cases; 
+personal communication with R. Vitalis and C. Do confirmed that these are cases where the 
+user is best to apply a different estimation method.) Additionally, as described by \citet{Do:2014}, 
+negative estimates from \textsc{neestimator} were taken to indicate an infinitely large \emph{N}$_e$. 
+Confidence intervals for RMSE were obtained by bootstrapping across \emph{N}$_e$ estimates within a 
+demographic scenario with 10,000 replicate bootstrap samples each. Methods were further assessed per 
+specific demographic scenario individually. We also examined the coverage probability of containing 
+the true value of \emph{N}$_e$ for confidence intervals produced from each estimate.
+
+\section{Results}
+Results for all programs and scenarios are reported throughout the figures and tables in the text 
+and the supplemental material. Figure 2 shows the RMSE of all methods for the isolation (no migration) 
+cases, the island model migration scenarios, and the stepping stone scenarios respectively. Numeric 
+values of RMSE for all methods and scenarios are provided in Tables S1--S5 while Table 2 provides 
+averaged RMSEs for the best-performing methods and Table 3 for their composite estimates. 
+Coverage probabilities for confidence intervals are shown in Tables S6--S8, and the proportion 
+of times that each estimator produced an infinite estimate of \emph{N}$_e$ is shown in Figure S2. 
+Point estimates of \emph{N}$_e$ with 95\% confidence intervals for all replicates across all 
+methods and scenarios are visualized to show accuracy and precision in Figures S3--S19.
+
+The best (i.e., lowest) RMSE on average across all possible demographic scenarios was \textsc{mlne}'s 
+likelihood method (RMSE = 0.00240; see Table 2). However, because RMSE varied highly across demographic 
+scenarios, we describe results per class of scenario in the following sections. We group results 
+into demographic classes of no migration, which contains scenarios of isolated populations, and 
+migration scenarios which contain groupings of single patches as either sinks or within the island 
+model metapopulation, as well as the whole metapopulation taken as one population, and the stepping 
+stone models again with either single patches within the linear stepping stone array, or the whole 
+metapopulation as one population. \textsc{ldne} had the lowest average RMSE in cases with no migration 
+(Table 2). \textsc{mlne}'s various estimation methods did best in the island model and stepping stone 
+migration scenarios, with one demographic case where \textsc{tmvp} performs comparably 
+(whole metapopulation case with local \emph{N}$_e$ = 50).
+
+\subsection{No Migration Scenarios}
+The three isolation scenarios (\emph{N}$_e$ = 50, 500, 5000), in which populations experience 
+no migration, showed \textsc{ldne} to consistently have the lowest RMSE. At \emph{N}$_e$ = 500, \textsc{onesamp} closely compares to 
+\textsc{ldne}, but is one of the worst methods at \emph{N}$_e$ = 50. \textsc{estim} has a low RMSE 
+at both \emph{N}$_e$ = 500 and 5000, but at \emph{N}$_e$ = 50 \textsc{estim} largely overestimates 
+\emph{N}$_e$ with many very large or infinite estimates. \textsc{colony}'s heterozygote 
+excess method tends to estimate infinite \emph{N}$_e$ in all cases, reflected by its 
+large RMSE at 50 and 500 (Fig. 2A). \textsc{mlne}'s likelihood estimate performs next best 
+after \textsc{ldne} at 500 and 5000 while the remaining majority of methods performed equally 
+well at size 50. It is worth noting that the heterozygote excess method \citep{Pudovkin:1996} 
+and the coancestry method \citep{Nomura:2008} as implemented in \textsc{neestimator} perform poorly at all population sizes.
+
+For the most accurate methods in the isolation scenarios, \textsc{ldne} and \textsc{mlne} 
+likelihood, it is useful to examine the coverage probability of confidence intervals around 
+each estimate. Confidence intervals from \textsc{ldne} captured the true \emph{N}$_e$ 80\% 
+of the time for \emph{N}$_e$ = 50 and 68\% for \emph{N}$_e$ = 500, though six percent of 
+those intervals spanned to infinity at their upper end, and 24\% for \emph{N}$_e$ = 5000 with 
+24\% of those upper confidence intervals spanning to infinity. \textsc{mlne} likelihood confidence 
+intervals contained the true value of \emph{N}$_e$ 82\%, 89\%, and 16\% of the time, respectively, 
+however at \emph{N}$_e$ = 500, the upper bound on the confidence interval spanned to the maximum 
+prior \emph{N}$_e$ provided 39\% of the time. Results for confidence intervals of all methods 
+for no migration demographic cases are shown in Table S6.
+
+\subsection{Migration Scenarios}
+RMSEs for the island model and stepping stone migration cases showed higher variation than did 
+the isolation cases (Fig. 2). Note that the y-axes on Figure 2B and C have a greater range than 
+in Figure 2A and remain on a log scale. \textsc{neestimator}'s coancestry and heterozygote excess 
+methods again fall out as some of the poorer performing methods. In the scenarios where the whole 
+metapopulation has been sampled randomly (ignoring existing population substructure), many methods 
+show drastic change in their performance, either estimating \emph{N}$_e$ much more poorly (e.g., 
+\textsc{neestimator}'s methods according to \citet{Pollak:1983} and \citet{Nei:1981}), varying from 
+poorer to better depending on migration rate (\textsc{estim}), or improving (\textsc{mlne} moment and at a 
+smaller \emph{N}$_e$, \textsc{tmvp}). Several of these changes in performance are a result of 
+infinite estimates being produced.
+
+Among the migration scenarios, we averaged RMSE across single patch cases (a sink population in 
+the island model scenarios or an edge population in the stepping stone scenarios grouped respectively 
+with the population sampled within the metapopulation) and for the metapopulation as a whole at local 
+patch size of 50 or 500 across the various migration rates (Table 2). No method was consistently 
+best across these scenarios. \textsc{mlne}'s likelihood method with a known migration source performed 
+best on single patch cases at \emph{N}$_e$ = 50 for both the island model and the
+stepping stone model scenarios, and \textsc{mlne}'s likelihood method with no source identified 
+showed the best RMSE for the whole metapopulation at \emph{N}$_e$ = 500 in the island model 
+scenarios, but includes many estimates at the upper bound of the prior, effectively leaving 
+\textsc{mlne}'s moment method as the more accurate method in this case. In the stepping stone scenarios, 
+again \textsc{mlne}'s likelihood method is best in single patch cases at both \emph{N}$_e$ = 50 and 500 
+while the moment method is best for the metapopulation cases, once accounting for \emph{N}$_e$ estimates 
+at the upper bound of the prior.
+
+Despite not having the lowest RMSE for migration cases on average, \textsc{ldne} still produces 
+accurate \emph{N}$_e$ estimates and has a lower RMSE in individual patch sampling scenarios, particularly 
+at lower migration rates. Its higher average RMSE is driven by cases where the whole metapopulation is 
+sampled or there is a combination of high migration rate and larger population size (\emph{m} = 0.1, \emph{N}$_e$ = 500) 
+in which cases \textsc{ldne} produces infinite or inaccurate estimates of \emph{N}$_e$. In these demographic 
+scenarios, \textsc{mlne} or \textsc{tmvp} are needed to give appropriate estimates.
+
+Additionally, when examining the coverage probability of confidence intervals containing the true 
+\emph{N}$_e$ from these methods, \textsc{ldne} shows greater coverage than \textsc{mlne} for 18 of the 20 
+island model sampling scenarios and 16 of the 18 stepping stone scenarios. However, \textsc{ldne} also 
+produces confidence intervals spanning to infinity in eight of those sampling scenarios for the island 
+model and seven for the stepping stone model. Coverage probabilities for all methods are shown in 
+Tables S6--S8 for all methods and demographic scenarios.
+
+\subsection{Composite Methods and Sample Size Comparisons}
+The composite estimates of \emph{N}$_e$ showed only slight improvements in RMSE in a subset of 
+methods and demographic scenarios (Table 3). Averaged over all scenarios, the composite estimate from 
+\textsc{mlne}'s likelihood and moment estimates showed the lowest RMSE. Within grouped demographic 
+scenarios, only in the single patch cases for \emph{N}$_e$ = 50, the IBD stepping stone metapopulation 
+at \emph{N}$_e$ = 500, and both isolation cases did a composite estimate improve over individual methods' 
+performances. As expected, the composite estimate of \textsc{ldne} from two time points always improved upon 
+\textsc{ldne} at one time point for all demographic scenarios, though did not change its rank performance 
+relative to the best-performing methods averaged overall or for the migration cases (\textsc{ldne} was 
+already ranked best in isolation scenarios). However, no other composites showed consistent improvement 
+across demographies. The composites are generally poorer than individual methods for the whole 
+metapopulation sampling cases or at larger population sizes (\emph{N}$_e$ > 500).
+
+Additionally, comparing RMSEs for our results to those from estimates using a sample size of only 50 
+individuals showed the expected result of a decrease in precision and accuracy in both isolation and 
+migration scenarios (see Fig. S20).
+
+\subsection{Estimating \emph{N}$_e$ and Migration Rates}
+We found no consistent effect of different source populations on the performance of \textsc{mlne} when 
+estimating \emph{N}$_e$ (see Fig. S21). RMSE for \textsc{mlne}'s likelihood method at \emph{N}$_e$ = 50 
+was improved in cases where either a correct or incorrect source population was identified. At a local size of 
+500, these results changed, where improvement only occurred in certain cases for the island model 
+demography, or not at all for the stepping stone cases. \textsc{mlne}'s moment method showed different 
+but equally inconsistent results. For \emph{N}$_e$ = 50, different demographies produced \emph{N}$_e$ 
+estimates that were more or less accurate with a migration source. While at population size 500, not providing 
+any migration source was consistently better than providing one for the island model cases, whereas the 
+opposite was true in the stepping stone model where providing a correct or closely related source both 
+consistently improved upon \emph{N}$_e$ estimates (where the correct source provided was consistently 
+better than the related source).
+
+Finally, our last assessment pertained to the accuracy of migration rates that \textsc{mlne} estimates 
+alongside its estimates of \emph{N}$_e$. While the method showed high performance in its estimates of 
+\emph{N}$_e$, the migration rates it estimated in our cases were less accurate. When the correct migrant 
+source was provided, migration rate estimates were most accurate at lower population sizes (\emph{N}$_e$ = 50) 
+and lower migration rates (\emph{m} = 0.01 $-$ 0.1). This accuracy decreased with increasing population size 
+and increasing migration rates (Fig. S22). When migration was cut off from the source to the focal patch 
+prior to the generations over which sampling occurred, but still (incorrectly) identified as a source for 
+estimating \emph{N}$_e$, migration rate estimates were even less accurate. The historic migration rate 
+(prior to migration being cut off) was more closely estimated than the true migration rate over the 
+sampling period (\emph{m} = 0). \emph{N}$_e$ estimates however, were either not affected or only slightly 
+reduced in accuracy in these scenarios.
+
+\section{Discussion}
+Effective population size is clearly useful in population genetics and conservation biology, yet as 
+we have shown, its estimation is fraught with difficulties. By definition, estimating effective 
+population size derives from the ability to quantify the amount of random genetic drift a population 
+experiences. Migration complicates this quantification of drift by changing allele frequencies in 
+less predictable ways. Many methods have been developed to estimate \emph{N}$_e$ in natural 
+systems, and our results show that these methods vary highly in performance across demographic scenarios 
+of differing migration rates and population sizes. Some methods show consistently poor performance and 
+are best avoided, while we can recommend several methods that show the most accuracy and precision in 
+our demographic scenarios (summarized in Table 4). Because \emph{N}$_e$ is used in many population 
+genetic equations as well as to inform conservation decisions (e.g., \citealt{Shaffer:1981, Rieman:2001}), it 
+is vital that we estimate it as accurately as possible.
+
+Several methods were consistently poor estimators across all of our demographic scenarios, that is 
+there was always a better method to choose from. The poorest performing methods are reassuringly 
+mainly those with the fewest number of citations out of the methods we evaluated. \textsc{neestimator}'s 
+coancestry and heterozygote excess methods were two such methods that stand out as consistently poor 
+performers. However, the third most highly cited program, \textsc{onesamp}, has been shown to perform 
+suboptimally in our demographic scenarios. We found no cases where it showed the lowest RMSE of all 
+possible methods in any of our scenarios. Given that this method uses a Bayesian approach, adjusting 
+the prior expectation may improve results, as is claimed by \citet{Holleley:2013}. However, it seems 
+unlikely that the majority of systems in which \emph{N}$_e$ is estimated are well-studied enough to 
+create an informative prior; therefore we believe the wide prior we provided is a valid assessment of 
+this method. Additionally, this program is subject to very long-run times, a limitation in our study 
+that prevented assessing the method at all of our larger \emph{N}$_e$ cases since individual run 
+times were greater than 30 days at these sizes.
+
+Heterozygote excess approaches understandably performed poorly at higher \emph{N}$_e$ values, as 
+the theory upon which this estimation is based will only detect an excess of heterozygotes when 
+a population is effectively small. Therefore, at larger sizes, a lack of heterozygote excess may 
+not allow a large \emph{N}$_e$ to be distinguished from an even larger \emph{N}$_e$, explaining 
+the lack of accuracy in those cases. Yet even when \emph{N}$_e$ = 50, these methods (heterozygote 
+excess methods of \textsc{colony2} and \textsc{neestimator}) were worse than others. Though 
+\textsc{colony2}'s likelihood approach, which is implemented alongside its heterozygote excess method, 
+largely produced infinite estimates of \emph{N}$_e$ with no sibship data provided, this method is 
+expected to improve when such data is available.
+
+The methods which we found to perform best were \textsc{ldne}, \textsc{mlne}, and \textsc{tmvp}. 
+These methods were shown to be more reliable in terms of most consistently estimating \emph{N}$_e$ 
+across demographic scenarios, most accurate, and least biased. Fortunately, this fits with usage 
+patterns; \textsc{ldne} is the most highly cited method, and \textsc{mlne} the second most cited, 
+according to Web of Science as of January 12, 2015. \textsc{ldne} performs best in situations with 
+little to no migration (\emph{m} = 0.01). This has been previously described by Waples and England (2011) 
+where they found \textsc{ldne} to perform adequately up to migration rates of approximately 5--10\%. 
+With migration rates of 1\%, we find its estimates of \emph{N}$_e$ are still accurate and have 
+appropriate confidence intervals at lower population sizes. Interestingly, \textsc{ldne}'s performance 
+deteriorates greatly at higher migration rates when the population size is larger (\emph{N}$_e$ = 500), 
+in which case it would not be advisable to apply \textsc{ldne}.
+
+%% Ne estimation methods citation table
+\begin{table}[]
+\centering
+\begin{tabular}{p{0.2\textwidth}|p{0.3\textwidth}|p{0.6\textwidth}}
+Program 				& Recommendation 				& Reasons \\ \hline
+\textsc{colony2} v2.0 	&	Heterozygote excess method: not recommended	& Overestimates or estimates infinite values \\
+						& 	Sibship method: not tested	& --- \\
+\textsc{cone} v1.01 	&	Not recommended for migration scenarios	& \small{Works well in ideal scenarios, often fails in migration scenarios, particularly with large \emph{N}$_e$} \\
+\textsc{estim} v1.2 	&	Not recommended	& \small{Overestimates in ideal and migration scenarios and underestimates in metapopulation and large \emph{N}$_e$ stepping stone scenarios} \\
+\textsc{mlne} v1.0 		&	Recommended	& \small{Moment method superior in migration scenarios and moment and likelihood methods both perform well over all scenarios, though estimates of migration rate often inaccurate} \\ 
+\textsc{neestimator} v2.0 	&	\textsc{ldne}: recommended	& \small{Superior performance in ideal scenarios, performs well in migration scenarios with low m and smaller \emph{N}$_e$} \\ 
+						& 	Other estimators: not recommended	& Inconsistent or inaccurate estimates \\
+\textsc{onesamp} 		&	Not recommended	& Overestimates small Ne, long run times at large \emph{N}$_e$ prohibited testing \\ 
+\textsc{tmvp}			&	Recommended with reservation	&	\small{Works well at small \emph{N}$_e$ in ideal and migration scenarios as well as for whole metapopulation, but long run times and difficult to establish working parameters sets for analyses} \\
+\end{tabular}
+\label{tab:Ne-4}
+\caption{Summarized results across methods.}
+\end{table}
+
+\citet{Neel:2013} evaluated \textsc{ldne} in the context of continuously distributed populations, 
+examining the effect of sampling too many or too few individuals relative to the area over which 
+individuals mate randomly. They found that as long as sampling was restricted to the scale of local 
+breeding (i.e., sampling window = breeding window), \textsc{ldne} performed well. However, with an 
+increasing sampling window, \emph{N}$_e$ was underestimated. We see this underestimation occur in 
+our stepping stone model as well, when we sample across the whole metapopulation. But this 
+underestimation is also seen even when our sampling window matches the scope of local breeding 
+at larger population sizes (\emph{N}$_e$ = 500). Similarly, in the island model demography at 
+a metapopulation migration rate of \emph{m} = 0.1 when \emph{N}$_e$ = 500, \emph{N}$_e$ is also 
+underestimated, as well as only to a slight extent in the stepping stone model at \emph{m} = 0.25 and \emph{N}$_e$ = 50.
+
+Cases with population substructure are of particular significance. In our cases of sampling across 
+the metapopulation in the island model, \textsc{ldne} produces infinite estimates of \emph{N}$_e$ at 
+both migration rates tested, while in the stepping stone model it either underestimates \emph{N}$_e$ 
+(when \emph{m} = 0.01) or again produces infinite estimates. Even at some higher migration cases, \textsc{ldne} 
+is still not the worst method, and it often underestimates the true \emph{N}$_e$, which in terms of 
+conservation efforts only results in a conservative answer. Only when the method fails to produce a 
+finite \emph{N}$_e$ estimate in the substructure cases may this become dangerous, as one cannot 
+differentiate whether the population is truly large enough not to experience detectable drift or if 
+the method is unable to estimate an accurate \emph{N}$_e$.
+
+\textsc{mlne}, which simultaneously implements a moment and a likelihood estimate of \emph{N}$_e$, 
+appears to be the best program in cases of higher migration and population substructure. One might 
+expect higher migration rates to reflect a subpopulation's \emph{N}$_e$ being estimated closer to 
+that of the whole metapopulation as m increases, however this trend is not generally seen in either 
+the island model or stepping stone model scenarios. Most methods underestimate the local \emph{N}$_e$, 
+except for \textsc{mlne}'s likelihood method that does show an average increase in local \emph{N}$_e$ 
+with increasing migration in the stepping stone model. \citet{Ryman:2013} evaluated a temporal method 
+in cases of migration and population substructure and found bias towards underestimating \emph{N}$_e$. 
+\textsc{mlne}'s likelihood method shows this trend only in the stepping stone scenarios at \emph{N}$_e$ = 500 
+when using a single focal patch (i.e., not the entire metapopulation). The moment method of \textsc{mlne} shows 
+a similar bias toward underestimating \emph{N}$_e$ in those same stepping stone single population 
+cases at both \emph{N}$_e$ = 50 and 500 as well as very slight underestimation of the true \emph{N}$_e$ 
+in the island model sink populations with higher migration rates. Barring those cases, \textsc{mlne} shows 
+very accurate estimates of \emph{N}$_e$. As described by \citet{Ryman:2013}, estimating the whole 
+metapopulation \emph{N}$_e$ may be improved by increasing sampling. Without increasing our sample size, 
+we still find \textsc{mlne}'s moment method to estimate the whole metapopulation \emph{N}$_e$ quite 
+accurately, or when less accurate, is still the most accurate estimate out of all the methods.
+
+\textsc{tmvp} produced very accurate \emph{N}$_e$ estimates in the migration cases. Despite 
+its adequate estimating ability, \textsc{tmvp} proved to be one of the most difficult analyses to conduct. 
+Because the method uses importance sampling and MCMC, the parameter settings for each run must be set to 
+allow for the results to converge on one estimate of \emph{N}$_e$, which proved incredibly difficult at 
+some of our larger \emph{N}$_e$ and m cases. For those that we did succeed in finding a suitable set of 
+run parameters, run times exceeded several weeks, therefore we did not run \textsc{tmvp} for all 
+replicates of simulated datasets.
+
+For higher migration, higher \emph{N}$_e$, and population substructure cases, our results 
+lend credit to applying \textsc{mlne} to obtain the most accurate \emph{N}$_e$ estimates. However, 
+it is important to point out that the coverage probability of \textsc{mlne}'s confidence intervals 
+for the likelihood method (the moment method produces no confidence
+intervals) were inaccurate. \textsc{ldne}'s coverage probability was better than \textsc{mlne}'s 
+on average. Thus, even though \textsc{mlne} provides accurate \emph{N}$_e$ estimates, users are 
+cautioned against trusting the confidence intervals to reliably include the true value of \emph{N}$_e$. 
+This has been described previously both for \textsc{mlne} and \textsc{tmvp} \citep{Tallmon:2004}, and 
+though we did find poor coverage for \textsc{tmvp}, it was less than the overconfidence of 
+\textsc{mlne}'s confidence intervals.
+
+An additional promised feature of \textsc{mlne} is to estimate the migration rate from an 
+identified source population which it also makes use of to improve its estimate of \emph{N}$_e$ 
+when migration is occurring. When we provided a source population, however, there was only noticeable 
+improvement in estimation of \emph{N}$_e$ for those cases having a smaller \emph{N}$_e$. 
+Interestingly, incorrectly identifying the source of immigration did not reduce the performance of 
+\textsc{mlne}, as might have been expected. Therefore, lack of an identified source of migration 
+should not necessarily deter users from applying \textsc{mlne}.
+
+If it is suspected that migration rates may have changed in the recent past, we found that 
+\textsc{mlne} may produce less accurate \emph{N}$_e$ estimates. Moreover, relying on \textsc{mlne} 
+to estimate accurate migration rates is not advised. Estimates of migration rate may improve with 
+more generations between sampling points, but this topic requires further study.
+
+Composite estimates did not substantially improve the ability to estimate \emph{N}$_e$. 
+Because each of these approaches uses different information from the same data, we had predicted 
+that combining information could improve accuracy in \emph{N}$_e$ estimates. Though slight 
+improvements in RMSE were seen, these results cannot be extrapolated widely beyond our migration 
+scenarios. Poorly performing methods erred more due to bias, rather than imprecision. Averages 
+of biased results can only increase precision around an incorrect value, and any biases in 
+opposite directions across methods that might effectively cancel out to give accurate results 
+are likely to be idiosyncratic. It is clear that any unbiased single sample estimator would 
+improve by averaging it over two temporal samples, as our results for \textsc{ldne} show. 
+However, one of the major highlights of \textsc{ldne} is that it does not require temporal 
+data, which is not feasibly attainable in many study systems \citep{Waples:2008}.
+
+Choice of estimation method can greatly benefit from knowledge of a system's underlying 
+demography. There is no one best method across all scenarios, so designing a study suitable to 
+a method that is predicted to work best under certain demographic conditions can increase 
+accuracy in estimating \emph{N}$_e$. Future study may also be able to test whether a more 
+complex weighting of the different estimators may improve upon composite estimates.
+
+The ease of implementing an estimation method is also worth considering. \textsc{ldne} 
+and \textsc{mlne} were two of the simplest programs to implement from a user's point of view. 
+\textsc{neestimator} is very user-friendly, produces its estimates in a matter of seconds to
+minutes, and is also one of the more actively maintained programs. \textsc{mlne} by default 
+performs its moment and likelihood methods together and runs in a matter of minutes to hours. 
+Initial setup of \textsc{mlne} may be slightly more daunting to users less familiar with 
+working with various software as it requires some additional steps to compile on a Linux 
+or Unix-based machine. Likewise, \textsc{tmvp} comes with difficulties in its implementation 
+in that it can be difficult to find a set of run parameters that function properly to allow 
+convergence of the analysis, run times are on the order of days, and there is an additional 
+postprocessing step to acquire the \emph{N}$_e$ estimate from its output.
+
+In conclusion, complex demographic histories make estimating \emph{N}$_e$ difficult, 
+but in terms of accuracy and performance, \textsc{mlne} and \textsc{ldne} have been shown 
+to be the best existing methods to estimate contemporary \emph{N}$_e$ of a population, 
+with one method or the other being better depending on knowledge of migration rates and 
+approximate idea of the magnitude of size of the population at hand.
+
+%%% Local Variables:
+%%% TeX-master: "thesis"
+%%% TeX-PDF-mode: t
+%%% End:
+
+
+
