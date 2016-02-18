@@ -119,11 +119,11 @@ Populations were simulated with the forward-time, individual-based simulation pr
 at a constant size through time for isolation scenarios (no migration) and migration scenarios 
 having either an island model metapopulation plus a nearby sink population, or a stepping stone 
 case with linearly arrayed patches only sending migrants to the neighboring patch to represent 
-an isolation by distance (IBD) scenario. Figure 1 shows the design for the island model cases 
+an isolation by distance (IBD) scenario. Figure \ref{fig:ne-1} shows the design for the island model cases 
 that have a metapopulation of 11 patches connected equally by migration (either \emph{m} = 0.01 or 0.1 throughout) 
 and a sink population receiving unidirectional migration from a single patch in the metapopulation 
 (either \emph{m} = 0.01, 0.1, or 0.25). An isolated patch was also included in this simulation. The sampling 
-and estimation of \emph{N}$_e$ for these demographic cases (Fig. 1 for the island model) is meant 
+and estimation of \emph{N}$_e$ for these demographic cases (Fig. \ref{fig:ne-1} for the island model) is meant 
 to represent situations one may encounter in a given real world system. In real applications, one 
 may wish to estimate the \emph{N}$_e$ of a population without realizing that it may be affected 
 by migration. The local patch may be part of a large network of populations, or alternatively, the 
@@ -137,8 +137,17 @@ one estimation method, \textsc{mlne}, allows a migration source to be identified
 provided a range of source patches: the correct source population, a more distantly related source 
 population, an entirely unrelated and isolated source population, the entire metapopulation combined 
 as the migration source, or a case with no contemporary migration yet a historic migration source 
-labeled incorrectly as a migration source (Fig. 1). This allowed us to further assess whether 
+labeled incorrectly as a migration source (Fig. \ref{fig:ne-1}). This allowed us to further assess whether 
 correctly or incorrectly identifying a migration source affected the performance of \textsc{mlne}.
+
+\begin{figure}[]
+\centering
+\makebox[\textwidth]{
+        \includegraphics[width=1.0\linewidth]{Figures/ne_fig1.pdf}}
+\caption{Diagram showing the dispersal patterns for the island model migration simulations and the patches 
+sampled for the different estimation cases. Low indicates \emph{m} = 0.01, medium \emph{m} = 0.1, and high \emph{m} = 0.25.}
+\label{fig:ne-1}
+\end{figure}
 
 In all cases we are interested in the local \emph{N}$_e$ of a patch except when sampling 
 the whole metapopulation, in which case the \emph{N}$_e$ estimation would be expected to 
@@ -294,7 +303,7 @@ the true value of \emph{N}$_e$ for confidence intervals produced from each estim
 
 \section{Results}
 Results for all programs and scenarios are reported throughout the figures and tables in the text 
-and the supplemental material. Figure 2 shows the RMSE of all methods for the isolation (no migration) 
+and the supplemental material. Figure \ref{fig:ne-2} shows the RMSE of all methods for the isolation (no migration) 
 cases, the island model migration scenarios, and the stepping stone scenarios respectively. Numeric 
 values of RMSE for all methods and scenarios are provided in Tables S1--S5 while Table 2 provides 
 averaged RMSEs for the best-performing methods and Table 3 for their composite estimates. 
@@ -302,6 +311,19 @@ Coverage probabilities for confidence intervals are shown in Tables S6--S8, and 
 of times that each estimator produced an infinite estimate of \emph{N}$_e$ is shown in Figure S2. 
 Point estimates of \emph{N}$_e$ with 95\% confidence intervals for all replicates across all 
 methods and scenarios are visualized to show accuracy and precision in Figures S3--S19.
+
+\begin{figure}[]
+\centering
+\makebox[\textwidth]{
+        \includegraphics[width=0.9\linewidth]{Figures/ne_fig2.pdf}}
+\caption{RMSE for all methods across (A) isolation scenarios, (B) island-model migration scenarios, and (C) 
+IBD stepping-stone scenarios. The only sink case shown for island model cases is \emph{m} = 0.1 immigration rate from 
+the metapopulation, as all sink cases showed similar results. The edge patch sampling case is not shown for 
+the stepping stone model, as results were very similar to the within case. Note that the scale on the y-axis 
+in panel (A) differs from those in panels (B) and (C). Bootstrapped 95\% confidence intervals are shown only 
+in (A), as the intervals are smaller or equal to the point size for all but ten estimates of RMSE in (B) and (C).}
+\label{fig:ne-2}
+\end{figure}
 
 The best (i.e., lowest) RMSE on average across all possible demographic scenarios was \textsc{mlne}'s 
 likelihood method (RMSE = 0.00240; see Table 2). However, because RMSE varied highly across demographic 
@@ -322,7 +344,7 @@ no migration, showed \textsc{ldne} to consistently have the lowest RMSE. At \emp
 at both \emph{N}$_e$ = 500 and 5000, but at \emph{N}$_e$ = 50 \textsc{estim} largely overestimates 
 \emph{N}$_e$ with many very large or infinite estimates. \textsc{colony}'s heterozygote 
 excess method tends to estimate infinite \emph{N}$_e$ in all cases, reflected by its 
-large RMSE at 50 and 500 (Fig. 2A). \textsc{mlne}'s likelihood estimate performs next best 
+large RMSE at 50 and 500 (Fig. \ref{fig:ne-2}A). \textsc{mlne}'s likelihood estimate performs next best 
 after \textsc{ldne} at 500 and 5000 while the remaining majority of methods performed equally 
 well at size 50. It is worth noting that the heterozygote excess method \citep{Pudovkin:1996} 
 and the coancestry method \citep{Nomura:2008} as implemented in \textsc{neestimator} perform poorly at all population sizes.
@@ -340,8 +362,8 @@ for no migration demographic cases are shown in Table S6.
 
 \subsection{Migration Scenarios}
 RMSEs for the island model and stepping stone migration cases showed higher variation than did 
-the isolation cases (Fig. 2). Note that the y-axes on Figure 2B and C have a greater range than 
-in Figure 2A and remain on a log scale. \textsc{neestimator}'s coancestry and heterozygote excess 
+the isolation cases (Fig. \ref{fig:ne-2}). Note that the y-axes on Figure \ref{fig:ne-2}B and C have a greater range than 
+in Figure \ref{fig:ne-2}A and remain on a log scale. \textsc{neestimator}'s coancestry and heterozygote excess 
 methods again fall out as some of the poorer performing methods. In the scenarios where the whole 
 metapopulation has been sampled randomly (ignoring existing population substructure), many methods 
 show drastic change in their performance, either estimating \emph{N}$_e$ much more poorly (e.g., 
