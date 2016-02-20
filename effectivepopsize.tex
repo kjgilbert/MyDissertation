@@ -161,7 +161,7 @@ as estimators performed poorly at \emph{N}$_e$ = 5000 in preliminary runs (due t
 requirements, some methods additionally were not assessed or assessed with fewer replicates at 
 \emph{N}$_e$ = 500; see Results and Discussion). Several methods require that a prior be given 
 for the estimate of \emph{N}$_e$ for which we provided a value of true \emph{N}$_e$ $\times$ 20 as 
-the upper bound (see Table 1). Some methods we test estimate the inbreeding effective size 
+the upper bound (see Table \ref{tab:ne-1}). Some methods we test estimate the inbreeding effective size 
 (\emph{N}$_e$I) while others estimate the variance effective size (\emph{N}$_e$V). However, 
 our only source of nonrandom mating is due to the imposed migration, making these values 
 equivalent \citep{Hill:1979}, and thus the estimates are comparable. Sample size was kept constant 
@@ -169,6 +169,24 @@ across all simulations at 250 individuals, which were obtained by sampling indiv
 desired generation who did not contribute to the next generation before regulation to carrying 
 capacity. We additionally investigated a subset of analyses with a reduced sample size of 50 
 individuals to see how this decreased performance of the methods that we found to be most accurate.
+
+\begin{table}[]
+\centering \footnotesize
+\begin{tabular}{p{0.18\textwidth}|p{0.32\textwidth}|p{0.6\textwidth}}
+\small{Program}           & \small{Citation}                                                                     & \small{Specifications} (\emph{N}$_e$ = 50 / 500 / 5,000) \\ \hline
+\textsc{colony2} v2.0     & \citealt{Wang:2009}                                                                  & run length specified = 2                                                                                                                                       \\ \hline
+\textsc{cone} v1.01       & \citealt{Anderson:2005}                                                              & \begin{tabular}[c]{@{}l@{}}10,000 iterations\\ prior Ne 2-1000 / 2-10,000 / 2-100,000\\ step 5 / 10 / 25\end{tabular}                                      \\ \hline
+\textsc{estim} v1.2       & \citealt{Vitalis:2001a, Vitalis:2001b}                                               & prior max Ne 10,000$\dagger$ / 10,000 / 100,000                                                                                                                \\ \hline
+\textsc{mlne} v1.0        & \citealt{Wang:2003}                                                                  & prior max Ne 1,000 / 10,000 / 38,250$\ddagger$                                                                                                                 \\ \hline
+\textsc{neestimator} v2.0 & \begin{tabular}[c]{@{}l@{}}\citealt{Do:2014}\\ (\textsc{ldne} -- \citealt{Waples:2008})\end{tabular} & reporting,results for MAF cutoff 0.05                                                                                                          \\ \hline
+\textsc{onesamp}          & \citealt{Tallmon:2008}                                                               & \begin{tabular}[c]{@{}l@{}}50,000\\ iterations\\ prior Ne 2-1,000 / 2-10,000 (see text)\end{tabular}                                                           \\ \hline
+\textsc{tmvp}             & \citealt{Beaumont:2003}                                                              & \begin{tabular}[c]{@{}l@{}}20,000-75,000\\ iterations\\ maxit 1,000-7,500;\\ thinning interval 5-10;\\ size distribution of updates 0.5; (see text)\end{tabular}
+\end{tabular}
+\label{tab:ne-1}
+\caption{Programs tested in this study with input parameters or other specifications used. \\
+$\dagger$ \footnotesize{The smallest maximum \emph{N}$_e$ allowed by \textsc{estim} is 10,000.} \\
+$\ddagger$ \footnotesize{\textsc{mlne} did not allow larger maximum \emph{N}$_e$ due to memory limitations.}}
+\end{table}
 
 Individuals were simulated to represent genotypes with neutral microsatellite markers, as 
 microsatellite data has been the main data type originally intended for programs used. The 
@@ -186,7 +204,7 @@ equilibrium for isolation demographies), calculated from \citet{Whitlock:1992}.
 
 \subsection{Temporal \emph{N}$_e$ Estimation Methods}
 We compared seven different programs that implement 14 different \emph{N}$_e$ estimation 
-methods (see Table 1). Seven of these methods employ temporal estimation using data from two 
+methods (see Table \ref{tab:ne-1}). Seven of these methods employ temporal estimation using data from two 
 or more points in time. For our datasets, we used two time points separated by one generation. 
 Though it is known that increasing the number of generations between samples (up to at most eight 
 generations between samples) improves estimation \citep{Wang:2003}, in a real sampling 
@@ -198,7 +216,7 @@ in terms of performance of temporal estimators. We discuss the methods, and the 
 estimate recent changes in \emph{N}$_e$ \citep{Beaumont:2003}. It incorporates both importance 
 sampling methods and Markov chain Monte Carlo methods to sample independent genealogical 
 histories from which a posterior distribution of \emph{N}$_e$ is obtained with a Bayesian 
-framework. Parameter settings varied across runs (Table 1) to ensure proper convergence of 
+framework. Parameter settings varied across runs (Table \ref{tab:ne-1}) to ensure proper convergence of 
 the analysis, where generally longer run times were required for higher migration cases. 
 Posterior computations were performed using R scripts to calculate the Gelman-Rubin statistic 
 to test for convergence, and the modes for the Bayes factor and the highest posterior density 
@@ -305,8 +323,8 @@ the true value of \emph{N}$_e$ for confidence intervals produced from each estim
 Results for all programs and scenarios are reported throughout the figures and tables in the text 
 and the supplemental material. Figure \ref{fig:ne-2} shows the RMSE of all methods for the isolation (no migration) 
 cases, the island model migration scenarios, and the stepping stone scenarios respectively. Numeric 
-values of RMSE for all methods and scenarios are provided in Tables S1--S5 while Table 2 provides 
-averaged RMSEs for the best-performing methods and Table 3 for their composite estimates. 
+values of RMSE for all methods and scenarios are provided in Tables S1--S5 while Table \ref{tab:ne-2} provides 
+averaged RMSEs for the best-performing methods and Table \ref{tab:ne-3} for their composite estimates. 
 Coverage probabilities for confidence intervals are shown in Tables S6--S8, and the proportion 
 of times that each estimator produced an infinite estimate of \emph{N}$_e$ is shown in Figure S2. 
 Point estimates of \emph{N}$_e$ with 95\% confidence intervals for all replicates across all 
@@ -326,16 +344,35 @@ in (A), as the intervals are smaller or equal to the point size for all but ten 
 \end{figure}
 
 The best (i.e., lowest) RMSE on average across all possible demographic scenarios was \textsc{mlne}'s 
-likelihood method (RMSE = 0.00240; see Table 2). However, because RMSE varied highly across demographic 
+likelihood method (RMSE = 0.00240; see Table \ref{tab:ne-2}). However, because RMSE varied highly across demographic 
 scenarios, we describe results per class of scenario in the following sections. We group results 
 into demographic classes of no migration, which contains scenarios of isolated populations, and 
 migration scenarios which contain groupings of single patches as either sinks or within the island 
 model metapopulation, as well as the whole metapopulation taken as one population, and the stepping 
 stone models again with either single patches within the linear stepping stone array, or the whole 
 metapopulation as one population. \textsc{ldne} had the lowest average RMSE in cases with no migration 
-(Table 2). \textsc{mlne}'s various estimation methods did best in the island model and stepping stone 
+(Table \ref{tab:ne-2}). \textsc{mlne}'s various estimation methods did best in the island model and stepping stone 
 migration scenarios, with one demographic case where \textsc{tmvp} performs comparably 
 (whole metapopulation case with local \emph{N}$_e$ = 50).
+
+\begin{table}[]
+\centering \tiny
+\begin{tabular}{llllllllllll}
+                               & \begin{tabular}[c]{@{}l@{}}Overall \\ Average \\ RMSE \end{tabular}           & \begin{tabular}[c]{@{}l@{}}Isolated \\ N50\end{tabular} & \begin{tabular}[c]{@{}l@{}}Isolated \\ N500\end{tabular} & \begin{tabular}[c]{@{}l@{}}One Patch \\ Migration \\ N50\end{tabular} & \begin{tabular}[c]{@{}l@{}}One Patch \\ Migration \\ N500\end{tabular} & \begin{tabular}[c]{@{}l@{}}Metapop'n \\ Migration \\ N50\end{tabular} & \begin{tabular}[c]{@{}l@{}}Metapop'n \\ Migration \\ N500\end{tabular} & \begin{tabular}[c]{@{}l@{}}One Patch \\ IBD N50\end{tabular} & \begin{tabular}[c]{@{}l@{}}One Patch \\ IBD N500\end{tabular} & \begin{tabular}[c]{@{}l@{}}Metapop'n \\ IBD N50\end{tabular} & \begin{tabular}[c]{@{}l@{}}Metapop'n \\ IBD N500\end{tabular} \\ \hline
+\textsc{ldne}                  & 0.00828                         & \cellcolor[HTML]{C0C0C0}0.00163 & \cellcolor[HTML]{C0C0C0}0.00094 & 0.00146                         & 0.00409                         & 0.00074                         & 0.00009                         & 0.00263                         & 0.01977                         & 0.04595                         & 0.00841                         \\
+\begin{tabular}[c]{@{}l@{}}\textsc{mlne} \\ likelihood\end{tabular}       & \cellcolor[HTML]{C0C0C0}0.00240 & 0.00341                         & 0.00141                         & 0.00347                         & 0.00053                         & \cellcolor[HTML]{C0C0C0}0.00021 & \cellcolor[HTML]{C0C0C0}0.00004 & 0.00351                         & \cellcolor[HTML]{C0C0C0}0.00606 & \cellcolor[HTML]{C0C0C0}0.00011 & 0.00048                         \\
+\begin{tabular}[c]{@{}l@{}}\textsc{mlne} lik. \\ with source\end{tabular} & 0.00242                         & --                              & --                              & \cellcolor[HTML]{C0C0C0}0.00119 & 0.00054                         & --                              & --                              & \cellcolor[HTML]{C0C0C0}0.00115 & 0.00785                         & --                              & --                              \\
+\begin{tabular}[c]{@{}l@{}}\textsc{mlne} \\ moment\end{tabular}           & 0.00247                         & 0.00349                         & 0.00202                         & 0.00229                         & \cellcolor[HTML]{C0C0C0}0.00020 & 0.00041                         & 0.00006                         & 0.00214                         & 0.00952                         & 0.00031                         & \cellcolor[HTML]{C0C0C0}0.00036 \\
+\begin{tabular}[c]{@{}l@{}}\textsc{mlne} mom. \\with source\end{tabular} & 0.00299                         & --                              & --                              & 0.00203                         & 0.00054                         & --                              & --                              & 0.00181                         & 0.00870                         & --                              & --                              \\
+\textsc{tmvp}                  & 0.00281                         & 0.00349                         & 0.00176                         & 0.00236                         & 0.00034$\dagger$                & \cellcolor[HTML]{C0C0C0}0.00020 & 0.00059                         & 0.00205                         & 0.01129                         & 0.00037                         & --$\dagger$                    
+\end{tabular}
+\label{tab:ne-2}
+\caption{RMSE averaged over groups of demographic scenarios for the best performing estimation 
+methods. Gray boxes indicate the method with the lowest RMSE for that demography grouping. 
+Dashes indicate cases where \emph{N}$_e$ was not estimated. See text for descriptions of 
+demographic groupings. \\
+\footnotesize{$\dagger$ Parameter settings did not converge for \textsc{TMVP} runs, see text.}}
+\end{table}
 
 \subsection{No Migration Scenarios}
 The three isolation scenarios (\emph{N}$_e$ = 50, 500, 5000), in which populations experience 
@@ -375,7 +412,7 @@ infinite estimates being produced.
 Among the migration scenarios, we averaged RMSE across single patch cases (a sink population in 
 the island model scenarios or an edge population in the stepping stone scenarios grouped respectively 
 with the population sampled within the metapopulation) and for the metapopulation as a whole at local 
-patch size of 50 or 500 across the various migration rates (Table 2). No method was consistently 
+patch size of 50 or 500 across the various migration rates (Table \ref{tab:ne-2}). No method was consistently 
 best across these scenarios. \textsc{mlne}'s likelihood method with a known migration source performed 
 best on single patch cases at \emph{N}$_e$ = 50 for both the island model and the
 stepping stone model scenarios, and \textsc{mlne}'s likelihood method with no source identified 
@@ -402,7 +439,7 @@ Tables S6--S8 for all methods and demographic scenarios.
 
 \subsection{Composite Methods and Sample Size Comparisons}
 The composite estimates of \emph{N}$_e$ showed only slight improvements in RMSE in a subset of 
-methods and demographic scenarios (Table 3). Averaged over all scenarios, the composite estimate from 
+methods and demographic scenarios (Table \ref{tab:ne-3}). Averaged over all scenarios, the composite estimate from 
 \textsc{mlne}'s likelihood and moment estimates showed the lowest RMSE. Within grouped demographic 
 scenarios, only in the single patch cases for \emph{N}$_e$ = 50, the IBD stepping stone metapopulation 
 at \emph{N}$_e$ = 500, and both isolation cases did a composite estimate improve over individual methods' 
@@ -416,6 +453,27 @@ metapopulation sampling cases or at larger population sizes (\emph{N}$_e$ > 500)
 Additionally, comparing RMSEs for our results to those from estimates using a sample size of only 50 
 individuals showed the expected result of a decrease in precision and accuracy in both isolation and 
 migration scenarios (see Fig. S20).
+
+
+\begin{table}[]
+\centering \tiny
+\begin{tabular}{llllllllllll}
+                               & \begin{tabular}[c]{@{}l@{}}Overall \\ Average \\ RMSE \end{tabular}           & \begin{tabular}[c]{@{}l@{}}Isolated \\ N50\end{tabular} & \begin{tabular}[c]{@{}l@{}}Isolated \\ N500\end{tabular} & \begin{tabular}[c]{@{}l@{}}One Patch \\ Migration \\ N50\end{tabular} & \begin{tabular}[c]{@{}l@{}}One Patch \\ Migration \\ N500\end{tabular} & \begin{tabular}[c]{@{}l@{}}Metapop'n \\ Migration \\ N50\end{tabular} & \begin{tabular}[c]{@{}l@{}}Metapop'n \\ Migration \\ N500\end{tabular} & \begin{tabular}[c]{@{}l@{}}One Patch \\ IBD N50\end{tabular} & \begin{tabular}[c]{@{}l@{}}One Patch \\ IBD N500\end{tabular} & \begin{tabular}[c]{@{}l@{}}Metapop'n \\ IBD N50\end{tabular} & \begin{tabular}[c]{@{}l@{}}Metapop'n \\ IBD N500\end{tabular} \\ \hline
+\textsc{ldne / ldne}                                                                                              & 0.00774                         & \cellcolor[HTML]{9B9B9B}0.00120 & \cellcolor[HTML]{9B9B9B}0.00090 & 0.00128                         & 0.00276                         & 0.00074                         & 0.00009                         & 0.00235                         & 0.01939                         & 0.04407                         & 0.00858                         \\
+\begin{tabular}[c]{@{}l@{}}\textsc{ldne /ldne} \\ / \textsc{tmvp}\end{tabular}                                    & 0.00568                         & 0.00141                         & 0.00109                         & 0.00135                         & 0.00104                         & 0.00056                         & 0.00014                         & 0.00183                         & 0.01698                         & 0.02826                         & --$\dagger$                     \\
+\begin{tabular}[c]{@{}l@{}}\textsc{mlne} lik. \\ / moment\end{tabular}                                            & \cellcolor[HTML]{9B9B9B}0.00197 & 0.00326                         & 0.00170                         & 0.00159                         & 0.00032                         & 0.00031                         & \cellcolor[HTML]{C0C0C0}0.00005 & 0.00150                         & \cellcolor[HTML]{C0C0C0}0.00778 & 0.00019                         & \cellcolor[HTML]{9B9B9B}0.00005 \\
+\begin{tabular}[c]{@{}l@{}}\textsc{mlne} lik. \\ / moment \\ \textsc{tmvp} \end{tabular}                          & 0.00210                         & 0.00330                         & 0.00172                         & 0.00149                         & \cellcolor[HTML]{C0C0C0}0.00030 & \cellcolor[HTML]{C0C0C0}0.00027 & 0.00018                         & 0.00130                         & 0.00888                         & \cellcolor[HTML]{C0C0C0}0.00013 & --$\dagger$                     \\
+\begin{tabular}[c]{@{}l@{}}\textsc{mlne} lik. \\ / moment \\ \textsc{ldne / ldne}\end{tabular}                    & 0.00455                         & 0.00171                         & 0.00120                         & \cellcolor[HTML]{9B9B9B}0.00083 & 0.00140                         & 0.00052                         & 0.00006                         & 0.00121                         & 0.01342                         & 0.02200                         & 0.00434                         \\
+\begin{tabular}[c]{@{}l@{}}\textsc{mlne} lik. \\ / moment \\ \textsc{ldne / ldne} \\ / \textsc{tmvp}\end{tabular} & 0.00396                         & 0.00203                         & 0.00130                         & 0.00099                         & 0.00067                         & 0.00045                         & 0.00008                         & \cellcolor[HTML]{9B9B9B}0.00112 & 0.01316                         & 0.01692                         & --$\dagger$                    
+\end{tabular}
+\label{tab:ne-3}
+\caption{RMSE averaged over groups of demographic scenarios for composite estimates from the 
+best performing methods. Gray boxes indicate the method with the lowest RMSE for that demography 
+grouping. Darker gray boxes indicate cases where the composite estimate showed a lower RMSE 
+than an individual method’s estimate. Dashes indicate cases where \emph{N}$_e$ was not estimated. See 
+text for descriptions of demographic groupings. \\
+\footnotesize{$\dagger$ Parameter settings did not converge for \textsc{TMVP} runs, see text.}}
+\end{table}
 
 \subsection{Estimating \emph{N}$_e$ and Migration Rates}
 We found no consistent effect of different source populations on the performance of \textsc{mlne} when 
@@ -451,7 +509,7 @@ less predictable ways. Many methods have been developed to estimate \emph{N}$_e$
 systems, and our results show that these methods vary highly in performance across demographic scenarios 
 of differing migration rates and population sizes. Some methods show consistently poor performance and 
 are best avoided, while we can recommend several methods that show the most accuracy and precision in 
-our demographic scenarios (summarized in Table 4). Because \emph{N}$_e$ is used in many population 
+our demographic scenarios (summarized in Table \ref{tab:ne-4}). Because \emph{N}$_e$ is used in many population 
 genetic equations as well as to inform conservation decisions (e.g., \citealt{Shaffer:1981, Rieman:2001}), it 
 is vital that we estimate it as accurately as possible.
 
@@ -493,20 +551,20 @@ in which case it would not be advisable to apply \textsc{ldne}.
 
 %% Ne estimation methods citation table
 \begin{table}[]
-\centering
-\begin{tabular}{p{0.2\textwidth}|p{0.3\textwidth}|p{0.6\textwidth}}
-Program 				& Recommendation 				& Reasons \\ \hline
+\centering \footnotesize
+\begin{tabular}{p{0.16\textwidth}|p{0.3\textwidth}|p{0.5\textwidth}}
+\small{Program}			& \small{Recommendation}		        & \small{Reasons} \\ \hline
 \textsc{colony2} v2.0 	&	Heterozygote excess method: not recommended	& Overestimates or estimates infinite values \\
-						& 	Sibship method: not tested	& --- \\
-\textsc{cone} v1.01 	&	Not recommended for migration scenarios	& \small{Works well in ideal scenarios, often fails in migration scenarios, particularly with large \emph{N}$_e$} \\
-\textsc{estim} v1.2 	&	Not recommended	& \small{Overestimates in ideal and migration scenarios and underestimates in metapopulation and large \emph{N}$_e$ stepping stone scenarios} \\
-\textsc{mlne} v1.0 		&	Recommended	& \small{Moment method superior in migration scenarios and moment and likelihood methods both perform well over all scenarios, though estimates of migration rate often inaccurate} \\ 
-\textsc{neestimator} v2.0 	&	\textsc{ldne}: recommended	& \small{Superior performance in ideal scenarios, performs well in migration scenarios with low m and smaller \emph{N}$_e$} \\ 
-						& 	Other estimators: not recommended	& Inconsistent or inaccurate estimates \\
-\textsc{onesamp} 		&	Not recommended	& Overestimates small Ne, long run times at large \emph{N}$_e$ prohibited testing \\ 
-\textsc{tmvp}			&	Recommended with reservation	&	\small{Works well at small \emph{N}$_e$ in ideal and migration scenarios as well as for whole metapopulation, but long run times and difficult to establish working parameters sets for analyses} \\
+						& 	Sibship method: not tested	        & --- \\ \hline
+\textsc{cone} v1.01 	&	Not recommended for migration scenarios	& Works well in ideal scenarios, often fails in migration scenarios, particularly with large \emph{N}$_e$ \\ \hline
+\textsc{estim} v1.2 	&	Not recommended	                    & Overestimates in ideal and migration scenarios and underestimates in metapopulation and large \emph{N}$_e$ stepping stone scenarios \\ \hline
+\textsc{mlne} v1.0 		&	Recommended	                        & Moment method superior in migration scenarios and moment and likelihood methods both perform well over all scenarios, though estimates of migration rate often inaccurate \\ \hline
+\textsc{neestimator} v2.0 	&	\textsc{ldne}: recommended      & Superior performance in ideal scenarios, performs well in migration scenarios with low m and smaller \emph{N}$_e$ \\
+						& 	Other estimators: not recommended	& Inconsistent or inaccurate estimates \\ \hline
+\textsc{onesamp} 		&	Not recommended	                    & Overestimates small Ne, long run times at large \emph{N}$_e$ prohibited testing \\ \hline 
+\textsc{tmvp}			&	Recommended with reservation	    & Works well at small \emph{N}$_e$ in ideal and migration scenarios as well as for whole metapopulation, but long run times and difficult to establish working parameters sets for analyses \\
 \end{tabular}
-\label{tab:Ne-4}
+\label{tab:ne-4}
 \caption{Summarized results across methods.}
 \end{table}
 

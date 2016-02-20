@@ -1,18 +1,266 @@
-\chapter{The role of genetic architecture in adaptation across heterogeneously changing landscapes}
+\chapter{The role of genetic architecture and environmental gradients in adaptation 
+during range expansion}
 \label{chap:heterogeneouslandscapes}
 
-\section{A section}
+\section{Abstract}
 
-The formatting in this style is understated compared with most styles:
-no bold serifs and relatively small differences in sizes between types.
 
-\subsection{A subsection}
+\section{Introduction}
 
-Subsections are't that much smaller
+Species range limits and the capacity for range expansion has long been a question in evolutionary biology. 
+A species’ range is defined in some cases by sharp visible boundaries, such as distinct geographical 
+changes in landscape features, or equally under- standable ecological reasons such as competitor 
+occurrence or nutrient limitations. In instances where no such clear reason for a range edge exists, 
+understanding what forces limit expansion and adaptation at the edge of a range becomes an evolutionary 
+question \citep{Bridle:2007, Kawecki:2008, Excoffier:2009}. Barriers to dispersal may 
+prevent expansion past the edge, however gene flow can also act to inhibit local adaptation in 
+peripheral populations \citep{Slatkin:1987, Kirkpatrick:1997}. This, in combination with 
+different selective forces from environmental gradients across the landscape, may prevent expansion. 
+The characteristics of the environment available for a species to expand into plays an important 
+role \citep{Aguilee:2012, Barton:2001, Pease:1989}. Increasing habitat heterogeneity, and 
+thus heterogeneity in selective pressures, interacts with gene flow to influence the adaptive 
+abilities of peripheral populations \citep{Ronce:2001}.
 
-\subsubsection{A sub subsection}
+Local adaptation within a species not only benefits populations in terms of fitness but also has 
+repercussions for a species' global range. A species' range is defined in some cases by sharp visible 
+boundaries, such as distinct geographical changes in landscape features, or equally understandable 
+ecological reasons such as competitor occurrence or nutrient limitations. In instances where no 
+such clear reason for a range edge exists, understanding what forces limit expansion and adaptation at 
+the edge of a range becomes an evolutionary question \citep{Bridle:2007bi,Kawecki:2008gv,Excoffier:2009em}. 
+Barriers to dispersal may prevent expansion past the edge, however gene flow can also act to inhibit local 
+adaptation in peripheral populations \citep{Slatkin:1987uf,Kirkpatrick:1997jo}. This, in combination with 
+different selective forces from environmental gradients across the landscape, may prevent expansion. The 
+characteristics of the environment available for a species to expand into plays an important role 
+\citep{Guilee:2012hk,Barton:2001ti,Pease:1989wj}. Increasing habitat heterogeneity, and thus heterogeneity 
+in selective pressures, interacts with gene flow to influence the adaptive abilities of peripheral popula
+tions \citep{Ronce:2001vpa}.
 
-These are equivalent to the usual paragraph.
+Much theoretical work has examined the role of these factors in local adaptation at range 
+edges \citep{GarciaRamos:1997,Ibrahim:1996,Gomulkiewicz:1995,Atkins:2010}. There are 
+several key points in the theoretical foundations of this topic. First, across a species range, 
+density of populations varies. In some cases the center of the range is most dense and this 
+density decreases towards the edge, commonly referred to as the `abundant centre hypothesis' 
+\citep{Brown:1984}. Though not present in all species \citep{Sagarin:2006}, this pattern 
+is widely documented \citep{Antonovics:1976,Yeh:1979,ECKERT:2008}. %% check on this Yeh paper
+The result of such differential densities is to create asymmetries in gene flow across a 
+species range, where central populations contribute more to the periphery while peripheral 
+populations contribute less to the center. This asymmetry can lead to swamping of local alleles 
+by foreign alleles at the edge. And when central alleles are adapted to different environmental 
+conditions, they may be maladaptive at the range edge, resulting in peripheral populations 
+exhibiting a reduction in adaptation to the local optimum and decreasing mean fitness the 
+further from the center one moves. This has been shown to prevent range expansion under steep 
+changes in environmental gradients across space \citep{Kirkpatrick:1997}.
+
+%describe the tests that have already been done of K & B
+This effect clearly depends on levels of gene flow and selective forces at the edge. Higher gene flow will introduce more maladaptive alleles from greater distances and thus be more detrimental to the local population \citep{GarciaRamos:1997uu}, yet in some cases this may act as a sort of evolutionary rescue when edge populations have small effective population sizes and behave as sinks \citep{Holt:1997tp,Gomulkiewicz:1999wj,Ching:2012jk}. Such gene flow may provide the necessary genetic variance for a population to survive. Alternatively, if selection is strong enough or migration reduced enough, this can prevent the establishment of foreign alleles in a population allowing it to adapt sufficiently to local conditions \citep{Ronce:2001vpa}.
+
+The above points have been investigated by models of continuous space with a linear change in environmental gradient \citep{Pease:1989wj,Kirkpatrick:1997jo,GarciaRamos:1997uu,Case:2000ci,Polechova:2009ir,Bridle:2010km} or by simulating discrete habitat patches of differing environmental optima \citep{Guilee:2012hk,Ronce:2001vpa,Gomulkiewicz:1999wj}. In reality however, environments exist in some combination of these two layouts: contiguous space with varying levels of gradual or abrupt environmental changes distributed patchily across space. \textbf{In this project, I aim to examine the consequences of varying amounts of environmental heterogeneity on the outcome of local adaptation across a species range, and particularly at range edges where lack of adaptation may prevent range expansion.}
+
+Under one of the first models to examine the question of adaptation across species ranges \citep{Kirkpatrick:1997jo}, it was shown that three different scenarios could result: species extinction, a limited species range, or unlimited expansion of a species. Other studies have examined scenarios similar to this model and incorporated more realistic simulation methods that were previously not investigated: density dependent selection \citep{GarciaRamos:1997uu,Gomulkiewicz:1999wj} as well as stochastic effects on low density \citep{Bridle:2010km}, temporal changes in environments \citep{Pease:1989wj}, differing dispersal parameters \citep{Guilee:2012hk}, and evolution of genetic variance \citep{Barton:2001ti,Polechova:2009ir}. \citet{Case:2000ci} also incorporated species competition, under which they found similar results only with a shallower environmental gradient needed to limit range expansion. Some of these models use the same linear gradient of an environmental optimum changing at a constant rate over continuous space, while others simulate adaptation to differing environmental optima across discrete space (habitat patches) within which  individuals of a patch possess no explicit spatial designation. The results of these discrete environment models also show the potential for species to either adapt and persist, exist as non-adapted generalists, or go extinct.
+
+The combination of such environmental landscapes however, has not been sufficiently explored. When discrete habitat types exist contiguously across space, will the dynamics of the system reflect those of the continuous or the discrete models? \citet{Barton:2001ti} suggested the ability of populations to persist across environments of accelerating gradients, but the topic has not been explored in depth. Because discrete models have as of yet not extended past two patches, it is unclear what effects a third or additional patches may have on evolution and adaptation within the system when space is explicit within each patch. \textbf{I propose incorporating increasingly realistic environments in continuous space over which adaptation and evolution of a species may be investigated.}
+%% Dick Gomulkiewicz said at EvoWibo 2012 that Bob Holt may be doing a 3-island model of this stuff; check back on this!
+%% Amy -- you haven't explained whether/how there are different results from models with discrete vs continuous habitats (or why you would expect the difference to matter), so this contrast is not motivated for the reader.  
+
+Range expansions have been studied…
+But range limits have not been shown in theory…
+But those sims have lots of assumptions…
+Want to bring together the disconnect between continuous space on linear gradients and non-spatially 
+explicit patch models.
+
+If we look at landscapes that change heterogeneously over space instead of linear gradients, 
+what happens? Can this explain or inform real life range limits?
+Do find limits
+	How do they compare to 2-patch models (gomulkiewicz and holt)
+	How do the overall gradient values compare to K\&B 1997 \& those follow-ups
+
+
+\section{Methods}
+
+Simulation Model
+We model a range expansion on a two-dimensional landscape using individual-based simulations 
+from a modified version of Nemo (Guillaume and Rougemont 2006). Individuals are monoecious 
+diploids (hermaphrodites) that possess a quantitative trait with 100 underlying loci. 
+Quantitative alleles mutate at rate 0.0001 unless otherwise stated and the mutation variance 
+parameter was varied as described in the results. Free recombination was allowed, VS on the 
+trait was set to 7.5 and an environmental variance of one was allowed. Each cell on the 
+landscape (see below) is given a value that sets the optimum phenotype at that location 
+to which the quantitative trait adapts under balancing selection.
+The life cycle consisted of four events: breeding, dispersal, viability selection, and regulation. 
+Because we sought to simulate individuals that exist on spatially explicit landscapes, we modified 
+the Nemo code as follows (code available at https://github.com/kjgilbert/NemoDispersalKernel). 
+To make the presence of an individual within a deme more spatially explicit, we considered each 
+of Nemo’s “patches” to instead be a cell on the landscape grid and simulated many cells across 
+the landscape. We set carrying capacity K = 5 within each cell, individual fecundity to an 
+average of 4, and allowed mating to occur within a breeding window. This breeding window 
+specifies the distance within which a potential mate can be found and the likelihood of 
+mating with that individual based on a Gaussian kernel. Because modeling a range expansion 
+implies that there will often be lone colonists on the expansion front, this addition of a 
+breeding window increases biological realism by allowing lone colonists on the range front 
+to still potentially find a nearby mate, even if they are the sole inhabitant of their cell. 
+This most closely resembles obligately outcrossing plants, who may receive pollen from nearby 
+mates, but could also represent animals that search for mates nearby and return to their home 
+territory. This increases our local effective population size above the scale of cells to 
+approximately    ~~~~ . The size of this breeding window is defined in the same manner as the 
+dispersal kernel. A 1-dimensional probability distribution is drawn, defined by one standard 
+deviation of a Gaussian distribution σ, which is then multiplied by itself to create a 2-dimensional 
+kernel. This is reduced to include only probabilities equal to or higher than the smallest 
+probability from the 1-dimensional kernel, and is then renormalized. Upon mating, offspring 
+are then placed in the mother’s cell, after which dispersal would proceed as normal in the 
+subsequent life cycle event.
+Individuals existed on a landscape 2,000 cells long and 40 cells wide. A burn-in period 
+of 7,500 generations occurred in the first 40 by 40 cells and after the burn-in, the 
+remainder of the landscape was opened to allow range expansion to occur. Simulations 
+were run for a total of 25,000 generations with 10 replicates per scenario unless otherwise 
+indicated. Landscape boundaries were absorbing, so individuals who migrate outside of the 
+landscape die, and individuals at the boundary have fewer cells in their potential breeding 
+window. Unless otherwise stated, σbreed = 0.5 (most mates come from within your cell, but 
+the 12 surrounding cells had non-negative probabilities of finding a mate), and σdisperse = 2 
+for ``small dispersal kernel`` and 4 for ``large dispersal kernel`` (See supplemental text ~~~ for 
+further description). 
+Landscapes
+We ran simulations over a range of optima values across the landscapes. The burn-in area, 
+hereafter termed the core, was consistently kept at a constant optimum value to ensure that 
+the population was well-adapted before populations expanded onto the environmental gradients. 
+Beyond the core, several types of environmental gradients were tested. Unless otherwise stated, 
+environmental optimum only changed in one dimension, the axis of expansion (x-axis), and was 
+constant over cross-sections (y-axis). The slope of the overall gradient is defined by the 
+parameter b, obtained by dividing the total magnitude of change in environmental optimum 
+from one end of the landscape to the other, htotal, by the total length of the landscape (2,000). 
+Linear gradients are those where the landscape optimum changes at every subsequent cell in the x 
+direction by a constant value hstep outside of the core. Heterogeneously changing landscapes have 
+constant optima within local regions of the landscape (steps) that change periodically by value hstep. 
+Multiple different scenarios can represent the same total change in landscape optimum (Figure 1a) 
+while the frequency of steps in space can also result in different total changes in landscape 
+optimum (Figure 1b).
+
+Figure 1 - Visualizations in 1-dimension of heterogeneously changing environmental gradients. 
+Each horizontal portion is referred to in the text as a step. hstep is a measure of the vertical 
+distance between steps while htotal is the total change in environmental optimum from one end 
+of the landscape to the other. Panel A shows gradients that have the same overall slope, b (htotal = 200), 
+but different magnitudes of change in the local optimum, hstep. Panel B shows gradients that 
+have different overall slopes, b, but the same magnitude of change in the local optimum per 
+step (hstep = 4).
+
+\section{Results}
+
+On a linear environmental gradient, overall slope of the gradient relative to mutations 
+available determined whether populations would expand across the landscape. Larger variance 
+in mutation effect size allowed steeper gradients to be occupied (Figure 2). Fewer replicates 
+expanded over gradient values near the limit of expansion ability (Figure 2) and took more 
+generations to expand.
+
+Figure 2 - Gradient and mutation parameter combinations that do and do not expand across 
+the landscape. Each plotted point represents 10 replicate simulations. Points indicated 
+by + have consistent results across replicates, indicated by text in the gray shaded areas. 
+Variation in expansion speed across replicates can be seen in figure S1.
+
+However, when the environmental gradient changes heterogeneously across the landscape 
+instead of linearly, overall slope no longer determines success or failure to adapt and 
+expand across the landscape. There are two factors that account for adaptation and 
+expansion in such cases of heterogeneously changing gradients: the magnitude of the 
+change in optimum from one cell to the next and the frequency at which these changes 
+occur over the landscape.
+Magnitude of Optimum Change
+	The effect of the magnitude of change in environmental optimum on ability to expand 
+	was tested by simulations on environmental gradients that had only one location of 
+	change in the optimum (e.g. Figure 1A, thickest black line), hereafter referred to 
+	as a step. Such a setup may be compared to a spatially explicit 2-patch model. The 
+	ability of populations to adapt to the other side of the step and expand to fill the 
+	landscape was driven by total mutational availability, defined here as the mutation 
+	rate times the variance in mutation effect size (Figure 3). Smaller steps are easier 
+	to cross under a range of mutation parameters, but larger steps require that larger 
+	effect mutations be available.
+
+Figure 3 - Gradient and mutation parameter combinations that do and do not expand. Each 
+plotted point represents 20 replicate simulations. Because the landscape optimum only 
+changes at one step location in the center of the landscape, hstep = htotal. Variation 
+in expansion speed across replicates can be seen in figure S2.
+
+Frequency of Optimum Change
+	The htotal values which resulted in expansion for a single step did not however result 
+	in expansion for the same htotal values on a linear gradient. Therefore we sought to 
+	uncover the relationship between step height and step frequency. We investigated this 
+	in the context of a subset of mutational parameters, as well as two dispersal distance 
+	parameters for values of h that allowed expansion over a single step.
+	Figure 4 summarizes these results as measured by speed of expansion for the various 
+	scenarios. Larger values of hstep again make range expansion more difficult, and larger 
+	effect size mutations improve ability to adapt and expand. An interesting interaction 
+	occurs between dispersal distance and ability to expand. When steps are infrequent 
+	(Step width > ~20-50 depending), having a larger dispersal distance speeds up expansion, 
+	since on average individuals can migrate farther every generation. Because optimum 
+	changes are rarer, populations are able to adapt to their local step, as indicated by 
+	higher fitness measures in Figure 5a. However, when steps become more frequent over 
+	the landscape, this larger dispersal distance becomes detrimental and slows expansion.
+	
+Figure 4 - Each point is an average of 10 replicates. Step width = 1 is equivalent to a 
+linear gradient. Rate of expansion = zero indicates that expansion did not occur.
+
+The slowed expansion is due to several factors. When steps are too frequent in space, there 
+is insufficient space for individuals to adapt to their local optimum without migrants from 
+nearby steps contributing maladaptive individuals. This is shown by mean fitness values 
+averaged across the center of steps decreasing as step frequency increases, and by genetic 
+variance averaged across the center of steps increasing as step frequency increases (Figure 5).
+
+Figure 5 - Mean fitness (A) and genetic variance (B) averaged across the center of steps per 
+simulation, and then averaged across 10 replicate simulations per data point shown. Points 
+not shown are scenarios that did not expand.
+
+Causes (?) of success/failure to expand
+As shown in figure 5, as steps increase in frequency across the landscape, genetic variance 
+increases and fitness decreases. These qualities are the defining factors in determining whether 
+populations are able to adapt and expand over changes in the environment (cite all the papers 
+where too high genetic variance = extinction, but probably move this to discussion). Too high 
+genetic variance results in maladaptation to the local optimum, decreased fitness, and eventually 
+in local extinction. However, returning to the cases where there is only one step where the 
+environmental optimum changes, we find that there is also a minimum amount of genetic variance 
+necessary to adapt to new environments (Figure 6). When the hstep is smaller, less drastic 
+mutations are required to survive across the step, so genetic variance does not become greatly 
+increased (red lines Fig 6). As hstep increases, increasingly different genotypes are necessary 
+to survive in the new environment, inflating genetic variance at the location of the environmental 
+change as populations adapt to either side. When hstep is too large, the necessary mutations are 
+not seen arising in the population, and individuals beyond the step are only a sink population 
+and still adapted to the environment before the step, maintaining a low genetic variance.
+
+Figure 6. - Genetic variance among the two cross section immediately preceding the environmental 
+step (80 cells), among the two cross sections immediately after the environmental step, and 
+among these four cross sections. 4 replicate runs are shown. Cases shown in red which easily 
+expand, do so immediately after the burn-in ends, while cases in blue begin expanding later, 
+and cases in green never succeed in expanding beyond the step.
+
+To do: the cases in blue in fig 6 need to be scrutinized further. What mutations arise 
+right when they start to expand?
+	The mutations that arise in populations at the step…
+		Look at their effect sizes
+		Look at how many it takes
+
+
+
+
+\section{Discussion}
+
+Because previous studies (citations) found the steepness of the environmental gradient to 
+determine ability to expand, as was recapitulated here, we then further investigated the underlying 
+factors that impact this ability. This was done by teasing apart the effects of absolute magnitude 
+of change in environmental optimum and the frequency of this change over space. As we have shown, 
+on a linear gradient where expansion for a given parameter set is able to expand, the same 
+parameter set can no longer expand when the environmental change is reorganized into one “step” 
+in the landscape.
+	The ability to cross a single step in the landscape is driven by the mutations available 
+	to the system. More mutations of larger effect allow individuals migrating across this 
+	step to adapt to the new landscape optimum and spread across the remainder of the landscape. 
+	This result is similar to that of Gomulkiewicz (citation) where instead a 2-patch model 
+	is simulated, and the second patch switches from a sink to a source when… ~~~~~ .
+	Interestingly however, the ability of a parameter set to cross a single step does not 
+	guarantee its ability to cross multiple steps. In these cases, the frequency of steps 
+	occurring over the landscape impacts the ability of populations to expand and adapt.
+
+
+
+%\section{Acknowledgements}
+%We would like to thank Fredéric Guillaume for help with Nemo and members of the Whitlock lab 
+%for feedback on the project. …
+
 
 %%% Local Variables:
 %%% TeX-master: "thesis"
