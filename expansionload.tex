@@ -83,10 +83,9 @@ The combination of these two effects, migration load from underlying environment
 
 We model diploid, monoecious individuals undergoing a range expansion over a two dimensional landscape grid using the program \textsc{nemo} \citep{Guillaume:2006}. Simulations were initiated in the left-most 40$\times$40 cells of the landscape and, after burn-in to mutation-selection equilibrium, expanded onto the remaining 1,960$\times$40 cells of the landscape. Each cell on this grid had a maximum carrying capacity of 6 individuals. The simulation software \textsc{nemo} was modified to incorporate a breeding window (code available at \url{https://github.com/kjgilbert/NemoDispersalKernel}), increasing local effective population size above this carrying capacity \emph{\small{anyone want to do a calculation here for that Ne?}}. 
 
-Life cycle stages occur in the order of breeding, dispersal, selection, regulation. The breeding window enabled every individual to search for a mate in their own and surrounding cells based on a Gaussian probability kernel. This kernel is parameterized by $\sigma_{breed} = 0.5$ cell widths, where an individual's focal cell is the most likely source of a mate and the 12 surrounding cells can be searched for a mate with decreasing probability. When an individual fails to find a mate, it selfs, an event which most often happens at the expanding edge and mimics the ability of many plant species to self under conditions of pollen limitation (citations). Fecundity was drawn from a Poisson distribution with mean 7.
+Life cycle events occur in the order of breeding, dispersal, selection, regulation. The breeding window enabled every individual to search for a mate in their own and surrounding cells based on a Gaussian probability kernel. This kernel is parameterized by $\sigma_{breed} = 0.5$ cell widths, where an individual's focal cell is the most likely source of a mate and the 12 surrounding cells can be searched for a mate with decreasing probability. When an individual fails to find a mate, it selfs, an event which most often happens at the expanding edge and mimics the ability of many plant species to self under conditions of pollen limitation (citations). Fecundity was drawn from a Poisson distribution with mean 7.
 
-Dispersal also occurs according to a specified kernel. We tested two types of dispersal 
-kernels: a Gaussian kernel and a leptokurtic kernel, to test the effects of rare, long-distance dispersal events. $\sigma_{disperse}$ for the Gaussian dispersal kernel was set to equal 2 cell widths and the maximum dispersal distance was capped at $8 \times \sigma_{disperse}$. The leptokurtic dispersal kernel was created by summing two different Gaussian kernels with different weightings and calculated to have the same average dispersal distance as our Gaussian kernel: kernel one had a weighting of 0.89 and a $\sigma_{disperse}$ of 1.5 while kernel two had a weighting of 0.11 and a $\sigma_{disperse}$ of 5.5 to create a total kurtosis of 10 for this distribution. The kurtotic kernel was cut off to have the same maximum dispersal distance possible, which in both cases meant an individual could at most disperse 16 cells in one direction from its natal cell. R code for calculating and discretizing the dispersal and breeding kernels is available in a wrapper package written for \textsc{nemo}, \textsc{anemone}, available at: \url{https://github.com/kjgilbert/aNEMOne}.
+Dispersal also occurs according to a specified kernel. We tested two types of dispersal kernels: a Gaussian kernel and a leptokurtic kernel, to test the effects of rare, long-distance dispersal events. $\sigma_{disperse}$ for the Gaussian dispersal kernel was set to equal 2 cell widths and the maximum dispersal distance was capped at $8 \times \sigma_{disperse}$. The leptokurtic dispersal kernel was created by summing two different Gaussian kernels with different weightings and calculated to have the same average dispersal distance as our Gaussian kernel: kernel one had a weighting of 0.89 and a $\sigma_{disperse}$ of 1.5 while kernel two had a weighting of 0.11 and a $\sigma_{disperse}$ of 5.5 to create a total kurtosis of 10 for this distribution. The kurtotic kernel was cut off to have the same maximum dispersal distance possible, which in both cases meant an individual could at most disperse 16 cells in one direction from its natal cell. Borders of the 40$\times$2,000 landscape were absorbing, so any individual migrating beyond the edge was removed. R code for calculating and discretizing the dispersal and breeding kernels is available in a wrapper package written for \textsc{nemo}, \textsc{anemone}, available at: \url{https://github.com/kjgilbert/aNEMOne}.
 
 Individuals are characterized by both a quantitative trait underlain by 100 continuous loci and 1,000 deleterious loci. These loci were placed randomly on a genetic map of 10 chromosomes of 100cM each for each simulation replicate. The quantitative trait was under stabilizing selection, with $W(z) = exp[-\frac{1}{2}(z - \theta)^T\omega^{-1}(z-\theta)]$ where $\theta$ is the environmental optimum, and $\omega$ is the ``variance-covariance matrix of selection describing the individual fitness surface``, according to \textsc{nemo}. This selection variance, $V_S$, was set to 7.5. The mutation rate for quantitative loci was set to 0.0001 and the variance in effect size per mutation to 0.02. Environmental variance was set to 1. There is evidence that $\frac{V_S}{V_P} \approx 5$ on average (see Kingsolver et al. 2001; Johnson and Barton 2005). Given that $V_P = \frac{V_E}{1 - h^2}$, $V_S = \frac{5V_E}{1 - h^2}$, so for a heritability of $\frac{1}{3}$ we have $V_E = 1$ and $V_S = 7.5$.
 
@@ -117,19 +116,45 @@ in fitness of 0\%, 0.5\%, or 5\%. All parameter values and their combinations ar
 
 \subsection{Analysis}
 
+Our combination of environmental gradients and deleterious mutation rates allow for direct comparisons to be made on the effects of migration load and expansion load independently as well as their interactions. We assess the impact of these processes on two characteristics of the simulations: speed of expansion and fitness, in total as well as broken down into its contributing factors of fitness resulting from only deleterious mutations and fitness for the quantitative trait. Because these fitness measures change over time, we chose an equivalent point at which to measure the populations and make this comparison. Time-lapse GIFs of these results can be seen in supplemental figures S1-Sn. The point at which all fitness measures are compared was the closest time point within 100 generations of any individual existing in the right-most 20$\times$40 cells of the landscape. Because individuals can at most disperse 16 cells, this ensured that no edge effects would be encountered upon filling the landscape, and that sufficient expansion had occurred to accumulate expansion load. We averaged across the axis perpendicular to the direction of expansion, as we saw no major variation within these cross-sections of the landscape, similar to previous studies in two dimensions (cite...).
 
+We defined the landscape core as the first 40 cross sections within which the simulation burn-in took place. We defined the expanding edge of the populations as the inner-most occupied cross section where population size (averaged within that cross-section) was at or below 50\% of the average core population's size. Speed of expansion tracked the time it took the population edge to expand over the landscape from the end of the burn-in until reaching the second to last landscape cross section. Fitness measures in the edge included all individuals within this 50\% edge cross section as well as all individuals present beyond this edge to the point of empty landscape. We compared fitness in these edge populations to fitness in the core to standardize our comparisons to the equilibrium fitness in each scenario. We tested the effects of each parameter combination on these measures with ANOVA in R.
+
+We additionally investigated the details of deleterious mutations accumulating and surfing on the expanding population front. Effect sizes of deleterious mutations were classed into quartiles based on our known gamma distribution of effects. The reduction in fitness from each of these quartiles was then examined to assess if mutations of larger or smaller effect contribute most to expansion load. \emph{need more here on any stats we want to do with these?}
  
 
 
 \section{Results}
 
+As expected, we found that increasing the steepness of the gradient increases migration load in populations (Figure \ref{fig:load}). This is clearly seen within each mutation case (\emph{do stats that class the same gradient across mut params into 1, or keep all separate?}). This slows the speed of expansion within each mutation class (Figures \ref{fig:speed}). The leptokurtic dispersal kernel resulted in faster expansion over the landscape (\emph{do stats gauss vs lepto}). Increasing the deleterious genomic mutation rate slightly (run these stats!) decreases the speed of expansion within each environmental gradient class.
+
+We find an interaction of environmental gradient with the presence of deleterious mutations, where
+
+\begin{figure}[]
+\centering
+\makebox[\textwidth]{
+        \includegraphics[width=0.9\linewidth]{Figures/expload_load.pdf}}
+\caption[Ratio of edge population fitness to core population fitness across scenarios.]{Ratio of edge population fitness to core population fitness across scenarios.}
+\label{fig:load}
+\end{figure}
+
+\begin{figure}[]
+\centering
+\makebox[\textwidth]{
+        \includegraphics[width=0.9\linewidth]{Figures/expload_speed.pdf}}
+\caption[Speed of range expansion across scenarios.]{Speed of range expansion across scenarios measured as cross sections the edge crosses per generation.}
+\label{fig:speed}
+\end{figure}
+
+
+
 \begin{table}[]
 \centering \footnotesize
-\caption{Fitness and expansion speed results per scenario parameter combinations.}
+\caption{Fitness and expansion speed results per scenario parameter combinations +/- 1 standard error.}
 \label{tab:paramresults}
-\begin{tabular}{p{0.15\textwidth}|p{0.125\textwidth}|p{0.12\textwidth}|p{0.12\textwidth}|p{0.075\textwidth}|p{0.15\textwidth}|p{0.11\textwidth}}
-Environmental Gradient (\emph{b}) & Genomic Deleterious & Dispersal Kernel & Mean Expansion & Total $\bar{\omega}$	   & Quantitative Trait $\bar{\omega}$ & Deleterious Loci $\bar{\omega}$ \\
-								  & Mutation Rate (U) 	&				   & Speed 			& \scriptsize{Core / Edge} & \scriptsize{Core / Edge} 		   & \scriptsize{Core / Edge} \\ \hline \hline
+\begin{tabular}{p{0.1\textwidth}|p{0.125\textwidth}|p{0.12\textwidth}|p{0.12\textwidth}|p{0.075\textwidth}|p{0.15\textwidth}|p{0.11\textwidth}}
+Environ- mental  & Genomic Deleterious & Dispersal Kernel & Mean Expansion & Total $\bar{\omega}$	   & Quantitative Trait $\bar{\omega}$ & Deleterious Loci $\bar{\omega}$ \\
+Gradient (\emph{b})		  & Mutation Rate (U) 	&				   & Speed 			& \scriptsize{Core / Edge} & \scriptsize{Core / Edge} 		   & \scriptsize{Core / Edge} \\ \hline \hline
 0.0                        & 0.0                                   & Gaussian         &                      &                            &                                         &                                       \\
 0.0375                     & 0.0                                   & Gaussian         &                      &                            &                                         &                                       \\
 0.375                      & 0.0                                   & Gaussian         &                      &                            &                                         &                                       \\ \hline
