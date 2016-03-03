@@ -126,9 +126,24 @@ We additionally investigated the details of deleterious mutations accumulating a
 
 \section{Results}
 
-As expected, we found that increasing the steepness of the gradient increases migration load in populations (Figure \ref{fig:load}). This is clearly seen within each mutation case (\emph{do stats that class the same gradient across mut params into 1, or keep all separate?}). This slows the speed of expansion within each mutation class (Figures \ref{fig:speed}). The leptokurtic dispersal kernel resulted in faster expansion over the landscape (\emph{do stats gauss vs lepto}). Increasing the deleterious genomic mutation rate slightly (run these stats!) decreases the speed of expansion within each environmental gradient class.
+This is clearly seen within each mutation case where steeper environmental gradients slows the speed of expansion (F = 1488, df = 2, p-value < 0.001; Figures \ref{fig:speed}). The leptokurtic dispersal kernel resulted in faster expansion over the landscape (F = 246, df = 1, p-value < 0.001). Increasing the deleterious genomic mutation rate slightly, but significantly decreases the speed of expansion (F = 162.1, df = 2, p-value < 0.001). We find a significant interaction of environmental gradient with the presence of deleterious mutations on expansion speed (F = 62.46, df = 4, p-value < 0.01), where increasing \emph{b} and U result in slower expansion than increasing either individually.
 
-We find an interaction of environmental gradient with the presence of deleterious mutations, where
+\emph{need to check I've done stats right - do I want to control for random effects of the variable not of interest in each case, or do them all as one big model like: aov(expansion.speed \~ b*U*disp, data=exp.speeds)}
+
+In our cases comparing fecundity-adjusted runs to cases with deleterious mutations, speed was minimally, but significantly, different for the comparison to U 0.1 (F = 26.73, df = 1, p-value < 0.001; compare dotted line in U 0.0 panel of figure \ref{fig:speed} to solid line in U 0.1 panel), and more significantly different for the comparison to U 1.0 (F = 275.9, df = 1, p-value < 0.001; compare dashed line in U 0.0 panel of figure \ref{fig:speed} to solid line in U 1.0 panel). In these cases, expansion was slower in the cases with deleterious mutations than in those with none but a lowered fecundity to match equilibrium mutation load.
+
+
+\begin{figure}[]
+\centering
+\makebox[\textwidth]{
+        \includegraphics[width=0.9\linewidth]{Figures/expload_speed.pdf}}
+\caption[Speed of range expansion across scenarios.]{Speed of range expansion across scenarios measured as cross sections the edge crosses per generation.}
+\label{fig:speed}
+\end{figure}
+
+
+As expected, we found that increasing the steepness of the gradient increases migration load in populations (Figure \ref{fig:load}). 
+
 
 \begin{figure}[]
 \centering
@@ -138,13 +153,6 @@ We find an interaction of environmental gradient with the presence of deleteriou
 \label{fig:load}
 \end{figure}
 
-\begin{figure}[]
-\centering
-\makebox[\textwidth]{
-        \includegraphics[width=0.9\linewidth]{Figures/expload_speed.pdf}}
-\caption[Speed of range expansion across scenarios.]{Speed of range expansion across scenarios measured as cross sections the edge crosses per generation.}
-\label{fig:speed}
-\end{figure}
 
 
 
