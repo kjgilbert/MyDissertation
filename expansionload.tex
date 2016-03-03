@@ -1,18 +1,387 @@
-\chapter{Mutation load, migration load, expansion load}
+\chapter{Range expansions over heterogeneous landscapes: the interaction of expansion load and migration load}%Mutation load, migration load, expansion load}
 \label{chap:expansionload}
 
-\section{A section}
+\section{Abstract}
 
-The formatting in this style is understated compared with most styles:
-no bold serifs and relatively small differences in sizes between types.
+\section{temporary section - our questions}
 
-\subsection{A subsection}
+\begin{itemize}
 
-Subsections are't that much smaller
+\item How much expansion load should we expect with reasonable biological parameters, even with hard selection
+Do we see as much as Peischl et al? If not, why? mutations, disperal, density?
+Can we make the case that exp. load is not a problem except at the extreme edge?
 
-\subsubsection{A sub subsection}
+are there more deleterious homozygotes in recently colonized pops?
 
-These are equivalent to the usual paragraph.
+\item How do environmental gradients and expansion load interact to determine rate of range expansion?
+is rate of expansion affected by env gradient (yes)
+does load ever create a range limit (no)
+do adaptation to env gradients and expansion load interact to determine rate of range expansion? (seems yes)
+
+(Note:  for these questions we want to separate the effects of range-wide mutation load from increased load 
+caused by drift at the range margin.)
+
+Do for just the cases we had + a case we find where there’s more expansion load alone
+	Anova to compare the interactions
+	
+\item Does one type of load affect the amount of other types of load?
+
+is migration load changed by expansion load / mutation load?
+is expansion load changed by migration load?
+	response variable is either type of load, based on the amount of the other type of load present
+	
+we can hypothesize that a steeper gradient slows expansion, so less load
+we can alternatively hypothesize that a steeper gradient means a smaller Ne at the edge causing more drift and more load
+	second is not true b/c inds die, so first seems to be the case
+	
+calculate the avg deleterious fitness at our comparison points
+
+\item if there are interactions in the types of load, why? what is the mechanism?
+if one type slows the expansion, the other benefits
+with fecundity-adjusted runs - what happens?
+more mut load overall is known to make everything worse and slower spread and lower Ne
+because density is reduced by both, both types of load may become worse
+when do individuals at the range edge hae significantly lower fitness than those at the range core? (with gradient and/or mutation load)
+
+What combination of gradient steepness and expansion load yields the highest/lowest fitness at the range edge vs. core? 
+	Total fitness edge vs core (not split delet and quanti)
+
+How long does reduced edge fitness persist post colonization?
+	? not sure if we want to look at this? Rate of recovery per 18 scenarios?
+
+Does an environmental gradient increase edge fitness, by limiting the pace of range expansion and therefore the degree of expansion load?
+If we could get at it easily, a really nice extension of this question would be: 
+
+\item spatial patterns in load?
+
+\item deleterious mutations
+	is load due to different effect sizes?
+	does surfing happen due to 1 or many loci?
+	and what are the effect sizes of surfing loci?
+
+\end{itemize}
+
+
+\section{Introduction}
+
+Species range expansions are a complex process that is widely studied in evolutionary biology. Because 
+many factors can contribute to range edges and the ability or failure of a population to expand, it is 
+difficult to predict species abilities to expand and adapt into novel environments. Many factors both ecological 
+and evolutionary are known to contribute to range expansions, such as species competition (cite Case and Taper and other empirical papers?), 
+dispersal limitations (cite?), \emph{other examples??}. An rapidly growing field of research in this area has focused however 
+on the contributions of expansion load to range expansions and the resulting state of recently expanded populations (cite lots - Peischl...). 
+We here investigate two major factors contributing to species range expansions: migration load and expansion load and their potential to interact.
+
+Range expansions create an intriguing evolutionary situation for evolutionary biology. The demography 
+of a range expansion is one in which serial founder events of new colonizing populations at the 
+range front result in persistent reduced effective population sizes at the front. These reductions in 
+\emph{N}$_e$ reduce the efficacy of selection and increase the strength of random genetic drift. 
+As this continues within the expanding wave front, mutations that arise are more likely to drift, 
+resulting in a process termed gene surfing wherein mutations of much larger effect sizes escape 
+selection to which they would otherwise be subject and have the potential to fix or be lost in 
+the edge population \citep{Klopfstein:2006}. This exact process has been posited as a reason for the 
+accumulation of deleterious alleles in populations having undergone recent geographic expansions, 
+in particular for studies of human diseases in populations of Quebec and Scandinavia (cite papers).
+
+Peischl and Excoffier (cite) have described expansion load as the reduction in fitness of range edge populations 
+due to gene surfing. \emph{elaborate more...}
+
+Previous studies have also examined the impact of environmental gradients on the ability of species ranges to expand. 
+A foundational study by \citet{Kirkpatrick:1997} showed that steeper environmental gradients reduce the ability 
+of expansion due to failure to locally adapt as a result of migration load. For a population existing within a 
+species range and on a linear environmental gradient, symmetric migration from either adjacent population 
+will contribute alleles locally maladaptive, yet this symmetry on weaker gradients still allows local adaptation 
+to succeed. Whereas at a range edge, immigration is asymmetric causing edge populations to diverge from their 
+local optimum in the direction of immigrant individuals. When migration rates are high enough, the edge population fails 
+to adapt and when the environmental gradient is steep enough goes extinct shrinking the entire species range to eventual 
+extinction as asymmetric migration at the edge continues. Apart from asymmetric migration, extreme steep 
+environmental gradients alone can result in too great a migration load that again the species goes extinct.
+ Further studies (cite more) have improved upon this result adding additional biological realism 
+ to models of range expansion... yet strong evidence of evolutionary factors causing a distinct range edge has 
+ not been found.
+
+The combination of these two effects, migration load from underlying environmental gradients and 
+expansion load from genetic drift of deleterious mutations at range edges, has not previously been studied. 
+We investigate here the role of each of these factors in isolation as well as in combination. 
+Using individual-based simulations on a two dimensional, spatially explicit, and approximately continuous 
+landscape, we compare the reductions in fitness (load) that populations experience during range expansions 
+over a range of environmental gradients and with a range of deleterious mutational parameters. 
+Under our range of biologically realistic parameters, we comment on the implications our results have 
+in terms of understanding the presence and persistence of genetic disease in humans. \emph{remove that last sentence, or move?}
+
+
+
+\section{Methods}
+
+\subsection{Model}
+
+We model diploid, monoecious individuals undergoing a range expansion over a two dimensional 
+landscape grid using the program \textsc{nemo} \citep{Guillaume:2006}. Simulations were initiated 
+in the left-most 40$\times$40 cells of the landscape and after burn-in to mutation-selection 
+equilibrium were then allowed to expand onto a remaining 1,960$\times$40 cells of the landscape. 
+Each cell on this grid had a maximum carrying capacity of 6 individuals. The simulation 
+software \textsc{nemo} was modified to incorporate a breeding window, increasing local effective 
+population size above this carrying capacity \emph{anyone want to do a calculation here for that Ne?}. 
+
+Life cycle stages occur in the order of breeding, dispersal, selection, regulation. The breeding window 
+enabled every individual to search for a mate in their own and surrounding cells based on a Gaussian 
+probability kernel. This kernel is parameterized by $\sigma_{breed} = 0.5$ cell widths, where an individual's 
+focal cell is the most likely source of a mate and the 12 surrounding cells can be searched for a mate 
+with decreasing probability. When an individual fails to find a mate, it selfs, an event which most 
+often happens at the expanding edge and mimics the ability of many plant species to self under 
+conditions of pollen limitation (citations).
+
+Dispersal also occurs according to a specified dispersal kernel. We tested two types of dispersal 
+kernels: a Gaussian kernel and a leptokurtic kernel to test the effects of rare, long-distance dispersal 
+events. $\sigma_{disperse}$ for the Gaussian dispersal kernel was set to equal 2 cell widths and the maximum dispersal 
+distance was capped at $8 \times \sigma_{disperse}$. The leptokurtic dispersal kernel was created by summing 
+two different Gaussian kernels with different weightings and calculated to have the same average 
+dispersal distance as our Gaussian kernel: kernel one had a weighting of 0.89 and a $\sigma_{disperse}$ of 1.5 
+while kernel two had a weighting of 0.11 and a $\sigma_{disperse}$ of 5.5 to create a total kurtosis of 10 for this 
+distribution. The kurtotic kernel was cut off to have the same maximum dispersal distance possible, which in 
+both cases meant an individual could at most disperse 16 cells in one direction from its natal cell. 
+R code for calculating and discretizing the dispersal and breeding kernels is available in a 
+wrapper function written for \textsc{nemo}, \textsc{anemone}, available at: \url{https://github.com/kjgilbert/aNEMOne}.
+
+Individuals are characterized by both a quantitative trait underlain by 100 continuous loci and 1,000 deleterious loci. 
+These loci were placed randomly on a genetic map of 10 chromosomes of 100cM each for each simulation replicate. 
+The quantitative trait was under stabilizing selection, with $W(z) = exp[-\frac{1}{2}(z - \theta)^T\omega^{-1}(z-\theta)$ 
+where $\theta$ is the environmental optimum, and $\omega$ is the ``variance-covariance matrix of selection describing the 
+individual fitness surface``, according to \textsc{nemo}. The mutation rate for quantitative loci was 
+set to 0.0001 and the variance in effect size per mutation to 0.02. Environmental variance was set to 1. 
+
+Genomic mutation rates for deleterious loci was varied from 0 to 0.1 to 1.0, which for our cases of 1,000 loci 
+were 0, $5\times10^{-5}$, and $5\times10^{-4}$, with back-mutation rates of 0, $5\times10^{-7}$, and $5\times10^{-6}$
+
+\emph{is it relevant to say the quanti traits were initiated at the mean landscape optimum of the burnin area, since they're not there once the burnin finishes?}
+
+We compared three underlying environmental gradients, all of which change linearly only along the axis of 
+expansion from one end of the landscape to the other. All parameter values and their combinations are 
+listed in table \ref{tab:paramresults}. Gradient values, \emph{b}, of 0 (no gradient), 0.0375, 
+and 0.375 are cases where an average dispersal distance for an individual would result in a reduction 
+in fitness of 0\%, 0.5\%, or 5\%.
+
+
+
+
+ deleterious loci
+delet.mut <- "0.0005"
+gamma.mean <- 0.01
+gamma.shape <- 0.3
+del.dom.mean <- 0.3
+
+ seln.model="(direct, gaussian)", seln.fitness.model="absolute",
+	seln.var=variance.seln, seln.trait.dim=1, seln.local.optima=landscape, quanti.init=landscape.init.optima, num.quanti.traits=1,
+	num.quanti.loci=100, quanti.mut.rate= quanti.mut, quanti.mut.var= quant.mut.var, quanti.recomb.rate= "{{100,100,100,100,100,100,100,100,100,100}}",
+	quanti.init.model=1, quanti.env.var=q.env.var, num.delet.loci=1000, delet.mut.rate=delet.mut,
+	delet.mut.model=1, delet.recomb.rate="{{100,100,100,100,100,100,100,100,100,100}}",
+	delet.init.freq=0, delet.effects.dist="gamma", delet.effects.mean=gamma.mean, delet.effects.dist.param1=gamma.shape,
+	delet.effects.dist.param2=NULL, delet.dominance.mean=del.dom.mean,
+	delet.fitness.model=1, s
+
+fecundity = 7 (except in reduced U0 cases)
+
+2 dispersal regimes - normal/Gaussian, and kurtotic - both cut off at same limit of maximum distance dispersed
+
+quanti mut rate = 0.0001
+variance in quanti mut effect size = 0.02
+Vs = 7.5
+Ve = 1
+
+
+Expansion load paper: 1000 deleterious alleles have a mutation rate of 0.005 with effect sizes 
+following a gamma distribution of mean 0.01 and shape parameter (k ??) 0.3, and dominance of 0.3. 
+Mutation happen at random locations in the genome, and a back-mutation rate of 10 to the -2 (0.00005) 
+was added to Nemo’s functionality. All 1,100 loci were placed randomly onto a genetic map 
+consisting of ten 100cM chromosomes for each simulation.
+
+Mutations 
+General
+VG is the genetic variance in a trait.
+VE is the micro-environmental variance in a trait.
+VP = VG + VE is the phenotypic variance in a trait.
+h2 = VG/VP is the heritability of a trait.
+We will use VE to scale various parameters to one another, using VE = 1 (arbitrary). This puts everything in units of VE.
+ 
+Quantitative Trait
+Call the trait z. θz is the optimal trait value. Higher or lower trait values will reduce fitness 
+(stabilizing selection). The fitness associated with a value of z is given by
+wz = exp[–(z– θz)2/(2VS)] 
+where VS is the inverse strength of stabilizing selection.
+ 
+There is evidence that VS/VP ≈ 5 on average (see Kingsolver et al. 2001; Johnson and Barton 2005). 
+We can frame this in terms of h2 and VE: using the general relationships above, we know that VE = 
+VP – h2VP = VP­(1–h2), so VP = VE/(1–h2). Therefore VS = 5VE/(1–h2). E.g., if heritability is ⅓ and 
+VE = 1, then VS = 7.5.
+ 
+How will new mutations affect the quantitative trait? Assume a normal distribution of effects with 
+mean 0. Consider the rate of increase in trait variance due to one generation of mutation: VM = 2nμE[α2], 
+where 2n is the number of (diploid) loci, μ is the mutation rate per locus per generation, and E[α2] is 
+the expected squared mutational effect on the trait. (Since E[α] = 0, E[α2] = V[α], the variance of mutational effects).
+
+Empirical estimates of VM/VE (the “mutational heritability”) for various traits are on the order of 
+1 × 10-3 (and probably no larger than 1 × 10-2) (see Houle et al. 1996). Assuming VE = 1, we have 10-3 = 2nμV[α]. 
+We’d like to arrive at a value for 2nμ that gives a reasonable value of V[α]. We can be reasonably 
+confident that the mutation rate to alleles affecting fitness is on the order of 1 per diploid genome 
+per generation at least in some organisms (see deleterious mutations section). Only a fraction of those 
+mutations will affect any particular trait. As a starting point, let’s imagine that only 1\% 
+of the mutations that affect fitness also affect the trait. This would give 2nμ = 0.01, and V[α] = 0.1. 
+Note that V[α] < VS, meaning that most mutations will generally have small effects on fitness, i.e ~ 1–5\%.
+ 
+(There is some theory that predicts genetic variance under stabilizing selection as VG = 4UzVS, where Uz 
+is the genome-wide mutation rate for the trait Uz = 2nμ (Charlesworth and Charlesworth, 2012, p. 190). 
+If VS/VP ≈ 5, this means that Uz ≈ h2/20. If heritability is ⅓, Uz is about 0.017, consistent with the 
+ad hoc approach above.)
+ 
+We also need to decide on n, the number of loci that affect the trait. Using Uz = 0.01, the mutation 
+rate per haploid locus will be 0.01/2n. As a starting point, 100 loci seems reasonable (e.g., 0.5\% of 20000 genes).
+
+
+Fitness (deleterious mutations)
+We will probably have ~ 1000 loci that can mutate from a wild-type allele to a deleterious allele, 
+with no back mutation. A mutation can occur at a site that has already mutated (optional), in which 
+case the site remains mutated. Mutations at all sites will be drawn from the same distribution.
+ 
+A reasonable starting point for the deleterious mutation rate per diploid genome is Udel = 1. This 
+is probably an underestimate for humans (Keightley 2012), about right for Drosophila, (Haag-Liautard et al. 2007), 
+C. elegans (Denver et al. 2004) and possibly non-human endothermic vertebrates (Baer et al. 2007), and 
+probably an overestimate for many other organisms (Baer et al. 2007, Halligan and Keightley 2009).
+ 
+Most deleterious mutational effects (s) will come from a gamma distribution with two parameters, 
+shape a and scale b. The mean is ab and the variance is ab2. (In Nemo, this would be parameterized 
+using the mean and shape).
+ 
+There is evidence that a < 1, leading to a leptokurtic distribution (Eyre-Walker and Keightley 2007). 
+In other words, most mutations have small effects on fitness, and rare mutations have large effects 
+on fitness. The mean mutational effect, ab, should not be larger than a few percent.
+ 
+Try something like this in R, and play with the shape and scale parameters:
+ 
+plot(dgamma(seq(0,1,0.01),shape=0.5,scale=0.1)~seq(0,1,0.01),type="l");abline(h=0)
+ 
+We could use numbers from analyses mutation accumulation data, such as the following (highly 
+leptokurtic) example (Keightley 1998), but note that these gamma parameters are highly uncertain 
+among species and experiments (see Halligan and Keightley 2009).
+
+CURRENTLY TESTING THIS GAMMA WITH TRUNCATION:
+plot(dgamma(seq(0,1,0.01),shape=0.2,scale=0.037)~seq(0,1,0.01),type="l");abline(h=0) 
+(comes from mean 0.01)
+
+for 30\% below truncated cutoff: shape 0.2, mean 0.01 (avg effect, = shape*scale), scale = 0.05 
+for 20\% below truncate value was shape 0.3, mean 0.01, (scale 0.03)
+
+We may want to consider distributions (based on empirical data) that allow for a higher frequency 
+of highly deleterious mutations, e.g.:
+
+plot(dgamma(seq(0,1,0.01),shape=0.0057,scale=3.5)~seq(0,1,0.01),type="l");abline(h=0)
+
+Flag *** our recessive lethals have 0 heterozygote effect which is unrealistic***
+We will assume (as Nemo does) that h is directly proportional to s, with h = exp(-ks)/2, where 
+k is a scaling factor that relates average dominance to average selection as k = –log(2E[h])/E[s]. 
+If the average mutation is partially recessive, i.e., E[h] = 0.3, this would suggest k = 10. 
+With the gamma parameters above, this leads to E[hs] < 1%.
+ 
+The true distribution of mutational fitness effects is unclear, but it is likely to be more complex than a gamma distribution. 
+We would also like to incorporate some fraction of new mutations, p(lethal), which have s = 1 and h = 0, i.e. recessive lethal, 
+since this type of mutation is thought to be common (i.e. more common than expected from the gamma distribution above, producing 
+a bimodal distribution of s; p(lethal) is probably 1–3\% per gamete in Drosophila). This will require modifications to Nemo’s code.
+
+One modification to nemo is truncating the gamma distribution: truncated b/c want to limit the very neutral alleles that don’t 
+contribute to changes in fitness, truncation happens at mu/10, created a new mean ~.015.
+
+
+The other change is that we have added back mutation for deleterious mutations at mu*.01 (though .001 might be a realistic alternative we could try).
+
+
+Recombination
+
+
+Have decided to randomly distribute loci across the genome. This allows for some loci to be more or less linked than 
+others and has the advantage of not being too specific to any one system, nor too unrealistic and therefore will 
+hopefully not cause any issues with reviewers.
+
+Across 10 chromosomes, 100 centimorgans each
+	100 QTL
+	1000 deleterious loci
+
+Each replicate would have a new, random distribution.
+
+
+Environmental Gradient
+
+need 2 things:
+phenotypic standard deviation
+distance (sigma, from dispersal distance)
+
+using a phenotype per latitude is complex because there are underlying genetic differences - could use some of 
+Tongli’s data from Illingworth trials, or other transplant data?
+
+want units of Vp (phenotypic standard deviations)
+from K\&B: b* = sigma/sqrt(p) * b ~= 0.25 (in Garcia-Ramos and Kirkpatrick)
+
+can logically come up with any explanation for steepness of a gradient
+	want a control of 0
+	test 0.1
+	Garcia-Ramos and Kirkpatrick suggest 0.25
+	
+want to vary Vp (includes mutation?)
+steepness of gradient (b*)
+sigma
+fecundity/density - because relates to how much drift there is
+
+not straightforward if sigma and b can scale equivalently because the K matters in terms of how many individuals are encountered
+
+could pick a constant b* and see what b is produced with a certain set of sigmas
+maybe allow sigma to be just 3 different values for short-range dispersal, mid-range dispersal, and long-range dispersal?
+
+
+\subsection{Analysis}
+
+
+\section{Results}
+
+\begin{table}[]
+\centering \footnotesize
+\caption{Fitness and expansion speed results per scenario parameter combinations.}
+\label{tab:paramresults}
+\begin{tabular}{p{0.15\textwidth}|p{0.125\textwidth}|p{0.12\textwidth}|p{0.12\textwidth}|p{0.075\textwidth}|p{0.15\textwidth}|p{0.11\textwidth}}
+Environmental Gradient (\emph{b}) & Genomic Deleterious & Dispersal Kernel & Mean Expansion & Total $\bar{\omega}$	   & Quantitative Trait $\bar{\omega}$ & Deleterious Loci $\bar{\omega}$ \\
+								  & Mutation Rate (U) 	&				   & Speed 			& \scriptsize{Core / Edge} & \scriptsize{Core / Edge} 		   & \scriptsize{Core / Edge} \\ \hline \hline
+0.0                        & 0.0                                   & Gaussian         &                      &                            &                                         &                                       \\
+0.0375                     & 0.0                                   & Gaussian         &                      &                            &                                         &                                       \\
+0.375                      & 0.0                                   & Gaussian         &                      &                            &                                         &                                       \\ \hline
+0.0                        & 0.1                                   & Gaussian         &                      &                            &                                         &                                       \\
+0.0375                     & 0.1                                   & Gaussian         &                      &                            &                                         &                                       \\
+0.375                      & 0.1                                   & Gaussian         &                      &                            &                                         &                                       \\ \hline
+0.0                        & 1.0                                   & Gaussian         &                      &                            &                                         &                                       \\
+0.0375                     & 1.0                                   & Gaussian         &                      &                            &                                         &                                       \\
+0.375                      & 1.0                                   & Gaussian         &                      &                            &                                         &                                       \\ \hline
+0.0                        & 0.0                                   & Leptokurtic      &                      &                            &                                         &                                       \\
+0.0375                     & 0.0                                   & Leptokurtic      &                      &                            &                                         &                                       \\
+0.375                      & 0.0                                   & Leptokurtic      &                      &                            &                                         &                                       \\ \hline
+0.0                        & 0.1                                   & Leptokurtic      &                      &                            &                                         &                                       \\
+0.0375                     & 0.1                                   & Leptokurtic      &                      &                            &                                         &                                       \\
+0.375                      & 0.1                                   & Leptokurtic      &                      &                            &                                         &                                       \\ \hline
+0.0                        & 1.0                                   & Leptokurtic      &                      &                            &                                         &                                       \\
+0.0375                     & 1.0                                   & Leptokurtic      &                      &                            &                                         &                                       \\
+0.375                      & 1.0                                   & Leptokurtic      &                      &                            &                                         &                                       \\ \hline
+\end{tabular}
+\end{table}
+
+\section{Discussion}
+
+
+human papers get different answers - because dominance assumptions matter
+
+our results show that we can detect X amount of load due to loci of greater than or equal to effect size of Y
+
+\subsection{Future Directions}
+Can we predict when edge vs. central individuals are more fit at and beyond the current range limit?  
+Would require a different aspect of the simulation so maybe it’s not worth it for this paper, but would tie our results directly to prominent ecological/conservation issues with range expansion, e.g. are edge populations worth conserving? Which genotypes should one use for assisted migration? 
+	Could be a future direction
+
+evolution of dispersal
+
 
 %%% Local Variables:
 %%% TeX-master: "thesis"
