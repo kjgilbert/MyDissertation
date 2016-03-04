@@ -114,7 +114,7 @@ in fitness of 0\%, 0.5\%, or 5\%. All parameter values and their combinations ar
 
 
 
-\subsection{Analysis}
+\subsection{Analyses}
 
 Our combination of environmental gradients and deleterious mutation rates allow for direct comparisons to be made on the effects of migration load and expansion load independently as well as their interactions. We assess the impact of these processes on two characteristics of the simulations: speed of expansion and fitness, in total as well as broken down into its contributing factors of fitness resulting from only deleterious mutations and fitness for the quantitative trait. Because these fitness measures change over time, we chose an equivalent point at which to measure the populations and make this comparison. Time-lapse GIFs of these results can be seen in supplemental figures S1-Sn. The point at which all fitness measures are compared was the closest time point within 100 generations of any individual existing in the right-most 20$\times$40 cells of the landscape. Because individuals can at most disperse 16 cells, this ensured that no edge effects would be encountered upon filling the landscape, and that sufficient expansion had occurred to accumulate expansion load. We averaged across the axis perpendicular to the direction of expansion, as we saw no major variation within these cross-sections of the landscape, similar to previous studies in two dimensions (cite...).
 
@@ -126,9 +126,9 @@ We additionally investigated the details of deleterious mutations accumulating a
 
 \section{Results}
 
-This is clearly seen within each mutation case where steeper environmental gradients slows the speed of expansion (F = 1488, df = 2, p-value < 0.001; Figures \ref{fig:speed}). The leptokurtic dispersal kernel resulted in faster expansion over the landscape (F = 246, df = 1, p-value < 0.001). Increasing the deleterious genomic mutation rate slightly, but significantly decreases the speed of expansion (F = 162.1, df = 2, p-value < 0.001). We find a significant interaction of environmental gradient with the presence of deleterious mutations on expansion speed (F = 62.46, df = 4, p-value < 0.01), where increasing \emph{b} and U result in slower expansion than increasing either individually.
+Steeper environmental gradients were shown to slow the speed of expansion (F = 1488, df = 2, p-value < 0.001; Figures \ref{fig:speed}). The leptokurtic dispersal kernel resulted in faster expansion over the landscape (F = 246, df = 1, p-value < 0.001), and increasing the deleterious genomic mutation rate slightly, but significantly decreased the speed of expansion (F = 162.1, df = 2, p-value < 0.001). We find a significant interaction of environmental gradient with the presence of deleterious mutations on expansion speed (F = 62.46, df = 4, p-value < 0.01), where increasing \emph{b} and U result in slower expansion than increasing either individually. All two-way and three-way interactions had a significant effect on expansion speed (p-value < 0.001 for all comparisons).
 
-\emph{need to check I've done stats right - do I want to control for random effects of the variable not of interest in each case, or do them all as one big model like: aov(expansion.speed \~ b*U*disp, data=exp.speeds)}
+\emph{need to check I've done stats right - do I want to control for random effects of the variable not of interest in each case, or do them all as one big model like: aov(expansion.speed $\sim$ b*U*disp, data=exp.speeds)}
 
 In our cases comparing fecundity-adjusted runs to cases with deleterious mutations, speed was minimally, but significantly, different for the comparison to U 0.1 (F = 26.73, df = 1, p-value < 0.001; compare dotted line in U 0.0 panel of figure \ref{fig:speed} to solid line in U 0.1 panel), and more significantly different for the comparison to U 1.0 (F = 275.9, df = 1, p-value < 0.001; compare dashed line in U 0.0 panel of figure \ref{fig:speed} to solid line in U 1.0 panel). In these cases, expansion was slower in the cases with deleterious mutations than in those with none but a lowered fecundity to match equilibrium mutation load.
 
@@ -142,8 +142,11 @@ In our cases comparing fecundity-adjusted runs to cases with deleterious mutatio
 \end{figure}
 
 
-As expected, we found that increasing the steepness of the gradient increases migration load in populations (Figure \ref{fig:load}). 
+Comparing the ratio of fitness in edge populations to core populations showed significant reductions in fitness at the range edge due to steepness of the environmental gradient (F = 2982.389, df = 2, p-value < 0.001) and deleterious mutation rate (F = 29.473, df = 2, p-value < 0.001). Migration load and expansion load significantly interact in a non-additive manner to alter the ratio of fitness at the range edge versus in the range core (F = 306.203, df = 4, p-value < 0.001). Unlike for the expansion speed, there were no other significant interactions of environmental gradient with dispersal mode nor with deleterious mutation rate, nor a three-way interactions of all of these effects on the ratio of total fitness at the range edge versus the range core. All raw fitness values are shown in table \ref{tab:paramresults}.
 
+\emph{do we want a figure of total fitness across all our cases? I have it if the answer is yes}
+
+By parsing total fitness into each of its quantitative trait and deleterious loci fitness components, we then further investigated the mechanism of fitness reduction during range expansion. Not unexpectedly, we found that increasing the steepness of the gradient increases migration load in populations. In the cases for U = 0.0, migration load, and any expansion load doe to maladaptive quantitative locus mutations are the only contributing factors to reduced fitness.
 
 \begin{figure}[]
 \centering
@@ -157,30 +160,30 @@ As expected, we found that increasing the steepness of the gradient increases mi
 
 
 \begin{table}[]
-\centering \footnotesize
-\caption{Fitness and expansion speed results per scenario parameter combinations +/- 1 standard error.}
+\centering \scriptsize
+\caption[Fitness and expansion speed results per scenario parameter combinations]{Fitness and expansion speed results per scenario parameter combinations. Expansion speeds are shown +/- 1 standard error and fitness measures are shown at the core and the edge.}
 \label{tab:paramresults}
-\begin{tabular}{p{0.1\textwidth}|p{0.125\textwidth}|p{0.12\textwidth}|p{0.175\textwidth}|p{0.075\textwidth}|p{0.15\textwidth}|p{0.11\textwidth}}
-Environ- mental  & Genomic Deleterious & Dispersal Kernel & Mean Expansion & Total $\bar{\omega}$	   & Quantitative Trait $\bar{\omega}$ & Deleterious Loci $\bar{\omega}$ \\
-Gradient (\emph{b})		  & Mutation Rate (U) 	&				   & Speed 			& \scriptsize{Core / Edge} & \scriptsize{Core / Edge} 		   & \scriptsize{Core / Edge} \\ \hline \hline
-0.0                        & 0.0	& Gaussian         &	3.741 +/- 0.005	&                            &                                         &                                       \\
-0.0375                     & 0.0	& Gaussian         &	2.314 +/- 0.011	&                            &                                         &                                       \\
-0.375                      & 0.0	& Gaussian         &	0.756 +/- 0.003	&                            &                                         &                                       \\ \hline
-0.0                        & 0.1	& Gaussian         &	3.559 +/- 0.008	&                            &                                         &                                       \\
-0.0375                     & 0.1	& Gaussian         &	2.283 +/- 0.011	&                            &                                         &                                       \\
-0.375                      & 0.1	& Gaussian         &	0.744 +/- 0.002	&                            &                                         &                                       \\ \hline
-0.0                        & 1.0	& Gaussian         &	2.285 +/- 0.014	&                            &                                         &                                       \\
-0.0375                     & 1.0	& Gaussian         &	1.991 +/- 0.011	&                            &                                         &                                       \\
-0.375                      & 1.0	& Gaussian         &	0.595 +/- 0.002	&                            &                                         &                                       \\ \hline
-0.0                        & 0.0	& Leptokurtic      &	5.689 +/- 0.010	&                            &                                         &                                       \\
-0.0375                     & 0.0	& Leptokurtic      &	2.695 +/- 0.014	&                            &                                         &                                       \\
-0.375                      & 0.0	& Leptokurtic      &	0.736 +/- 0.002	&                            &                                         &                                       \\ \hline
-0.0                        & 0.1	& Leptokurtic      &	5.355 +/- 0.030	&                            &                                         &                                       \\
-0.0375                     & 0.1	& Leptokurtic      &	2.637 +/- 0.019	&                            &                                         &                                       \\
-0.375                      & 0.1	& Leptokurtic      &	0.721 +/- 0.002	&                            &                                         &                                       \\ \hline
-0.0                        & 1.0	& Leptokurtic      &	3.377 +/- 0.045	&                            &                                         &                                       \\
-0.0375                     & 1.0	& Leptokurtic      &	2.285 +/- 0.014	&                            &                                         &                                       \\
-0.375                      & 1.0	& Leptokurtic      &	0.577 +/- 0.004	&                            &                                         &                                       \\ \hline
+\begin{tabular}{p{0.08\textwidth}|p{0.1\textwidth}|p{0.1\textwidth}|p{0.135\textwidth}|p{0.1\textwidth}|p{0.1\textwidth}|p{0.1\textwidth}}
+Environ- mental  		& Genomic Deleterious & Dispersal Kernel & Mean Expansion & Total $\bar{\omega}$	   & Quantitative Trait $\bar{\omega}$ & Deleterious Loci $\bar{\omega}$ \\
+Gradient (\emph{b})	& Mutation Rate (U) 	  &	  & Speed 			&	\tiny{Core/Edge}	&	\tiny{Core/Edge}	&	\tiny{Core/Edge}	\\ \hline \hline
+0.0                       	&	0.0	& Gaussian         &	3.741 +/- 0.005	&	0.932/0.932	&	0.932/0.932	&	1/1	\\
+0.0375                    	&	0.0	& Gaussian         &	2.314 +/- 0.011	&	0.929/0.399	&	0.929/0.399	&	1/1	\\
+0.375                     	&	0.0	& Gaussian         &	0.756 +/- 0.003	&	0.870/0.199	&	0.870/0.199	&	1/1	\\ \hline
+0.0                       	&	0.1	& Gaussian         &	3.559 +/- 0.008	&	0.863/0.748	&	0.933/0.933	&	0.925/0.802	\\
+0.0375                    	&	0.1	& Gaussian         &	2.283 +/- 0.011	&	0.859/0.390	&	0.929/0.461	&	0.924/0.845	\\
+0.375                     	&	0.1	& Gaussian         &	0.744 +/- 0.002	&	0.804/0.193	&	0.870/0.217	&	0.924/0.891	\\ \hline
+0.0                       	&	1.0	& Gaussian         &	2.285 +/- 0.014	&	0.496/0.306	&	0.933/0.945	&	0.532/0.323	\\
+0.0375                    	&	1.0	& Gaussian         &	1.991 +/- 0.011	&	0.494/0.268	&	0.929/0.694	&	0.532/0.387	\\
+0.375                     	&	1.0	& Gaussian         &	0.595 +/- 0.002	&	0.463/0.160	&	0.870/0.366	&	0.532/0.437	\\ \hline
+0.0                       	&	0.0	& Leptokurtic      &	5.689 +/- 0.010	&	0.933/0.929	&	0.933/0.929	&	1/1	\\
+0.0375                    	&	0.0	& Leptokurtic      &	2.695 +/- 0.014	&	0.929/0.369	&	0.929/0.369	&	1/1	\\
+0.375                     	&	0.0	& Leptokurtic      &	0.736 +/- 0.002	&	0.871/0.183	&	0.871/0.183	&	1/1	\\ \hline
+0.0                       	&	0.1	& Leptokurtic      &	5.355 +/- 0.030	&	0.862/0.770	&	0.933/0.936	&	0.924/0.823	\\
+0.0375                    	&	0.1	& Leptokurtic      &	2.637 +/- 0.019	&	0.859/0.360	&	0.929/0.420	&	0.924/0.858	\\
+0.375                     	&	0.1	& Leptokurtic      &	0.721 +/- 0.002	&	0.803/0.181	&	0.870/0.206	&	0.923/0.881	\\ \hline
+0.0                       	&	1.0	& Leptokurtic      &	3.377 +/- 0.045	&	0.498/0.283	&	0.933/0.938	&	0.534/0.302	\\
+0.0375                    	&	1.0	& Leptokurtic      &	2.285 +/- 0.014	&	0.496/0.249	&	0.929/0.644	&	0.534/0.388	\\
+0.375                     	&	1.0	& Leptokurtic      &	0.577 +/- 0.004	&	0.463/0.162	&	0.870/0.367	&	0.532/0.442	\\ \hline
 \end{tabular}
 \end{table}
 
