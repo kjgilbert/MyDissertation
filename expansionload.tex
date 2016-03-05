@@ -64,14 +64,19 @@ If we could get at it easily, a really nice extension of this question would be:
 
 \section{Introduction}
 
-Species range expansions are a complex process that is widely studied in evolutionary biology. Because many factors can contribute to range edges and the ability or failure of a population to expand, it is difficult to predict species abilities to expand and adapt into novel environments. Many factors both ecological and evolutionary are known to contribute to range expansions, such as species competition (cite Case and Taper and other empirical papers?), dispersal limitations (cite?), \emph{\small{other examples??}}. An rapidly growing field of research in this area has focused however on the contributions of expansion load to range expansions and the resulting state of recently expanded populations (cite lots - Peischl...). We here investigate two major factors contributing to species range expansions: migration load and expansion load and their potential to interact.
+%broad intro:
+Species range expansions are a complex process that is widely studied in evolutionary biology. Because many factors can contribute to range edges and the ability or failure of a population to expand, it is difficult to predict species abilities to expand and adapt into novel environments. Many factors both ecological and evolutionary are known to contribute to range expansions, such as species competition (cite Case and Taper and other empirical papers?), dispersal limitations (cite?), \emph{\small{other examples??}}. A rapidly growing field of research in this area has focused however on the effects of expansion load to range expansions and the genetic and fitness impacts this process has on recently expanded populations (cite Peischl...human papers...). We here explore two major factors contributing to species range expansions: migration load and expansion load and investigate their potential to interact non-additively.
 
-Range expansions create an intriguing evolutionary situation for evolutionary biology. The demography of a range expansion is one in which serial founder events of new colonizing populations at the range front result in persistent reduced effective population sizes at the front. These reductions in \emph{N}$_e$ reduce the efficacy of selection and increase the strength of random genetic drift. As this continues within the expanding wave front, mutations that arise are more likely to drift, resulting in a process termed gene surfing wherein mutations of much larger effect sizes escape selection to which they would otherwise be subject and have the potential to fix or be lost in the edge population \citep{Klopfstein:2006}. This exact process has been posited as a reason for the accumulation of deleterious alleles in populations having undergone recent geographic expansions, in particular for studies of human diseases in populations of Quebec and Scandinavia (cite papers).
+% range expansions:
+Range expansions create an intriguing evolutionary situation for evolutionary biology. As populations expand at the range front, serial founder events in new colonizing populations result in persistent reduced effective population sizes at the range edge. These reductions in \emph{N}$_e$ reduce the efficacy of selection and increase the strength of random genetic drift. As this continues within the expanding wave front, mutations that arise are more likely to drift, resulting in a process termed gene surfing wherein mutations of much larger effect sizes escape selection to which they would otherwise be subject and have the potential to fix or be lost in the edge population \citep{Klopfstein:2006}\emph{also cite the other peichl paper}. This process has been posited as a reason for the accumulation of deleterious alleles in populations having undergone recent geographic expansions, in particular for studies of human diseases in populations of Quebec and Scandinavia (cite Quebec and Scandinavia studies - others?).
 
-Peischl and Excoffier (cite) have described expansion load as the reduction in fitness of range edge populations due to gene surfing. \emph{\small{elaborate more...}}
+% deleterious mutations:
+Peischl and Excoffier (cite) have described expansion load as the reduction in fitness of range edge populations due to gene surfing. Because deleterious mutations are probabilistically more likely to occur than beneficial mutations, surfing often results in fitness reductions rather than improving from beneficial mutations. A large point of controversy however, is the likelihood of these deleterious mutations persisting on a timescale that would implicate this process as causing deleterious mutations in humans. It has only recently been shown that as an expansion proceeds, deleterious mutations of larger effect are more likely to surf and rise in frequency in populations \citep{Henn:2015}. \emph{\small{elaborate more... more things about different mutation effect sizes?}}
 
+% environmental gradients:
 Previous studies have also examined the impact of environmental gradients on the ability of species ranges to expand. A foundational study by \citet{Kirkpatrick:1997} showed that steeper environmental gradients reduce the ability of expansion due to failure to locally adapt as a result of migration load. For a population existing within a species range and on a linear environmental gradient, symmetric migration from either adjacent population will contribute alleles locally maladaptive, yet this symmetry on weaker gradients still allows local adaptation to succeed. Whereas at a range edge, immigration is asymmetric causing edge populations to diverge from their local optimum in the direction of immigrant individuals. When migration rates are high enough, the edge population fails to adapt and when the environmental gradient is steep enough goes extinct shrinking the entire species range to eventual extinction as asymmetric migration at the edge continues. Apart from asymmetric migration, extreme steep environmental gradients alone can result in too great a migration load that again the species goes extinct. Further studies (cite more) have improved upon this result adding additional biological realism  to models of range expansion... yet strong evidence of evolutionary factors causing a distinct range edge has  not been found.
 
+% their interaction and what this study is doing:
 The combination of these two effects, migration load from underlying environmental gradients and expansion load from genetic drift of deleterious mutations at range edges, has not previously been studied. We investigate here the role of each of these factors in isolation as well as in combination. Using individual-based simulations on a two dimensional, spatially explicit, and approximately continuous landscape, we compare the reductions in fitness (load) that populations experience during range expansions over a range of environmental gradients and with a range of deleterious mutational parameters. Under our range of biologically realistic parameters, we comment on the implications our results have in terms of understanding the presence and persistence of genetic disease in humans. 
 \emph{\small{remove that last sentence, or move?}}
 
@@ -126,10 +131,10 @@ We additionally investigated the details of deleterious mutations accumulating a
 
 \section{Results}
 
+% expansion speed results
 Steeper environmental gradients were shown to slow the speed of expansion (F = 1488, df = 2, p-value < 0.001; Figures \ref{fig:speed}). The leptokurtic dispersal kernel resulted in faster expansion over the landscape (F = 246, df = 1, p-value < 0.001), and increasing the deleterious genomic mutation rate slightly, but significantly decreased the speed of expansion (F = 162.1, df = 2, p-value < 0.001). We find a significant interaction of environmental gradient with the presence of deleterious mutations on expansion speed (F = 62.46, df = 4, p-value < 0.01), where increasing \emph{b} and U result in slower expansion than increasing either individually. All two-way and three-way interactions had a significant effect on expansion speed (p-value < 0.001 for all comparisons).
 
-\emph{need to check I've done stats right - do I want to control for random effects of the variable not of interest in each case, or do them all as one big model like: aov(expansion.speed $\sim$ b*U*disp, data=exp.speeds)}
-
+% expansion speed comparisons for fecundity-adjusted comparisons
 In our cases comparing fecundity-adjusted runs to cases with deleterious mutations, speed was minimally, but significantly, different for the comparison to U 0.1 (F = 26.73, df = 1, p-value < 0.001; compare dotted line in U 0.0 panel of figure \ref{fig:speed} to solid line in U 0.1 panel), and more significantly different for the comparison to U 1.0 (F = 275.9, df = 1, p-value < 0.001; compare dashed line in U 0.0 panel of figure \ref{fig:speed} to solid line in U 1.0 panel). In these cases, expansion was slower in the cases with deleterious mutations than in those with none but a lowered fecundity to match equilibrium mutation load.
 
 
@@ -141,12 +146,19 @@ In our cases comparing fecundity-adjusted runs to cases with deleterious mutatio
 \label{fig:speed}
 \end{figure}
 
+% fitness results
 
+% total fitness
 Comparing the ratio of fitness in edge populations to core populations showed significant reductions in fitness at the range edge due to steepness of the environmental gradient (F = 2982.389, df = 2, p-value < 0.001) and deleterious mutation rate (F = 29.473, df = 2, p-value < 0.001). Migration load and expansion load significantly interact in a non-additive manner to alter the ratio of fitness at the range edge versus in the range core (F = 306.203, df = 4, p-value < 0.001). Unlike for the expansion speed, there were no other significant interactions of environmental gradient with dispersal mode nor with deleterious mutation rate, nor a three-way interactions of all of these effects on the ratio of total fitness at the range edge versus the range core. All raw fitness values are shown in table \ref{tab:paramresults}.
 
 \emph{do we want a figure of total fitness across all our cases? I have it if the answer is yes}
 
-By parsing total fitness into each of its quantitative trait and deleterious loci fitness components, we then further investigated the mechanism of fitness reduction during range expansion. Not unexpectedly, we found that increasing the steepness of the gradient increases migration load in populations. In the cases for U = 0.0, migration load, and any expansion load doe to maladaptive quantitative locus mutations are the only contributing factors to reduced fitness.
+% fitness broken into components
+By parsing total fitness into each of its quantitative trait and deleterious loci fitness components, we then further investigated the mechanism of fitness reduction during range expansion. Not unexpectedly, we found that increasing the steepness of the gradient increases migration load in populations. In the cases for U = 0.0, migration load, and any expansion load due to maladaptive quantitative locus mutations are the only contributing factors to reduced fitness. Dispersal mode was not a significant factor in reducing fitness, but environmental gradient, presence of deleterious mutations, and their interaction all contributed to fitness at the range edge in just the quantitative trait. (\emph{but the delet muts aren't a straightforward interaction b/c their presence actually improves quanti fitness - probably need to work on this section because of this point})
+Similar results were shown when examining only the fitness due to deleterious mutations -- gradient and rate of mutations impacted fitness.
+As can be seen in Figure \ref{fig:load}, the effects on fitness are not always to decrease it at the edge. Increasing deleterious mutation rate over all types of gradients decreases fitness, but within each mutation rate case, a steeper gradient lessens the load due to deleterious mutations. For quantitative traits, steeper gradients do always reduce fitness, but having higher deleterious mutation rates lessens this load.
+
+% fecundity adjusted runs for fitness components
 
 \begin{figure}[]
 \centering
@@ -187,6 +199,8 @@ Gradient (\emph{b})	& Mutation Rate (U) 	  &	  & Speed 			&	\tiny{Core/Edge}	&	\
 \end{tabular}
 \end{table}
 
+
+
 \section{Discussion}
 
 
@@ -196,7 +210,7 @@ our results show that we can detect X amount of load due to loci of greater than
 
 \subsection{Future Directions}
 Can we predict when edge vs. central individuals are more fit at and beyond the current range limit?  
-Would require a different aspect of the simulation so maybe it’s not worth it for this paper, but would tie our results directly to prominent ecological/conservation issues with range expansion, e.g. are edge populations worth conserving? Which genotypes should one use for assisted migration? 
+Would require a different aspect of the simulation so maybe it's not worth it for this paper, but would tie our results directly to prominent ecological/conservation issues with range expansion, e.g. are edge populations worth conserving? Which genotypes should one use for assisted migration? 
 	Could be a future direction
 
 evolution of dispersal
