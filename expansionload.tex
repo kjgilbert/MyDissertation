@@ -125,17 +125,18 @@ Our combination of environmental gradients and deleterious mutation rates allow 
 
 We defined the landscape core as the first 40 cross sections within which the simulation burn-in took place. We defined the expanding edge of the populations as the inner-most occupied cross section where population size (averaged within that cross-section) was at or below 50\% of the average core population's size. Speed of expansion tracked the time it took the population edge to expand over the landscape from the end of the burn-in until reaching the second to last landscape cross section. Fitness measures in the edge included all individuals within this 50\% edge cross section as well as all individuals present beyond this edge to the point of empty landscape. We compared fitness in these edge populations to fitness in the core to standardize our comparisons to the equilibrium fitness in each scenario. We tested the effects of each parameter combination on these measures with ANOVA in R.
 
-We additionally investigated the details of deleterious mutations accumulating and surfing on the expanding population front. Effect sizes of deleterious mutations were classed into quartiles based on our known gamma distribution of effects. The reduction in fitness from each of these quartiles was then examined to assess if mutations of larger or smaller effect contribute most to expansion load. \emph{need more here on any stats we want to do with these?}
+We additionally investigated the details of deleterious mutations accumulating and surfing on the expanding population front. Effect sizes of deleterious mutations were classed into quartiles based on our known gamma distribution of effects. The reduction in fitness from each of these quartiles was then examined to assess if mutations of larger or smaller effect contribute most to expansion load. \emph{need more here on any stats we want to do with these}
  
 
 
 \section{Results}
 
 % expansion speed results
-Steeper environmental gradients were shown to slow the speed of expansion (F = 1488, df = 2, p-value < 0.001; Figures \ref{fig:speed}). The leptokurtic dispersal kernel resulted in faster expansion over the landscape (F = 246, df = 1, p-value < 0.001), and increasing the deleterious genomic mutation rate slightly, but significantly decreased the speed of expansion (F = 162.1, df = 2, p-value < 0.001). We find a significant interaction of environmental gradient with the presence of deleterious mutations on expansion speed (F = 62.46, df = 4, p-value < 0.01), where increasing \emph{b} and U result in slower expansion than increasing either individually. All two-way and three-way interactions had a significant effect on expansion speed (p-value < 0.001 for all comparisons).
+\subsection{Impacts on Expansion Speed}
+No parameter combinations that we investigated ever lead to the formation of a stable range edge, but instead affected the rate at which populations expanded across the landscape. Steeper environmental gradients were shown to slow the speed of expansion (F = 62729.1, df = 2, p-value $< 0.001$; Figures \ref{fig:speed}). The leptokurtic dispersal kernel resulted in faster expansion over the landscape (F = 6300.8, df = 1, p-value $< 0.001$), and increasing the deleterious genomic mutation rate slightly, but significantly decreased the speed of expansion (F = 3749.5, df = 2, p-value $< 0.001$). We find a significant interaction of all possible combinations (\emph{b}, U, and dispersal regime; p-value $< 0.001$ for all comparisons). Environmental gradient combined with the presence of deleterious mutations reduced expansion speed (F = 1600.0, df = 4, p-value $< 0.001$).
 
 % expansion speed comparisons for fecundity-adjusted comparisons
-In our cases comparing fecundity-adjusted runs to cases with deleterious mutations, speed was minimally, but significantly, different for the comparison to U 0.1 (F = 26.73, df = 1, p-value < 0.001; compare dotted line in U 0.0 panel of figure \ref{fig:speed} to solid line in U 0.1 panel), and more significantly different for the comparison to U 1.0 (F = 275.9, df = 1, p-value < 0.001; compare dashed line in U 0.0 panel of figure \ref{fig:speed} to solid line in U 1.0 panel). In these cases, expansion was slower in the cases with deleterious mutations than in those with none but a lowered fecundity to match equilibrium mutation load.
+In our cases comparing fecundity-adjusted U 0 runs to cases with deleterious mutations, speed was minimally, but significantly, different for the comparison to U 0.1 (F = 26.73, df = 1, p-value $< 0.001$; compare dotted line in U 0.0 panel of figure \ref{fig:speed} to solid line in U 0.1 panel), and more significantly different for the comparison to U 1.0 (F = 275.9, df = 1, p-value $< 0.001$; compare dashed line in U 0.0 panel of figure \ref{fig:speed} to solid line in U 1.0 panel). In these cases, expansion was slower in the presence of deleterious mutations than with a lowered fecundity to match the presence of mutation load.
 
 
 \begin{figure}[]
@@ -147,18 +148,20 @@ In our cases comparing fecundity-adjusted runs to cases with deleterious mutatio
 \end{figure}
 
 % fitness results
+\subsection{Impacts on Population Fitness}
 
 % total fitness
-Comparing the ratio of fitness in edge populations to core populations showed significant reductions in fitness at the range edge due to steepness of the environmental gradient (F = 2982.389, df = 2, p-value < 0.001) and deleterious mutation rate (F = 29.473, df = 2, p-value < 0.001). Migration load and expansion load significantly interact in a non-additive manner to alter the ratio of fitness at the range edge versus in the range core (F = 306.203, df = 4, p-value < 0.001). Unlike for the expansion speed, there were no other significant interactions of environmental gradient with dispersal mode nor with deleterious mutation rate, nor a three-way interactions of all of these effects on the ratio of total fitness at the range edge versus the range core. All raw fitness values are shown in table \ref{tab:paramresults}.
+Overall fitness was reduced at the range edge at our point of comparison for all simulations and all parameter sets (F = 22587.284, df = 1, p-value $< 0.001$; Table \ref{tab:paramresults}). Fitness within only the range core differed due to the environmental gradient and deleterious mutations, and their interaction (p-value $< 0.001$ for all comparisons), but was not significantly impacted by dispersal regime being Gaussian or kurtotic. At the range edge, however, dispersal regime did also cause slight differences in fitness (F = 6.558, df = 1, p-value = 0.011). 
+% entirely remove the above analyses because we want the ratio only?
+To control for differing equilibrium levels of fitness in the range core due to the mutation load and migration load inherent in the varying parameter sets, we compared the ratio of edge fitness to core fitness as our measure of expansion load. These analyses showed significant increases in expansion load due to steepness of the environmental gradient (F = 2982.389, df = 2, p-value $< 0.001$), deleterious mutation rate (F = 29.473, df = 2, p-value $< 0.001$), and dispersal regime (F = 8.872, df = 1, p-value = 0.003). There were significant interactions between environmental gradient and mutation rate (F = 306.23, df = 4, p-value $< 0.001$). Unlike for expansion speed, there were no other significant interactions of deleterious mutation rate with dispersal mode nor with environmental gradient, nor a three-way interaction of all of these effects on expansion load.
 
 \emph{do we want a figure of total fitness across all our cases? I have it if the answer is yes}
 
 % fitness broken into components
-By parsing total fitness into each of its quantitative trait and deleterious loci fitness components, we then further investigated the mechanism of fitness reduction during range expansion. Not unexpectedly, we found that increasing the steepness of the gradient increases migration load in populations. In the cases for U = 0.0, migration load, and any expansion load due to maladaptive quantitative locus mutations are the only contributing factors to reduced fitness. Dispersal mode was not a significant factor in reducing fitness, but environmental gradient, presence of deleterious mutations, and their interaction all contributed to fitness at the range edge in just the quantitative trait. (\emph{but the delet muts aren't a straightforward interaction b/c their presence actually improves quanti fitness - probably need to work on this section because of this point})
-Similar results were shown when examining only the fitness due to deleterious mutations -- gradient and rate of mutations impacted fitness.
-As can be seen in Figure \ref{fig:load}, the effects on fitness are not always to decrease it at the edge. Increasing deleterious mutation rate over all types of gradients decreases fitness, but within each mutation rate case, a steeper gradient lessens the load due to deleterious mutations. For quantitative traits, steeper gradients do always reduce fitness, but having higher deleterious mutation rates lessens this load.
+To examine the causal factors resulting in increased load at the range edge, we parsed total fitness into each of its quantitative trait and deleterious loci fitness components. Not unexpectedly, we found that increasing the steepness of the gradient increases migration load in the quantitative trait (F = 4902.601, df = 2, p-value $< 0.001$). However, this significantly interacts with the presence of deleterious mutations so that there is less expansion load in the quantitative trait in the presence of higher deleterious mutation rates (F = 80.182, df = 4, p-value $< 0.001$). Increasing deleterious mutation rate alone caused more load in the deleterious component of fitness (F = 1684.726, df = 2, p-value $< 0.001$), but the interaction with environmental gradient resulted in reduced expansion load due to deleterious mutations on steeper gradients (Figure \ref{fig:load}). % this is because of slower expansion, so describe that in the discussion
 
 % fecundity adjusted runs for fitness components
+When lowering fecundity in the U 0 cases to match the equilibrium level of mutation load in cases with deleterious mutations (U 0.1, U 1), no significant differences existed between expansion load accumulated for the quantitative trait in the U 0.1 comparison (Figure \ref{fig:load}, dotted line vs. solid blue line in center panel; F = 3.008, df = 1, p-value = 0.0815). The comparison to U 1 however did show significant differences for expansion load in the quantitative trait (Figure \ref{fig:load}, dashed line vs. solid blue line in right panel; F = 91.32, df = 1, p-value $< 0.001$). The same comparisons for the deleterious loci component of fitness showed both comparisons to be significant (F = 322.63, df = 1, p-value $< 0.001$; F =1600.71, df = 1, p-value $< 0.001$).
 
 \begin{figure}[]
 \centering
@@ -168,8 +171,18 @@ As can be seen in Figure \ref{fig:load}, the effects on fitness are not always t
 \label{fig:load}
 \end{figure}
 
+% looking at deleterious mutation effect sizes results:
+\subsection{Mutation Effect Sizes \emph{or some better subsection name}}
 
+When we consider the frequencies and effect sizes of deleterious mutations across the landscape, several patterns emerge. More mutations of larger effect have fixed in the edge populations and there is a significantly larger impact on expansion load by mutations of highest effect (largest effect size quartile) above mutations of intermediate and lower effect sizes. These mutations only exist at high frequency at the range edge 
+(\emph{I don't exaclty remember what your figure showed Nathaniel, so feel free to add more, and I think we at least know that the points I mentioned here are true, so if they're not in your figure we might want to think about additional visualizations?}). 
+\emph{also have something here about number of contributing loci so that  discussion can mention few loci large effect vs many loci of small effect} 
+Corroborating the results on interaction between migration load and expansion load, there is less expansion load, beyond the effects of the equilibrium mutation load in any given scenario, when environmental gradient is steeper (comparing blue dots and gray bars on Nathaniel's figure - we'll see this at Friday's meeting unless you want to add it in, Nathaniel). The most expansion load accumulates on weaker gradients and under higher mutation rates.
 
+% recovery post-landscape filling
+\subsection{Recovery Post-Expansion}
+
+\emph{Should we do some comparisons on rate of recovery? From the data we have, we can infer a rate of fitness increase over time since the landscape haas filled - but not all simulations ran long enough for the full recovery to have taken place. I am just not sure if this is very interesting because we know recovery will happen, and we know it will take longer when there are more deleterious mutations. So the only important point is what the edge fitness is (i.e. what is required to recover from) in each scenario, and we already have described that.}
 
 \begin{table}[]
 \centering \scriptsize
@@ -203,18 +216,30 @@ Gradient (\emph{b})	& Mutation Rate (U) 	  &	  & Speed 			&	\tiny{Core/Edge}	&	\
 
 \section{Discussion}
 
+\emph{Just a rough outline for now:}
 
-human papers get different answers - because dominance assumptions matter
+When it is more difficult to expand, expansion is slower, giving time for recovery. This happens in our cases of steeper gradients. That is why less expansion load accumulates. 
 
-our results show that we can detect X amount of load due to loci of greater than or equal to effect size of Y
+Our fecundity-adjusted comparisons allowed us to explicitly test the effects of expansion load beyond the impact of range-wide mutation load from the presence of deleterious mutations. We reduced the fecundity in a case with no deleterious mutations to match the fecundity reduction realized in the presence of deleterious mutations and found that in the absence of expansion load, fitness due to the quantitative trait is lower than with expansion load, but not as low as it is in the non-fecundity-adjusted case (\emph{this is confusing - we need to discuss}). In other words, expansion speed is slowed by the reduction in fitness due to mutation load (though not as much as it is slowed by an environmental gradient). This is due to a lower realized fecundity from mutation load. When we adjust fecundity to match this load, expansion speeds are not significantly different (except in the b0 case where it is significantly different - discuss with group), indicating that fecundity is the causal factor in expansion speed. \emph{I do not know if this makes any sense; this part still confuses me.} Therefore, when fecundity is lowered in a case with no expansion load, fitness is improved because the only load present is migration load, and fewer individuals migrate farther on average when fewer offspring are made each generation.
+
+Expansion load is due to large effect loci because surfing allows these to persist when they would not be able to otherwise (this is not a new insight).
+
+Can we compare to human papers which get different answers? (because dominance assumptions matter)
+
+Can we make useful insights for empiricists? "Our results show that we can detect X amount of load due to loci of greater than or equal to effect size of Y." Based on our simulations, this means there is still Z\% of load that an empiricist might miss when using things like GERP etc (which I think only work well at IDing larger effect deleterious muts? someone can correct me if that's wrong).
+
+Implications for species expanding due to climate change - if rate of expansion is too quick because climate is changing too quickly, they are predicted to suffer much more from expansion load.
+
+There are several other biological things that might slow expansion which our simulations did not include: inability to self, (others?) which would reduce expansion load, but it is also equally likely for some species to expand faster when longer distance dispersal is common or fecundity is much higher. 
 
 \subsection{Future Directions}
 Can we predict when edge vs. central individuals are more fit at and beyond the current range limit?  
 Would require a different aspect of the simulation so maybe it's not worth it for this paper, but would tie our results directly to prominent ecological/conservation issues with range expansion, e.g. are edge populations worth conserving? Which genotypes should one use for assisted migration? 
 	Could be a future direction
 
-evolution of dispersal
+Could predict that because migration load is such a problem in our steep gradients that dispersal would evolve to be less. Presumably expansion load would still accumulate because this will only reduce the load due to migration, not due to delet mutations, but is worth further investigation in future studies.
 
+For perennial or species with overlapping generations, further study is also worthwhile, as replacement of individuals present at the edge would be slowed once populations reach carrying capacity, and this could lead to less genetic rescue and more persistence of expansion load.
 
 %%% Local Variables:
 %%% TeX-master: "thesis"
