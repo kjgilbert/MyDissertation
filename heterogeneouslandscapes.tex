@@ -90,38 +90,34 @@ We examined several types of environmental heterogeneities across landscapes whi
 We compare the ability of populations to expand across environments that range from the extreme of one step in the landscape to the opposite extreme of a linear gradient. Because we are approximating continuous space with a grid, the closest our landscapes become to linear gradients are those where a step occurs between every cross-section.
 
 To first determine the factors underlying adaptation to a single, new environment, landscapes with one step were tested for $h_{step} = 5, 10,$ and $15$. % For the same total change in optimum over the landscape, but at the other extreme of heterogeneity, i.e. being linear, populations had no difficulty in expanding to fill the landscape when $h_{total} \sim 0.0025, 0.005,$ and $0.0075$.
-Upon determining the outcomes of success or failure to expand across this single step, we then simulated landscapes with increasing frequencies of steps, while holding $h_{step}$ constant at either 5 or 10, within each simulation. Step frequencies of 4, 13, 34, 97, 139, 195, 217, 244, 279, 326, 391, 489, 653, 979, and 1,959 (linear) steps per landscape were compared, which can equivalently be described as scenarios where the width of a step (the number of cross sections between subsequent steps) ranges from 392 cross sections down to a single cross section between steps for the linear gradient. Because $h_{step}$ is held constant in these scenarios, the total change in environmental optimum across the entire landscape, $h_{total}$, differs across cases of different step frequencies and is simply the product of $h_{step}$ and the number of steps on the landscape. The scenario for $h_{total}$ being held constant is not shown, since linear gradients with $h_{total} = 5, 10,$ or $15$ ($h_{step} = 0.0025, 0.005, $or$ 0.0075$) posed no difficulty for populations to expand across and adapt. \emph{if I have time for the simulations, add in the description of non-monotonic step landscapes}
+Upon determining the outcomes of success or failure to expand across this single step, we then simulated landscapes with increasing frequencies of steps, while holding $h_{step}$ constant at either 5 or 10, within each simulation. Step frequencies ranging from 4 to 1,959 (linear) steps per landscape were compared, which can equivalently be described as scenarios where the width of a step (the number of cross sections between subsequent steps) ranges from 392 cross sections down to a single cross section between steps on the linear gradient. Because $h_{step}$ is held constant in these scenarios, the total change in environmental optimum across the entire landscape, $h_{total}$, differs across cases of different step frequencies and is simply the product of $h_{step}$ and the number of steps on the landscape. The scenario for $h_{total}$ being held constant is not shown, since linear gradients with $h_{total} = 5, 10,$ or $15$ ($h_{step} = 0.0025, 0.005,$ or $0.0075$) posed no difficulty for populations to expand across and adapt. \emph{if I have time for the simulations, add in the description of non-monotonic step landscapes}
 
 % Multiple different scenarios can represent the same total change in landscape optimum (Figure 1a) while the frequency of steps in space can also result in different total changes in landscape optimum (Figure 1b).
 
 \subsection{Population Parameters \emph{need better subsection name - genetic architectures?}}
 We simulated life cycle events in the order of breeding, dispersal, viability selection, and population regulation, where generations are non-overlapping. 
 Breeding and dispersal occurred according to a modified version of \textsc{nemo} described in the following section which allows breeding and dispersal to easily occur across landscape grid cells. %These modifications were necessary as part of our spatially explicit approximation to continuous space.
-Individuals are hermaphroditic and lacked the ability to self. Average fecundity set at 4 and drawn from a Poisson distribution. 
-% Selection and regulation occur at the level of cells. 
-Selection is stabilizing for the phenotypic optimum of a given cell, where the fitness of a trait value, $z$ is given by:
- $W(z) = exp[-\frac{1}{2}(z - \theta)^T\omega^{-1}(z-\theta)]$
- where $\theta$ is the environmental optimum, and $\omega$ is the ``variance-covariance matrix of selection describing the individual fitness surface``, according to \textsc{nemo}. The selection variance, $V_S$, was set at 7.5, while environmental variance was set at 1. 
-The quantitative trait, $z$ is determined by 100 freely recombining loci. We held constant the total mutational variance available to the system, but varied the underlying genetic architectures contributing to the mutational variance. Three genetic architecture regimes were investigated. First, one with small effect mutations and a higher mutation rate: $\mu = 0.01$ and variance in mutation effect size $= 0.005$. A second intermediate regime set $\mu = 0.0001$ and variance in mutation effect size $= 0.5$, while a third regime of large effect mutations used $\mu = 0.00001$ and variance in mutation effect size $= 5.0$. 
+Individuals are hermaphroditic and obligate outcrossers. Average fecundity set at 4 and drawn from a Poisson distribution. 
 Population regulation occurs at the level of cells, where any individuals present in a cell above the carrying capacity, $K$, are randomly culled from the population. This $K$ was set at 5 individuals per cell, but due to the nature of breeding and dispersal, the effective neighborhood size for individuals is greater than the local carrying capacity.
 
+% Selection and regulation occur at the level of cells. 
+The quantitative trait, $z$ is determined by 100 freely recombining loci. The selection variance, $V_S$, was set at 7.5, while environmental variance was set at 1. Selection is stabilizing for the phenotypic optimum of a given cell, where the fitness of a trait value, $z$ is given by:
+ $W(z) = exp[-\frac{1}{2}(z - \theta)^T\omega^{-1}(z-\theta)]$
+ where $\theta$ is the environmental optimum, and $\omega$ is the ``variance-covariance matrix of selection describing the individual fitness surface``, according to \textsc{nemo}. 
+
+We held constant the total mutational variance available to the system, but varied the underlying genetic architectures contributing to the mutational variance. Three genetic architecture regimes were investigated. First, one with small effect mutations and a higher mutation rate: $\mu = 0.01$ and variance in mutation effect size $= 0.005$. A second intermediate regime set $\mu = 0.0001$ and variance in mutation effect size $= 0.5$, while a third regime of large effect mutations used $\mu = 0.00001$ and variance in mutation effect size $= 5.0$. 
+
+
 \subsection{Dispersal and Breeding Windows}
-To maintain our spatially explicit approximation to continuous space.... use the breeding windows....
+To maintain our spatially explicit approximation to continuous space, we introduced a breeding window into \textsc{nemo}. This allowed specification of a fine scale landscape to underly larger populations. The breeding window defines a given radius of cells around a focal cell from which an individual can find a potential mate during the breeding life cycle stage. Upon mating, offspring are then placed in the mother's cell, after which dispersal would proceed as normal in the subsequent life cycle event. Within this radius, individuals present are chosen as a mate with decreasing probability away from the focal cell. This radius and the mating probabilities are determined by a continuous, Gaussian distribution that is discretized by the probability density within each cell. This probability distribution is defined by one standard deviation of a Gaussian distribution, $\sigma_{breed}$, and is cut off at a maximum search radius of $4\times\sigma_{breed}$. $\sigma_{breed}$ was set at one half of a cell size, which resulted in a breeding window containing the 12 cells surrounding the focal cell. Because modeling a range expansion implies that there will often be lone colonists on the expansion front, this addition of a breeding window increases biological realism by allowing lone colonists on the range front to still potentially find a nearby mate, even if they are the sole inhabitant of their cell. This most closely resembles obligately outcrossing plants, who may receive pollen from nearby mates, but could also represent animals that search for mates nearby then return to their home territory. 
 
-
-These modifications were necessary as part of our spatially explicit approximation to continuous space.
-
- with C++ code available online at https://github.com/kjgilbert/NemoDispersalKernel
+Dispersal occurred similarly to breeding, where a dispersal kernel was defined from a continuous Gaussian distribution and discretized over cells on the landscape. This distribution was defined by $\sigma_{disperse} = 2\times$ cell size for the majority of simulations. Where specified, a larger dispersal kernel of $\sigma_{disperse} = 4\times$ cell size was implemented. An R wrapper package was created to calculate breeding and dispersal kernels, and to discretize these probabilities across the landscape, and is available online at https://github.com/kjgilbert/aNEMOne. C++ code for our modified version of \textsc{nemo} is available online at https://github.com/kjgilbert/NemoDispersalKernel.
  
-Quantitative alleles mutate at rate 0.0001 unless otherwise stated and the mutation variance parameter was varied as described in the results. 
 
-, and allowed mating to occur within a breeding window. This breeding window specifies the distance within which a potential mate can be found and the likelihood of mating with that individual based on a Gaussian kernel. Because modeling a range expansion implies that there will often be lone colonists on the expansion front, this addition of a breeding window increases biological realism by allowing lone colonists on the range front to still potentially find a nearby mate, even if they are the sole inhabitant of their cell. This most closely resembles obligately outcrossing plants, who may receive pollen from nearby mates, but could also represent animals that search for mates nearby and return to their home territory. This increases our local effective population size above the scale of cells to approximately    ~~~~ . The size of this breeding window is defined in the same manner as the dispersal kernel. A 1-dimensional probability distribution is drawn, defined by one standard deviation of a Gaussian distribution $\sigma$, which is then multiplied by itself to create a 2-dimensional kernel. This is reduced to include only probabilities equal to or higher than the smallest probability from the 1-dimensional kernel, and is then renormalized. Upon mating, offspring are then placed in the mother's cell, after which dispersal would proceed as normal in the subsequent life cycle event. 
-
-Individuals existed on a landscape 2,000 cells long and 40 cells wide. A burn-in period of 7,500 generations occurred in the first 40 by 40 cells and after the burn-in, the remainder of the landscape was opened to allow range expansion to occur. Simulations were run for a total of 25,000 generations with 10 replicates per scenario unless otherwise indicated. Landscape boundaries were absorbing, so individuals who migrate outside of the landscape die, and individuals at the boundary have fewer cells in their potential breeding window. Unless otherwise stated, $\sigma_{breed} = 0.5$ (most mates come from within your cell, but the 12 surrounding cells had non-negative probabilities of finding a mate), and $\sigma_{disperse} = 2$ for ``small dispersal kernel`` and 4 for ``large dispersal kernel`` (See supplemental text ~~~ for further description). 
+% A 1-dimensional probability distribution is drawn, defined by one standard deviation of a Gaussian distribution $\sigma$, which is then multiplied by itself to create a 2-dimensional kernel. This is reduced to include only probabilities equal to or higher than the smallest probability from the 1-dimensional kernel, and is then renormalized. 
 
 
-Figure 1 - Visualizations in 1-dimension of heterogeneously changing environmental gradients. Each horizontal portion is referred to in the text as a step. $h_{step}$ is a measure of the vertical 
-distance between steps while $h_{total}$ is the total change in environmental optimum from one end of the landscape to the other. Panel A shows gradients that have the same overall slope, b ($h_{total}$ = 200), but different magnitudes of change in the local optimum, $h_{step}$. Panel B shows gradients that have different overall slopes, b, but the same magnitude of change in the local optimum per step ($h_{step}$ = 4).
+%Figure 1 - Visualizations in 1-dimension of heterogeneously changing environmental gradients. Each horizontal portion is referred to in the text as a step. $h_{step}$ is a measure of the vertical distance between steps while $h_{total}$ is the total change in environmental optimum from one end of the landscape to the other. Panel A shows gradients that have the same overall slope, b ($h_{total}$ = 200), but different magnitudes of change in the local optimum, $h_{step}$. Panel B shows gradients that have different overall slopes, b, but the same magnitude of change in the local optimum per step ($h_{step}$ = 4).
 
 %<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
 \begin{table}[]
@@ -235,7 +231,7 @@ and cases in green never succeed in expanding beyond the step.
 
 To do: the cases in blue in fig 6 need to be scrutinized further. What mutations arise 
 right when they start to expand?
-	The mutations that arise in populations at the step…
+	The mutations that arise in populations at the step�
 		Look at their effect sizes
 		Look at how many it takes
 
@@ -248,13 +244,13 @@ determine ability to expand, as was recapitulated here, we then further investig
 factors that impact this ability. This was done by teasing apart the effects of absolute magnitude 
 of change in environmental optimum and the frequency of this change over space. As we have shown, 
 on a linear gradient where expansion for a given parameter set is able to expand, the same 
-parameter set can no longer expand when the environmental change is reorganized into one “step” 
+parameter set can no longer expand when the environmental change is reorganized into one step 
 in the landscape.
 	The ability to cross a single step in the landscape is driven by the mutations available 
 	to the system. More mutations of larger effect allow individuals migrating across this 
 	step to adapt to the new landscape optimum and spread across the remainder of the landscape. 
 	This result is similar to that of Gomulkiewicz (citation) where instead a 2-patch model 
-	is simulated, and the second patch switches from a sink to a source when… ~~~~~ .
+	is simulated, and the second patch switches from a sink to a source when� ~~~~~ .
 	Interestingly however, the ability of a parameter set to cross a single step does not 
 	guarantee its ability to cross multiple steps. In these cases, the frequency of steps 
 	occurring over the landscape impacts the ability of populations to expand and adapt.
@@ -262,8 +258,7 @@ in the landscape.
 
 
 %\section{Acknowledgements}
-%We would like to thank Fredéric Guillaume for help with Nemo and members of the Whitlock lab 
-%for feedback on the project. …
+%We would like to thank Fred�ric Guillaume for help with \textsc{nemo} and members of the Whitlock lab for feedback on the project.
 
 
 %%% Local Variables:
