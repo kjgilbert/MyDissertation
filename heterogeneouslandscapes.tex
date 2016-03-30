@@ -102,8 +102,8 @@ Population regulation occurs at the level of cells, where any individuals presen
 
 % Selection and regulation occur at the level of cells. 
 The quantitative trait, $z$ is determined by 100 freely recombining loci. The selection variance, $V_S$, was set at 7.5, while environmental variance was set at 1. Selection is stabilizing for the phenotypic optimum of a given cell, where the fitness of a trait value, $z$ is given by:
- $W(z) = exp[-\frac{1}{2}(z - \theta)^T\omega^{-1}(z-\theta)]$
- where $\theta$ is the environmental optimum, and $\omega$ is the ``variance-covariance matrix of selection describing the individual fitness surface``, according to \textsc{nemo}. 
+ $\omega_z = exp[-\frac{(z-z_{opt})^2}{2V_S}]$%$W(z) = exp[-\frac{1}{2}(z - \theta)^T\omega^{-1}(z-\theta)]$
+  where $z_{opt}$ is the environmental optimum.%where $\theta$ is the environmental optimum, and $\omega$ is the ``variance-covariance matrix of selection describing the individual fitness surface``, according to \textsc{nemo}. 
 
 We held constant the total mutational variance available to the system, but varied the underlying genetic architectures contributing to the mutational variance. Three genetic architecture regimes were investigated. First, one with small effect mutations and a higher mutation rate: $\mu = 0.01$ and variance in mutation effect size $= 0.005$. A second intermediate regime set $\mu = 0.0001$ and variance in mutation effect size $= 0.5$, while a third regime of large effect mutations used $\mu = 0.00001$ and variance in mutation effect size $= 5.0$. 
 
