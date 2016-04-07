@@ -1,6 +1,7 @@
 \documentclass[
 12pt         % Moar bigger
-,twoside     % fogs hates this, but they hate everything
+%,twoside     % fogs hates this, but they hate everything
+,oneside
 ,openright   % fogs hates this too
 ]{mythesis}
 
@@ -11,8 +12,10 @@
 \usepackage{booktabs}
 \usepackage[table,xcdraw]{xcolor}	%% I added this for shading in the tables
 
-\title{Genetics of complex demographies: 
-  Investigating effective population size, mutation, and migration}
+\title{Understanding local adaptation and effective population size in the face of complex demographic history}
+
+%Genetics of complex demographies: 
+%  Investigating effective population size, mutation, and migration}
 
 %\title{Effective population size \\%
 %  and its interactions with \\ population genetic processes}
@@ -31,8 +34,23 @@
 
 % I worked in different files: input them like so:
 
+%\input{abstract}
+
+% FOGS want abstract to be on page 2, but 'openright'
+% conflicts with this.
+% This grouping allows the Abstract chapter to start
+% on a left hand page. 
+
+%\begingroup
+%\renewcommand{\cleardoublepage}{}
+%\renewcommand{\clearpage}{}
 \input{abstract}
+%\endgroup
+
+  
 \input{preface}
+
+
 % This is because FoGS formatting pedandtry is especially accute when
 % it comes to tables of contents
 \allcontents
