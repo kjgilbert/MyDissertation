@@ -160,32 +160,65 @@ Selection occurs only on survivorship, and not fecundity, throughout the simulat
 
 \subsection{Expansion on a linear gradient}
 
-We investigated the critical steepness of a linear gradient first, as a comparison to existing literature.
-...
+We first investigated the critical steepness of a linear gradient, $b_{crit}$. The following results will present the outcome for simulations of $\mu = 10^{-3}$ and $\alpha^2 = 0.05$, and the remaining genetic architecture regimes will be discussed subsequently. We examined a range of gradient steepness, from $b = 1$ to $b = 5$, and found that expansion could successfully proceed for all cases at and below $b = 3$. On the $b = 3$ gradient, expansion was slowed in comparison to expansion on the shallower gradients (Figure \ref{fig:linearspeed}). The total population size maintained across the landscape was also lower as gradient steepness increased towards $b_{crit}$ (Supplemental Figure or maybe not supp fig of pop sizes. ). We find that the genetic variance across the landscape increases as the gradient steepness increases (Supplemental Figure . ).  %% MAYBE HERE only refer to a figure for this genetic architecture
 
-when is b too steep on a linear gradient?
+\citet{Barton:2001} derives predictions for the value of $b_{crit}$, which depend on the genetic variance: $b_{crit} = \frac{V_G}{\sigma \sqrt{V_S}}$, where $\sigma$ is the standard deviation of distance travelled by combining both gamete and offspring dispersal, i.e. $\sigma = \sqrt{\sigma_{disperse}^2 + \frac{1}{2}\sigma_{breed}^2}$. Because the genetic variance evolves differently on each environmental gradient, this is not a useful predictor for our simulations, however we can attempt to predict a $b_{crit}$ using the genetic variance from the landscape core. Doing so estimates a $b_{crit} \approx 0.125$, a large underestimate of our realized $b_{crit}$. There are multiple reasons for this disparity in $b_{crit}$, which we discuss in the Discussion.
 
-	might need to calculate b as the gradient within a sigma or something like that...
+% could calculate b_crit at the largest Va found possible before extinction occurs, what does it predict??
 
-what value of b is it above which no expansion occurs
 
-even when expansion occurs on lower values of b, the lower the b, there are still differences
 
-speed of expansion
-total pop size across the landscape
-fitness?
+%%, as a comparison to existing literature.
+%%when is b too steep on a linear gradient?
+%%	might need to calculate b as the gradient within a sigma or something like that...
+%%what value of b is it above which no expansion occurs
+%%even when expansion occurs on lower values of b, the lower the b, there are still differences
+%%speed of expansion
+%%total pop size across the landscape
+%%fitness?
+
+
+\begin{figure}[h]
+\centering
+\makebox[\textwidth]{
+        \includegraphics[width=0.6\linewidth]{Figures/GrowthRateZoomedIn.pdf}}
+\caption[Growth rate of populations expanding over a linear gradient.]{Growth rate of populations expanding over a linear gradient, from $b = 1$ to $b = 5$ and for the small and large dispersal distances. The four differen regimes of genetic architecture are indicated along the x-axis, and points are jittered. Below the gray dashed lines are cases that the population did not expand out of the core. Error bars indicate 95\% confidence intervals.}
+\label{fig:linearspeed}
+\end{figure}
+
+
 
 \subsection{Expansion over heterogeneous gradients}
 
-total h = 15 runs expand fine
+Our measured $b_{crit}$ defines the slope of change over the environment on a linear gradient, but this gradient can consist of local heterogeneity whole still overall possessing the same value of $b$ as measured on the entire landscape. This next set of simulations examines where the prediction from our measured $b_{crit}$ fails to describe the outcome of range expansion when we vary the degree of heterogeneity of change over the landscape. 
 
-one step h = 15 runs never expand (almost, except that one case)
+We choose a gradient value for which expansion on a linear gradient was successful and maintain the same total change in environmental optimum from one end of the landscape to the other. However, in these simulations, we divide the makeup of that change into different numbers of steps across the landscape. For a given simulation, the height of a step is constant, but across simulations the height of a step varies as the number of steps varies. The total change in optimum over the landscape was 15 units. For a linear gradient, this is equivalent to $b = 0.0077$. We divide the landscape into a range of 979 steps down to 1 step, and find that expansion occurs in all cases up to the scenario of 1 step on the landscape. This means that $h_{step} = 15$ because all of the change in environment is localized to this one location on the landscape. In this scenario, the failure to expand over the step is not predicted by $b_{crit}$. %% ONE CASE DOES EXPAND ACROSS HSTEP = 15 IN THIS GENETIC ARCHITECTURE ONLY
+% does expansion take longer as more steps are added
+% does fitness go down and variance up?
 
-where on the steppiness continuum does the b prediction from linear gradients fall apart?
-
-total h is still the same in all these cases
+%%total h = 15 runs expand fine
+%%one step h = 15 runs never expand (almost, except that one case)
+%%where on the steppiness continuum does the b prediction from linear gradients fall apart?
+%%total h is still the same in all these cases
 
 \subsection{Expansion across one change in environmental optimum}
+
+To investigate why $b_{crit}$ fails to predict expansion over 1 step in the optimum, we explore the role purely of step height by simulating models of one one step on the landscape (two habitat patches on either side) and vary the value of $h_{step}$. We compare the results for $h_{step} = 5, 7.5, 10, 12.5,$ and $15$. From the previous result, we have shown that expansion does not occur across steps of height 15.
+
+At $h_{step} = 5$ and $7.5$, we find that the expansion easily occurs and individuals colonize and spread above the step in the landscape. At $h_{step} = 10$, expansion is still able to proceed, but the population spends more time once it has reached the step before it successfully colonizes and spreads across the remaining landscape. At $h_{step} = 12.5$, expansion does not occur in 17 out of 20 replicates, and 3 replicates that were able to successfully expand into the new habitat spent over 10,000 generations at the step before colonization succeeded (Figure \ref{fig:waittimes}).
+
+
+
+
+
+\begin{figure}[h]
+\centering
+\makebox[\textwidth]{
+        \includegraphics[width=0.6\linewidth]{Figures/wait_times.pdf}}
+\caption[Wait times for step crossing.]{Wait times in generations for step crossing over 1 step in the environment for each regime of genetic architecture simulated and across varying magnitudes of step height. Points are jittered for visualization.}
+\label{fig:waittimes}
+\end{figure}
+
 
 why does the steppiness matter?
 
