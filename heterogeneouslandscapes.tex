@@ -194,9 +194,9 @@ For the same gradient values and genetic architectures, we examined the outcome 
 
 \subsection{Expansion over heterogeneous gradients}
 
-Our measured $b_{crit}$ defines the slope of change over the environment on a linear gradient, but this gradient can consist of local heterogeneity whole still overall possessing the same value of $b$ as measured on the entire landscape. This next set of simulations examines where the prediction from our measured $b_{crit}$ fails to describe the outcome of range expansion when we vary the degree of heterogeneity of change over the landscape. 
+Our measured $b_{crit}$ values define the slope of change over the environment on a linear gradient, but this gradient can consist of local heterogeneity while still overall possessing the same value of $b$ as measured across the entire landscape. This next set of simulations examines if and where the prediction from our measured $b_{crit}$ fails to describe the outcome of range expansion when we vary the degree of heterogeneity of change over the landscape. 
 
-We choose a gradient value for which expansion on a linear gradient was successful and maintain the same total change in environmental optimum from one end of the landscape to the other. However, in these simulations, we divide the makeup of that change into different numbers of steps across the landscape. For a given simulation, the height of a step is constant, but across simulations the height of a step varies as the number of steps varies. The total change in optimum over the landscape was 15 units. For a linear gradient, this is equivalent to $b = 0.0077$. We divide the landscape into a range of 979 steps down to 1 step, and find that expansion occurs in all cases up to the scenario of 1 step on the landscape. This means that $h_{step} = 15$ because all of the change in environment is localized to this one location on the landscape. In this scenario, the failure to expand over the step is not predicted by $b_{crit}$. %% ONE CASE DOES EXPAND ACROSS HSTEP = 15 IN THIS GENETIC ARCHITECTURE ONLY
+We choose a gradient value for which expansion on a linear gradient was successful and maintain the same total change in environmental optimum from one end of the landscape to the other. However, in these simulations, we divide the makeup of that change into different numbers of steps across the landscape. For a given simulation, the height of a step is constant, but across simulations the height of a step varies as the number of steps varies. The total change in optimum over the landscape was 15 units. For a linear gradient, this is equivalent to $b = 0.0077$, and for a non-linear gradient with steps we divide the landscape into a range of 979 steps down to 1 step which then varies step height from $h_{step} = 0.015$ to $15$. We found that expansion occurs in all cases except for the scenario of 1 step on the landscape, where $h_{step} = 15$. On individual replicate did expand above a single step of height 15, when $\mu = 10^{-3}$ and $\alpha^2 = 0.05$, after 10,000 generations of remaining below the step, but this was one replicate out of 20 for that genetic architecture regime, and no other regimes for each of their 20 replicates ever expanded past this step. In this case, the total change in environmental optimum across the landscape is localized to this one step's location on the landscape. Only at this extreme, for this low value of $b$ did $b_{crit}$'s prediction fail. %% ONE CASE DOES EXPAND ACROSS HSTEP = 15 IN THIS GENETIC ARCHITECTURE ONLY
 % does expansion take longer as more steps are added
 % does fitness go down and variance up?
 
@@ -207,21 +207,37 @@ We choose a gradient value for which expansion on a linear gradient was successf
 
 \subsection{Expansion across one change in environmental optimum}
 
-To investigate why $b_{crit}$ fails to predict expansion over 1 step in the optimum, we explore the role purely of step height by simulating models of one one step on the landscape (two habitat patches on either side) and vary the value of $h_{step}$. We compare the results for $h_{step} = 5, 7.5, 10, 12.5,$ and $15$. From the previous result, we have shown that expansion does not occur across steps of height 15.
+To investigate why $b_{crit}$ fails to predict expansion over 1 step in the optimum, we explore the role purely of step height by simulating models of one one step on the landscape (two habitat patches on either side) and vary the value of $h_{step}$. We compare the results for $h_{step} = 5, 7.5, 10, 12.5,$ and $15$. From the previous result, we have shown that expansion does not occur across steps of height 15 (excepting 1 out of 80 replicates).
 
-At $h_{step} = 5$ and $7.5$, we find that the expansion easily occurs and individuals colonize and spread above the step in the landscape. At $h_{step} = 10$, expansion is still able to proceed, but the population spends more time once it has reached the step before it successfully colonizes and spreads across the remaining landscape. At $h_{step} = 12.5$, expansion does not occur in 17 out of 20 replicates, and 3 replicates that were able to successfully expand into the new habitat spent over 10,000 generations at the step before colonization succeeded (Figure \ref{fig:waittimes}).
-
-
+In all genetic architectures, we find that expanding over one step of height 5 caused no difficulties and expansion proceeded immediately upon populations reaching the step. At $h_{step} = 7.5$, expansion becomes more difficult for one genetic architecture regime, $\mu = 10^{-4}$ and $\alpha^2 = 0.5$, but all replicates successfully expand within 2,500 generation of having reached the step. An interesting phenomenon is seen at $h_{step} = 10$, where expansion is minimally slowed (within 500 generations of reaching the step) for $\mu = 10^{-2}$, more substantially slowed (within 2000 generations of reaching the step) for $\mu = 10^{-3}$, and then no expansion occurs within the duration of the simulations for all 20 replicates when $\mu = 10^{-4}$. However, at $\mu = 10^{-5}$, expansion again proceeds for 19 of 20 replicates, with large variation in time spent waiting at the landscape step. For $h_{step} = 12.5$, expansion only occurs in the first two genetic architecture regimes of highest mutation rate, with substantial waiting time at the step (Figure \ref{fig:waittimes}).
 
 
 
 \begin{figure}[h]
 \centering
 \makebox[\textwidth]{
-        \includegraphics[width=0.6\linewidth]{Figures/wait_times.pdf}}
+        \includegraphics[width=1\linewidth]{Figures/wait_times.pdf}}
 \caption[Wait times for step crossing.]{Wait times in generations for step crossing over 1 step in the environment for each regime of genetic architecture simulated and across varying magnitudes of step height. Points are jittered for visualization.}
 \label{fig:waittimes}
 \end{figure}
+
+\subsubsection{Mutations contributing to adaptation across a step}
+
+We examine why expansion across steeper steps becomes more difficult as mutation rate decreases, but changes qualitatively again when large effect mutations are possible in the fourth genetic architecture regime. To investigate if this is due to the availability of mutations of different effect sizes, we compare individuals existing below and above the environmental step in the mean numeric difference of their allelic state for each of the 100 loci underlying the QTL. This is done within 25 generations of when expansion successfully occurs in order to capture the effects directly contributing to adaptation in the new environment above the step. The allelic value at each locus is averaged across all individuals existing each above and below the step and within $40\times40$ cells of the step, and excluding the $2\times40$ closest cells subject to the strongest migration load. Comparing these values across the step thus shows the differences in effects that have accumulated on a per locus basis to allow these populations to adapt to these two different environments.
+
+This comparison shows that as we increase the variance in mutational effect size, more differences per locus accumulate of larger effect sizes. Similarly, within a given genetic architecture regime, increasing the step height over which adaptation occurs likewise results in fewer, but larger effect differences across loci (Figure \ref{fig:effectsizes}).
+
+
+
+\begin{figure}[h]
+\centering
+\makebox[\textwidth]{
+        \includegraphics[width=1.1\linewidth]{Figures/Arrange_EffectSizeFigs.pdf}}
+\caption[Per locus effect size differences.]{Per locus effect size differences below and above the environmental step. For 20 replicates and 100 loci, all counts sum to 2000 per scenario. The leftmost bars extend to such high values that the plot is cutoff and the maximum value of each bar is written above.}
+\label{fig:effectsizes}
+\end{figure}
+
+
 
 
 % then a section on step height and width?
