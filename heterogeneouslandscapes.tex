@@ -161,7 +161,9 @@ Selection occurs only on survivorship, and not fecundity, throughout the simulat
 \subsection{Expansion on a linear gradient}
 
 We first investigated the critical steepness of a linear gradient, $b_{crit}$. %The following results will present the outcome for simulations of $\mu = 10^{-3}$ and $\alpha^2 = 0.05$, and the remaining genetic architecture regimes will be discussed subsequently. 
-We examined a range of gradient steepness, from $b = 1$ to $b = 5$, and found that expansion could successfully proceed for all cases at a given $b_{crit}$, but that this value changed depending on the genetic architecture modeled.  For the two intermediate regimes of $\mu = 10^{-3}$ and $\alpha^2 = 0.05$ and $\mu = 10^{-4}$ and $\alpha^2 = 0.5$, expansion occurred at and below $b = 3$. While for the two extreme genetic architectures, $\mu = 10^{-2}$ and $\alpha^2 = 0.005$ was able to expand slowly across a gradient of $b = 4$, and $\mu = 10^{-5}$ and $\alpha^2 = 5.0$ had two replicates out of 10 that also slowly expanded, but after around 10,000 generations of remaining stationary in the core. In all cases where expansion occurred, steeper gradients resulted in a slower rate of expansion across the landscape (Figure \ref{fig:linearspeed}). The total population size maintained across the landscape was also lower as gradient steepness increased towards $b_{crit}$ (Supplemental Figure or maybe not supp fig of pop sizes. ). 
+We examined a range of gradient steepness, from $b = 1$ to $b = 5$, and found a $b_{crit}$ value below which expansion could successfully proceed, but that this $b_{crit}$ value varied depending on the genetic architecture modeled. For the genetic architecture of  $\mu = 10^{-2}$ and $\alpha^2 = 0.005$, expansion occurred at and below $b = 4$, making $b_{crit}$ between 4 and 4.5. For the genetic architecture of  $\mu = 10^{-3}$ and $\alpha^2 = 0.05$, expansion occurred at and below $b = 3.5$, making $b_{crit}$ between 3.5 and 4. For the genetic architecture of  $\mu = 10^{-4}$ and $\alpha^2 = 0.5$, expansion occurred at and below $b = 3$, making $b_{crit}$ between 3 and 3.5. Lastly, or the genetic architecture of  $\mu = 10^{-5}$ and $\alpha^2 = 5.0$, $b_{crit}$ underwent a qualitative change, and expansion occurred again at and below $b = 4$, making $b_{crit}$ between 4 and 4.5.
+
+In all cases where expansion occurred, it proceeded more slowly as the gradient steepness approached $b_{crit}$ (Figure \ref{fig:linearspeed}). For $\mu = 10^{-5}$ and $\alpha^2 = 5.0$, only 2 replicates out of 10 successfully expanded, producing the calculated growth rate, but these scenarios also spent a significant time after the burn-in of about 10,000 generations, without proceeding to expand across the landscape, and only then began to colonize empty landscape. A similar phenomenon was observed for $\mu = 10^{-4}$ and $\alpha^2 = 0.5$ where populations again showed time spent within the core before expansion occurred, but after the end of the burn-in. In these cases, expansion began for all replicates within 5,000 generations, but after an average waiting time of \color{red}2500 \color{black} generations. The total population size maintained across the landscape was also lower as gradient steepness increased towards $b_{crit}$ (\color{red}Supplemental Figure or maybe not supp fig of pop sizes.\color{black} ). 
 
 \citet{Barton:2001} derives predictions for the value of $b_{crit}$, which depend on the genetic variance: $b_{crit} = \frac{V_G}{\sigma \sqrt{V_S}}$, where $\sigma$ is the standard deviation of distance travelled by combining both gamete and offspring dispersal, i.e. $\sigma = \sqrt{\sigma_{disperse}^2 + \frac{1}{2}\sigma_{breed}^2}$. We find that the genetic variance across the landscape increases in scenarios of steeper environmental gradients (Supplemental Figure . ). Because the genetic variance evolves differently on each gradient, this is not a useful value in predicting $b_{crit}$ for our simulations, however we can attempt to predict a $b_{crit}$ using the genetic variance from the landscape core. Doing so estimates a $b_{crit}$ for each genetic architecture respectively: $\approx 0.161, 0.125, 0.018,$ and $0.002$ (for $\mu = 10^{-2}, 10^{-3}, 10^{-4},$ and $10^{-5}$, respectively), a large underestimate of our realized $b_{crit}$ values. There are multiple reasons for this disparity in $b_{crit}$, which we consider in the Discussion.
 
@@ -233,12 +235,29 @@ This comparison shows that as we increase the variance in mutational effect size
 \centering
 \makebox[\textwidth]{
         \includegraphics[width=1.1\linewidth]{Figures/Arrange_EffectSizeFigs.pdf}}
-\caption[Per locus effect size differences.]{Per locus effect size differences below and above the environmental step. For 20 replicates and 100 loci, all counts sum to 2000 per scenario. The leftmost bars extend to such high values that the plot is cutoff and the maximum value of each bar is written above.}
+\caption[Per locus effect size differences.]{Per locus effect size differences below and above the environmental step. Each count represents one locus from across all replicates of simulations that successfully expanded over the step. The leftmost bars extend to such high values that the plot is cutoff and the maximum value of each bar is written above.}
 \label{fig:effectsizes}
 \end{figure}
 
+\subsection{Combination of step height and step width}
+
+The previous section showed which genetic architectures are able to expand over a single step of a given height. To further investigate the role of landscape heterogeneity, we investigate the ability of populations to expand across multiple steps of a constant height, for which expansion over a single step of this height did occur. This used landscapes with constant step height of 5 and 10, and simulated cases between 4 and 1959 (linear) steps across the landscape.
+
+We find that 
+
+on height 5:
+once steps are wide enough, about greater than width 14ish, the rank order of growth rate across gen arch changes
+this is about the same for disp 200
+gen arch 10^-2 is slowest when there are lots of steps, then 10^-3 then 10^-5, THEN 10^-4 fastest WHYYYY?
+past that switch point when steps are plenty wide, 10^-5 is slowest, followed closely or matched by 10^-4
+
+with the larger disp kernel, ability to expand stops sooner, at step width 2 growth rate is zero (3 can go) whereas on disp 100 all could still expand, just slowly on step width 1
 
 
+on height 10:
+only 2 cases expanded and growth rate approached zero much sooner (total gradient value of xx, step width of yy)
+
+growth rate was higher for disp 200 in gen arch 10^-2, but was almost the same for 10^-5, because in the latter case this supports our result of that growth depending on a mutation arising to get over a step, not on the distance able to be traveled and colonized, which is what drives it when expansion is easier in the other genetic architecture (orange squares versus plus signs)
 
 % then a section on step height and width?
 why does the steppiness matter?
@@ -262,19 +281,10 @@ step width
 		ratio of step width to step height that is the critical value
 		or ratio of step width to total gradient that is the critical value?
 
-\subsection{Impact of genetic architecture}
-
-above results were for only one type of genetic architecture, but these results quantitatively and qualitatively change for different types of genetic architecture
-
-go through all of the above again for the 3 other gen archs:
-	linear gradient
-	steppy gradient
-	1 step cases
-
-how do values of b-crit and the step-ratio-thing differ in these cases?
 
 
-why does genetic architecture matter?
+
+
 
 	looking at 1 step cases, can see that expanding over them depends on the distribution of mutations and\/or the standing genetic variance
 	larger effect mutations at fewer loci contributed to adaptation across the step in one step cases
