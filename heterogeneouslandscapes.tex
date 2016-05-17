@@ -227,7 +227,7 @@ In all genetic architectures, we find that expanding over one step of height 5 c
 
 We also investigated these same single step height scenarios for simulations having larger dispersal distances. A larger dispersal kernel with $\sigma_{disperse}$ doubled showed that expansion over a single step became more difficult. The same overall trend is seen for the smaller dispersal kernel, that higher mutation rates make expansion easier and possible over steeper steps, and the same qualitative result of the fourth genetic architecture regime again being able to more easily expand over a step that was more difficult under the third genetic architecture regime is recapitulated. The observed wait times for replicates in these scenarios is presented in Supplemental Figure \ref{fig:waittimes200}.
 
-\begin{figure}[]
+\begin{figure}[h]
 \centering
 \makebox[\textwidth]{
         \includegraphics[width=1\linewidth]{Figures/wait_times_200.pdf}}
@@ -316,11 +316,11 @@ The previous section showed which genetic architectures are able to expand over 
 \label{fig:multistep}
 \end{figure}
 
-We find that for step heights of 5, population growth rate decreases as more steps exist on the landscape. As shown from our previous investigations of linear gradients, step height of 5 on a linear gradient ($b = 5$) is too steep for expansion to occur. Immediately beyond this limit however, when each step is a width of two units instead of 1, expansion is again possible. With the larger dispersal kernel, the first occurrence of expansion is not until steps are of width three cells or greater. The point at which expansion no longer occurs is consistent across genetic architecture regimes for $h_{step} = 5$.
+We find that for step heights of $5$, population growth rate decreases as more steps exist on the landscape. As shown from our previous investigations of linear gradients, step height of 5 on a linear gradient ($b = 5$) is too steep for expansion to occur. Immediately beyond this limit however, when each step is a width of two cells instead of one, expansion is again possible. With the larger dispersal kernel, the first occurrence of expansion is not until steps are of width three cells or greater. The point at which expansion no longer occurs is consistent across genetic architecture regimes for $h_{step} = 5$.
 
-In the parameter space where expansion is possible, the rate of population growth differs across genetic architecture regimes, and undergoes a qualitative shift when the width of a step is around $14 - 20$ cells. Between step widths of 2 (3 for large dispersal kernel) and $14 - 20$, the first genetic architecture regime of $\mu = 10^{-2}$ and $\alpha^2 = 0.005$ shows the slowest growth rates, yet switches to become one of the fastest growing scenarios when steps are wider than 20 units. The opposite is true for the third and fourth genetic architecture regimes which grow fastest out of all regimes between step widths of 2 (3 for large dispersal kernel) and $14 - 20$, but are slower than the other regimes when steps are wider than 20 cells.
+In the parameter space where expansion is possible, the rate of population growth differs across genetic architecture regimes, and undergoes a qualitative shift when the width of a step is around $14 - 20$ cells. Between step widths of $2$ ($3$ for large dispersal kernel) and $14 - 20$, the first genetic architecture regime of $\mu = 10^{-2}$ and $\alpha^2 = 0.005$ shows the slowest growth rates, yet switches to become one of the fastest growing scenarios when steps are wider than $20$ cells. The opposite is true for the third and fourth genetic architecture regimes which grow fastest out of all regimes between step widths of $2$ ($3$ for large dispersal kernel) and $14 - 20$, but are slower than the other regimes when steps are wider than 20 cells.
 
-For step height of 10, only two genetic architectures were investigated (first and fourth regime). Under the first regime, expansion succeeds when step widths are 3 cells or greater for either dispersal kernel. However, for the fourth regime, expansion does not succeed until steps are of width 7 or greater under the small dispersal kernel and 9 or greater under the larger dispersal kernel. There is no consistent switch in speed of these regimes with wider step widths, however the larger dispersal kernel is faster on wider steps for the first regime, yet slower for the fourth regime, up until the point of reaching a similar speed on the widest steps.
+For step height of $10$, only two genetic architectures were investigated (first and fourth regime). Under the first regime, expansion succeeds when step widths are $3$ cells or greater for either dispersal kernel. However, for the fourth regime, expansion does not succeed until steps are of width $7$ or greater under the small dispersal kernel and 9 or greater under the larger dispersal kernel. There is no consistent switch in speed of these regimes with wider step widths, however the larger dispersal kernel is faster on wider steps for the first regime, yet slower for the fourth regime, up until the point of reaching a similar speed on the widest steps.
 
 % report something like ratio of width to height for expansion ability?
 
@@ -370,11 +370,9 @@ step width
 
 
 
+looking at 1 step cases, can see that expanding over them depends on the distribution of mutations and\/or the standing genetic variance
 
-
-	looking at 1 step cases, can see that expanding over them depends on the distribution of mutations and\/or the standing genetic variance
-	larger effect mutations at fewer loci contributed to adaptation across the step in one step cases
-
+larger effect mutations at fewer loci contributed to adaptation across the step in one step cases
 
 
 
@@ -384,8 +382,8 @@ multistep stuff heights 5 and 10
 on height 5:
 once steps are wide enough, about greater than width 14ish, the rank order of growth rate across gen arch changes
 this is about the same for disp 200
-gen arch 10^-2 is slowest when there are lots of steps, then 10^-3 then 10^-5, THEN 10^-4 fastest WHYYYY?
-past that switch point when steps are plenty wide, 10^-5 is slowest, followed closely or matched by 10^-4
+gen arch 0.01 is slowest when there are lots of steps, then 0.001 then 0.00001, THEN 0.0001 fastest WHYYYY?
+past that switch point when steps are plenty wide, 0.00001 is slowest, followed closely or matched by 0.0001
 
 with the larger disp kernel, ability to expand stops sooner, at step width 2 growth rate is zero (3 can go) whereas on disp 100 all could still expand, just slowly on step width 1
 
@@ -393,7 +391,7 @@ with the larger disp kernel, ability to expand stops sooner, at step width 2 gro
 on height 10:
 only 2 cases expanded and growth rate approached zero much sooner (total gradient value of xx, step width of yy)
 
-growth rate was higher for disp 200 in gen arch 10^-2, but was almost the same for 10^-5, because in the latter case this supports our result of that growth depending on a mutation arising to get over a step, not on the distance able to be traveled and colonized, which is what drives it when expansion is easier in the other genetic architecture (orange squares versus plus signs)
+growth rate was higher for disp 200 in gen arch 0.01, but was almost the same for 0.00001, because in the latter case this supports our result of that growth depending on a mutation arising to get over a step, not on the distance able to be traveled and colonized, which is what drives it when expansion is easier in the other genetic architecture (orange squares versus plus signs)
 
 
 
