@@ -225,21 +225,31 @@ In all genetic architectures, we find that expanding over one step of height 5 c
 \label{fig:waittimes}
 \end{figure}
 
+We also investigated these same single step height scenarios for simulations having larger dispersal distances. A larger dispersal kernel with $\sigma_{disperse}$ doubled showed that expansion over a single step became more difficult. The same overall trend is seen for the smaller dispersal kernel, that higher mutation rates make expansion easier and possible over steeper steps, and the same qualitative result of the fourth genetic architecture regime again being able to more easily expand over a step that was more difficult under the third genetic architecture regime is recapitulated. The observed wait times for replicates in these scenarios is presented in Supplemental Figure \ref{fig:waittimes200}.
+
+\begin{figure}[]
+\centering
+\makebox[\textwidth]{
+        \includegraphics[width=1\linewidth]{Figures/wait_times_200.pdf}}
+\caption[Wait times for step crossing.]{Wait times in generations for step crossing over 1 step in the environment for each regime of genetic architecture simulated and across varying magnitudes of step height. Points are jittered for visualization.}
+\label{fig:waittimes200}
+\end{figure}
+
 \subsubsection{Mutations contributing to adaptation across a step}
 
 We examine why expansion across steeper (taller) steps becomes more difficult as mutation rate decreases, but changes qualitatively again when large effect mutations are possible in the fourth genetic architecture regime. To investigate if this is due to the availability of mutations of different effect sizes, we compare individuals existing below and above the environmental step in the mean numeric difference of their allelic state for each of the 100 loci underlying the QTL. This is done within 25 generations of when expansion successfully occurs in order to capture the effects directly contributing to adaptation in the new environment above the step. The allelic value at each locus is averaged across all individuals existing each above and below the step and within $40\times40$ cells of the step, and excluding the $2\times40$ closest cells subject to the strongest migration load. Comparing these values across the step thus shows the differences in effects that have accumulated on a per locus basis to allow these populations to adapt to these two different environments.
 
 This comparison shows that as we increase the variance in mutational effect size, more differences per locus accumulate of larger effect sizes. Figure \ref{fig:effectsizes}a shows per locus effect size differences of up to 2.69 %2.688124
-(mean = 0.023) %0.02276596
-for the fourth genetic architecture regime of large variance in mutational effect size, while those regimes with smaller variance in mutational effect size show smaller effects per locus, spread across more loci: $\mu = 10^{-4}$ and $\alpha^2 = 0.5$ maximum per locus difference of 1.14 %1.138611
-(mean = 0.018), % 0.01799473
-$\mu = 10^{-3}$ and $\alpha^2 = 0.05$ maximum per locus difference of 0.29 %0.286362
-(mean = 0.010), % 0.01029218
-$\mu = 10^{-2}$ and $\alpha^2 = 0.005$ maximum per locus difference of 0.46 %0.460336
-(mean = 0.019). % 0.01899583
+%(mean = 0.023) %0.02276596
+for the fourth genetic architecture regime of large variance in mutational effect size, while those regimes with smaller variance in mutational effect size show smaller effects per locus down to a minimum of 0.010, spread across more loci (Table \ref{tab:effects}). 
+%: $\mu = 10^{-4}$ and $\alpha^2 = 0.5$ maximum per locus difference of 1.14 %1.138611
+%(mean = 0.018), % 0.01799473
+%$\mu = 10^{-3}$ and $\alpha^2 = 0.05$ maximum per locus difference of 0.29 %0.286362
+%(mean = 0.010), % 0.01029218
+%$\mu = 10^{-2}$ and $\alpha^2 = 0.005$ maximum per locus difference of 0.46 %0.460336
+%(mean = 0.019). % 0.01899583
 %% I COULD SHOULD do stats on these differences
-
-As the magnitude of difference in optimum across the step increases, the per locus effect sizes differences become more pronounced across genetic architecture regimes, and the cases where certain architectures are no longer able to adapt to the new habitat arise ($h_{step} = 10$ and $h_{step} = 12.5$).
+As the magnitude of difference in optimum across the step increases, the per locus effect sizes differences become larger within each regime that is successfully able to expand across the step. These differences become even more pronounced across genetic architecture regimes, where again the fourth regime generates the largest maximum difference above and below the step at few loci (Figure \ref{fig:effectsizes}). However, these large per locus differences only increase to the point at which these genetic architectures can no longer expand and adapt across the step into the new habitat ($h_{step} = 10$ and $h_{step} = 12.5$).
 
 
 \begin{figure}[h]
@@ -255,7 +265,7 @@ As the magnitude of difference in optimum across the step increases, the per loc
 \begin{table}[h]
 \centering \footnotesize
 \caption{Terminology and parameter definitions for simulations}
-\label{tab:params}
+\label{tab:effects}
 \begin{tabular}{cp{0.15\textwidth}cp{0.2\textwidth}c}
 Genetic architecture				&	Step height	&	Per locus difference: range (mean)  \\ \hline \hline
 $\mu = 10^{-2}$; $\alpha^2 = 0.005$	& $5$	& $-0.0674 - 0.4603 ~ (0.0190)$	\\ 
@@ -278,13 +288,20 @@ $\mu = 10^{-5}$; $\alpha^2 = 5.0$	& $5$	& ${-0.0055} - 2.6881 ~ (0.0228)$	\\
 \end{table}
 %<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
 
+\subsubsection{Constant $V_G$ versus constant $V_M$}
+
+To further investigate the role of larger effect mutations in enabling adaptation and expansion across a single step in the landscape, rather than maintaining a constant $V_M$ as all other comparisons have, we maintain a constant $V_G$. This is investigated across step heights of $h_{step} = 5, 7.5, 10, 12.5,$ and $15$ with a mutation rate, $\mu$ held constant from our fourth genetic architecture regime. From \citet{Lande:1975} and \citet{Johnson:2005}, $V_M = 2 L \mu \alpha^2$ and $V_G \approx 2 L \sqrt{\mu \alpha^2 V_S}, where $L$ is the number of loci and $\alpha^2$ the variance in mutational effect size. Holding the mutation rate, $\mu$ constant at $10^{-5}$ and the width of the fitness function, $V_S$ at 7.5, as is constant in all simulations, we thus approximate a constant $V_G$ by altering $L$ and $\alpha^2$. We compare two cases to the case already presented above with 100 loci and $\alpha^2 = 5.0$: a scenario of 316 loci with $\alpha^2 = 0.5$ and a scenario of 1000 loci with $\alpha^2 = 0.05$. This further comparison confirms whether adaptation across the step is allowed by many loci of small effect or few loci of large effect.
+
+Whereas the case of 100 loci with $\alpha^2 = 5.0$ resulted in 19 out of 20 replicates successfully expanding over the step at a height of 10, with 316 loci and $\alpha^2 = 0.5$, only 4 out of 10 replicates expanded over the step of height 10. With 1000 loci, \color{red}fill this in\color{black}. %%%% FILL IN 1000 loci results
+All lower step heights successfully expanded across these comparison cases, and all larger step heights failed to expand.
+
 
 
 \subsection{Combination of step height and step width}
 
-The previous section showed which genetic architectures are able to expand over a single step of a given height. To further investigate the role of landscape heterogeneity, we investigate the ability of populations to expand across multiple steps of a constant height, for which expansion over a single step of this height did occur. This used landscapes with constant step height of 5 and 10, and simulated cases between 4 and 1959 (linear) steps across the landscape.
+The previous section showed which genetic architectures are able to expand over a single step of a given height. To further investigate the role of landscape heterogeneity, we investigate the ability of populations to expand across multiple steps of a constant height, for which expansion over a single step of this height did occur. We know from a weak overall gradient, that expansion across heterogeneous step landscapes only broke down when the individual step height became too large ($h_{step} = 15$ as shown above), but we now investigate the role of step heterogeneity on steeper overall gradients. In these cases, a constant step height of 5 and 10 were each used across the landscape. We simulated cases between 4 and 1959 (linear) steps across the landscape, therefore increasing the overall gradient as more steps are present on the landscape.
 
-We find that 
+We find that for step heights of 5, population growth rate decreases as more steps exist on the landscape. The point at which expansion no longer occurs is consistent across genetic architecture regimes.
 
 on height 5:
 once steps are wide enough, about greater than width 14ish, the rank order of growth rate across gen arch changes
@@ -330,13 +347,7 @@ step width
 	looking at 1 step cases, can see that expanding over them depends on the distribution of mutations and\/or the standing genetic variance
 	larger effect mutations at fewer loci contributed to adaptation across the step in one step cases
 	
-\subsection{Impact of dispersal distances}
 
-larger dispersal distances make everything more difficult (make sure this is true)
-
-because more migration load
-
-what are the new b-crits?
 
 
 \section{Discussion}
@@ -356,6 +367,14 @@ these also differ from barton and kp because there is a constant landscape core 
 
 to understand why adaptation does or does not succeed and when the bcrit prediction fails, looking at landscapes that are more heterogeneous within an overall gradient allows us to test whether it is the magnitude of change in optimum over space or the size of local habitat that limit adaptation and expansion
 
+
+\subsection{Impact of dispersal distances}
+
+larger dispersal distances make everything more difficult (make sure this is true)
+
+because more migration load
+
+what are the new b-crits?
 
 %\section{Acknowledgements}
 %We would like to thank Fred\'eric Guillaume for help with \textsc{nemo} and members of the Whitlock lab for comments and feedback.
