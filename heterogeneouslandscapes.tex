@@ -344,15 +344,37 @@ Under the first regime, expansion succeeds when step widths are $3$ cells or gre
 
 \subsection{Predicting expansion on heterogeneous landscapes}
 % report something like ratio of width to height for expansion ability
-The failure of $b_{crit}$ to predict successful expansion on a heterogeneous landscape leads us to derive a new predictor of expansion success. \color{red}this isn't really the black and white answer I would like, so maybe redo or take this out? \color{black} We calculate a weighted measure of the local gradient by dividing the height of steps across the landscape by the width of steps on the landscape, and multiply this value by $\sigma_{disperse}$ to calculate this new weighted gradient value. Conducting a simple linear regression on the relationship between the weighted gradient value and population growth rate finds this to be a significant predictor of growth rate ($R^2 = 0.604, p < 0.0001$) and therefore the likely success of expansion over the landscape (Figure \ref{fig:linearmodel}).
+The failure of $b_{crit}$ to predict successful expansion on a heterogeneous landscape leads us to derive a new predictor of expansion success. \color{red}this isn't really the black and white answer I would like, so maybe redo or take this out? \color{black} We calculate a weighted measure of the local gradient by dividing the height of steps across the landscape by the width of steps on the landscape, and multiply this value by $\sigma_{disperse}$ to calculate this new weighted gradient value. Conducting a simple linear regression on the relationship between the weighted gradient value and population growth rate finds this to be a significant predictor of growth rate ($R^2 = 0.604, p < 0.0001$) and therefore the likely success of expansion over the landscape (Figure \ref{fig:linearmodel}). Though populations that fail to expand do appear below the critical value predicted, the observed and predicted upper limits of a non-zero growth rate are similar.
 
 \begin{figure}[h]
 \centering
 \makebox[\textwidth]{
         \includegraphics[width=0.7\linewidth]{Figures/LinearModel.pdf}}
-\caption[Linear regression of weighted gradient on population growth rate.]{Linear regression of weighted gradient on mean population growth rate across all scenarios simulated in this study.}
+\caption[Linear regression of weighted gradient on population growth rate.]{Linear regression of weighted gradient on mean population growth rate across all scenarios simulated in this study. Growth rates of zero are colored in red, while nonzero are colored in blue. The fitted line (solid) predicts a critical value for positive growth rate to be below $\sim3$ while the observed critical value for a positive growth rate (dashed, gray) is at $\sim2.6$.}
 \label{fig:linearmodel}
 \end{figure}
+
+Performing the same regression analysis within each genetic architecture regime only improves predictive ability for one scenario, but decreases it from the overall model. For the first genetic architecture regime, the predicted critical value for no population growth equalled $2.59$ while the observed critical value was equal to $2.50$. The $R^2$ for this model increases to $0.627$ ($p < 0.0001$). The other three genetic architecture regimes produce $R^2$ values all less than $0.6$ and predicted critical values that overestimate the observed critical value for zero population growth (Table \ref{tab:linearmodels}).
+
+%<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+\begin{table}[h]
+\centering \footnotesize
+\caption[Linear regression for predicting expansion success]{Results from linear regressions for predicting expansion success in terms of population growth rate for all simulation means, and broken into each genetic architecture regime.}
+\label{tab:linearmodels}
+%\begin{tabular}{cp{0.25\textwidth}cp{0.25\textwidth}cp{0.4\textwidth}c}
+\begin{tabular}{cccc}
+Regression model				&	Observed critical value	&	Predicted critical value	&   \\ \hline \hline
+All results						& $2.590267$	& $2.988544$	&	$R^2 = 0.6043, p < 0.0001$	\\  \hline
+$\mu = 10^{-2}$; $\alpha^2 = 0.005$	& $2.590267$	& $2.49886$	&	$R^2 = 0.6309, p < 0.0001$	\\  \hline
+$\mu = 10^{-3}$; $\alpha^2 = 0.05$	& $2.079442$	& $3.5474$	&	$R^2 = 0.5873, p < 0.0001$	\\ \hline
+$\mu = 10^{-4}$; $\alpha^2 = 0.5$	& $1.89712$	& $4.079371$	&	$R^2 = 0.5592, p < 0.0001$	\\ \hline
+$\mu = 10^{-5}$; $\alpha^2 = 5.0$	& $2.079442$	& $2.721747$	&	$R^2 = 0.5888, p < 0.0001$	\\ \hline
+\end{tabular}
+\end{table}
+%<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+
+
+
 
 
 
