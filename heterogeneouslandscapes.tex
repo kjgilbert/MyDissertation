@@ -362,9 +362,9 @@ Performing the same regression analysis within each genetic architecture regime 
 \caption[Linear regression for predicting expansion success]{Results from linear regressions for predicting expansion success in terms of population growth rate for all simulation means, and broken into each genetic architecture regime.}
 \label{tab:linearmodels}
 %\begin{tabular}{cp{0.25\textwidth}cp{0.25\textwidth}cp{0.4\textwidth}c}
-\begin{tabular}{cccc}
+\begin{tabular}{lccc}
 Regression model				&	Observed critical value	&	Predicted critical value	&   \\ \hline \hline
-All results						& $2.590267$	& $2.988544$	&	$R^2 = 0.6043, p < 0.0001$	\\  \hline
+All scenarios					& $2.590267$	& $2.988544$	&	$R^2 = 0.6043, p < 0.0001$	\\  \hline
 $\mu = 10^{-2}$; $\alpha^2 = 0.005$	& $2.590267$	& $2.49886$	&	$R^2 = 0.6309, p < 0.0001$	\\  \hline
 $\mu = 10^{-3}$; $\alpha^2 = 0.05$	& $2.079442$	& $3.5474$	&	$R^2 = 0.5873, p < 0.0001$	\\ \hline
 $\mu = 10^{-4}$; $\alpha^2 = 0.5$	& $1.89712$	& $4.079371$	&	$R^2 = 0.5592, p < 0.0001$	\\ \hline
@@ -380,12 +380,14 @@ $\mu = 10^{-5}$; $\alpha^2 = 5.0$	& $2.079442$	& $2.721747$	&	$R^2 = 0.5888, p <
 
 \section{Discussion}
 
+
+Our results have investigated two main questions: do predictions of range expansion from a linear gradient successfully extrapolate to heterogeneous gradients, and does the genetic architecture of a system impact the location of these critical gradient values. We find that predictions of range expansions from linear gradients do not fully extend to more heterogeneously changing environmental gradients. We also find that critical gradient values do depend on genetic architecture and whether small or large effect mutations are possible in the system. Understanding the interactions and effects of landscape heterogeneity and genetic architecture on determining adaptation and range expansion
+
+
+
 In this study, we test if different genetic architectures and landscape heterogeneities can interact and affect the outcome of adaptation during a species range expansion, and potentially even limit a species range expansion. We compare our results to predictions from \citet{Barton:2001} and the results of \citet{Bridle:2010} and \citet{Schiffers:2014} to assess the impacts of our further explorations into genetic architecture and environmental heterogeneity. 
 % how we're going to test those hypotheses
 To address this question, we simulate a spatially explicit and discrete two-dimensional landscape across which populations expand their species range and adapt to newly encountered environments. We model a range of genetic architectures for a quantitative trait to test for differences in ability to adapt to environments. We also compare this across environments that differ in their degree of environmental heterogeneity from few to many locations of change in environmental optima, as well as in terms of the magnitude of change for each of these optima. Examining the rate of range expansion and the time required for populations to colonize and adapt in new environments provides insight into the role of both genetic architecture and environmental heterogeneity in determining the success or failure of adaptation. Such results are highly informative for the field of evolutionary biology, and largely applicable in predicting the fate of many species across the globe requiring the ability to adapt in the face of disturbance and shifting species ranges due to climate change and other anthropogenic environmental perturbations.
-
-In this study, we address two main questions. First, do predictions of range expansion from a linear gradient successfully extrapolate to a heterogeneous gradient and why. And second, does the genetic architecture of the system impact where these critical gradients exist for the success or failure of range expansion.
-
 
 
 % BARTON COMPARISONS AND VG DISCUSSION
