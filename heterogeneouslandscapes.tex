@@ -322,7 +322,17 @@ In the parameter space where expansion is possible, the rate of population growt
 
 For step height of $10$, only two genetic architectures were investigated (first and fourth regime). Under the first regime, expansion succeeds when step widths are $3$ cells or greater for either dispersal kernel. However, for the fourth regime, expansion does not succeed until steps are of width $7$ or greater under the small dispersal kernel and 9 or greater under the larger dispersal kernel. There is no consistent switch in speed of these regimes with wider step widths, however the larger dispersal kernel is faster on wider steps for the first regime, yet slower for the fourth regime, up until the point of reaching a similar speed on the widest steps.
 
-% report something like ratio of width to height for expansion ability?
+% report something like ratio of width to height for expansion ability
+The failure of $b_{crit}$ to predict successful expansion on a heterogeneous landscape leads us to derive a new predictor of expansion success. \color{red}this isn't really the black and white answer I would like, so maybe redo or take this out? \color{black} We calculate a weighted measure of the local gradient by dividing the height of steps across the landscape by the width of steps on the landscape, and multiply this value by $\sigma_{disperse}$ to calculate this new weighted gradient value. Conducting a simple linear regression on the relationship between the weighted gradient value and population growth rate finds this to be a significant predictor of growth rate and therefore the likely success of expansion over the landscape (Figure \ref{fig:linearmodel}).
+
+\begin{figure}[h]
+\centering
+\makebox[\textwidth]{
+        \includegraphics[width=1.1\linewidth]{Figures/LinearModel.pdf}}
+\caption[Linear regression of weighted gradient on population growth rate.]{Linear regression of weighted gradient on mean population growth rate across all scenarios simulated in this study.}
+\label{fig:linearmodel}
+\end{figure}
+
 
 
 \section{Discussion}
