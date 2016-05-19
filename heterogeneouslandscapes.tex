@@ -168,7 +168,7 @@ Results are presented first for expansion over a linear gradient of varying stee
 
 We first investigated the critical steepness of a linear gradient, $b_{crit}$. We examined a range of gradient steepness, from $b = 1$ to $b = 5$, and found a $b_{crit}$ value below which expansion could successfully proceed, but that this $b_{crit}$ value varied depending on the genetic architecture modeled. For the first genetic architecture of  $\mu = 10^{-2}$ and $\alpha^2 = 0.005$, expansion occurred at and below $b = 4$, making $b_{crit}$ between $4$ and $4.5$. For the second genetic architecture of  $\mu = 10^{-3}$ and $\alpha^2 = 0.05$, expansion occurred at and below $b = 3.5$, making $b_{crit}$ between $3.5$ and $4$. For the third genetic architecture of  $\mu = 10^{-4}$ and $\alpha^2 = 0.5$, expansion occurred at and below $b = 3$, making $b_{crit}$ between $3$ and $3.5$. Lastly, for the fourth genetic architecture of  $\mu = 10^{-5}$ and $\alpha^2 = 5.0$, $b_{crit}$ underwent a qualitative change, and expansion occurred again at and below $b = 4$, making $b_{crit}$ between $4$ and $4.5$.
 
-In all cases where expansion occurred, it proceeded more slowly as the gradient steepness approached $b_{crit}$ (Figure \ref{fig:linearspeed}). For the fourth regime, $\mu = 10^{-5}$ and $\alpha^2 = 5.0$, only 2 replicates out of 10 successfully expanded, producing the calculated growth rate and $b_{crit}$, but these scenarios also spent a significant time after the burn-in of \color{red}about 10,000 \color{clack} generations, without proceeding to expand across the landscape, and only then began to colonize empty landscape. A similar phenomenon was observed for the third regime, $\mu = 10^{-4}$ and $\alpha^2 = 0.5$, where populations again required additional time after burn-in spent within the core before expansion occurred. In these cases, expansion began for all replicates within \color{red}5,000 \color{black} generations, but after an average waiting time of \color{red}2500 \color{black} generations. The total population size maintained across the landscape was also lower as gradient steepness increased towards $b_{crit}$ (\color{red}Supplemental Figure or maybe not supp fig of pop sizes.\color{black} ). 
+In all cases where expansion occurred, it proceeded more slowly as the gradient steepness approached $b_{crit}$ (Figure \ref{fig:linearspeed}). For the fourth regime, $\mu = 10^{-5}$ and $\alpha^2 = 5.0$, only 2 replicates out of 10 successfully expanded, producing the calculated growth rate and $b_{crit}$, but these scenarios also spent a significant time after the burn-in of \color{red}about 10,000 \color{black} generations, without proceeding to expand across the landscape, and only then began to colonize empty landscape. A similar phenomenon was observed for the third regime, $\mu = 10^{-4}$ and $\alpha^2 = 0.5$, where populations again required additional time after burn-in spent within the core before expansion occurred. In these cases, expansion began for all replicates within \color{red}5,000 \color{black} generations, but after an average waiting time of \color{red}2500 \color{black} generations. The total population size maintained across the landscape was also lower as gradient steepness increased towards $b_{crit}$ (\color{red}Supplemental Figure or maybe not supp fig of pop sizes.\color{black} ). 
 
 \citet{Barton:2001} derives predictions for the value of $b_{crit}$, which depend on the genetic variance: $b_{crit} = \frac{V_G}{\sigma \sqrt{V_S}}$, where $\sigma$ is the standard deviation of distance travelled by combining both gamete and offspring dispersal, i.e. $\sigma = \sqrt{\sigma_{disperse}^2 + \frac{1}{2}\sigma_{breed}^2}$. We find that the genetic variance across the landscape increases in scenarios of steeper environmental gradients (Supplemental Figure . ). Because the genetic variance evolves differently on each gradient, this is not a useful value in predicting $b_{crit}$ for our simulations, however we can attempt to predict a $b_{crit}$ using the genetic variance from the landscape core. Doing so estimates a $b_{crit}$ for each genetic architecture respectively: $\approx 0.161, 0.125, 0.018,$ and $0.002$ (for $\mu = 10^{-2}, 10^{-3}, 10^{-4},$ and $10^{-5}$, respectively), a large underestimate of our realized $b_{crit}$ values. There are multiple reasons for this disparity in $b_{crit}$, which we consider in the Discussion.
 
@@ -207,7 +207,14 @@ Our measured $b_{crit}$ values define the slope of change over the environment o
 
 We chose two weak gradient value for which expansion on a linear gradient was successful and maintain the same total change in environmental optimum from one end of the landscape to the other. However, in these simulations, we divide the makeup of that change into different numbers of steps across the landscape. Within a given simulation, the height of a step is constant, but across simulations the height of a step varies as the number of steps varies. The total change in optimum over the landscape for each of these two gradients was 15 and 30 units. For a linear gradient, this is equivalent to $b \approx 0.0075$ and $b \approx 0.015$. For the heterogeneous. non-linear  gradient broken into steps, we divide the landscape into a range of 979 steps down to 1 step which then varies step height from $h_{step} = 0.015$ to $15$ and from $h_{step} = 0.03$ to $30$, for each overall gradient respectively. 
 
-We found that expansion occurs in all cases except for the scenario when the landscape only consists of one step in environmental change, i.e. where $h_{step} = 15$. One individual replicate did expand above a single step of height 15, when $\mu = 10^{-3}$ and $\alpha^2 = 0.05$, after 10,000 generations of remaining below the step, but this was one replicate out of 20 for that genetic architecture regime, and no simulation from the other regimes for each of their 20 replicates ever expanded past a step of this height. In this case, the total change in environmental optimum across the landscape is localized to this one step's location on the landscape. On this weak overall gradient, the prediction from our observed $b_{crit}$ on a linear gradient fails to predict expansion over an individual step, but further examining the ability to expand over one step as well as introducing additional steps on a steeper gradient also shows the failure of $b_{crit}$ as predicted from a linear gradient.
+On a gradient of total change in optimum of 15, we found that expansion occurs in all cases except for the scenario when the landscape only consists of one step in environmental change, i.e. where $h_{step} = 15$. One individual replicate did expand above a single step of height 15, when $\mu = 10^{-3}$ and $\alpha^2 = 0.05$, after 10,000 generations of remaining below the step, but this was one replicate out of 20 for that genetic architecture regime, and no simulation from the other regimes for each of their 20 replicates ever expanded past a step of this height. In this case, the total change in environmental optimum across the landscape is localized to this one step's location on the landscape. On a gradient of total change in optimum of 30, we found that expansion occurs
+%
+\color{red} fill these results in \color{black} 
+%
+The observed $b_{crit}$ on a linear gradient fails to predict expansion on these heterogeneous gradients, since in both cases, the overall gradient is weaker than any tested for our linear gradients. However, these heterogeneous gradients have sharper, local changes in phenotypic optimum across the landscape which may drive this ability to adapt and expand across the landscape. The two different overall gradients tested and each genetic architecture regime do produce different population growth rates on the landscape, as shown in \color{red}Supplemental Figure XX\color{black}. The ability to adapt and expand past one sharp change in environmental optimum is investigated in the next section.
+
+% On these weak overall gradients, the prediction from our observed $b_{crit}$ on a linear gradient fails to predict expansion over an individual step, but further examining the ability to expand over one step as well as introducing additional steps on a steeper gradient also shows the failure of $b_{crit}$ as predicted from a linear gradient.
+
 % does expansion take longer as more steps are added
 % does fitness go down and variance up?
 
@@ -218,9 +225,9 @@ We found that expansion occurs in all cases except for the scenario when the lan
 
 \subsection{Expansion across one change in environmental optimum}
 
-To investigate why $b_{crit}$ fails to predict expansion over 1 step in the optimum, we explore the role purely of step height by simulating models of one one step on the landscape (two habitat patches on either side) and vary the value of $h_{step}$. We compare the results for $h_{step} = 5, 7.5, 10, 12.5,$ and $15$. From the previous result, we have shown that expansion does not occur across steps of height 15 (excepting 1 out of 80 replicates, 1.25\%).
+To investigate why $b_{crit}$ fails to predict expansion over heterogeneous gradients, we examine individual sharp changes in the optimum to explore the role of step height alone. We do this by simulating models of one one step on the landscape (two habitat patches on either side) and vary the value of $h_{step}$. We compare the results for $h_{step} = 5, 7.5, 10, 12.5,$ and $15$. From the previous section, we have already shown that expansion does not occur across steps of height 15 (excepting 1 out of 80 replicates, 1.25\%) or higher.
 
-In all genetic architectures, we find that expanding over one step of height 5 caused no difficulties and expansion proceeded immediately upon populations reaching the location of the step on the landscape. At $h_{step} = 7.5$, expansion becomes more difficult for one genetic architecture regime, $\mu = 10^{-4}$ and $\alpha^2 = 0.5$, but all replicates successfully expand within 2,500 generation of having reached the step. An interesting phenomenon is seen at $h_{step} = 10$, where expansion is minimally slowed (within 500 generations of reaching the step) for $\mu = 10^{-2}$, more substantially slowed (within 2,000 generations of reaching the step) for $\mu = 10^{-3}$, and then no expansion occurs within the duration of the simulations for all 20 replicates when $\mu = 10^{-4}$. However, at $\mu = 10^{-5}$, expansion again proceeds for 19 of 20 (95\%) replicates, with large variation in time spent waiting at the landscape step. For $h_{step} = 12.5$, expansion only occurs in the first two genetic architecture regimes of highest mutation rate, with substantial waiting time at the step (Figure \ref{fig:waittimes}).
+In all genetic architectures, we find that expanding over one step of height 5 caused no difficulties and expansion proceeded immediately upon populations reaching the location of the step on the landscape. At $h_{step} = 7.5$, expansion becomes more difficult for the third genetic architecture regime, $\mu = 10^{-4}$ and $\alpha^2 = 0.5$, but all replicates successfully expand within 2,500 generation of having reached the step. An interesting phenomenon is seen at $h_{step} = 10$, where expansion is minimally slowed (within 500 generations of reaching the step) for $\mu = 10^{-2}$, more substantially slowed (within 2,000 generations of reaching the step) for $\mu = 10^{-3}$, and then no expansion occurs within the duration of the simulations for all 20 replicates when $\mu = 10^{-4}$. However, at $\mu = 10^{-5}$, expansion again proceeds for 19 of 20 replicates (95\%), with large variation in time spent waiting at the landscape step (\color{red}XX - YY generations [mean = ]\color{black}). For $h_{step} = 12.5$, expansion only occurs in the first two genetic architecture regimes of highest mutation rate, with substantial waiting time at the step (\color{red}XX - YY generations [mean = ]\color{black}; Figure \ref{fig:waittimes}).
 
 
 
@@ -232,7 +239,7 @@ In all genetic architectures, we find that expanding over one step of height 5 c
 \label{fig:waittimes}
 \end{figure}
 
-We also investigated these same single step height scenarios for simulations having larger dispersal distances. A larger dispersal kernel with $\sigma_{disperse}$ doubled showed that expansion over a single step became more difficult. The same overall trend is seen for the smaller dispersal kernel, that higher mutation rates make expansion easier and possible over steeper steps, and the same qualitative result of the fourth genetic architecture regime again being able to more easily expand over a step that was more difficult under the third genetic architecture regime is recapitulated. The observed wait times for replicates in these scenarios is presented in Supplemental Figure \ref{fig:waittimes200}.
+We also investigated these same single step height scenarios for simulations having larger dispersal distances. A larger dispersal kernel with $\sigma_{disperse}$ doubled showed that expansion over a single step became more difficult. The same overall trend that higher mutation rates make expansion easier and possible over steeper steps is seen for larger dispersal distances, and the same qualitative result of the fourth genetic architecture regime again being able to more easily expand over a step that was more difficult under the third genetic architecture regime is recapitulated. The observed wait times for replicates in these scenarios is presented in Supplemental Figure \ref{fig:waittimes200}.
 
 \begin{figure}[h]
 \centering
@@ -242,9 +249,11 @@ We also investigated these same single step height scenarios for simulations hav
 \label{fig:waittimes200}
 \end{figure}
 
+
 \subsubsection{Mutations contributing to adaptation across a step}
 
-We examine why expansion across steeper (taller) steps becomes more difficult as mutation rate decreases, but changes qualitatively again when large effect mutations are possible in the fourth genetic architecture regime. To investigate if this is due to the availability of mutations of different effect sizes, we compare individuals existing below and above the environmental step in the mean numeric difference of their allelic state for each of the 100 loci underlying the QTL. This is done within 25 generations of when expansion successfully occurs in order to capture the effects directly contributing to adaptation in the new environment above the step. The allelic value at each locus is averaged across all individuals existing each above and below the step and within $40\times40$ cells of the step, and excluding the $2\times40$ closest cells subject to the strongest migration load. Comparing these values across the step thus shows the differences in effects that have accumulated on a per locus basis to allow these populations to adapt to these two different environments.
+We conduct two analyses to examine if availability of mutations of different effect sizes is driving our result for a qualitative change in ability to adapt across a single step. %why expansion across steeper (taller) steps becomes more difficult as mutation rate decreases, but changes qualitatively again when large effect mutations are possible in the fourth genetic architecture regime. To investigate if this is due to the , 
+First, we compare individuals existing below and above the environmental step in the mean numeric difference of their allelic state for each of the 100 loci underlying the QTL. This is done within 25 generations of when expansion successfully occurs in order to capture the effects directly contributing to adaptation in the new environment above the step. The allelic value at each locus is averaged across all individuals existing each above and below the step and within $40\times40$ cells of the step, and excluding the $2\times40$ closest cells subject to the strongest migration load. Comparing these values across the step thus shows the differences in effects that have accumulated on a per locus basis to allow these populations to adapt to these two different environments.
 
 This comparison shows that as we increase the variance in mutational effect size, more differences per locus accumulate of larger effect sizes. Figure \ref{fig:effectsizes}a shows per locus effect size differences of up to 2.69 %2.688124
 %(mean = 0.023) %0.02276596
@@ -297,8 +306,11 @@ $\mu = 10^{-5}$; $\alpha^2 = 5.0$	& $5$	& ${-0.0055} - 2.6881 ~ (0.0228)$	\\
 
 \subsubsection{Constant $V_G$ versus constant $V_M$}
 
-To further investigate the role of larger effect mutations in enabling adaptation and expansion across a single step in the landscape, rather than maintaining a constant $V_M$ as all other comparisons have, we maintain a constant $V_G$. This is investigated across step heights of $h_{step} = 5, 7.5, 10, 12.5,$ and $15$ with a mutation rate, $\mu$ held constant from our fourth genetic architecture regime. From \citet{Lande:1975} and \citet{Johnson:2005}, $V_M = 2 L \mu \alpha^2$ and $V_G \approx 2 L \sqrt{\mu \alpha^2 V_S}$, where $L$ is the number of loci and $\alpha^2$ the variance in mutational effect size. Holding the mutation rate, $\mu$ constant at $10^{-5}$ and the width of the fitness function, $V_S$ at 7.5, as is constant in all simulations, we thus approximate a constant $V_G$ by altering $L$ and $\alpha^2$. We compare two cases to the case already presented above with 100 loci and $\alpha^2 = 5.0$: a scenario of 316 loci with $\alpha^2 = 0.5$ and a scenario of 1000 loci with $\alpha^2 = 0.05$. This further comparison confirms whether adaptation across the step is allowed by many loci of small effect or few loci of large effect. $V_G$ as estimated in the resultant simulations did vary across scenarios, but was within the same order of magnitude, ranging from around 0.02 for 100 loci up to 0.35 for 1000 loci (Supplemental Figure \color{red}XX\color{black}). 
+Our second analysis of the role of larger effect mutations in enabling adaptation and expansion across a single step in the landscape uses a subset of analyses where $V_G$, instead of $V_M$, is held constant. 
+%To further investigate the role of larger effect mutations in enabling adaptation and expansion across a single step in the landscape, rather than maintaining a constant $V_M$ as all other comparisons have, we maintain a constant $V_G$. 
+This is investigated across step heights of $h_{step} = 5, 7.5, 10, 12.5,$ and $15$ with a mutation rate, $\mu$ held constant from our fourth genetic architecture regime. From \citet{Lande:1975} and \citet{Johnson:2005}, $V_M = 2 L \mu \alpha^2$ and $V_G \approx 2 L \sqrt{\mu \alpha^2 V_S}$, where $L$ is the number of loci and $\alpha^2$ the variance in mutational effect size. Holding the mutation rate, $\mu$ constant at $10^{-5}$ and the width of the fitness function, $V_S$ at 7.5, as is constant in all simulations, we thus approximate a constant $V_G$ by altering $L$ and $\alpha^2$. We compare two cases to the case already presented above with 100 loci and $\alpha^2 = 5.0$: a scenario of 316 loci with $\alpha^2 = 0.5$ and a scenario of 1000 loci with $\alpha^2 = 0.05$. This further comparison confirms whether adaptation across the step is allowed by many loci of small effect or few loci of large effect. $V_G$ as estimated in the resultant simulations did vary across scenarios, but was within the same order of magnitude, ranging from around 0.02 for 100 loci up to 0.35 for 1000 loci (Supplemental Figure \color{red}XX\color{black}). 
 
+\color{red} update these results when sims finish \color{black}
 Whereas the case of 100 loci with $\alpha^2 = 5.0$ resulted in 19 out of 20 replicates successfully expanding over the step at a height of 10, with 316 loci and $\alpha^2 = 0.5$, only 4 out of 10 replicates expanded over the step of height 10. With 1000 loci, \color{red}fill this in\color{black} (Figure \ref{fig:constVG}). %%%% FILL IN 1000 loci results
 All lower step heights successfully expanded across these comparison cases, and all larger step heights failed to expand.
 
@@ -313,7 +325,7 @@ All lower step heights successfully expanded across these comparison cases, and 
 
 \subsection{Combination of step height and step width}
 
-The previous section showed which genetic architectures are able to expand over a single step of a given height. To further investigate the role of landscape heterogeneity, we investigate the ability of populations to expand across multiple steps of a constant height, for which expansion over a single step of this height did occur. We know from a weak overall gradient, that expansion across heterogeneous step landscapes only broke down when the individual step height became too large ($h_{step} = 15$ as shown above), but we now investigate the role of step heterogeneity on steeper overall gradients. In these cases, a constant step height of 5 and 10 were each used across the landscape. We simulated cases between 4 and 1959 (linear) steps across the landscape, therefore increasing the overall gradient as more steps are present on the landscape (Figure \ref{fig:multistep}).
+The previous section showed which genetic architectures are able to expand over a single step of a given height. To further investigate the role of landscape heterogeneity in combination with genetic architecture, we investigate the ability of populations to expand across multiple steps of a constant height, for which expansion over a single step of the same height did occur. We know from a weak overall gradient, that expansion across heterogeneous step landscapes only broke down when the individual step height became too large ($h_{step} = 15$ as shown above), but we now investigate the role of step heterogeneity on steeper overall gradients. In these cases, a constant step height of 5 and 10 were each used across the landscape. We simulated cases between 4 and 1959 (linear) steps across the landscape, therefore increasing the overall gradient as more steps are present on the landscape (Figure \ref{fig:multistep}).
 
 \begin{figure}[h]
 \centering
@@ -323,12 +335,14 @@ The previous section showed which genetic architectures are able to expand over 
 \label{fig:multistep}
 \end{figure}
 
-We find that for step heights of $5$, population growth rate decreases as more steps exist on the landscape. As shown from our previous investigations of linear gradients, step height of 5 on a linear gradient ($b = 5$) is too steep for expansion to occur. Immediately beyond this limit however, when each step is a width of two cells instead of one, expansion is again possible. With the larger dispersal kernel, the first occurrence of expansion is not until steps are of width three cells or greater. The point at which expansion no longer occurs is consistent across genetic architecture regimes for $h_{step} = 5$.
+We find that for step heights of $5$, population growth rate decreases as more steps exist on the landscape. As shown from our previous investigations of linear gradients, constant step height of 5 on a linear gradient ($b = 5$) is too steep for expansion to occur. Immediately beyond this limit however, when each step is a width of two cells instead of one, expansion is again possible. With the larger dispersal kernel, the first occurrence of expansion is not until steps are of width three cells or greater. The point at which expansion no longer occurs is consistent across genetic architecture regimes for $h_{step} = 5$.
 
 In the parameter space where expansion is possible, the rate of population growth differs across genetic architecture regimes, and undergoes a qualitative shift when the width of a step is around $14 - 20$ cells. Between step widths of $2$ ($3$ for large dispersal kernel) and $14 - 20$, the first genetic architecture regime of $\mu = 10^{-2}$ and $\alpha^2 = 0.005$ shows the slowest growth rates, yet switches to become one of the fastest growing scenarios when steps are wider than $20$ cells. The opposite is true for the third and fourth genetic architecture regimes which grow fastest out of all regimes between step widths of $2$ ($3$ for large dispersal kernel) and $14 - 20$, but are slower than the other regimes when steps are wider than 20 cells.
 
-For step height of $10$, only two genetic architectures were investigated (first and fourth regime). Under the first regime, expansion succeeds when step widths are $3$ cells or greater for either dispersal kernel. However, for the fourth regime, expansion does not succeed until steps are of width $7$ or greater under the small dispersal kernel and 9 or greater under the larger dispersal kernel. There is no consistent switch in speed of these regimes with wider step widths, however the larger dispersal kernel is faster on wider steps for the first regime, yet slower for the fourth regime, up until the point of reaching a similar speed on the widest steps.
+For step height of $10$, only two genetic architectures were investigated (first and fourth regime). %% ADD IN SECOND WHEN I CAN
+Under the first regime, expansion succeeds when step widths are $3$ cells or greater for either dispersal kernel. However, for the fourth regime, expansion does not succeed until steps are of width $7$ or greater under the small dispersal kernel and 9 or greater under the larger dispersal kernel. There is no consistent switch in speed of these regimes with wider step widths, however the larger dispersal kernel is faster on wider steps for the first regime, yet slower for the fourth regime, up until the point of reaching a similar speed on the widest steps.
 
+\subsection{Predicting expansion on heterogeneous landscapes}
 % report something like ratio of width to height for expansion ability
 The failure of $b_{crit}$ to predict successful expansion on a heterogeneous landscape leads us to derive a new predictor of expansion success. \color{red}this isn't really the black and white answer I would like, so maybe redo or take this out? \color{black} We calculate a weighted measure of the local gradient by dividing the height of steps across the landscape by the width of steps on the landscape, and multiply this value by $\sigma_{disperse}$ to calculate this new weighted gradient value. Conducting a simple linear regression on the relationship between the weighted gradient value and population growth rate finds this to be a significant predictor of growth rate ($R^2 = 0.604, p < 0.0001$) and therefore the likely success of expansion over the landscape (Figure \ref{fig:linearmodel}).
 
@@ -352,6 +366,11 @@ In this study, we address two main questions. First, do predictions of range exp
 
 
 
+% BARTON COMPARISONS AND VG DISCUSSION
+vg in the core doesn't necessarily predict vg on the landscape, near bcrit, vg matches the landscape
+
+we know vg itself is still a major decider of adaptation - it is inflated at every occurrence of a step, and is thus higher on linear gradients becuase there is a step everywhere
+vg too large leads to extinction though - maladaptation locallly
 
 
 we don't match bcrit expectations for several reasons
@@ -365,6 +384,21 @@ or that there is another regime of adaptation that depends on mutational input, 
 
 these also differ from barton and kp because there is a constant landscape core where even if the gradient is too steep to initially adapt to or across, the core allows continued attempts to expand across and onto it
 
+% VG ISNT THE WHOLE STORY
+mutation rate mainly drives equil vg
+but mutation effect size variance plays a major role in adaptation
+thus holding vm constant but altering our params changed the outcome
+
+genetic architecture mattered....
+
+because...
+
+looking at 1 step cases, can see that expanding over them depends on the distribution of mutations and\/or the standing genetic variance
+
+larger effect mutations at fewer loci contributed to adaptation across the step in one step cases
+
+
+% LANDSCAPE ALSO MATTERED
 
 
 to understand why adaptation does or does not succeed and when the bcrit prediction fails, looking at landscapes that are more heterogeneous within an overall gradient allows us to test whether it is the magnitude of change in optimum over space or the size of local habitat that limit adaptation and expansion
@@ -374,35 +408,19 @@ to understand why adaptation does or does not succeed and when the bcrit predict
 Schiffers found genetic arch to match grain of landscape, we find it also matches magnitude of change in optimum, but can also present two different mechanisms of expansion and adaptation that can take longer and depend on new mutations
 
 
+one step analyses show height matters
+need the mutations or standing variation to adapt
 
-% then a section on step height and width?
-why does the steppiness matter?
-
-step height
-
-	one step analyses show height matters
-	need the mutations or standing variation to adapt
-
-
-step width
-
-	but making it over one step of a given height doesn't ensure that you can make it over multiple steps of that height
-	too many steps of a given height again prevents expansion
+but making it over one step of a given height doesn't ensure that you can make it over multiple steps of that height
+too many steps of a given height again prevents expansion
 	
-	so step width also matters
-		why?
-		migration load from other steps
-		need recovery that mig load prevents (local adaptation not possible)
+so step width also matters
+	why?
+	migration load from other steps
+	need recovery that mig load prevents (local adaptation not possible)
 		
-		ratio of step width to step height that is the critical value
-		or ratio of step width to total gradient that is the critical value?
-
-
-
-
-looking at 1 step cases, can see that expanding over them depends on the distribution of mutations and\/or the standing genetic variance
-
-larger effect mutations at fewer loci contributed to adaptation across the step in one step cases
+	ratio of step width to step height that is the critical value
+	or ratio of step width to total gradient that is the critical value?
 
 
 
@@ -431,7 +449,10 @@ larger dispersal distances make everything more difficult (make sure this is tru
 
 because more migration load
 
-what are the new b-crits?
+
+\subsection{Conclusions}
+
+
 
 %\section{Acknowledgements}
 %We would like to thank Fred\'eric Guillaume for help with \textsc{nemo} and members of the Whitlock lab for comments and feedback.
