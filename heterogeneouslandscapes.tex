@@ -381,48 +381,38 @@ $\mu = 10^{-5}$; $\alpha^2 = 5.0$	& $2.079442$	& $2.721747$	&	$R^2 = 0.5888, p <
 \section{Discussion}
 
 
-Our results have investigated two main questions: do predictions of range expansion from a linear gradient successfully extrapolate to heterogeneous gradients, and does the genetic architecture of a system impact the location of these critical gradient values. We find that predictions of range expansions from linear gradients do not fully extend to more heterogeneously changing environmental gradients. We also find that critical gradient values do depend on genetic architecture and whether small or large effect mutations are possible in the system. The interactions and effects of landscape heterogeneity and genetic architecture on determining adaptation and range expansion are important for understanding the ability of various species and taxa to react to climate change and successfully adapt to new environmental conditions. In particular, sharp changes in environmental optima, as we examine, may be similar to changes in temperature which are predicted to increase in extremes and variability with climate change. Though we have investigated these changes in optima spatially, temporal changes may have
+Our results have investigated two main questions: do predictions of range expansion from a linear gradient successfully extrapolate to heterogeneous gradients, and does the genetic architecture of a system impact the location of these critical gradient values. We find that predictions of range expansions from linear gradients do not fully extend to more heterogeneously changing environmental gradients. We also find that critical gradient values do depend on genetic architecture and whether small or large effect mutations are possible in the system. The interactions and effects of landscape heterogeneity and genetic architecture on determining adaptation and range expansion are important for understanding the ability of various species and taxa to react to climate change and successfully adapt to new environmental conditions. 
 
+% move to end of discussion: In particular, sharp changes in environmental optima, as we examine, may be similar to changes in temperature which are predicted to increase in extremes and variability with climate change. Though we have investigated these changes in optima spatially, temporal changes may have
 
+Previous studies have investigated range expansions across linear environmental gradients and the conditions for adaptation across the range or extinction \citep{Kirkpatrick:1997, Barton:2001, Bridle:2010, Polechova:2015}. Our simulation setup does not match to these studies in several ways, even on a linear gradient, hence we had no prior expectation for the predictions of a critical gradient value to closely match our observed critical gradient values for expansion. \citet{Kirkpatrick:1997} do not allow the genetic variance to evolve in their model which finds either unlimited range expansion below the critical environmental gradient or extinction above it. Allowing genetic variance to evolve in \citet{Barton:2001} predicts that expansion always successfully occurs on a gradient and no range limits are formed. However, the latest work from \citet{Polechova:2015} incorporated both evolving genetic variance and genetic drift, and range limits are found under certain parameter conditions. 
 
-In this study, we test if different genetic architectures and landscape heterogeneities can interact and affect the outcome of adaptation during a species range expansion, and potentially even limit a species range expansion. We compare our results to predictions from \citet{Barton:2001} and the results of \citet{Bridle:2010} and \citet{Schiffers:2014} to assess the impacts of our further explorations into genetic architecture and environmental heterogeneity. 
-% how we're going to test those hypotheses
-To address this question, we simulate a spatially explicit and discrete two-dimensional landscape across which populations expand their species range and adapt to newly encountered environments. We model a range of genetic architectures for a quantitative trait to test for differences in ability to adapt to environments. We also compare this across environments that differ in their degree of environmental heterogeneity from few to many locations of change in environmental optima, as well as in terms of the magnitude of change for each of these optima. Examining the rate of range expansion and the time required for populations to colonize and adapt in new environments provides insight into the role of both genetic architecture and environmental heterogeneity in determining the success or failure of adaptation. Such results are highly informative for the field of evolutionary biology, and largely applicable in predicting the fate of many species across the globe requiring the ability to adapt in the face of disturbance and shifting species ranges due to climate change and other anthropogenic environmental perturbations.
+Applying the prediction for a critical gradient from \citet{Barton:2001} estimates critical values on a linear gradient that is much shallower than where our simulations show the limit to expansion occurring. This is likely due to several factors. One major difference in our simulations, even for the linear gradients, is that the core starting population exists in a region of constant phenotypic optimum, and only outside of this core does the environmental gradient begin. Populations are burned in and thus well-adapted to the landscape core before expansion becomes possible in the model. Once expansion is possible, extinction across the entire species range is not possible since the landscape core can always sustain despite the steepness of the gradient. This differs from prior studies which do not possess such a core and can collapse to extinction when existing entirely over a gradient. Therefore, in cases where a gradient may be too steep for a population to persist long enough in order to adapt is not an issue for our model because individuals dispersing from the core will continually be able to attempt adapting to the new environment throughout time without being subject to extinction. This may explain in part why we find much steeper critical gradient values at which expansion outside of the core fails. It is furthermore inaccurate to call this result a biological range limit in the same sense used by prior studies since this stable range boundary only exists as a product of the surviving core population.
 
+A second, and perhaps more important, explanation for $b_{crit}$ predictions failing is due to their incorporation of the genetic variance, $V_G$, into calculating the critical value. Measuring $V_G$ in populations and using this value to predict adaptive ability is not unfounded, but our results have proved that $V_G$ alone is insufficient to characterize or predict adaptive ability and thus range expansions. It is known that increased $V_G$ is needed to successfully adapt to novel environments, and our results recapitulate this as can be seen on our heterogeneous, step landscapes where $V_G$ is greatly inflated at and around each environmental step in the landscape. Furthermore, it is known that $V_G$ evolves, which was also seen in our simulations. On steeper linear gradients, and steps of larger heights, equilibrium $V_G$ was much higher than for shallower gradients or smaller step heights (\color{red}I think there's going to be a supplemental figure on this\color{black}). Because $V_G$ can evolve, it is thus not a useful measure for predicting adaptive ability. Core populations' equilibrium genetic variances differed across our genetic architecture regimes, but once these simulations expanded onto gradients, $V_G$ evolved to similar values across regimes within a given gradient value.
 
-% BARTON COMPARISONS AND VG DISCUSSION
-vg in the core doesn't necessarily predict vg on the landscape, near bcrit, vg matches the landscape
+%%we don't match bcrit expectations for several reasons
+%%the major one begint hat there is no useful vg definition
+%%it is defined on the landscape when it gets too steep
+%%because vg can evolve
 
-we know vg itself is still a major decider of adaptation - it is inflated at every occurrence of a step, and is thus higher on linear gradients becuase there is a step everywhere
-vg too large leads to extinction though - maladaptation locallly
+A useful aspect of knowing the genetic variance still remains, and that is its upper limit. Setting aside the effects of genetic architecture momentarily, we can see that the cases where expansion no longer succeeded are those for which $V_G$ became too large. Genetic variance that is too large results in a locally maladapted population as individuals are too different from their local phenotypic optimum. 
 
+The idea that $V_G$ is the necessary measure of a population to predict its adaptive ability is however incomplete. We found a qualitative shift in the mechanism of adaptation and expansion across our genetic architecture regimes. The main driver of differing equilibrium $V_G$ was mutation rate, thus even when we hold $V_m$ constant, genetic variance decreased with decreasing mutation rates. This made expansion more difficult as the genetic material needed to adapt to new environments was reduced. However, the shift in our fourth genetic architecture regime whereby adaptation and expansion can again succeed, with larger waiting times, suggested that larger effect mutations allow another path by which populations can adapt. From the subset of simulations performed with $V_G$ approximately held constant rather than $V_m$, we find that this does seem to be the case. At a given mutation rate, expansion was successful with fewer loci of larger effect, but more loci of smaller effect resulted in a shift back to the non-successful expansion regime. This alternative route for successful adaptation shows that $V_G$ alone is not a sufficient metric for prediction, and an understanding of genetic architecture and the potential for large effect mutations is key.
 
-we don't match bcrit expectations for several reasons
-the major one begint hat there is no useful vg definition
-it is defined on the landscape when it gets too steep
-because vg can evolve
+%% for our observed bcrit, we see differences among genetic architectures
+%%shows that a certain amount of vg is required in order to successfully adapt to a new habitat
+%%or that there is another regime of adaptation that depends on mutational input, and is slower but allows adaptation again on more steep landscapes
 
-for our observed bcrit, we see differences among genetic architectures
-shows that a certain amount of vg is required in order to successfully adapt to a new habitat
-or that there is another regime of adaptation that depends on mutational input, and is slower but allows adaptation again on more steep landscapes
-
-these also differ from barton and kp because there is a constant landscape core where even if the gradient is too steep to initially adapt to or across, the core allows continued attempts to expand across and onto it
-
-% VG ISNT THE WHOLE STORY
-mutation rate mainly drives equil vg
-but mutation effect size variance plays a major role in adaptation
-thus holding vm constant but altering our params changed the outcome
-
-genetic architecture mattered....
-
-because...
-
-looking at 1 step cases, can see that expanding over them depends on the distribution of mutations and\/or the standing genetic variance
-
-larger effect mutations at fewer loci contributed to adaptation across the step in one step cases
 
 
 % LANDSCAPE ALSO MATTERED
+
+Heterogeneity of the environmental gradient adds another major difficulty in predicting the success of range expansions. Using the critical gradient values observed in our simulations, within a genetic architecture regime, and applying these to predict expansion over heterogeneously changing landscapes breaks down as heterogeneity increases.
+
+
+%% PICK UP HERE
+
 
 
 to understand why adaptation does or does not succeed and when the bcrit prediction fails, looking at landscapes that are more heterogeneous within an overall gradient allows us to test whether it is the magnitude of change in optimum over space or the size of local habitat that limit adaptation and expansion
@@ -464,6 +454,15 @@ on height 10:
 only 2 cases expanded and growth rate approached zero much sooner (total gradient value of xx, step width of yy)
 
 growth rate was higher for disp 200 in gen arch 0.01, but was almost the same for 0.00001, because in the latter case this supports our result of that growth depending on a mutation arising to get over a step, not on the distance able to be traveled and colonized, which is what drives it when expansion is easier in the other genetic architecture (orange squares versus plus signs)
+
+
+%% In this study, we test if different genetic architectures and landscape heterogeneities can interact and affect the outcome of adaptation during a species range expansion, and potentially even limit a species range expansion. We compare our results to predictions from \citet{Barton:2001} and the results of \citet{Bridle:2010} and \citet{Schiffers:2014} to assess the impacts of our further explorations into genetic architecture and environmental heterogeneity. 
+% how we're going to test those hypotheses
+%%To address this question, we simulate a spatially explicit and discrete two-dimensional landscape across which populations expand their species range and adapt to newly encountered environments. We model a range of genetic architectures for a quantitative trait to test for differences in ability to adapt to environments. We also compare this across environments that differ in their degree of environmental heterogeneity from few to many locations of change in environmental optima, as well as in terms of the magnitude of change for each of these optima. Examining the rate of range expansion and the time required for populations to colonize and adapt in new environments provides insight into the role of both genetic architecture and environmental heterogeneity in determining the success or failure of adaptation. Such results are highly informative for the field of evolutionary biology, and largely applicable in predicting the fate of many species across the globe requiring the ability to adapt in the face of disturbance and shifting species ranges due to climate change and other anthropogenic environmental perturbations.
+
+
+
+
 
 
 
