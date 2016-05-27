@@ -126,10 +126,9 @@ Individuals possess a quantitative trait that experiences balancing selection to
 %% re johnson and barton ref - MCW: But not necessarily in a spatial context, so re-word a bit.  This is not the Vg that we get in the burn-in, is it? If so, say that t worked.
 
 
+\subsection{Analyses}
 
-
-
-
+We quantify our results with two main measures: the growth rate of the entire metapopulation on the landscape and the time at which populations remain stationary before expanding into a patch they have encountered. Growth rate provides the most accurate measure of populations moving across the landscape within the confines of \textsc{nemo} and is further useful because it correlates closely to population fitness. The faster that populations expand, the higher their fitness is during this expansion. Away from the expanding front and any patch boundaries, populations exist at carrying capacity, so local density differences do not bias this measure of expansion rate.
 
 
 
@@ -209,75 +208,65 @@ To examine if the amount of genetic variance, instead of mutational effect sizes
 %
 \color{red} update these results when sims finish \color{black}
 %
-This showed that genetic variance was not the determining factor for expansion in these cases, but that the availability of mutations of larger effect determined the ability to adapt and expand into the second patch. With a decreasing $\alpha^2$, expansion became more difficult and only occurred for lower values of $\Delta z_{opt}$ (Figure \ref{fig:constVG}).
- %%%% FILL IN 316 and 1000 loci results - AND NEW CONST VG RESULTS!!!
+ With a decreasing $\alpha^2$, expansion became more difficult and only occurred for lower values of $\Delta z_{opt}$ (Figure \ref{fig:constVG}). This shows that genetic variance was not the determining factor for expansion in these cases, but that the availability of mutations of larger effect determined the ability to adapt and expand into the second patch. %%%% FILL IN 316 and 1000 loci results - AND NEW CONST VG RESULTS!!!
 
 \begin{figure}[h]
 \centering
 \makebox[\textwidth]{
         \includegraphics[width=1.1\linewidth]{Figures/constVG_wait_times.pdf}}
-\caption[Time spent before expansion into second patch for constant $V_G$ simulations.]{Time spent (in generations) before expansion into second patch for each genetic architecture regime for simulations with constant $V_G$. Points are jittered for visualization. All points beyond the vertical dashed line are censored and did not expand during the course of the simulation. Mutation rate, $\mu$ was held constant at $10^{-5}$ while $\alpha^2 was varied at \color{red}these values\color{black}.}
+\caption[Time spent before expansion into second patch for constant $V_G$ simulations.]{Time spent (in generations) before expansion into second patch for each genetic architecture regime for simulations with constant $V_G$. Points are jittered for visualization. All points beyond the vertical dashed line are censored and did not expand during the course of the simulation. Mutation rate, $\mu$ was held constant at $10^{-5}$ while $\alpha^2$ was varied at \color{red}these values\color{black}.}
 \label{fig:constVG}
 \end{figure}
 
 
 \subsection{Combination of patch size and $\Delta z_{opt}$}
 
-The previous section showed which genetic architectures are able to expand over a single step of a given height. To further investigate the role of landscape heterogeneity in combination with genetic architecture, we investigate the ability of populations to expand across multiple steps of a constant height, for which expansion over a single step of the same height did occur. We know from a weak overall gradient, that expansion across heterogeneous step landscapes only failed when the individual step height became too large ($h_{step} = 15$ as shown above), but we now investigate the role of step heterogeneity on steeper overall gradients. In these cases, a constant step height of 5 and 10 were each used across the landscape. We simulated cases between 4 and 1959 (linear) steps across the landscape, therefore increasing the overall gradient as more steps are present on the landscape (Figure \ref{fig:multistep}). %% MCW: don't call fig 6 yet   ???
+We have thus far shown that overall $b$ matters for range expansion, but also that breaking this overall gradient into patches can change the outcome of expansion. $\Delta z_{opt}$ alone directly impacts the outcome of expansion, but when the overall $b$ fails to predict expansion, is $\Delta z_{opt}$ a sufficient determinant of range expansion? We now investigate the ability of populations to expand across multiple patches of a constant $\Delta z_{opt}$, using a $\Delta z_{opt}$ that resulted in successful expansion in the two patch model ($\Delta z_{opt} = 5$ and $\Delta z_{opt} = 10$). We simulated between 5 and 1960 patches across the landscape, therefore increasing the overall $b$ as more patches are present on the landscape (e.g. Figure \ref{fig:stepschematic}, solid lines).
+
+We find growth rates are faster for larger patches and with a lower $\Delta z_{opt}$ (Figure \ref{fig:multistep}). As patch size decreases, growth rate decreases, and this decrease is faster for the higher value of $\Delta z_{opt}$. Greater dispersal distances increase growth rate with larger patches, but trade off at smaller patch sizes to become worse and lead to growth rates slower than the smaller dispersal scenario. In all cases, expansion fails on the linear gradient, as expected from our previous $b_{crit}$s found on linear gradients. Despite the ability to expand in a two patch model for some of these $\Delta z_{opt}$ values, more patches with this change in optimum between them make a prediction based solely on $\Delta z_{opt}$ inaccurate for the outcome of expansion.
 
 \begin{figure}[h]
 \centering
 \makebox[\textwidth]{
         \includegraphics[width=1.1\linewidth]{Figures/UpdatedGrowthRatesByStep.pdf}}
-\caption[Population growth rates across multi-step scenarios.]{Population growth rates across multi-step scenarios having either a constant step height of 5 or 10. The width of each step directly correlates to the number of steps on the landscape, and the total change in magnitude over the landscape for the phenotypic optimum is equal to the step height times the number of steps.}%% MAKE CLEAR GROWTH RATE IS IN TERMS OF NUM OF INDS
+\caption[Population growth rates across patchy landscapes.]{Population growth rates (number of individuals per generation) across patchy landscapes having a constant $\Delta z_{opt}$ of either 5 or 10. The size of each patch directly correlates to the number of patches on the landscape. The overall gradient increases with additional steps and can be calculated as $b = \Delta z_{opt}(number~of~patches - 1)$. The small dispersal kernel is for $\sigma_{disperse} = 2$ and the large dispersal kernel for $\sigma_{disperse} = 4$.}
 \label{fig:multistep}
 \end{figure}
 
-We find that for step heights of $5$, population growth rate %%MCW: Is this the right response variable?
-decreases as more steps exist on the landscape. As shown from our previous investigations of linear gradients, constant step height of 5 on a linear gradient ($b = 5$) is too steep for expansion to occur. Immediately beyond this limit however, when each step is a width of two cells instead of one, expansion is again possible. With the larger dispersal kernel, the first occurrence of expansion is not until steps are of width three cells or greater. The point at which expansion no longer occurs is consistent across genetic architecture regimes for $h_{step} = 5$.
 
-In the parameter space where expansion is possible, the rate of population growth differs across genetic architecture regimes, and undergoes a qualitative shift when the width of a step is around $14 - 20$ cells. Between step widths of $2$ ($3$ for large dispersal kernel) and $14 - 20$, the first genetic architecture regime of $\mu = 10^{-2}$ and $\alpha^2 = 0.005$ shows the slowest growth rates, yet switches to become one of the fastest growing scenarios when steps are wider than $20$ cells. The opposite is true for the third and fourth genetic architecture regimes which grow fastest out of all regimes between step widths of $2$ ($3$ for large dispersal kernel) and $14 - 20$, but are slower than the other regimes when steps are wider than 20 cells.%% MCW: Too far from biology	Throughout here, don't talk so much about specific step widths, because these don't have any direct biological meaning. Make more relative statements, and shorten
-
-For step height of $10$, only two genetic architectures were investigated (first and fourth regime). %% ADD IN SECOND WHEN I CAN	MCW: Why KJG - I'm adding the 3rd, the 4th didn't expand
-Under the first regime, expansion succeeds when step widths are $3$ cells or greater for either dispersal kernel. However, for the fourth regime, expansion does not succeed until steps are of width $7$ or greater under the small dispersal kernel and 9 or greater under the larger dispersal kernel. There is no consistent switch in speed of these regimes with wider step widths, however the larger dispersal kernel is faster on wider steps for the first regime, yet slower for the fourth regime, up until the point of reaching a similar speed on the widest steps.%%MCW: Not clear what all this means
-
-\subsection{Predicting expansion on heterogeneous landscapes \color{red}does this part make any sense?\color{black}}
+%%%	\subsection{Predicting expansion on heterogeneous landscapes \color{red}does this part make any sense?\color{black}}
 % report something like ratio of width to height for expansion ability
-The failure of $b_{crit}$ to predict successful expansion on a heterogeneous landscape leads us to derive a new predictor of expansion success. \color{red}this isn't really the black and white answer I would like, so maybe redo or take this out? \color{black} We calculate a weighted measure of the local gradient by dividing the height of steps across the landscape by the width of steps on the landscape, and multiply this value by $\sigma_{disperse}$ to calculate this new weighted gradient value. Conducting a simple linear regression on the relationship between the weighted gradient value and population growth rate finds this to be a significant predictor of growth rate ($R^2 = 0.604, p < 0.0001$) and therefore the likely success of expansion over the landscape (Figure \ref{fig:linearmodel}). Though populations that fail to expand do appear below the critical value predicted, the observed and predicted upper limits of a non-zero growth rate are similar.
+%%%	The failure of $b_{crit}$ to predict successful expansion on a heterogeneous landscape leads us to derive a new predictor of expansion success. \color{red}this isn't really the black and white answer I would like, so maybe redo or take this out? \color{black} We calculate a weighted measure of the local gradient by dividing the height of steps across the landscape by the width of steps on the landscape, and multiply this value by $\sigma_{disperse}$ to calculate this new weighted gradient value. Conducting a simple linear regression on the relationship between the weighted gradient value and population growth rate finds this to be a significant predictor of growth rate ($R^2 = 0.604, p < 0.0001$) and therefore the likely success of expansion over the landscape (Figure \ref{fig:linearmodel}). Though populations that fail to expand do appear below the critical value predicted, the observed and predicted upper limits of a non-zero growth rate are similar.
 
-\begin{figure}[h]
-\centering
-\makebox[\textwidth]{
-        \includegraphics[width=0.7\linewidth]{Figures/LinearModel.pdf}}
-\caption[Linear regression of weighted gradient on population growth rate.]{Linear regression of weighted gradient on mean population growth rate across all scenarios simulated in this study. Growth rates of zero are colored in red, while nonzero are colored in blue. The fitted line (solid) predicts a critical value for positive growth rate to be below $\sim3$ while the observed critical value for a positive growth rate (dashed, gray) is at $\sim2.6$.}
-\label{fig:linearmodel}
-\end{figure}
+%%%	\begin{figure}[h]
+%%%	\centering
+%%%	\makebox[\textwidth]{
+%%%	        \includegraphics[width=0.7\linewidth]{Figures/LinearModel.pdf}}
+%%%	\caption[Linear regression of weighted gradient on population growth rate.]{Linear regression of weighted gradient on mean population growth rate across all scenarios simulated in this study. Growth rates of zero are colored in red, while nonzero are colored in blue. The fitted line (solid) predicts a critical value for positive growth rate to be below $\sim3$ while the observed critical value for a positive growth rate (dashed, gray) is at $\sim2.6$.}
+%%%	\label{fig:linearmodel}
+%%%	\end{figure}
 
-Performing the same regression analysis within each genetic architecture regime only improves predictive ability for one scenario, but decreases it from the overall model. For the first genetic architecture regime, the predicted critical value for no population growth equalled $2.59$ while the observed critical value was equal to $2.50$. The $R^2$ for this model increases to $0.627$ ($p < 0.0001$). The other three genetic architecture regimes produce $R^2$ values all less than $0.6$ and predicted critical values that overestimate the observed critical value for zero population growth (Table \ref{tab:linearmodels}).
+%%%	Performing the same regression analysis within each genetic architecture regime only improves predictive ability for one scenario, but decreases it from the overall model. For the first genetic architecture regime, the predicted critical value for no population growth equalled $2.59$ while the observed critical value was equal to $2.50$. The $R^2$ for this model increases to $0.627$ ($p < 0.0001$). The other three genetic architecture regimes produce $R^2$ values all less than $0.6$ and predicted critical values that overestimate the observed critical value for zero population growth (Table \ref{tab:linearmodels}).
 
 %<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
-\begin{table}[h]
-\centering \footnotesize
-\caption[Linear regression for predicting expansion success]{Results from linear regressions for predicting expansion success in terms of population growth rate for all simulation means, and broken into each genetic architecture regime.}
-\label{tab:linearmodels}
+%%%	\begin{table}[h]
+%%%	\centering \footnotesize
+%%%	\caption[Linear regression for predicting expansion success]{Results from linear regressions for predicting expansion success in terms of population growth rate for all simulation means, and broken into each genetic architecture regime.}
+%%%	\label{tab:linearmodels}
 %\begin{tabular}{cp{0.25\textwidth}cp{0.25\textwidth}cp{0.4\textwidth}c}
-\begin{tabular}{lccc}
-Regression model				&	Observed critical value	&	Predicted critical value	&   \\ \hline \hline
-All scenarios					& $2.590267$	& $2.988544$	&	$R^2 = 0.6043, p < 0.0001$	\\  \hline
-$\mu = 10^{-2}$; $\alpha^2 = 0.005$	& $2.590267$	& $2.49886$	&	$R^2 = 0.6309, p < 0.0001$	\\  \hline
-$\mu = 10^{-3}$; $\alpha^2 = 0.05$	& $2.079442$	& $3.5474$	&	$R^2 = 0.5873, p < 0.0001$	\\ \hline
-$\mu = 10^{-4}$; $\alpha^2 = 0.5$	& $1.89712$	& $4.079371$	&	$R^2 = 0.5592, p < 0.0001$	\\ \hline
-$\mu = 10^{-5}$; $\alpha^2 = 5.0$	& $2.079442$	& $2.721747$	&	$R^2 = 0.5888, p < 0.0001$	\\ \hline
-\end{tabular}
-\end{table}
+%%%	\begin{tabular}{lccc}
+%%%	Regression model				&	Observed critical value	&	Predicted critical value	&   \\ \hline \hline
+%%%	All scenarios					& $2.590267$	& $2.988544$	&	$R^2 = 0.6043, p < 0.0001$	\\  \hline
+%%%	$\mu = 10^{-2}$; $\alpha^2 = 0.005$	& $2.590267$	& $2.49886$	&	$R^2 = 0.6309, p < 0.0001$	\\  \hline
+%%%	$\mu = 10^{-3}$; $\alpha^2 = 0.05$	& $2.079442$	& $3.5474$	&	$R^2 = 0.5873, p < 0.0001$	\\ \hline
+%%%	$\mu = 10^{-4}$; $\alpha^2 = 0.5$	& $1.89712$	& $4.079371$	&	$R^2 = 0.5592, p < 0.0001$	\\ \hline
+%%%	$\mu = 10^{-5}$; $\alpha^2 = 5.0$	& $2.079442$	& $2.721747$	&	$R^2 = 0.5888, p < 0.0001$	\\ \hline
+%%%	\end{tabular}
+%%%	\end{table}
 %<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
 
 
 
-
-
-
-%%MCW: The results are far too long. This paper should be about two thirds its current length, I think
 
 
 
