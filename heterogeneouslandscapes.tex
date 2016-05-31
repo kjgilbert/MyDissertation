@@ -90,7 +90,7 @@ $\sigma_{disperse}$ & One standard deviation of the Gaussian kernel describing t
 
 We examined several types of environmental heterogeneities across landscapes. These range from a linear gradient to two patches, as well as combinations in between having multiple patches of constant environmental optima interspersed by sharp changes in the environment. We model landscapes of heterogeneous environmental gradients possessing patches of constant phenotypic optima interspersed by changes in phenotypic optima over the landscape. 
 
-To define each type of heterogeneous landscape, we describe three parameters: the number of changes in environmental optima over the landscape, the magnitude of each of these changes, and the total gradient value across the landscape, which can be calculated from the previous two values. The total gradient value, $b$, on the landscape is measured as the total change in phenotypic optima over the landscape divided by the length of the landscape (measured by number of cross sections, 1960). We refer to each local change in environmental optima on the landscape as $\Delta z_{opt}$. This value measures the magnitude of change in phenotypic optima between two patches. Patches are defined as a contiguous region of cross sections for which the phenotypic optima is constant on the landscape. The number of number of times that $\Delta z_{opt}$ changes over the entire landscape is equal to the number of patches minus $1$. Figure \ref{fig:stepschematic} shows a schematic for a simplified landscape. A linear gradient simulated with our continuous approximation is thus the case where there are $1960$ patches on the landscape, each with a width of one cross section. 
+To define each type of heterogeneous landscape, we describe three parameters: the number of changes in environmental optima over the landscape, the magnitude of each of these changes, and the total gradient value across the landscape, which can be calculated from the previous two values. The total gradient value, $b$, on the landscape is measured as the total change in phenotypic optima over the landscape divided by the length of the landscape (measured by number of cross sections, 1960). We refer to each local change in environmental optima on the landscape as $\Delta z_{opt}$. This value measures the magnitude of change in phenotypic optima between two patches. Patches are defined as a contiguous region of cross sections for which the phenotypic optima is constant on the landscape. The number of number of times that $\Delta z_{opt}$ changes over the entire landscape is equal to the number of patches minus one. Figure \ref{fig:stepschematic} shows a schematic for a simplified landscape. A linear gradient simulated with our continuous approximation is thus the case where there are $1960$ patches on the landscape, each with a width of one cross section. 
 
 \begin{figure}[h]
 \centering
@@ -119,9 +119,7 @@ Throughout the simulations, selection occurs only on survivorship, and not fecun
 
 
 \subsection{Genetic Architecture}
-Individuals possess a quantitative trait that experiences balancing selection to adapt to the local environment. The quantitative trait, $z$, is controlled by 100 freely recombining loci. We held the total mutational variance, $V_m$, available to the system constant at $10^{-2}$, but varied the underlying genetic architectures contributing to the mutational variance. The number of loci, $L$, was also held constant at 100, thus to satisfy $V_m = 2 L \mu \alpha^2$ \citep{Lande:1975}, we varied the per locus mutation rate, $\mu$ and the variance in mutational effect sizes, $\alpha^2$. Four regimes of genetic architecture were investigated that range from high mutation rate and low variance in mutational effect size to low mutation rate and high variance in mutational effect size. Regime one set $\mu = 10^{-2}$ and $\alpha^2 = 0.005$, regime two set $\mu = 10^{-3}$ and $\alpha^2 = 0.05$, regime three set $\mu = 10^{-4}$ and $\alpha^2 = 0.5$, and regime four set $\mu = 10^{-5}$ and $\alpha^2 = 5.0$. We will call regime one the ``small effect mutations" scenario, regime two ``medium-small effect", regime three ``medium-large effect", and regime four ``large effect" mutations. Though the large effect regime has the potential for mutations of much larger effect sizes, small effect mutations are not excluded. \color{red}(edit this part when the constant Vg runs finish) For a subset of simulations, we also compared the effect of holding $V_G$ constant. This was done by holding $\mu$ constant at $10^{-5}$ and only varying $\alpha^2$ at $5, 0.5$, and $0.05$.%%According to \citet{Johnson:2005}, $V_G \approx 2 L \sqrt{\mu \alpha^2 V_S}$, thus we held $\mu$ constant at $10^{-5}$ and varied $L$ and $\alpha^2$ at $L = 316$ and $\alpha^2 = 0.5$, and $L = 1000$ and $\alpha^2 = 0.05$. This produced very similar levels of genetic variance in the landscape core with only slight variations of $V_G$ increasing with more loci (Supplemental Figure . ). 
-\color{black}
-%% re johnson and barton ref - MCW: But not necessarily in a spatial context, so re-word a bit.  This is not the Vg that we get in the burn-in, is it? If so, say that t worked.
+Individuals possess a quantitative trait that experiences balancing selection to adapt to the local environment. The quantitative trait, $z$, is controlled by 100 freely recombining loci. We held the total mutational variance, $V_m$, available to the system constant at $10^{-2}$, but varied the underlying genetic architectures contributing to the mutational variance. The number of loci, $L$, was also held constant at 100, thus to satisfy $V_m = 2 L \mu \alpha^2$ \citep{Lande:1975}, we varied the per locus mutation rate, $\mu$ and the variance in mutational effect sizes, $\alpha^2$. Four regimes of genetic architecture were investigated that range from high mutation rate and low variance in mutational effect size to low mutation rate and high variance in mutational effect size. Regime one set $\mu = 10^{-2}$ and $\alpha^2 = 0.005$, regime two set $\mu = 10^{-3}$ and $\alpha^2 = 0.05$, regime three set $\mu = 10^{-4}$ and $\alpha^2 = 0.5$, and regime four set $\mu = 10^{-5}$ and $\alpha^2 = 5.0$. We will call regime one the ``small effect mutations" scenario, regime two ``medium-small effect", regime three ``medium-large effect", and regime four ``large effect" mutations. Though the large effect regime has the potential for mutations of much larger effect sizes, small effect mutations are not excluded. For a subset of simulations, we also compared the effect of holding $V_G$ constant. This was done by holding $\mu$ constant at $10^{-5}$ and only varying $\alpha^2$ at $5, 0.5$, and $0.05$.
 
 
 \subsection{Analyses}
@@ -151,17 +149,27 @@ We first investigated the critical steepness for expansion on a linear gradient,
 \label{fig:linearspeed}
 \end{figure}
 
-For the same gradient values and genetic architectures, we examined the impact for dispersal distances to assess the ability for range expansion and the value of $b_{crit}$. The predicted $b_{crit}$ for these scenarios is $\approx 0.082, 0.063, 0.009,$ and $0.0008$, respectively; values which are approximately half of the predictions for the smaller dispersal kernel. Our realized $b_{crit}$ values in these larger dispersal cases again much larger than the predicted value using $V_G$ as estimated in the core, but were also much smaller than each respective $b_{crit}$ for the smaller dispersal cases (Figure \ref{fig:linearspeed}).	
+For the same gradient values and genetic architectures, we examined the impact for dispersal distances to assess the ability for range expansion and the value of $b_{crit}$. The predicted $b_{crit}$ for these scenarios is approximately half of those for the smaller dispersal distance ($\approx 0.082, 0.063, 0.009,$ and $0.0008$, respectively). %%; values which are approximately half of the predictions for the smaller dispersal kernel. 
+Our realized $b_{crit}$ values in these larger dispersal cases again much larger than the predicted value using $V_G$ as estimated in the core, but were also much smaller than each respective $b_{crit}$ for the smaller dispersal cases (Figure \ref{fig:linearspeed}).	
 
 
-\subsection{Expansion over heterogeneous landscape gradients} %% MCW: All gradients are heterogeneous.  How about discrete gradients?
+\subsection{Expansion over heterogeneous, patchy landscape gradients} %% MCW: All gradients are heterogeneous.  How about discrete gradients?
 
 %% Our measured $b_{crit}$ values define the slope of change over the environment on a linear gradient, but this gradient can consist of local heterogeneity while still overall possessing the same value of $b$ as measured across the entire landscape. This next set of simulations examines if and when the prediction from our measured $b_{crit}$ for each genetic architecture regime fails to describe the outcome of range expansion when we vary the degree of heterogeneity of change over the landscape. %% MCW: I'd say forget about measured bcrit and just talk about how bcrit changes with more discreteness
 
-%% try to shorten this paragraph
 We now examine how the outcome of range expansion changes as landscape heterogeneity changes. We model two values of $b$ ($b = 0.0075$ and $b = 0.015$), both of which create a very weak linear gradient for which expansion is easily successful. Holding this total gradient constant, we decrease the number of patches across the landscape at a range from $1960$ (linear) to $2$ and increase $\Delta z_{opt}$. Within a given simulation, $\Delta z_{opt}$ is constant, but across simulations $\Delta z_{opt}$ varies as the number of patches varies. 
 
-On the weaker gradient ($b = 0.0075$), expansion occurs in all cases except the two patch model ($\Delta z_{opt} = 15$). One replicate did expand in this scenario for the medium-small regime after a $10000$ generation delay, but none of the remaining 79 replicates succeeded in expanding into a second patch with this value of $\Delta z_{opt}$. On the stronger gradient ($b = 0.015$), \color{red} fill these results in and add the figure \color{black} The steepness of the gradient, $b$, thus does not successfully predict expansion on non-linear, heterogeneous gradients. This leads us to test if $\Delta z_{opt}$ can predict expansion.
+On the weaker gradient ($b = 0.0075$), expansion occurs in all cases except the two patch model ($\Delta z_{opt} = 15$). One replicate did expand in this scenario for the medium-small regime after a $10,000$ generation delay, but none of the remaining 79 replicates succeeded in expanding into a second patch with this value of $\Delta z_{opt}$. On the stronger gradient ($b = 0.015$), \color{red} fill these results in and add the figure \color{black} %%%
+(Figure \ref{fig:hetspeed}).
+The steepness of the gradient, $b$, thus does not successfully predict expansion on non-linear, heterogeneous gradients. This leads us to test if $\Delta z_{opt}$ can predict expansion.
+
+\begin{figure}[ht]
+\centering
+\makebox[\textwidth]{
+        \includegraphics[width=0.8\linewidth]{Figures/GrowthRate_ByStepNum.pdf}}
+\caption[Growth rate of populations expanding over a patchy gradient.]{Growth rate of populations expanding over a patchy gradient for $b = 0.0075$ (circles) and $b = 0.015$ (triangles). The four different regimes of genetic architecture are indicated along the $x$-axis. Each cluster of points from left to right order the simulations by the number of patches on the landscape from $2$ to $1960$. Cases where $\Delta z_{opt}$ is equal to that of the two patch model in Figure \ref{fig:waittimes} are colored equivalently. All points in grayscale have a $\Delta z_{opt}$ less than and decreasing below $4$. The asterisk indicates the case where a single replicate that expanded contributes to this mean growth rate. This upper $95\%$ confidence interval spans to a growth rate of $91$ individuals per generation. Error bars indicate 95\% confidence intervals.}
+\label{fig:hetspeed}
+\end{figure}
 
 
 \subsection{Expansion in a two patch model}
@@ -190,10 +198,10 @@ In all cases of $\Delta z_{opt}$, we can see that the large effect regime contai
 % regime 1 max locus difference: 0.460336 (mean = 0.01899583)
 %% SHOULD I do stats on these differences
 
-\begin{figure}[h]
+\begin{figure}[!ht]
 \centering
 \makebox[\textwidth]{
-        \includegraphics[width=0.5\linewidth]{Figures/effect_sizes.pdf}}
+        \includegraphics[width=0.45\linewidth]{Figures/effect_sizes.pdf}}
 \caption[Per locus genotypic differences.]{Per locus genotypic differences between patches in the two patch model. Each count represents one locus from across all replicates of simulations that successfully expanded into the second patch. Bars extending beyond the limit of the $y$-axis reach variable large values and are truncated to focus on the large effect differences. For 20 replicates and 100 loci, the counts for each color sum to 2000, and there are many small effect differences across loci in the truncated bars.}
 \label{fig:effectsizes}
 \end{figure}
@@ -208,11 +216,11 @@ To examine if the amount of genetic variance, instead of mutational effect sizes
 %
  With a decreasing $\alpha^2$, expansion became more difficult and only occurred for lower values of $\Delta z_{opt}$ (Figure \ref{fig:constVG}). This shows that genetic variance was not the determining factor for expansion in these cases, but that the availability of mutations of larger effect determined the ability to adapt and expand into the second patch. %%%% FILL IN 316 and 1000 loci results - AND NEW CONST VG RESULTS!!!
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \makebox[\textwidth]{
-        \includegraphics[width=1.1\linewidth]{Figures/constVG_wait_times.pdf}}
-\caption[Time spent before expansion into second patch for constant $V_G$ simulations.]{Time spent (in generations) before expansion into second patch for each genetic architecture regime for simulations with constant $V_G$. Points are jittered for visualization. All points beyond the vertical dashed line are censored and did not expand during the course of the simulation. Mutation rate, $\mu$, was held constant at $10^{-5}$ while $\alpha^2$ was varied at \color{red}these values\color{black}.}
+        \includegraphics[width=0.9\linewidth]{Figures/constVG_wait_times.pdf}}
+\caption[Time spent before expansion into second patch for constant $V_G$ simulations.]{Time spent (in generations) before expansion into second patch for each genetic architecture regime for simulations with constant $V_G$. Points are jittered for visualization. All points beyond the vertical dashed line are censored and did not expand during the course of the simulation. Mutation rate, $\mu$, was held constant at $10^{-5}$ while $\alpha^2$ was varied at $0.05, 0.5,$ and $5.0$.}
 \label{fig:constVG}
 \end{figure}
 
@@ -223,10 +231,10 @@ We have thus far shown that overall $b$ matters for range expansion, but also th
 
 We find growth rates are faster for larger patches and with a lower $\Delta z_{opt}$ (Figure \ref{fig:multistep}). As patch size decreases, growth rate decreases, and this decrease is faster for the higher value of $\Delta z_{opt}$. Greater dispersal distances increase growth rate with larger patches, but trade off at smaller patch sizes to become worse and lead to growth rates slower than the smaller dispersal scenario. In all cases, expansion fails on the linear gradient, as expected from our previous $b_{crit}$s found on linear gradients. Despite the ability to expand in a two patch model for some of these $\Delta z_{opt}$ values, more patches with this change in optimum between them make a prediction based solely on $\Delta z_{opt}$ inaccurate for the outcome of expansion.
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \makebox[\textwidth]{
-        \includegraphics[width=1.1\linewidth]{Figures/UpdatedGrowthRatesByStep.pdf}}
+        \includegraphics[width=1.0\linewidth]{Figures/UpdatedGrowthRatesByStep.pdf}}
 \caption[Population growth rates across patchy landscapes.]{Population growth rates (number of individuals per generation) across patchy landscapes having a constant $\Delta z_{opt}$ of either 5 or 10. The size of each patch directly correlates to the number of patches on the landscape. The overall gradient increases with additional steps and can be calculated as $b = \Delta z_{opt}(number~of~patches - 1)$. The small dispersal kernel is for $\sigma_{disperse} = 2$ and the large dispersal kernel for $\sigma_{disperse} = 4$.}
 \label{fig:multistep}
 \end{figure}
