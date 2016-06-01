@@ -16,7 +16,49 @@
 
 The study of evolution aims to understand the myriads of diversity in existence today, how they came to be, and why. An essential part of this task requires understanding the genetic processes and patterns that occur in and define populations. Population genetics coalesced as a field in the early 1900s, following more than a decade of controversy and debate over the process of evolution \citep{Provine:2001}. Since its advent, great insight has been made into the processes that contribute to the evolution of populations and species. Our understandings of genetic drift, gene flow, mutation, and selection have created a solid foundation for the growing field of evolutionary biology. Yet as the field has advanced, the realization that the manifold and minute complexities of these processes can immensely impact populations and species has left open questions in the field of evolutionary biology.
 
-One of the interesting complexities in understanding population genetics is the role of demographic history. Though population genetics eponymously (FIX THAT WORD) uses genetic data both in theory and empirically to understand the process of evolution, informing such genetic data with demographic information is often, if not always, necessary. Without this combination of information, it is nearly impossible to gain a full understanding of the ancestral processes leading to the system at hand and the likely future routes of this system. Effective population size makes an exemplar description of this situation. Census size of many organisms can be obtained, as this simply requires counting all individuals present in a population (though for many reasons, census size can often be the more difficult quantity to obtain). However census size alone does not generally inform long term processes occurring in a population, for example a large number of individuals might be present at a given time due to a recent stochastic increase in resources, rather than reflecting consistently large numbers of individuals. Likewise a small number of individuals might be found if abiotic factors such as a recent catastrophic storm lead to the death of many individuals. In these instances, knowing the effective population size in these systems can reveal information that the census size does not. The effective population size....
+One of the interesting complexities in understanding population genetics is the role of demographic history. Though population genetics eponymously (\color{red}wrong word?\color{black}) uses genetic data both in theory and empirically to understand the process of evolution, informing such genetic data with ecological demographic information is often, if not always, necessary. Without this combination of information, it is nearly impossible to gain a full understanding of the ancestral processes leading to the current state of the system at hand and the future trajectories this system may follow. Effective population size makes an exemplar description of this situation. Census size of many organisms can be obtained, as this simply requires counting all individuals present in a population (though for many reasons, census size can often be the more difficult quantity to obtain). However census size alone does not generally inform long term processes occurring in a population nor how the population may evolve. Genetic data is necessary for such insight. For example, a large number of individuals might be present at any given time due to stochastic events such as increase in resources, rather than reflecting consistently large numbers of individuals. Likewise a small number of individuals might be found if other stochastic abiotic factors such as a recent catastrophic storm lead to the death of many individuals. In these instances, defining a population by its effective size is more useful and can reveal information that the census size does not. 
+
+The effective population size is a key parameter in population genetics and evolution. Defined by \citet{Wright:1931} as the size of an ideal population that experiences the same level of genetic drift as the given population, effective population size informs how populations are likely to respond to evolutionary forces, or even what forces are likely to occur. Small populations are more subject to random genetic drift, while in larger populations selection is known to be more effective at acting to remove deleterious genetic material and increase the frequency of beneficial alleles in populations \citep{Gravel:2016}. This impacts the likelihood of new mutations establishing or being lost within a population (\color{red}citation\color{black}). All three of these factors contribute to local differentiation of populations, but the fourth evolutionary process, gene flow, can be a major disruptive force in this process by introducing foreign and sometimes maladaptive individuals \citep{Slatkin:1987}. Whether migration into a population results in successful gene flow is linked to effective size in terms of whether selection is sufficiently strong to remove these introduced individuals, or whether populations are so small that gene flow acts to sustain an otherwise extinction-bound population by introducing genetic variation and increasing the effective size. Sewall Wright aptly describes his thoughts at the time on the interplay of effective population size with the evolutionary process:
+\begin{quoteshrink}
+  ``A much more favorable condition [for evolution] would be that of a large population, broken up into imperfectly isolated local strains. \ldots The rate of evolutionary change depends primarily on the balance between the effective size of population in the local strain and the amount of interchange of individuals with the species as a whole and is therefore not limited by mutation rates.''
+  \hfill\citet{Wright:1930}
+\end{quoteshrink}
+
+Demographic history is a vital factor in the above processes. Knowing the correct demographic history of a population can affect the ability of many genetic analysis methods to correctly infer a parameter of interest. For example, if a population under study recently underwent a vicariance event and was previously part of a much larger population, the genetic patterns seen may still reflect that of the larger population. Making conservation decisions based on an incorrectly overestimated effective population size in this instance could be detrimental. The aim of my thesis is to investigate the interplay of demographic history with population genetic processes and patterns.
+
+In \Chapref{effectivepopsize} I investigate the impact of migration on leading to incorrect estimation of effective population sizes through genetic data analysis. Estimating and knowing the effective population size is key in conservation biology and leads to many political decisions in terms of when and where to conserve populations at risk. Misunderstanding of the effective size may thus lead to the local, or even global, extinction of species in the most extreme cases. Using simulated data and testing pre-existing methods developed in order to estimate effective population size allowed each of these methods to be equivalently tested across common demographic scenarios. Use of simulated data benefits this investigation by having knowledge of the true effective population size, which otherwise in nature is never truly possible.
+
+\color{red}need some sort of transition here\color{black}
+
+A major goal of evolutionary biology today is to identify the loci that contribute to local adaptation of populations \citep{Savolainen:2013, Whitlock:2015, LeCorre:2012, Coop:2010}. Demographic history is, however, one of the leading causes of the misidentification of adaptive loci \citep{Whitlock:2015}(\color{red}other refs?\color{black}).
+
+why we care about local adaptation
+
+example of range expansion misleading loci under adaptation
+
+studying range expansion and adaptation during expansion
+
+
+one last section on it being key to know what a population even is
+gaggiottie paper on what a pop is
+discuss what a pop is more
+
+discuss methods for identifying pops
+
+specify structure and testing its reproducibility to make sure the right inferences are indeed made
+
+
+\Chapref{heterogeneouslandscapes}
+
+\Chapref{expansionload}
+
+\Chapref{reproducibility}
+
+and say examples of inferences that can go wrong - katie's paper and loci under seln
+
+whether a pop was once one large one then split
+migration
+expansion and small at front but not anymore
 
 Past changes in population sizes, movement of individuals among populations, or spread of populations geographically are all actions that affect the relative importance of genetic drift, gene flow, mutation, and selection.
 
@@ -44,9 +86,6 @@ Demographic history contributes to every population's current genetic makeup. Fo
 
 
 
-good quote!! on the topic of how evolution might proceed in his view (wright's)
-``A much more favorable condition [for evolution] would be that of a large population, broken up into imperfectly isolated local strains. ... The rate of evolutionary change depends primarily on the balance between the effective size of population in the local strain and the amount of interchange of individuals with the species as a whole and is therefore not limited by mutation rates.`` Wright 1930 (p166 Provine)
-Ibid pp 354-55  -- becomes shifting balance theory
 
 CAN CITE NICK BARTON'S OPINION PIECE ON SEWALL WRIGHT:
 Sewall Wright on Evolution in Mendelian Populations and the "Shifting Balance"
