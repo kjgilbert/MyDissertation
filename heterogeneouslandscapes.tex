@@ -145,7 +145,7 @@ We first investigated the critical steepness for expansion on a linear gradient,
 \centering
 \makebox[\textwidth]{
         \includegraphics[width=0.6\linewidth]{Figures/GrowthRateZoomedIn.pdf}}
-\caption[Growth rate of populations expanding over a linear gradient.]{Growth rate of populations expanding over a linear gradient, from $b = 1$ to $b = 5$ and for the small ($\sigma_{disperse} = 2$) and large ($\sigma_{disperse} = 4$) dispersal distances. The four different regimes of genetic architecture are indicated along the $x$-axis, and points are jittered. Below the gray dashed lines are cases that the population did not expand out of the core. Error bars indicate 95\% confidence intervals.}
+\caption[Growth rate of populations expanding over a linear gradient.]{Growth rate of populations expanding over a linear gradient, from $b = 1$ to $b = 5$ and for the small ($\sigma_{disperse} = 2$) and large ($\sigma_{disperse} = 4$) dispersal distances. The four different regimes of genetic architecture are indicated along the $x$-axis, and points are jittered. Below the gray dashed line are cases that the population did not expand out of the core. Error bars indicate 95\% confidence intervals.}
 \label{fig:linearspeed}
 \end{figure}
 
@@ -165,8 +165,8 @@ On the weaker gradient ($b = 0.0075$), expansion occurs in all cases except the 
 \begin{figure}[ht]
 \centering
 \makebox[\textwidth]{
-        \includegraphics[width=0.8\linewidth]{Figures/GrowthRate_ByStepNum.pdf}}
-\caption[Growth rate of populations expanding over a patchy gradient.]{\color{red}NB missing points are sims still running. I could alternatively lay this figure out like Figure \ref{fig:multistep}? \color{black} Growth rate of populations expanding over a patchy gradient for $b = 0.0075$ (circles) and $b = 0.015$ (triangles). The four different regimes of genetic architecture are indicated along the $x$-axis. Each cluster of points from left to right order the simulations by the number of patches on the landscape from $2$ to $1960$. Cases where $\Delta z_{opt}$ is equal to that of the two patch model in Figure \ref{fig:waittimes} are colored equivalently. All points in grayscale have a $\Delta z_{opt}$ less than and decreasing below $4$. The asterisk indicates the case where a single replicate that expanded contributes to this mean growth rate. This upper $95\%$ confidence interval spans to a growth rate of $91$ individuals per generation. Error bars indicate 95\% confidence intervals.}
+        \includegraphics[width=0.5\linewidth]{Figures/GrowthRate_ByStepNum.pdf}}
+\caption[Growth rate of populations expanding over a patchy gradient.]{\color{red}NB missing points are sims still running. \color{black} Growth rate of populations expanding over a patchy gradient for $b = 0.0075$ (circles) and $b = 0.015$ (triangles). The four different regimes of genetic architecture are indicated along the $x$-axis. Simulations with $\Delta z_{opt} < 4$ all produced similar growth rates and are averaged as the gray points. Cases where $\Delta z_{opt}$ is equal to that of the two patch model in Figure \ref{fig:waittimes} are colored equivalently. The asterisk indicates the case where a single replicate that expanded contributes to this mean growth rate. This upper $95\%$ confidence interval spans to a growth rate of $91$ individuals per generation. Error bars indicate 95\% confidence intervals.}
 \label{fig:hetspeed}
 \end{figure}
 
@@ -179,8 +179,8 @@ We examine the ability of each genetic architecture to expand in a two patch mod
 \begin{figure}[ht]
 \centering
 \makebox[\textwidth]{
-        \includegraphics[width=1\linewidth]{Figures/wait_times.pdf}}
-\caption[Time spent before expansion into second patch.]{Time spent (in generations) before expansion into second patch for each genetic architecture regime. Points are jittered for visualization. All points beyond the vertical dashed line are censored and did not expand during the course of the simulation. \color{red}Do you think I should combine this figure with Figure \ref{fig:constVG} into just one figure?\color{black}}
+        \includegraphics[width=0.8\linewidth]{Figures/combined_wait_times.pdf}}
+\caption[Time spent before expansion into second patch.]{Time spent (in generations) before expansion into second patch for each genetic architecture regime. Points are jittered for visualization. All points beyond the vertical dashed line did not expand during the $20,000$ generations of the simulation.}
 \label{fig:waittimes}
 \end{figure}
 
@@ -201,7 +201,7 @@ In all cases of $\Delta z_{opt}$, we can see that the large effect regime contai
 \centering
 \makebox[\textwidth]{
         \includegraphics[width=0.45\linewidth]{Figures/effect_sizes.pdf}}
-\caption[Per locus genotypic differences.]{Per locus genotypic differences between patches in the two patch model. Each count represents one locus from across all replicates of simulations that successfully expanded into the second patch. Bars extending beyond the limit of the $y$-axis reach variable large values and are truncated to focus on the large effect differences. For 20 replicates and 100 loci, the counts for each color sum to 2000, and there are many small effect differences across loci in the truncated bars.}
+\caption[Per locus genotypic differences.]{Per locus genotypic differences between patches in the two patch model. Each count represents one locus from across all replicates of simulations that successfully expanded into the second patch. Bars extending beyond the limit of the $y$-axis reach large values and are truncated to focus on the large effect differences. For 20 replicates and 100 loci, the counts for each color sum to 2000, and there are many small effect differences from loci in the truncated bars.}
 \label{fig:effectsizes}
 \end{figure}
 
@@ -209,15 +209,15 @@ In all cases of $\Delta z_{opt}$, we can see that the large effect regime contai
 
 \subsubsection{Constant $V_G$ versus constant $V_M$}
 
-To examine if the amount of genetic variance, instead of mutational effect sizes drives the ability for populations to expand and adapt, we analyze a subset of simulations that held $V_G$ constant instead of $V_M$. With a decreasing $\alpha^2$, expansion became more difficult. Expansion no longer occurred for equivalent values of $\Delta z_{opt}$ and became more difficult at lower values of $\Delta z_{opt}$ (Figure \ref{fig:constVG}). This shows that genetic variance was not the determining factor for expansion in these cases, but that the availability of mutations of larger effect determined the ability to adapt and expand into the second patch. %%%% FILL IN 316 and 1000 loci results - AND NEW CONST VG RESULTS!!!
+To examine if the amount of genetic variance, instead of mutational effect sizes drives the ability for populations to expand and adapt, we analyze a subset of simulations that held $V_G$ constant instead of $V_M$. With a decreasing $\alpha^2$, expansion became more difficult. Expansion no longer occurred for equivalent values of $\Delta z_{opt}$ and became more difficult at lower values of $\Delta z_{opt}$ (Figure \ref{fig:waittimes}). This shows that genetic variance was not the determining factor for expansion in these cases, but that the availability of mutations of larger effect determined the ability to adapt and expand into the second patch. %%%% FILL IN 316 and 1000 loci results - AND NEW CONST VG RESULTS!!!
 
-\begin{figure}[ht]
-\centering
-\makebox[\textwidth]{
-        \includegraphics[width=0.9\linewidth]{Figures/constVG_wait_times.pdf}}
-\caption[Time spent before expansion into second patch for constant $V_G$ simulations.]{Time spent (in generations) before expansion into second patch for each genetic architecture regime for simulations with constant $V_G$. Points are jittered for visualization. All points beyond the vertical dashed line are censored and did not expand during the course of the simulation. Mutation rate, $\mu$, was held constant at $10^{-5}$ while $\alpha^2$ was varied at $0.05, 0.5,$ and $5.0$.}
-\label{fig:constVG}
-\end{figure}
+%%\begin{figure}[ht]
+%%\centering
+%%\makebox[\textwidth]{
+%%        \includegraphics[width=0.9\linewidth]{Figures/constVG_wait_times.pdf}}
+%%\caption[Time spent before expansion into second patch for constant $V_G$ simulations.]{Time spent (in generations) before expansion into second patch for each genetic architecture regime for simulations with constant $V_G$. Points are jittered for visualization. All points beyond the vertical dashed line are censored and did not expand during the course of the simulation. Mutation rate, $\mu$, was held constant at $10^{-5}$ while $\alpha^2$ was varied at $0.05, 0.5,$ and $5.0$.}
+%%\label{fig:waittimes}
+%%\end{figure}
 
 
 \subsection{Combination of patch size and $\Delta z_{opt}$}
@@ -227,8 +227,8 @@ We have thus far shown that overall $b$ matters for range expansion, but also th
 \begin{figure}[!ht]
 \centering
 \makebox[\textwidth]{
-        \includegraphics[width=0.9\linewidth]{Figures/UpdatedGrowthRatesByStep.pdf}}
-\caption[Population growth rates across patchy landscapes.]{\color{red}I could alternatively lay this figure out like Figure \ref{fig:hetspeed}? \color{black} Population growth rates (number of individuals per generation) across patchy landscapes having a constant $\Delta z_{opt}$ of either 5 or 10. The size of each patch directly correlates to the number of patches on the landscape. The overall gradient increases with additional steps and can be calculated as $b = \Delta z_{opt}(number~of~patches - 1)$. The small dispersal kernel is for $\sigma_{disperse} = 2$ and the large dispersal kernel for $\sigma_{disperse} = 4$.}
+        \includegraphics[width=0.8\linewidth]{Figures/UpdatedGrowthRatesByStep.pdf}}
+\caption[Population growth rates across patchy landscapes.]{Mean population growth rates (number of individuals per generation) across patchy landscapes having a constant $\Delta z_{opt}$ of either 5 or 10. The size of each patch directly correlates to the number of patches on the landscape. The overall gradient increases with additional steps and can be calculated as $b = \Delta z_{opt}(number~of~patches - 1)$.}
 \label{fig:multistep}
 \end{figure}
 
@@ -347,7 +347,7 @@ $\alpha^2 = 5.0$	& $7.5$		& $-0.1967 - 4.8746 ~ (0.0190)$	\\
 \centering
 \makebox[\textwidth]{
         \includegraphics[width=1\linewidth]{Figures/wait_times_200.pdf}}
-\caption[Time spent before expansion into second patch.]{Time spent (in generations) before expansion into second patch for each genetic architecture regime with a larger dispersal kernel of $2\sigma_{disperse}$. Points are jittered for visualization. All points beyond the vertical dashed line are censored and did not expand during the course of the simulation.}
+\caption[Time spent before expansion into second patch.]{Time spent (in generations) before expansion into second patch for each genetic architecture regime with a larger dispersal kernel of $\sigma_{disperse} = 4$. Points are jittered for visualization. All points beyond the vertical dashed line are censored and did not expand during the course of the simulation.}
 \label{fig:waittimes200}
 \end{figure}
 
