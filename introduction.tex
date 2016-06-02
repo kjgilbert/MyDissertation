@@ -42,12 +42,12 @@ Apart from detection issues, evolutionary processes themselves may lead to false
 
 An quintessential example of demographic history interacting with detection of loci under selection is that of species range expansions. Many species in the northern hemisphere have expanded northward after the last glaciation to recolonize previously uninhabitable terrain. This expansion process has left many populations out of equilibria. Range expansions can lead to a completely neutral genetic process that leaves a genetic signature in populations identical to that of selection on those loci. During range expansions, the expanding front continually colonizes new habitat. These front edge populations are thus consistently at lower effective population sizes. At the range edge, the strength of selection is reduced and genetic drift predominates. This can lead to the loss or fixation of alleles of various effects, beneficial or deleterious.  The repetition of this process during expansion has been termed gene surfing \citep{Klopfstein:2006}. As such alleles surf along the expanding front, this can leave behind the signature of a genetic cline, and this cline results from a purely neutral process during expansion. When such an expansion occurs over an environmental gradient, as is the case for northward expansion of species over latitudinal gradients in climate, this spatial autocorrelation of alleles with environmental conditions can lead many inferences of loci under selection astray \citep{Whitlock:2015}.
 
-Understanding the process of local adaptation during range expansions can contribute to our understanding of local adaptation in general. In \Chapref{heterogeneouslandscapes} and \Chapref{expansionload} I present studies examining this process. \Chapref{heterogeneouslandscapes} examines how range expansions over heterogeneous, patchy landscapes impacts the ability of populations to adapt to the local environment.
+Understanding the process of local adaptation during range expansions can contribute to our understanding of local adaptation in general. In \Chapref{heterogeneouslandscapes, expansionload} I present simulation studies examining this process. \Chapref{heterogeneouslandscapes} examines how range expansions over heterogeneous, patchy landscapes impact the ability of populations to adapt to the local environment. I test the interaction of this process with genetic architectures varying the presence of large effect mutations to further inform our understanding of adaptation via loci of small effect versus loci of large effect. Copious studies have investigated the process of range expansion and adaptation over environmental gradients \citep{Kirkpatrick:1997, Barton:2001, Bridle:2010, Polechova:2015, GarciaRamos:1997}. This theory has led to a strong understanding of the role of population sizes, migration, and gene flow at range edges. An important aspect of this process is asymmetric gene flow at a range edge. Because central populations tend to be more dense under the central-marginal hypothesis \citep{Brown:1984, Eckert:2008}, proportionally more gene flow reaches populations at a range edge. This gene flow can have one of two effects: swamping locally adaptive alleles with foreign, maladaptive alleles and preventing local adaptation, or introducing necessary genetic variation in otherwise depauperate populations thereby enhancing the ability to adapt. Investigations of these processes have used linear gradients in examining this process, while many environmental gradients in the real word may not change more heterogeneously over space. Whether expansion over such heterogeneous landscapes better matches theory on adaptation in two patch models \citep{Gomulkiewicz:1995, Ronce:2001, Holt:1997, Gomulkiewicz:1999}, expansion over a linear gradient, or neither necessitates further investigation.
+
+Furthermore, \Chapref{expansionload} examines a different aspect of range expansions -- the surfing of deleterious alleles at range edges leading to reductions in fitness from their accumulation, termed the expansion load. Theoretical studies have simulated this process and shown that these fitness reductions can be substantial in populations at the range edge \citep{Peischl:2013, Peischl:2015, Peischl:2015b}. This process has also been implicated in (and debated as) causing many of the deleterious variants seen in human populations due to their recent history of expansion our of Africa \citep{Henn:2015, Henn:2015b, Lohmueller:2008, Lohmueller:2014b, Do:2015}. We provide further insight into the process of expansion load by simulating the combination of deleterious alleles as well as adaptation across an environmental gradient to assess the impact and interaction of local adaptation to the environment with expansion load accumulated at the range edge.
 
 
-
-
-studying range expansion and adaptation during expansion
+In my final project, \Chapref{reproducibility} I present results from a slightly tangential project that however has broad implications for all of my previous chapters. Understating effective population sizes and populations undergoing range expansions necessitates that we know what a population itself is. This question is not as simple as it may sound, and determining what a true population is in many systems can be incredibly difficult \citep{Waples:2006}. Many methods exist and continue to be developed for the sole purpose of identifying populations or visualizing population structure in both continuous and discrete populations \citep{Pritchard:2000, Falush:2003, Falush:2007, Rosenberg:2004, Petkova:2015, Bradburd:2016}.
 
 
 one last section on it being key to know what a population even is
@@ -59,45 +59,22 @@ discuss methods for identifying pops
 specify structure and testing its reproducibility to make sure the right inferences are indeed made
 
 
-\Chapref{heterogeneouslandscapes}
-
-\Chapref{expansionload}
-
-\Chapref{reproducibility}
-
-and say examples of inferences that can go wrong - katie's paper and loci under seln
-
-whether a pop was once one large one then split
-migration
-expansion and small at front but not anymore
-
 
 These projects combined contribute to our understanding of how populations and species evolve and how we can best measure and understand their evolution.
 
 
 
 
-- explain how knowing more about linkage and sweeps etc also matter with demography
-
-- explain interaction of demog with each
-
-- explain changing demog in relation to climate change etc- will be more common, so imp to study
+%% - explain how knowing more about linkage and sweeps etc also matter with demography
+%% - explain interaction of demog with each
+%% - explain changing demog in relation to climate change etc- will be more common, so imp to study
 
 
-A major question has emerged in the field of evolutionary biology and population genetics over the past decade: how do natural selection and past demographic history interact to shape current genetic diversity of populations and species? Researchers have come to realize that these two processes are not separate actions on the genome, but are instead intricately linked. Selective and neutral processes can occur concurrently and can often be incredibly difficult to disentangle. Recent studies1,2,3,4 provide examples of loci under selection that contribute to adaptation, and increasing amounts of genomic data allow for an improved understanding of the forces creating, maintaining, or eliminating genetic diversity. Disentangling the respective role of selection and demography is fundamental. Identifying loci that truly contribute to adaptation and determining when selection is most effective on the genome have implications for eliminating or combatting diseases, controlling invasive species, and ensuring the survival of species in the face of climate change and other anthropogenic environmental changes.
+%% A major question has emerged in the field of evolutionary biology and population genetics over the past decade: how do natural selection and past demographic history interact to shape current genetic diversity of populations and species? Researchers have come to realize that these two processes are not separate actions on the genome, but are instead intricately linked. Selective and neutral processes can occur concurrently and can often be incredibly difficult to disentangle. Recent studies1,2,3,4 provide examples of loci under selection that contribute to adaptation, and increasing amounts of genomic data allow for an improved understanding of the forces creating, maintaining, or eliminating genetic diversity. Disentangling the respective role of selection and demography is fundamental. Identifying loci that truly contribute to adaptation and determining when selection is most effective on the genome have implications for eliminating or combatting diseases, controlling invasive species, and ensuring the survival of species in the face of climate change and other anthropogenic environmental changes.
 
-Demographic history contributes to every population's current genetic makeup. For example, population bottlenecks, demographic growth, admixture, or migration events all leave different genetic signatures in populations. Methods exist to infer such histories5,6, but it has recently been discovered that some demographic histories, particularly range expansions, can leave genetic signatures identical to others, confounding our ability to infer a population's past and what has contributed to its present and future. During a species range expansion, founding populations of small size at the expanding front experience a process termed gene surfing7, which can increase the frequency of neutral variants above expectation in newly colonized habitats, and look very much like an event of positive selection8. This same process can also result in the increase of deleterious variants that confer a mutational burden on populations and prevent their expansion or adaptation9 to new conditions due to the reduced efficiency of selection in small populations at range edges. The importance of these spatial expansions on the genetic diversity of populations has only recently been identified. Furthermore, a related demographic history of a range shift, where the entirety of a species range moves over space expanding at the front and receding at the trailing edge, has not been investigated in terms of its potential effects on population diversity. Furthering our understanding of these processes and their impact on species diversity will thus be a great advancement of the fields of evolutionary biology and population genetics.
+%% Demographic history contributes to every population's current genetic makeup. For example, population bottlenecks, demographic growth, admixture, or migration events all leave different genetic signatures in populations. Methods exist to infer such histories5,6, but it has recently been discovered that some demographic histories, particularly range expansions, can leave genetic signatures identical to others, confounding our ability to infer a population's past and what has contributed to its present and future. During a species range expansion, founding populations of small size at the expanding front experience a process termed gene surfing7, which can increase the frequency of neutral variants above expectation in newly colonized habitats, and look very much like an event of positive selection8. This same process can also result in the increase of deleterious variants that confer a mutational burden on populations and prevent their expansion or adaptation9 to new conditions due to the reduced efficiency of selection in small populations at range edges. The importance of these spatial expansions on the genetic diversity of populations has only recently been identified. Furthermore, a related demographic history of a range shift, where the entirety of a species range moves over space expanding at the front and receding at the trailing edge, has not been investigated in terms of its potential effects on population diversity. Furthering our understanding of these processes and their impact on species diversity will thus be a great advancement of the fields of evolutionary biology and population genetics.
 
-1) Stapley et al 2010 TREE 25:705-712, 
-2) Excoffier et al 2009 Heredity 103:285-298, 
-3) Stinchecombe and Hoekstra 2008 Heredity 100:158-170, 
-4) Foll and Gaggiotti 2008 Genetics 180:977-993, 
-5) Ramakrishnan et al 2005 MEC 14:2915-2922, 
-6) Hey and Nielsen 2004 Genetics 167:747-760, 
-7) Klopfstein et al 2006 MBE 23:482-490, 
-8) Edmonds et al 2004 PNAS 101:975-979, 
-9) Peischl et al 2013 MEC 22:5972-5982, 
-10) Tishkoff et al 2007 Nature Genetics 39:31-40
+%% 1) Stapley et al 2010 TREE 25:705-712, 2) Excoffier et al 2009 Heredity 103:285-298, 3) Stinchecombe and Hoekstra 2008 Heredity 100:158-170, 4) Foll and Gaggiotti 2008 Genetics 180:977-993, 5) Ramakrishnan et al 2005 MEC 14:2915-2922, 6) Hey and Nielsen 2004 Genetics 167:747-760, 7) Klopfstein et al 2006 MBE 23:482-490, 8) Edmonds et al 2004 PNAS 101:975-979, 9) Peischl et al 2013 MEC 22:5972-5982,  10) Tishkoff et al 2007 Nature Genetics 39:31-40
 
 
 
