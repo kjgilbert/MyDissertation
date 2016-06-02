@@ -14,7 +14,7 @@
 
 % aim for 8-9 pages?
 
-The study of evolution aims to understand the myriads of diversity in existence today, how they came to be, and why. An essential part of this task requires understanding the genetic processes and patterns that occur in and define populations. Population genetics coalesced as a field in the early 1900s, following more than a decade of controversy and debate over the process of evolution \citep{Provine:2001}. Since its advent, great insight has been made into the processes that contribute to the evolution of populations and species. Our understandings of genetic drift, gene flow, mutation, and selection have created a solid foundation for the growing field of evolutionary biology. Yet as the field has advanced, the realization that the manifold and minute complexities of these processes can immensely impact populations and species has left open questions in the field of evolutionary biology.
+The study of evolution aims to understand the myriads of diversity in existence today and how they came to be. An essential part of this task requires understanding the genetic processes and patterns that occur in and define populations. Population genetics coalesced as a field in the early 1900s, following more than a decade of controversy and debate over the process of evolution \citep{Provine:2001}. Since its advent, great insight has been made into the processes that contribute to the evolution of populations and species. Our understandings of genetic drift, gene flow, mutation, and selection have created a solid foundation for the growing field of evolutionary biology. Yet as the field has advanced, the realization that the manifold and minute complexities of these processes can immensely impact populations and species has left open questions in the field of evolutionary biology.
 
 One of the interesting complexities in understanding population genetics is the role of demographic history. Though population genetics eponymously (\color{red}wrong word?\color{black}) uses genetic data both in theory and empirically to understand the process of evolution, informing such genetic data with ecological demographic information is often, if not always, necessary. Without this combination of information, it is nearly impossible to gain a full understanding of the ancestral processes leading to the current state of the system at hand and the future trajectories this system may follow. Effective population size makes an exemplar description of this situation. Census size of many organisms can be obtained, as this simply requires counting all individuals present in a population (though for many reasons, census size can often be the more difficult quantity to obtain). However census size alone does not generally inform long term processes occurring in a population nor how the population may evolve. Genetic data is necessary for such insight. For example, a large number of individuals might be present at any given time due to stochastic events such as increase in resources, rather than reflecting consistently large numbers of individuals. Likewise a small number of individuals might be found if other stochastic abiotic factors such as a recent catastrophic storm lead to the death of many individuals. In these instances, defining a population by its effective size is more useful and can reveal information that the census size does not. 
 
@@ -30,11 +30,22 @@ In \Chapref{effectivepopsize} I investigate the impact of migration on leading t
 
 \color{red}need some sort of transition here\color{black}
 
-A major goal of evolutionary biology today is to identify the loci that contribute to local adaptation of populations \citep{Savolainen:2013, Whitlock:2015, LeCorre:2012, Coop:2010}. Demographic history is, however, one of the leading causes of the misidentification of adaptive loci \citep{Whitlock:2015}(\color{red}other refs?\color{black}).
+A major goal of evolutionary biology today is to identify the loci that contribute to local adaptation of populations \citep{Savolainen:2013, Whitlock:2015, LeCorre:2012, Coop:2010}. Demographic history is, however, one of the leading causes of the misidentification of adaptive loci \citep{Whitlock:2015}(\color{red}other refs?\color{black}). Local adaptation is an important in the process of evolution for many reason. Adapting to the local environment is what allows many species to exist across a range of conditions. In some cases, local adaptation can also be considered an early stage in the process of speciation, contributing to differentiation among populations that eventually become reproductively isolated. In today's world of climate change and other anthropogenic forces fragmenting or altering species native environments, understanding the ability of populations to adapt is key to maintaining diversity. In addition to the utility of this knowledge in an applied sense, understanding the maintenance of genetic diversity across populations has been a longstanding question in evolutionary biology:
+\begin{quoteshrink}
+  ``The roles of local fitness peaks and gene flow in adaptive evolution remain major open questions in evolutionary biology, nearly a century after Wright first raised the issue.''
+  \hfill\citet{Barton:2016}
+\end{quoteshrink}
 
-why we care about local adaptation
+To best understand local adaptation, we rely on empirical data from natural species. Transplant studies and common gardens have contributed a great deal to identifying the presence of local adaptation within species. Finding the genetic loci that contribute to this adaptation is a complicated endeavor. Before considering the difficulties due to identifying the correct loci instead of the incorrect ones, there is a first problem that is detecting loci contributing to a trait at all. Ample research has been devoted to finding whether adaptation is due mainly to few loci of large allelic effects or many loci of small effects(\color{red}citations\color{black}). Our current genetic and genomic technology combined with available statistical methods make the identification of small effect loci very difficult (\color{red}citations\color{black}). Therefore, finding few loci that contribute to an adaptive trait may be the correct biological answer, but may also be a detection error where small effect loci are missed as false negatives.
 
-example of range expansion misleading loci under adaptation
+Apart from detection issues, evolutionary processes themselves may lead to false inference of loci under selection. A common method for identifying loci important in local adaptation is by environment-allele correlations. In these analyses, when certain alleles correlate to certain environmental conditions, they are predicted to be adaptive in those environments. Similarly, genetic clines over space that correlate with clines in environmental conditions are considered as adaptive. Inferring selection for these alleles is not unfounded, but recent years' research has shown that selection is not the only process capable of leading to these genetic patterns. Neutral processes such as genetic drift are equally possible causes for such a pattern, in particular when populations have non-equilibrium demographic histories. (\color{red}citations for this whole paragraph\color{black})
+
+An quintessential example of demographic history interacting with detection of loci under selection is that of species range expansions. Many species in the northern hemisphere have expanded northward after the last glaciation to recolonize previously uninhabitable terrain. This expansion process has left many populations out of equilibria. Range expansions can lead to a completely neutral genetic process that leaves a genetic signature in populations identical to that of selection on those loci. During range expansions, the expanding front continually colonizes new habitat. These front edge populations are thus consistently at lower effective population sizes. At the range edge, the strength of selection is reduced and genetic drift predominates. This can lead to the loss or fixation of alleles of various effects, beneficial or deleterious.  The repetition of this process during expansion has been termed gene surfing \citep{Klopfstein:2006}. As such alleles surf along the expanding front, this can leave behind the signature of a genetic cline, and this cline results from a purely neutral process during expansion. When such an expansion occurs over an environmental gradient, as is the case for northward expansion of species over latitudinal gradients in climate, this spatial autocorrelation of alleles with environmental conditions can lead many inferences of loci under selection astray \citep{Whitlock:2015}.
+
+Understanding the process of local adaptation during range expansions can contribute to our understanding of local adaptation in general. In \Chapref{heterogeneouslandscapes} and \Chapref{expansionload} I present studies examining this process. \Chapref{heterogeneouslandscapes} examines how range expansions over heterogeneous, patchy landscapes impacts the ability of populations to adapt to the local environment.
+
+
+
 
 studying range expansion and adaptation during expansion
 
@@ -60,9 +71,13 @@ whether a pop was once one large one then split
 migration
 expansion and small at front but not anymore
 
-Past changes in population sizes, movement of individuals among populations, or spread of populations geographically are all actions that affect the relative importance of genetic drift, gene flow, mutation, and selection.
 
--explain how knowing more about linkage and sweeps etc also matter with demography
+These projects combined contribute to our understanding of how populations and species evolve and how we can best measure and understand their evolution.
+
+
+
+
+- explain how knowing more about linkage and sweeps etc also matter with demography
 
 - explain interaction of demog with each
 
@@ -87,22 +102,7 @@ Demographic history contributes to every population's current genetic makeup. Fo
 
 
 
-CAN CITE NICK BARTON'S OPINION PIECE ON SEWALL WRIGHT:
-Sewall Wright on Evolution in Mendelian Populations and the "Shifting Balance"
-Nicholas H. Barton
-GENETICS January 5, 2016 vol. 202 no. 1 3-4; DOI: 10.1534/genetics.115.184796
-
-"The roles of local fitness peaks and gene flow in adaptive
-evolution remain major open questions in evolutionary biology,
-nearly a century after Wright first raised the issue."
-
-\section{Structure and contents of this thesis}
-
-The aim of my thesis is to investigate a set of these processes in detail.  ... 
-The first research chapter...
-
-These projects combined contribute to our understanding of how populations and species evolve 
-and how we can best measure and understand their evolution.
+%%\section{Structure and contents of this thesis}
 
 
 
