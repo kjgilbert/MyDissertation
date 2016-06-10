@@ -133,7 +133,7 @@ We first determine the greatest steepness that allows expansion on a linear grad
 
 % SY - do more reps on the linear gradients!, esp for large effect regime b=4
 
-\citet{Barton:2001} derives predictions for the value of $b_{crit}$, which depend on the genetic variance: $b_{crit} = \frac{V_G}{\sigma \sqrt{V_S}}$, where $\sigma$ is the standard deviation of distance travelled by combining both gamete and offspring dispersal, i.e. $\sigma = \sqrt{\sigma_{disperse}^2 + \frac{1}{2}\sigma_{breed}^2}$ (weighting $\sigma_{breed}$ by half derives from the fact that gametes from only one parent move during the breeding life cycle). We find that the genetic variance across the landscape increases in scenarios of steeper environmental gradients (\color{red}Supplemental Figure . \color{black}). Because the genetic variance evolves differently on each gradient, we cannot make \emph{a priori} predictions for $b_{crit}$. We can calculate a $b_{crit}$ value using the genetic variance from the landscape core, but doing so creates a large underestimate of our realized $b_{crit}$ values (realized $b_{crit} = [4-4.5], [3.5-4], [3-3.5],$ and $[4-4.5]$; predicted $b_{crit} \approx 0.161, 0.125, 0.018,$ and $0.002$ for each genetic architecture respectively: small, medium-small, medium-large, and large). There are multiple reasons for this disparity in $b_{crit}$, which we consider in the Discussion.
+\citet{Barton:2001} derives predictions for the value of $b_{crit}$, which depend on the genetic variance: $b_{crit} = \frac{V_G}{\sigma \sqrt{V_S}}$, where $\sigma$ is the standard deviation of distance travelled by combining both gamete and offspring dispersal, i.e. $\sigma = \sqrt{\sigma_{disperse}^2 + \frac{1}{2}\sigma_{breed}^2}$ (weighting $\sigma_{breed}$ by half derives from the fact that gametes from only one parent move during the breeding life cycle). We find that the genetic variance across the landscape increases in scenarios of steeper environmental gradients (Supplemental Figure S\ref{fig:VaAmong}). Because the genetic variance evolves differently on each gradient, we cannot make \emph{a priori} predictions for $b_{crit}$. We can calculate a $b_{crit}$ value using the genetic variance from the landscape core, but doing so creates a large underestimate of our realized $b_{crit}$ values (realized $b_{crit} = [4-4.5], [3.5-4], [3-3.5],$ and $[4-4.5]$; predicted $b_{crit} \approx 0.161, 0.125, 0.018,$ and $0.002$ for each genetic architecture respectively: small, medium-small, medium-large, and large). There are multiple reasons for this disparity in $b_{crit}$, which we consider in the Discussion.
 
 % SY - the underestimate of bcrit - REALLY cool, I like that you put it in terms of a comparison to analytical model, helps frame it. Suggests that migration-selection processes maintaining variance among and therefore within pops are critical (?)
 
@@ -228,7 +228,7 @@ the large effect regime produces more and greater magnitude differences between 
 % SY - From theory, Turelli (1984) showed that VG = 4 L mu Vs (and is indeed independent of alpha), but Burger et al. (1989) showed that there is a small effect of alpha, depending on Ne…figure 4 says that VG is constant with the three parameter sets where alpha varies…what is the basis for this? (in Yeaman and Guillaume (2009), we found that the sims VG matched Burger’s predictions very well, supp. mat. S1)
 % KJG - from the estimated VG - using either Nemo's va or vb outputs both show this to be true
 
-To examine if the amount of genetic variance, rather than mutational effect sizes, drives the ability for populations to expand and adapt, we analyze a subset of simulations with parameters (as described in the Methods) that created a constant $V_G$ instead of a constant $V_M$. With a decreasing $\alpha^2$, expansion became more difficult. Expansion no longer occurred for values of $\Delta z_{opt}$ where expansion was previously possible and became more difficult at lower values of $\Delta z_{opt}$ (Figure \ref{fig:waittimes}). In combination with Figure \ref{fig:effectsizes}, this shows that genetic variance was not the only determining factor for expansion, but that the availability of mutations of larger effect determined the ability to adapt and expand into the second patch. 
+To examine if the amount of genetic variance, rather than mutational effect sizes, drives the ability for populations to expand and adapt, we analyze a subset of simulations with parameters (as described in the Methods) that created a constant $V_G$ instead of a constant $V_M$ (values of $V_G$ in Supplemental Figure S\ref{fig:VaConst}). With a decreasing $\alpha^2$, expansion became more difficult. Expansion no longer occurred for values of $\Delta z_{opt}$ where expansion was previously possible and became more difficult at lower values of $\Delta z_{opt}$ (Figure \ref{fig:waittimes}). In combination with Figure \ref{fig:effectsizes}, this shows that genetic variance was not the only determining factor for expansion, but that the availability of mutations of larger effect determined the ability to adapt and expand into the second patch. 
 
 
 \subsection{Combination of patch size and $\Delta z_{opt}$}
@@ -363,12 +363,31 @@ $\alpha^2 = 5.0$	& $7.5$		& $-0.1967 - 4.8746 ~ (0.0190)$	\\
 %<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
 
 
+
+\begin{figure}[h]
+\centering
+\makebox[\textwidth]{
+        \includegraphics[width=0.9\linewidth]{Figures/CompareVa_OnePlot.png}}
+\caption[Genetic variance across parameter sets.]{Genetic variance across parameter sets approaching respective equilibria during simulation burn-in.}
+\label{fig:VaAmong}
+\end{figure}
+
+
 \begin{figure}[h]
 \centering
 \makebox[\textwidth]{
         \includegraphics[width=1\linewidth]{Figures/wait_times_200.pdf}}
 \caption[~- Time spent before expansion into second patch.]{Time spent (in generations) before expansion into second patch for each genetic architecture regime with a larger dispersal kernel of $\sigma_{disperse} = 4$. Points are jittered for visualization. All points beyond the vertical dashed line are censored and did not expand during the course of the simulation.}
 \label{fig:waittimes200}
+\end{figure}
+
+
+\begin{figure}[h]
+\centering
+\makebox[\textwidth]{
+        \includegraphics[width=0.9\linewidth]{Figures/constVg_CompareVa_OnePlot.png}}
+\caption[Approximately constant genetic variance across parameter sets.]{Approximately constant genetic variance across parameter sets approaching respective equilibria during simulation burn-in.}
+\label{fig:VaConst}
 \end{figure}
 
 
