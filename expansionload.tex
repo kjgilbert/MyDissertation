@@ -1,15 +1,15 @@
 \chapter{Local maladaptation reduces expansion load during range expansion}
 \label{chap:expansionload}
 
-\section*{Abstract}
+%%\section{Abstract}
 
-The biotic and abiotic factors that facilitate or hinder species range expansions are many and complex. We examine the impact of two genetic processes and their interaction on fitness at expanding range edges: local maladaptation resulting from the presence of an environmental gradient, and expansion load resulting from increased genetic drift at the range edge. Results from spatially explicit simulations indicate that the presence of an environmental gradient during range expansion reduces expansion load; conversely, increasing expansion load allows only locally adapted populations to persist (\color{red} OR eliminates maladaptive diversity ? \color{black}) at the range edge. %Increased expansion load reduces maladaptation by necessitating higher local adaptation in order for absolute fitness of a population to be at a sustainable level. 
-Increased maladaptation reduces the speed of range expansion, leading to increased evolutionary rescue and the reduction of expansion load at the range edge. These results may have ramifications for species being forced to shift their ranges due to climate change or other anthropogenic changes. If rapidly changing climate leads to faster expansion from populations tracking their shifting climatic optimum, populations may suffer increased expansion load beyond previous expectations.
+%%The biotic and abiotic factors that facilitate or hinder species range expansions are many and complex. We examine the impact of two genetic processes and their interaction on fitness at expanding range edges: local maladaptation resulting from the presence of an environmental gradient, and expansion load resulting from increased genetic drift at the range edge. Results from spatially explicit simulations indicate that the presence of an environmental gradient during range expansion reduces expansion load; conversely, increasing expansion load allows only locally adapted populations to persist (\color{red} OR eliminates maladaptive diversity ? \color{black}) at the range edge. %Increased expansion load reduces maladaptation by necessitating higher local adaptation in order for absolute fitness of a population to be at a sustainable level. 
+%%Increased maladaptation reduces the speed of range expansion, leading to increased evolutionary rescue and the reduction of expansion load at the range edge. These results may have ramifications for species being forced to shift their ranges due to climate change or other anthropogenic changes. If rapidly changing climate leads to faster expansion from populations tracking their shifting climatic optimum, populations may suffer increased expansion load beyond previous expectations.
 
-\newpage{}
+%%\newpage{}
 
 
-\section*{Introduction}
+\section{Introduction}
 
 %broad intro:
 Species range expansion is a complex process that is widely studied in evolutionary biology, ecology, and conservation biology \citep{Chen:2011, Colautti:2013, Hastings:2005, Phillips:2006, Excoffier:2009, Hallatschek:2010}. An array of ecological and evolutionary factors are known to affect the success or failure of range expansion, such as dispersal limitation \citep{Hargreaves:2014b, Marsico:2009, Hastings:2005}, interspecific competition \citep{Case:2000, Price:2009,Svenning:2014, Louthan:2015}, or an inability to adapt to new conditions \citep{Polechova:2015, Holt:2011, Angert:2008}. A recently growing field of research has focused on an additional effect: the genetic load accumulated during the expansion process \citep{Excoffier:2009, Hallatschek:2010, Peischl:2013, Peischl:2015, Peischl:2015b}. In particular, the increasing frequency of deleterious variants in human populations that have expanded out of Africa have been widely studied \citep{Henn:2015, Do:2015, Lohmueller:2008}. A further process that can increase genetic load during range expansion is maladaptation to the local environment due to gene flow from foreign environments, known as migration load \citep{Kirkpatrick:1997, Barton:2001, Polechova:2015}. In this study, we explore the impacts and interactions of heterogeneous selection due to an environmental gradient and the accumulation of deleterious mutations during range expansion.
@@ -31,7 +31,7 @@ It is clear that expansion load can result in reduced fitness of recently expand
 We investigate these alternative hypotheses to establish the role of expansion load and migration load in isolation as well as in combination. Our goal is to employ the most biologically reasonable parameters possible within the realm of our model. Using individual-based simulations on a two-dimensional, spatially explicit, and approximately continuous landscape, we compare the reductions in fitness (load) that populations experience during range expansions over a series of environmental gradients and deleterious mutation rates. These results have implications for the predicted prevalence of expansion load in species across various types of environments and inform our understanding of the complex demographic and genetic processes that occur during range expansions. 
 
 
-\section*{Methods}
+\section{Methods}
 
 
 % broad summary of what we modeled:
@@ -58,7 +58,7 @@ Populations were initiated at carrying capacity in the left-most $40$ cross-sect
 \centering
 \makebox[\textwidth]{
         \includegraphics[width=1\linewidth]{Figures/Landscape_Graphic.pdf}}
-\caption[Landscape graphic.]{Landscape graphic representing an example of the landscape simulated with a grid of units where the burn-in period occurs in the landscape core at the left, expansion proceeds to the right, and any vertical column of units is a cross-section. Actual landscapes were $2000\times40$ units with a $40\times40$ core.}
+\caption[~- Landscape graphic.]{Landscape graphic representing an example of the landscape simulated with a grid of units where the burn-in period occurs in the landscape core at the left, expansion proceeds to the right, and any vertical column of units is a cross-section. Actual landscapes were $2000\times40$ units with a $40\times40$ core.}
 \label{fig:landscape}
 \end{figure}
 
@@ -103,14 +103,17 @@ We assess the impact of expansion across an environmental gradient and in the pr
 
 To track the expanding front we use a single landscape cross section as the range edge. This edge was defined as the first cross section away from the core at which population size is at 50\% of the core's equilibrium population size. The speed of expansion measures the number of cross sections over which this edge cross section travels per generation from the end of the burn-in until reaching the second to last landscape cross section.
 
-We examine fitness at the range edge using a broader definition of the edge to reduce sampling error. We defined this range edge to contain all individuals present within the cross section used to measure expansion speed plus all individuals present in cross sections remaining before empty landscape. Expansion load measured the excess load that accumulated at the range edge beyond mutation load, calculated as $1 - \frac{edge ~ w_D}{core ~ w_D}$.
+We examine fitness at the range edge using a broader definition of the edge to reduce sampling error. We defined this range edge to contain all individuals present within the cross section used to measure expansion speed plus all individuals present in cross sections remaining before empty landscape. Expansion load measured the excess load that accumulated at the range edge beyond mutation load, calculated as 
+\begin{equation}
+\label{eq:load}
+expansion~load = 1 - \frac{edge ~ w_D}{core ~ w_D}
+\end{equation}
 
 Because expansion proceeded at different rates in different scenarios, to create an equivalent comparison of fitness on the landscape we measured populations at the latest recorded point in the simulations before any individuals had dispersed into the last $20$ cross-sections of the landscape. Since individuals can at most disperse 16 units, this prevented bias from edge effects that might arise upon filling the landscape. We averaged population sizes and fitness within cross-sections of the landscape, as we saw no major variation along this axis.
 
-% NS: I think we should check the equations in this paragraph, and revise syntax
-We also examine the distribution of effect sizes for deleterious mutations accumulated at the range edge. We examined the distribution of alleles contributing to expansion load across cases of $U_D$ and $b$. Deleterious mutations were binned by effect size into $40$ quantiles based on the underlying gamma distribution of homozygous effects. Within a given simulation, we calculated the average load due to loci present within each of these bins as follows. Per locus load is given by $load = 1 - (1 - h s \phi_{het} - s \phi_{hom})$, where $\phi_{het}$ is the frequency of heterozygotes at either the edge or in the core, and $\phi_{hom}$ is the frequency of homozygotes in either location. This load per locus was combined multiplicatively across all loci in the given bin for the core and the edge respectively, from which we calculated the measure of total expansion load as $1 - \frac{1 - edge~load}{1 - core~load}$. Because fitness is multiplicative across loci, we then calculated average expansion load per locus in each bin as $1 - \sqrt[n]{1 - expansion~load}$, where $n$ is the number of loci in the respective bin.
+We also examine the distribution of effect sizes for deleterious mutations accumulated at the range edge. We examined the distribution of alleles contributing to expansion load across cases of $U_D$ and $b$. Deleterious mutations were binned by effect size into $40$ quantiles based on the underlying gamma distribution of homozygous effects. Within a given simulation, we calculated the average load due to loci present within each of these bins as follows. For the edge or the core, we calculated fitness in a given bin  of $n$ loci as $w_D =  \prod_{i=1}^{n} (1 - h_i s_i \phi_{het,i} - s_i \phi_{hom,i})$, where $\phi_{het,i}$ is the frequency of heterozygotes for a given locus $i$, and $\phi_{hom,i}$ is the frequency of homozygotes. Expansion load was then calculated for each bin with equation \eqref{eq:load}. Because fitness is multiplicative across loci, we then calculated average expansion load per locus in each bin as $1 - \sqrt[n]{1 - expansion~load}$.
 
-\section*{Results}
+\section{Results}
 
 \subsection*{Expansion Speed}
 % what are these effects on expansion speed? 
@@ -120,7 +123,7 @@ No parameter combinations that we investigated ever led to the formation of a st
 \centering
 \makebox[\textwidth]{
         \includegraphics[width=0.8\linewidth]{Figures/expansion_speed.pdf}}
-\caption[Average speed of expansion.]{Average speed of expansion across scenarios. Circles indicate Gaussian dispersal kernels while triangles indicate leptokurtic dispersal kernels. Dashed lines indicates fecundity-adjusted simulations with Gaussian dispersal, which replicate the loss in realized fitness due to mutation load, but lack expansion load because no deleterious alleles are present. 95\% confidence intervals are smaller than the plot points in all cases.}
+\caption[~- Average speed of expansion.]{Average speed of expansion across scenarios. Circles indicate Gaussian dispersal kernels while triangles indicate leptokurtic dispersal kernels. Dashed lines indicates fecundity-adjusted simulations with Gaussian dispersal, which replicate the loss in realized fitness due to mutation load, but lack expansion load because no deleterious alleles are present. 95\% confidence intervals are smaller than the plot points in all cases.}
 \label{fig:speed}
 \end{figure}
 
@@ -138,7 +141,7 @@ The fitness component for loci with deleterious alleles, $\bar{w}_D$, in the ran
 \centering
 \makebox[\textwidth]{
         \includegraphics[width=1.2\linewidth]{Figures/core_edge_fitness.pdf}}
-\caption[Average core and edge fitness.]{Average core and edge fitness components for quantitative trait and deleterious alleles. Dashed lines indicate fecundity-adjusted simulations which replicate the loss in realized fitness due to mutation load, but lack expansion load because no deleterious alleles are present. Error bars indicate 95\% confidence intervals.}
+\caption[~- Average core and edge fitness.]{Average core and edge fitness components for quantitative trait and deleterious alleles. Dashed lines indicate fecundity-adjusted simulations which replicate the loss in realized fitness due to mutation load, but lack expansion load because no deleterious alleles are present. Error bars indicate 95\% confidence intervals.}
 \label{fig:fitness}
 \end{figure}
 
@@ -151,7 +154,7 @@ Across the two $U_D$ cases, $U_D = 1$ has a 2.95-fold increase in expansion load
 \centering
 \makebox[\textwidth]{
         \includegraphics[width=0.5\linewidth]{Figures/expansion_load.pdf}}
-\caption[Average expansion load.]{Average expansion load across all combinations of environmental gradients and genome-wide deleterious mutation rates. Error bars indicate 95\% confidence intervals.}
+\caption[~- Average expansion load.]{Average expansion load across all combinations of environmental gradients and genome-wide deleterious mutation rates. Error bars indicate 95\% confidence intervals.}
 \label{fig:load}
 \end{figure}
 
@@ -176,7 +179,7 @@ We investigated the distribution of effect sizes for deleterious mutations accum
 \centering
 \makebox[\textwidth]{
         \includegraphics[width=0.9\linewidth]{Figures/load_locibinned.pdf}}
-\caption[Average expansion load per locus.]{Average expansion load per locus at the range edge. Loci are binned into quantiles drawn from our modeled gamma distribution, shown by the histogram of loci density. Average load per locus is then calculated for each of these bins and plotted for each value of the environmental gradient}
+\caption[~- Average expansion load per locus.]{Average expansion load per locus at the range edge. Loci are binned into quantiles drawn from our modeled gamma distribution, shown by the histogram of loci density. Average load per locus is then calculated for each of these bins and plotted for each value of the environmental gradient}
 \label{fig:loci}
 \end{figure}
 
@@ -187,7 +190,7 @@ There are very few loci present in these larger effect size classes that contrib
 \centering
 \makebox[\textwidth]{
         \includegraphics[width=0.9\linewidth]{Figures/example_allfreqs.png}}
-\caption[Deleterious allele frequencies across the landscape.]{Deleterious allele frequencies across the landscape, by homozygous effect size, \emph{s}. This example is at 250 generations after burn-in for the case of a leptokurtic dispersal kernel, with $U_D = 0.1$ and $b = 0$. This example was not randomly chosen, but selected to show that large effect loci can locally fix under these conditions. The locus indicated by the thickest black line has an effect size of $0.0898$.}
+\caption[~- Deleterious allele frequencies across the landscape.]{Deleterious allele frequencies across the landscape, by homozygous effect size, \emph{s}. This example is at 250 generations after burn-in for the case of a leptokurtic dispersal kernel, with $U_D = 0.1$ and $b = 0$. This example was not randomly chosen, but selected to show that large effect loci can locally fix under these conditions. The locus indicated by the thickest black line has an effect size of $0.0898$.}
 \label{fig:allfreqs}
 \end{figure}
 
@@ -201,7 +204,7 @@ There are very few loci present in these larger effect size classes that contrib
 
 %% add mike's point to discussion - in addition to the quanti trait redicing fitness and slowing expansion therefore reducing load, the same is true for more delet loci, i.e. load calcualted from one delet mut and multiplied up to more would overestimate the actual realized load
 
-\section*{Discussion}
+\section{Discussion}
 
 
 %broadly start discussion for where our study fits into the literature of this field
@@ -226,7 +229,7 @@ First, let us consider the improvement in the local adaptation at the range marg
 
 On the other hand, we also observe that expansion load can be greatly reduced in the presence of local maladaptation. In this case, we believe that there is an additional factor explaining this interaction.  In the absence of an environmental gradient, where the greatest expansion load accumulated ($39\%$), range expansion is mainly limited by dispersal ability. However, with local maladaptation caused by an environmental gradient, expansion is further slowed by the need for colonizing populations to adapt to the novel local environment. In fact, range expansion is slowed considerably more by a changing selective environment than by a high frequency of uniformly deleterious alleles (See figure \ref{fig:fitspeed}). As a result, the local maladaptation caused by a heterogeneous environment causes the rate of range expansion to slow substantially (Figure \ref{fig:speed}), which allows more time for evolutionary rescue of marginal populations. As range expansion slows, selection has more opportunity to reduce the frequency of deleterious alleles at the edge. Moreover, with slower expansion, high fitness alleles from the center of the range have more time to disperse toward the edge restoring genetic diversity at sites locally fixed for deleterious alleles by previous drift, and back mutation also has more time to generate beneficial diversity. In general, slower expansion ameliorates the conditions necessary for high expansion load at the range margin. Therefore, the local maladaptation caused by heterogeneous environments can reduce expansion load by slowing the rate of range expansion.
 
-The mechanism altering expansion speed is a vital part of the process for these interactions to occur. When expansion is not slowed by the need to locally adapt and instead only by dispersal limitations, there is no expectation for a faster expansion to contribute to increased load. This explains the lack of further fitness reductions from increased expansion speed in our simulations with long distance dispersal. Instead, local adaptation at the edge was slightly reduced and expansion load less severe than in the Gaussian dispersal case, suggesting that this difference in dispersal models led to only slightly different amounts of expansion load accumulating given the different amount of connectivity between the core and edge. \citet{Fayard:2009} found that surfing was reduced in cases of long distance dispersal, substantiating this result. (\color{red} I think given our new interpretation of the results, Fayard no longer applies - will remove that part unless you think otherwise?\color{black})
+The mechanism altering expansion speed is a vital part of the process for these interactions to occur. When expansion is not slowed by the need to locally adapt and instead only by dispersal limitations, there is no expectation for a faster expansion to contribute to increased load. This explains the lack of further fitness reductions from increased expansion speed in our simulations with long distance dispersal. Instead, local adaptation at the edge was slightly reduced and expansion load less severe than in the Gaussian dispersal case, suggesting that this difference in dispersal models led to only slightly different amounts of expansion load accumulating given the different amount of connectivity between the core and edge. %%\citet{Fayard:2009} found that surfing was reduced in cases of long distance dispersal, substantiating this result. (\color{red} I think given our new interpretation of the results, Fayard no longer applies - will remove that part unless you think otherwise?\color{black})
 
 Expansion load is attributed to the reduced efficacy of selection during expansion allowing detrimental mutations to accumulate, a result our study supports. The effect sizes of mutations underlying expansion load have important empirical implications, as many studies today aim to understand expansion load in humans after expansion out of Africa \citep{Henn:2015,Henn:2015b, Lohmueller:2014, Lohmueller:2014b, Gravel:2016}. Whether expansion load exists but is difficult to detect has been debated, and a full understanding of the selection coefficients across human (or other) genomes is lacking \citep{Hancock:2011, Henn:2015, Henn:2015b, Lohmueller:2014, Simons:2014}. We find an interesting difference in the make-up of expansion load between our two simulated cases of genome-wide deleterious mutation rates. While deleterious alleles of moderate and large effect are relatively rare, we find that they are responsible for the majority of expansion load. These alleles, which would otherwise tend to be purged or kept at low frequency by purifying selection, are able to increase in frequency on the expanding wave front. Interestingly, we find that in cases exhibiting faster range expansion, a larger proportion of expansion load comes from alleles of moderate and large effect, as purifying selection has less time to oppose the rise in frequency of strongly deleterious alleles.
 
@@ -247,37 +250,7 @@ A potentially key evolutionary component of range expansions not included in our
 Our results support those of previous studies finding that expansion load via the surfing of deleterious alleles reduces fitness in expanding populations \citep{Peischl:2013, Peischl:2015, Peischl:2015b}. We show this under biologically realistic conditions, bolstering evidence that allele surfing may, indeed, cause expansion load in nature. Our results are also in agreement with those of previous studies showing that on an environmental gradient, migration load reduces fitness in expanding populations \citep{Kirkpatrick:1997, Bridle:2010, Polechova:2015}, though we did not see any cases of stable range limits as a result of local maladaptation nor expansion load. We highlight the mechanism of interaction between local maladaptation and expansion load. Local maladaptation feeds back to reduce the speed of expansion and thus allow for increased evolutionary rescue throughout range expansion. Finally, we demonstrate that faster range expansion leads to a larger contribution of moderate and large effect deleterious alleles to expansion load. These contributions significantly advance theory on the genetics of range expansion towards meaningful predictions and interpretations for studies of natural populations.
 
 
-\begin{table}[h]
-\centering \small
-\caption[Fitness and expansion speed results per scenario parameter combinations]{Fitness and expansion speed results per scenario parameter combinations.}
-\label{tab:paramresults}
-\begin{tabular}{p{0.09\textwidth}|p{0.11\textwidth}|p{0.11\textwidth}|p{0.15\textwidth}|p{0.11\textwidth}|p{0.11\textwidth}|p{0.11\textwidth}}
-Environ-			& Genomic			& Dispersal	& Mean  			& Total $\bar{w}$	& Quantitative 		& Deleterious 		\\
-mental Gradient	&  Deleterious Mutation 	& Kernel		& Expansion Speed	&				& Trait $\bar{w}_z$	& Loci $\bar{w}_D$	\\
- (\emph{b})		&  Rate ($U_D$)		& 			& 				& \scriptsize{Core/Edge}	& \scriptsize{Core/Edge}	& \scriptsize{Core/Edge}	\\ \hline \hline
-0.0                       	&	0.0	& Gaussian         &	3.741 +/- 0.005	&	0.932/0.932	&	0.932/0.932	&	1/1	\\
-0.0375                    	&	0.0	& Gaussian         &	2.314 +/- 0.011	&	0.929/0.399	&	0.929/0.399	&	1/1	\\
-0.375                     	&	0.0	& Gaussian         &	0.756 +/- 0.003	&	0.870/0.199	&	0.870/0.199	&	1/1	\\ \hline
-0.0                       	&	0.1	& Gaussian         &	3.559 +/- 0.008	&	0.863/0.748	&	0.933/0.933	&	0.925/0.802	\\
-0.0375                    	&	0.1	& Gaussian         &	2.283 +/- 0.011	&	0.859/0.390	&	0.929/0.461	&	0.924/0.845	\\
-0.375                     	&	0.1	& Gaussian         &	0.744 +/- 0.002	&	0.804/0.193	&	0.870/0.217	&	0.924/0.891	\\ \hline
-0.0                       	&	1.0	& Gaussian         &	2.285 +/- 0.014	&	0.496/0.306	&	0.933/0.945	&	0.532/0.323	\\
-0.0375                    	&	1.0	& Gaussian         &	1.991 +/- 0.011	&	0.494/0.268	&	0.929/0.694	&	0.532/0.387	\\
-0.375                     	&	1.0	& Gaussian         &	0.595 +/- 0.002	&	0.463/0.160	&	0.870/0.366	&	0.532/0.437	\\ \hline
-0.0                       	&	0.0	& Leptokurtic      &	5.689 +/- 0.010	&	0.933/0.929	&	0.933/0.929	&	1/1	\\
-0.0375                    	&	0.0	& Leptokurtic      &	2.695 +/- 0.014	&	0.929/0.369	&	0.929/0.369	&	1/1	\\
-0.375                     	&	0.0	& Leptokurtic      &	0.736 +/- 0.002	&	0.871/0.183	&	0.871/0.183	&	1/1	\\ \hline
-0.0                       	&	0.1	& Leptokurtic      &	5.355 +/- 0.030	&	0.862/0.770	&	0.933/0.936	&	0.924/0.823	\\
-0.0375                    	&	0.1	& Leptokurtic      &	2.637 +/- 0.019	&	0.859/0.360	&	0.929/0.420	&	0.924/0.858	\\
-0.375                     	&	0.1	& Leptokurtic      &	0.721 +/- 0.002	&	0.803/0.181	&	0.870/0.206	&	0.923/0.881	\\ \hline
-0.0                       	&	1.0	& Leptokurtic      &	3.377 +/- 0.045	&	0.498/0.283	&	0.933/0.938	&	0.534/0.302	\\
-0.0375                    	&	1.0	& Leptokurtic      &	2.285 +/- 0.014	&	0.496/0.249	&	0.929/0.644	&	0.534/0.388	\\
-0.375                     	&	1.0	& Leptokurtic      &	0.577 +/- 0.004	&	0.463/0.162	&	0.870/0.367	&	0.532/0.442	\\ \hline
-\end{tabular}
-\bigskip{}
-\\
-{\footnotesize Expansion speeds are shown +/- 1 standard error and fitness measures are shown at the core and the edge.}
-\end{table}
+
 
 %%% Local Variables:
 %%% TeX-master: "thesis"

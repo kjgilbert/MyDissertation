@@ -1,0 +1,126 @@
+\chapter{Supplementary Information to \Chapref{expansionload}}
+
+\section{Supplementary results and analyses}
+
+
+
+\subsection{Tables}
+\renewcommand{\thetable}{A\arabic{table}}
+\setcounter{table}{0}
+
+
+\begin{table}[h]
+\centering \small
+\caption[Fitness and expansion speed results per scenario parameter combinations]{Fitness and expansion speed results per scenario parameter combinations.}
+\label{tab:paramresults}
+\begin{tabular}{p{0.1\textwidth}|p{0.11\textwidth}|p{0.12\textwidth}|p{0.16\textwidth}|p{0.11\textwidth}|p{0.12\textwidth}|p{0.11\textwidth}}
+Environ-			& Genomic			& Dispersal	& Mean  			& Total $\bar{w}$	& Quantitative 		& Deleterious 		\\
+mental Gradient	&  Deleterious Mutation 	& Kernel		& Expansion Speed	&				& Trait $\bar{w}_z$	& Loci $\bar{w}_D$	\\
+ (\emph{b})		&  Rate ($U_D$)		& 			& 				& \scriptsize{Core/Edge}	& \scriptsize{Core/Edge}	& \scriptsize{Core/Edge}	\\ \hline \hline
+0.0                       	&	0.0	& Gaussian         &	3.741 +/- 0.005	&	0.932/0.932	&	0.932/0.932	&	1/1	\\
+0.0375                    	&	0.0	& Gaussian         &	2.314 +/- 0.011	&	0.929/0.399	&	0.929/0.399	&	1/1	\\
+0.375                     	&	0.0	& Gaussian         &	0.756 +/- 0.003	&	0.870/0.199	&	0.870/0.199	&	1/1	\\ \hline
+0.0                       	&	0.1	& Gaussian         &	3.559 +/- 0.008	&	0.863/0.748	&	0.933/0.933	&	0.925/0.802	\\
+0.0375                    	&	0.1	& Gaussian         &	2.283 +/- 0.011	&	0.859/0.390	&	0.929/0.461	&	0.924/0.845	\\
+0.375                     	&	0.1	& Gaussian         &	0.744 +/- 0.002	&	0.804/0.193	&	0.870/0.217	&	0.924/0.891	\\ \hline
+0.0                       	&	1.0	& Gaussian         &	2.285 +/- 0.014	&	0.496/0.306	&	0.933/0.945	&	0.532/0.323	\\
+0.0375                    	&	1.0	& Gaussian         &	1.991 +/- 0.011	&	0.494/0.268	&	0.929/0.694	&	0.532/0.387	\\
+0.375                     	&	1.0	& Gaussian         &	0.595 +/- 0.002	&	0.463/0.160	&	0.870/0.366	&	0.532/0.437	\\ \hline
+0.0                       	&	0.0	& Leptokurtic      &	5.689 +/- 0.010	&	0.933/0.929	&	0.933/0.929	&	1/1	\\
+0.0375                    	&	0.0	& Leptokurtic      &	2.695 +/- 0.014	&	0.929/0.369	&	0.929/0.369	&	1/1	\\
+0.375                     	&	0.0	& Leptokurtic      &	0.736 +/- 0.002	&	0.871/0.183	&	0.871/0.183	&	1/1	\\ \hline
+0.0                       	&	0.1	& Leptokurtic      &	5.355 +/- 0.030	&	0.862/0.770	&	0.933/0.936	&	0.924/0.823	\\
+0.0375                    	&	0.1	& Leptokurtic      &	2.637 +/- 0.019	&	0.859/0.360	&	0.929/0.420	&	0.924/0.858	\\
+0.375                     	&	0.1	& Leptokurtic      &	0.721 +/- 0.002	&	0.803/0.181	&	0.870/0.206	&	0.923/0.881	\\ \hline
+0.0                       	&	1.0	& Leptokurtic      &	3.377 +/- 0.045	&	0.498/0.283	&	0.933/0.938	&	0.534/0.302	\\
+0.0375                    	&	1.0	& Leptokurtic      &	2.285 +/- 0.014	&	0.496/0.249	&	0.929/0.644	&	0.534/0.388	\\
+0.375                     	&	1.0	& Leptokurtic      &	0.577 +/- 0.004	&	0.463/0.162	&	0.870/0.367	&	0.532/0.442	\\ \hline
+\end{tabular}
+\bigskip{}
+\\
+{\footnotesize Expansion speeds are shown +/- 1 standard error and fitness measures are shown at the core and the edge.}
+\end{table}
+
+
+\newpage{}
+
+
+
+
+%%%%Expansion speed versus fitness
+\subsection{Fitness components impact expansion speed}
+
+\renewcommand{\thefigure}{A\arabic{figure}}
+\setcounter{figure}{0}
+
+%%We examined the relationship between total fitness at the range edge and the speed of expansion to see if fitness successfully predicted expansion rate. We find this pattern to be true overall, but that expansion is more greatly slowed in the presence of an environmental gradient than in the presence of deleterious mutations. When migrants from populations at the expanding front disperse beyond the range edge to colonize new habitat, their load due to deleterious mutations is irrelevant to the local environmental optimum. However, any load in the quantitative trait that leads to local maladaptation is worsened by dispersing further along the environmental gradient to a more extreme environmental optimum.
+%% (dark blue points and solid line, linear regression $r^2 = 0.90, p < 0.0001$)
+%% (open circles and dashed line, linear regression $r^2 = 0.97, p < 0.0001$) =
+%% add the slopes here, and other stats?? df = 58 for both, slope of red dashed = 1.95499, slope of blue solid = 3.69123
+
+\begin{figure}[h!]
+\centering
+\makebox[\textwidth]{
+        \includegraphics[width=0.8\linewidth]{Figures/EdgeFitnessVsSpeed_FigureForSuppMat.pdf}}
+\caption[Range edge fitness predicts expansion speed.]{Range edge fitness predicts expansion speed, but more strongly in cases with strong environmental gradients. The speed of expansion increases more rapidly as fitness increases with decreasing steepness of the environmental gradient (dark blue points and solid line, linear regression slope $= 3.69, p < 0.0001$). Speed of expansion increases, but less drastically, with higher fitness from decreasing $U_D$ and reducing expansion load (open circles and dashed line, linear regression slope $=1.95, p < 0.0001$).}
+\label{fig:fitspeed}
+\end{figure}
+
+
+%\newpage{}
+\clearpage{}
+
+
+%%%% Kurtotic fitness figure
+\subsection*{Leptokurtic dispersal kernel results}
+
+
+\begin{figure}[h!]
+\centering
+\makebox[\textwidth]{
+        \includegraphics[width=1.2\linewidth]{Figures/PanelsFitnesses_CoreVsEdge_KurtoticSuppMat.pdf}}
+\caption[Leptokurtic dispersal kernel fitness results.]{Average core and edge fitness components for quantitative trait and deleterious alleles in the case of the leptokurtic dispersal kernel (long-distance dispersal). Error bars indicate 95\% confidence intervals.}
+\label{fig:leptokurt}
+\end{figure}
+
+
+\newpage{}
+
+
+
+
+%%%% fitness recovery over time figure
+\subsection*{Recovery from expansion load}
+
+%% \renewcommand{\thefigure}{A\arabic{figure}}
+%% \setcounter{figure}{0}
+
+\begin{figure}[h!]
+\centering
+\makebox[\textwidth]{
+        \includegraphics[width=0.85\linewidth]{Figures/Suppmat_RecoveryCurves.pdf}}
+\caption[Recovery from expansion load.]{Recovery from expansion load measured as $w_D$ over time from initial colonization to completion of simulations. Thin lines show all twenty replicate simulations. Dashed lines are simulations with a kurtotic dispersal kernel (i.e., increased long distance dispersal) while solid lines are those with a Gaussian dispersal kernel. The mean for each set of twenty replicates is indicated by the thick line. Fitness was measured through time at the cross section in the center of the landscape ($x = 1000$). Each line begins at the time point when individuals were first recorded in the central cross section, thus the starting point depends on expansion speed. The end point in all cases is after the landscape filled, which took longest on the steepest environmental gradient (green).}
+\label{fig:recovery}
+\end{figure}
+
+
+\newpage{}
+
+
+
+
+%%%% Fixed loci / expansion load figure
+\subsection{Expansion load due to fixed loci}
+
+
+
+\begin{figure}[h!]
+\centering
+\makebox[\textwidth]{
+        \includegraphics[width=0.8\linewidth]{Figures/Core_Edge_Load_TotalVsFixed.pdf}}
+\caption[Load due to loci fixed at the range edge.]{The proportion of expansion load due to loci fixed only at the range edge. Load for these loci is measured at both the range edge and in a segment of the range core with approximately the same total population size. Because we only modeled 1,000 loci subject to unconditionally deleterious loci, fixation for small effect loci is inflated. Hence, in this analysis, we control for loci that are fixed in both the range core and at the range edge. We remove those loci from this analysis and calculate the load due to loci fixed only at the edge. Fixation is measured for the same population of individuals defined to be at the edge as in our fitness calculations. The amount of load due to fixed loci was much higher at the range edge because the alleles are at higher frequency in the edge populations. The proportion of load due to these fixed loci increased with decreasing steepness of environmental gradient, and also increased with decreasing genome-wide deleterious mutation rate, $U_D$. Both of these results make sense in light of our study's findings where faster expansion contributes to increased expansion load. This shows that faster expansion also allows for increased fixation of deleterious alleles at the range edge.}
+\label{fig:fixedload}
+\end{figure}
+
+
+\newpage{}
