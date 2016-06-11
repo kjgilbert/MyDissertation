@@ -23,18 +23,23 @@ NeEstimator & LDNe 	& 0.00163 & 0.00094 & 0.00159 \\ \hline
  		& Coancestry 	& 0.03151 & 0.04483 & 0.07211 \\ \hline
  		& Pollak 		& 0.00355 & 0.00252 & 0.00389 \\ \hline
 		 & Nei/Tajima 	& 0.00352 & 0.00252 & 0.00385 \\ \hline
- 		& Jorde/Ryman & 0.00360 & 0.00268 & 0.00418 \\ \hline
+ 		& Jorde/Ryman & 0.00360 & 0.00268 & 0.00418 \\ \hline 
 \end{tabular}
 \bigskip{}
-{\footnotesize Root mean square error (RMSE) for scenarios with no migration at $N_e = 50, 500$, and $5000$ respectively. Dashes indicate cases where $N_e$ was not estimated (see text).}
+{\footnotesize \\ Root mean square error (RMSE) for scenarios with no migration at $N_e = 50, 500$, and $5000$ respectively. Dashes indicate cases where $N_e$ was not estimated (see text).}
 \end{table}
+
+
+
+\begin{landscape}
+
 
 
 \begin{table}[h]
 \centering \small
 \caption[Island model migration scenario RMSEs at $N_e = 50$]{Island model migration scenario RMSEs at $N_e = 50$}
 \label{tab:ne2}
-\begin{tabular}{ | p{0.1\textwidth} | p{0.1\textwidth} | p{0.1\textwidth} | p{0.1\textwidth} | p{0.1\textwidth} | p{0.1\textwidth} | p{0.1\textwidth} | p{0.1\textwidth} | p{0.1\textwidth} | p{0.1\textwidth} | p{0.1\textwidth} | p{0.1\textwidth} | }
+\begin{tabular}{ | l | p{2cm}|| l | l | l | l | l || l | l | l | l | l | }
 \hline
 \multicolumn{2}{c}{ }   & \multicolumn{5}{c}{Metapopulation $m = 0.01$}  & \multicolumn{5}{c}{Metapopulation $m = 0.1$}  \\ \hline
 \multicolumn{2}{c}{Method} & 0.01 Sink & 0.1 Sink & 0.25 Sink & Within & Whole & 0.01 Sink & 0.1 Sink & 0.25 Sink & Within & Whole	\\ \hline
@@ -53,10 +58,10 @@ NeEstimator & LDNe & 0.00106 & 0.0009 & 0.00083 & 0.00093 & 0.00061 & 0.00108 & 
  		& Coancestry & 0.07973 & 0.02717 & 0.03434 & 0.10064 & 0.00061 & 0.02825 & 0.01832 & 0.01265 & 0.02004 & 0.00135	\\ \hline
  		& Pollak & 0.00208 & 0.00242 & 0.00357 & 0.00232 & 0.66126 & 0.00212 & 0.00227 & 0.00344 & 0.00275 & 0.34384	\\ \hline
 		& Nei/Tajima & 0.00207 & 0.00238 & 0.00336 & 0.00223 & 0.18039 & 0.00206 & 0.00218 & 0.00326 & 0.00269 & 0.04148	\\ \hline
- 		& Jorde/Ryman & 0.00252 & 0.00279 & 0.00359 & 0.00248 & 0.63027 & 0.00222 & 0.00246 & 0.00347 & 0.00308 & 0.15949	\\ \hline
+ 		& Jorde/Ryman & 0.00252 & 0.00279 & 0.00359 & 0.00248 & 0.63027 & 0.00222 & 0.00246 & 0.00347 & 0.00308 & 0.15949	\\ \hline 
 \end{tabular}
 \bigskip{}
-{\footnotesize Root mean square error (RMSE) for island model migration scenarios at $N_e = 50$. Dashes indicate cases where it was not applicable to estimate $N_e$.}
+{\footnotesize  \\ Root mean square error (RMSE) for island model migration scenarios at $N_e = 50$. Dashes indicate cases where it was not applicable to estimate $N_e$.}
 \end{table}
 
 
@@ -64,19 +69,57 @@ NeEstimator & LDNe & 0.00106 & 0.0009 & 0.00083 & 0.00093 & 0.00061 & 0.00108 & 
 \centering \small
 \caption[Island model migration scenario RMSEs at $N_e = 500$]{Island model migration scenario RMSEs at $N_e = 500$}
 \label{tab:ne3}
-
+\begin{tabular}{ | l | p{2cm}|| l | l | l | l | l || l | l | l | l | l | }
+\hline
+\multicolumn{2}{c}{ }   & \multicolumn{5}{c}{Metapopulation $m = 0.01$}  & \multicolumn{5}{c}{Metapopulation $m = 0.1$}  \\ \hline
+\multicolumn{2}{c}{Method} & 0.01 Sink & 0.1 Sink & 0.25 Sink & Within & Whole & 0.01 Sink & 0.1 Sink & 0.25 Sink & Within & Whole \\ \hline
+Estim & & 0.00029 & 0.00034 & 0.00036 & 0.00025 & 0.00082 & 0.00013 & 0.0001 & 0.00015 & 0.00009 & 0.00001 \\ \hline
+Colony2 & Heterozygote Excess & 0.00117 & 0.00106 & 0.00088 & 0.00095 & 0.00009 & 0.00189 & - & - & - & 0.00062 \\ \hline
+ & Sibship likelihood & 0.001 & 0.001 & 0.001 & 0.00099 & 0.00003 & 0.00024 & - & - & - & 0.00009 \\ \hline
+CoNe &  & 0.00099 & 0.001 & 0.001 & 0.001 & 0.00009 & 0.001 & 0.001 & 0.001 & 0.001 & 0.00009 \\ \hline
+MLNe  & Likelihood & 0.00049 & 0.00047 & 0.00041 & 0.00057 & 0.00003 & 0.0005 & 0.00059 & 0.00056 & 0.00064 & 0.00004 \\ \hline
+ & Moment  & 0.00021 & 0.00019 & 0.00022 & 0.00023 & 0.00007 & 0.00024 & 0.00017 & 0.00012 & 0.00021 & 0.00005 \\ \hline
+ & Like. w/ mig. source & 0.00017 & 0.00057 & 0.00077 & 0.00021 &  & 0.00055 & 0.00065 & 0.00077 & 0.00061 &  \\ \hline
+ & Moment w/ mig. source & 0.0003 & 0.00059 & 0.00084 & 0.00032 &  & 0.00029 & 0.00059 & 0.0009 & 0.0005 &  \\ \hline
+TMVP &  & 0.00034 & 0.00033 & 0.00026 & 0.00039 & 0.00042 & 0.0004 & 0.00037 & 0.00031 & - & 0.00077 \\ \hline
+NeEstimator & LDNe & 0.00013 & 0.0001 & 0.0001 & 0.00015 & 0.00009 & 0.00092 & 0.00753 & 0.00562 & 0.01815 & 0.00009 \\ \hline
+ & Heterozygote excess & 0.00251 & 0.00318 & 0.00293 & 0.0028 & 0.00382 & 0.00522 & 0.02224 & 0.02591 & 0.02522 & 0.00078 \\ \hline
+ & Coancestry & 0.00429 & 0.00278 & 0.00239 & 0.0047 & 0.00009 & 0.00231 & 0.00168 & 0.00142 & 0.00174 & 0.00009 \\ \hline
+ & Pollak & 0.00038 & 0.00063 & 0.00061 & 0.00053 & 0.33423 & 0.00106 & 0.0062 & 0.00317 & 0.01064 & 0.30365 \\ \hline
+ & Nei/Tajima & 0.00038 & 0.00063 & 0.0006 & 0.00053 & 0.01765 & 0.00111 & 0.00616 & 0.00315 & 0.01042 & 0.00642 \\ \hline
+ & Jorde/Ryman & 0.00047 & 0.00072 & 0.00072 & 0.00066 & 0.09247 & 0.00109 & 0.00617 & 0.00317 & 0.01043 & 0.03022 \\ \hline 
+\end{tabular}
 \bigskip{}
-{\footnotesize Root mean square error (RMSE) for island model migration scenarios at $N_e = 500$. Empty cells indicate cases where it was not applicable to estimate $N_e$ while dashes indicate cases where $N_e$ was not estimated due to computational limits (see text).}
+{\footnotesize \\ Root mean square error (RMSE) for island model migration scenarios at $N_e = 500$. Empty cells indicate cases where it was not applicable to estimate $N_e$ while dashes indicate cases where $N_e$ was not estimated due to computational limits (see text).}
 \end{table}
-
 
 \begin{table}[h]
 \centering \small
 \caption[Stepping stone model IBD scenario RMSEs at $N_e = 50$]{Stepping stone model IBD scenario RMSEs at $N_e = 50$}
 \label{tab:ne4}
-
+\begin{tabular}{ | l| p{2cm}|| l| l| l|| l| l| l|| l| l| l| }
+\hline
+\multicolumn{2}{c}{ }   & \multicolumn{3}{c}{$m = 0.01$}  & \multicolumn{3}{c}{$m = 0.1$} & \multicolumn{3}{c}{$m = 0.25$}  \\ \hline
+\multicolumn{2}{c}{Method} & Edge & Within & Whole & Edge & Within & Whole & Edge & Within & Whole \\ \hline
+Estim & & 0.0072 & 0.00663 & 99999* & 0.00333 & 0.00277 & 0.0028 & 0.00132 & 0.00086 & 0.0005 \\ \hline
+Colony2 & Heterozygote Excess & 0.00822 & 0.00795 & 0.00044 & 0.00832 & 0.00847 & 0.00063 & 0.00833 & 0.00844 & 0.00065 \\ \hline
+ & Sibship likelihood & 0.01 & 0.01 & 0.00044 & 0.01 & 0.01 & 0.00009 & 0.00992 & 0.00977 & 0.0001 \\ \hline
+ONeSamp &  & 0.00598 & 0.00747 & 0.00557 & 0.07639 & 0.01063 & 0.02011 & 0.19858 & 1.16473 & 0.00494 \\ \hline
+CoNe &  & 0.00696 & 0.00746 & 0.00044 & 0.00189 & 0.00158 & 0.00635 & 0.00286 & 0.00207 & 0.00065 \\ \hline
+MLNe  & Likelihood & 0.00292 & 0.00338 & 0.00006 & 0.00324 & 0.00394 & 0.00013 & 0.00348 & 0.0041 & 0.00015 \\ \hline
+ & Moment  & 0.00233 & 0.00233 & 0.00044 & 0.00177 & 0.00168 & 0.00027 & 0.00255 & 0.00219 & 0.0002 \\ \hline
+ & Likelihood w/ mig. source & 0.00161 & 0.0017 &  & 0.001 & 0.00091 &  & 0.0009 & 0.0008 &  \\ \hline
+ & Moment w/ mig. source & 0.00259 & 0.00261 &  & 0.00152 & 0.00145 &  & 0.00153 & 0.00119 &  \\ \hline
+TMVP &  & 0.00244 & 0.00259 & 0.00006 & 0.00194 & 0.00159 & 0.00069 & 0.0022 & 0.00152 & 0.00035 \\ \hline
+NeEstimator & LDNe & 0.00098 & 0.00103 & 0.11018 & 0.00126 & 0.00195 & 0.02703 & 0.00427 & 0.0063 & 0.00065 \\ \hline
+ & Heterozygote excess & 0.00818 & 0.00824 & 0.00044 & 0.00818 & 0.00822 & 0.00063 & 0.00814 & 0.00835 & 0.00732 \\ \hline
+ & Coancestry & 0.06372 & 0.0815 & 0.05497 & 0.01575 & 0.01777 & 0.0094 & 0.01156 & 0.01059 & 0.00317 \\ \hline
+ & Pollak & 0.00239 & 0.00259 & 0.00044 & 0.00216 & 0.00178 & 0.00177 & 0.00291 & 0.00259 & 0.00065 \\ \hline
+ & Nei/Tajima & 0.0023 & 0.00248 & 0. 00044 & 0.00207 & 0.00171 & 0.00179 & 0.00289 & 0.00266 & 0.00065 \\ \hline
+ & Jorde/Ryman & 0.00255 & 0.0027 & 0. 00044 & 0.00233 & 0.00175 & 0.002 & 0.0034 & 0.00336 & 0.00065 \\ \hline 
+\end{tabular}
 \bigskip{}
-{\footnotesize Root mean square error (RMSE) for stepping stone model IBD scenarios at $N_e = 50$. Empty cells indicate cases where it was not applicable to estimate $N_e$ while dashes indicate cases where $N_e$ was not estimated due to computational limits (see text). *Estim estimated $N_e$ as approaching zero, and in this case, the authors recommend trying another estimation method.}
+{\footnotesize \\ Root mean square error (RMSE) for stepping stone model IBD scenarios at $N_e = 50$. Empty cells indicate cases where it was not applicable to estimate $N_e$ while dashes indicate cases where $N_e$ was not estimated due to computational limits (see text). *Estim estimated $N_e$ as approaching zero, and in this case, the authors recommend trying another estimation method.}
 \end{table}
 
 
@@ -84,52 +127,133 @@ NeEstimator & LDNe & 0.00106 & 0.0009 & 0.00083 & 0.00093 & 0.00061 & 0.00108 & 
 \centering \small
 \caption[Stepping stone model IBD scenario RMSEs at $N_e = 500$]{Stepping stone model IBD scenario RMSEs at $N_e = 500$}
 \label{tab:ne5}
-
+\begin{tabular}{ | l| p{2cm}|| l| l| l|| l| l| l|| l| l| l| }
+\hline
+\multicolumn{2}{c}{ }   & \multicolumn{3}{c}{$m = 0.01$}  & \multicolumn{3}{c}{$m = 0.1$} & \multicolumn{3}{c}{$m = 0.25$}  \\ \hline
+\multicolumn{2}{c}{Method} & Edge & Within & Whole & Edge & Within & Whole & Edge & Within & Whole \\ \hline
+Estim & & 0.00397 & 0.00428 & 0.00281 & 0.00941 & 0.00991 & 0.00009 & 0.01236 & 0.01286 & 0.00011 \\ \hline
+Colony2 & Heterozygote Excess & 0.00263 & 0.00282 & 0.00063 & 0.00809 & - & - & - & - & - \\ \hline
+ & Sibship likelihood & 0.001 & 0.001 & 0.00008 & 0.0031 & - & - & - & - & - \\ \hline
+CoNe &  & 0.01086 & 0.01069 & 0.00063 & 0.01164 & 0.01147 & 0.00066 & 0.01209 & 0.01163 & 0.00067 \\ \hline
+MLNe  & Likelihood & 0.00733 & 0.00696 & 0.00034 & 0.006 & 0.00579 & 0.00031 & 0.00528 & 0.00499 & 0.0003 \\ \hline
+ & Moment  & 0.00914 & 0.00893 & 0.00031 & 0.00921 & 0.00915 & 0.00021 & 0.0104 & 0.01026 & 0.00021 \\ \hline
+ & Likelihood w/ mig. source & 0.00789 & 0.00776 &  & 0.00774 & 0.00772 &  & 0.00794 & 0.00803 &  \\ \hline
+ & Moment w/ mig. source & 0.00919 & 0.00898 &  & 0.0086 & 0.00873 &  & 0.00807 & 0.00863 &  \\ \hline
+TMVP &  & 0.01046 & 0.01075 & - & 0.01185 & 0.01175 & - & - & 0.01165 & - \\ \hline
+NeEstimator & LDNe & 0.00745 & 0.00755 & 0.01549 & 0.01249 & 0.01485 & 0.00066 & 0.03084 & 0.04546 & 0.00067 \\ \hline
+ & Heterozygote excess & 0.00381 & 0.00384 & 0.00063 & 0.00611 & 0.00794 & 0.00066 & 0.01394 & 0.01324 & 0.00067 \\ \hline
+ & Coancestry & 0.01185 & 0.01257 & 0.00962 & 0.01075 & 0.0105 & 0.00063 & 0.01006 & 0.01014 & 0.00047 \\ \hline
+ & Pollak & 0.00985 & 0.00964 & 0.00165 & 0.01446 & 0.01485 & * & 0.02041 & 0.01826 & * \\ \hline
+ & Nei/Tajima & 0.00985 & 0.00968 & 0.00173 & 0.01557 & 0.01566 & * & 0.02046 & 0.01813 & * \\ \hline
+ & Jorde/Ryman & 0.01093 & 0.01078 & 0.00173 & 0.01765 & 0.01713 & * & 0.02105 & 0.0188 & * \\ \hline 
+\end{tabular}
 \bigskip{}
-{\footnotesize Root mean square error (RMSE) for stepping stone model IBD scenarios at $N_e = 500$. Empty cells indicate cases where it was not applicable to estimate $N_e$ while dashes indicate cases where $N_e$ was not estimated due to computational limits (see main text). Stars indicate cases where $N_e$ estimates of zero were produced and hence not counted as successful estimates (see main text).}
+{\footnotesize \\ Root mean square error (RMSE) for stepping stone model IBD scenarios at $N_e = 500$. Empty cells indicate cases where it was not applicable to estimate $N_e$ while dashes indicate cases where $N_e$ was not estimated due to computational limits (see main text). Stars indicate cases where $N_e$ estimates of zero were produced and hence not counted as successful estimates (see main text).}
 \end{table}
-
 
 \begin{table}[h]
 \centering \small
 \caption[Isolated, no migration scenario coverage probability and infinite confidence intervals]{Isolated, no migration scenario coverage probability and infinite confidence intervals}
 \label{tab:ne6}
-
+\begin{tabular}{ | l| p{2cm}|| l| l|| l| l|| l| l| }
+\hline
+\multicolumn{2}{c}{ }   & \multicolumn{2}{c}{Isolated $N_e = 50$}  & \multicolumn{2}{c}{Isolated $N_e = 500$} & \multicolumn{2}{c}{Isolated $N_e = 5000$}  \\ \hline
+\multicolumn{2}{c}{Method} & Within & Inf & Within & Inf & Within & Inf  \\ \hline
+Estim & & 0 & 0.67 & 0.99 & 0.95 & 1 & 0.96  \\ \hline
+Colony2 & Heterozygote Excess & 1 & 0.94 & 1 & 0.95 & 1 & 1  \\ \hline
+ & Sibship likelihood & 1 & 1 & 1 & 1 & 1 & 1  \\ \hline
+CoNe &  & 0.96 & 0 & 0 & 0 & - & -  \\ \hline
+MLNe  & Likelihood & 0.87 & 0.03 & 0.63 & 0.63 & 0.48 & 0.48  \\ \hline
+ & Moment  & 0.82 & 0.01 & 0.89 & 0.39 & 0.16 & 0.16  \\ \hline
+ & Likelihood w/ mig. source & 0.87 & 0 & 0.84 & 0 & 0 & 0  \\ \hline
+ & Moment w/ mig. source & 0.8 & 0 & 0.68 & 0.06 & 0.24 & 0.24  \\ \hline
+TMVP &  & 0.81 & 0.95 & 0.98 & 0.98 & 1 & 1  \\ \hline
+NeEstimator & LDNe & 0.51 & 0.15 & 0.39 & 0.34 & 0.24 & 0.24  \\ \hline
+ & Heterozygote excess & 0.91 & 0 & 0.62 & 0.34 & 0.12 & 0.12  \\ \hline
+ & Coancestry & 0.91 & 0 & 0.66 & 0.34 & 0.12 & 0.12  \\ \hline
+ & Pollak & 0.91 & 0.07 & 0.91 & 0.72 & 0.52 & 0.52  \\ \hline
+\end{tabular}
 \bigskip{}
-{\footnotesize The coverage probability for the true value of $N_e$ being contained within the $95\%$ confidence intervals (``Within") and the percent of time the upper $95\%$ confidence interval spans to infinity (``Inf") across all methods for scenarios with no migration at $N_e = 50, 500$, and $5000$ respectively. Dashes indicate cases where $N_e$ was not estimated due to computational limits (see text).}
+{\footnotesize \\ The coverage probability for the true value of $N_e$ being contained within the $95\%$ confidence intervals (``Within") and the percent of time the upper $95\%$ confidence interval spans to infinity (``Inf") across all methods for scenarios with no migration at $N_e = 50, 500$, and $5000$ respectively. Dashes indicate cases where $N_e$ was not estimated due to computational limits (see text).}
 \end{table}
 
-
 \begin{table}[h]
-\centering \small
+\centering \tiny
 \caption[Island model scenarios' coverage probability and infinite confidence intervals]{Island model scenarios' coverage probability and infinite confidence intervals}
 \label{tab:ne7}
-
+\begin{tabular}{ | l| l|| l| l| l| l| l| l| l| l| l| l| l| l| l| l| l| l| l| l| l| l| l| l| l| l| l| l| l| l| }
+\hline
+\multicolumn{2}{l}{} & \multicolumn{2}{l}{Estim} & \multicolumn{4}{l}{Colony2} & \multicolumn{2}{l}{ONeSamp} & \multicolumn{2}{l}{CoNe} & \multicolumn{4}{l}{MLNe} & \multicolumn{2}{l}{TMVP} & \multicolumn{12}{l}{NeEstimator} \\ \hline
+\multicolumn{2}{l}{} & \multicolumn{2}{l}{ } & \multicolumn{2}{l}{ Het. Excess} & \multicolumn{2}{l}{ Sibship Likelihood} & \multicolumn{2}{l}{ } & \multicolumn{2}{l}{ } & \multicolumn{2}{l}{Likelihood} & \multicolumn{2}{l}{Like. w/ mig.} & \multicolumn{2}{l}{ } & \multicolumn{2}{l}{LDNe} & \multicolumn{2}{l}{Het. Excess} & \multicolumn{2}{l}{Coancestry} & \multicolumn{2}{l}{Pollak} & \multicolumn{2}{l}{Nei \& Tajima} & \multicolumn{2}{l}{Jorde \& Ryman} \\ \hline
+ &  & W/in & Inf & W/in & Inf & W/in & Inf & W/in & Inf & W/in & Inf & W/in & Inf & W/in & Inf & W/in & Inf & W/in & Inf & W/in & Inf & W/in & Inf & W/in & Inf & W/in & Inf & W/in & Inf  \\ \hline
+\multirow{5}{1cm}{$N_e = 50$ Metapopulation $m = 0.01$} & Sink 0.01 & 0 & 0 & 0.94 & 0.85 & 1 & 1 & 0 & 0 & 0.84 & 0.54 & 0.33 & 0 & 0.74 & 0 & 0.63 & 0 & 0.44 & 0 & 0.63 & 0.84 & 0.04 & 0 & 0.86 & 0 & 0.84 & 0 & 0.85 & 0  \\ \cline{2-30}
+  & Sink 0.1 & 0 & 0 & 0.89 & 0.93 & 1 & 1 & 0.07 & 0 & 0.89 & 0.6 & 0.14 & 0 & 0.8 & 0 & 0.57 & 0 & 0.45 & 0 & 0.55 & 0.94 & 0.3 & 0.01 & 0.79 & 0 & 0.82 & 0 & 0.83 & 0  \\ \cline{2-30}
+  & Sink 0.25 & 0 & 0 & 0.89 & 0.91 & 1 & 1 & 0.08 & 0 & 0.78 & 0.69 & 0.19 & 0 & 0.71 & 0 & 0.33 & 0 & 0.4 & 0 & 0.5 & 0.9 & 0.18 & 0.01 & 0.54 & 0 & 0.6 & 0 & 0.8 & 0  \\ \cline{2-30}
+  & In Meta & 0.05 & 0 & 0.86 & 0.84 & 1 & 1 & 0.02 & 0 & 0.94 & 0.74 & 0.15 & 0 & 0.49 & 0 & 0.64 & 0 & 0.52 & 0 & 0.65 & 0.88 & 0.02 & 0 & 0.81 & 0 & 0.81 & 0 & 0.78 & 0  \\ \cline{2-30}
+  & Whole & 0 & 0 & 1 & 1 & 1 & 1 & 0.01 & 0 & 1 & 1 & 0.81 & 1 &  &  & 0 & 0 & 1 & 1 & 1 & 1 & 1 & 1 & 0 & 0 & 0.06 & 0.06 & 0 & 0  \\ \hline
+\multirow{5}{1cm}{$N_e = 50$ Metapopulation $m = 0.1$} & Sink 0.01 & 0 & 0 & 0.21 & 0.26 & 0.29 & 0.29 & 0.02 & 0 & 0.56 & 0.03 & 0.21 & 0 & 0.5 & 0 & 0.4 & 0 & 0.16 & 0 & 0.52 & 0.9 & 0 & 0 & 0.71 & 0 & 0.7 & 0 & 0.72 & 0  \\ \cline{2-30}
+  & Sink 0.1 & 0 & 0 & 0.07 & 0.07 & 0.09 & 0.09 & 0 & 0 & 0.35 & 0 & 0 & 0 & 0.3 & 0 & 0.05 & 0 & 0.05 & 0 & 0.49 & 0.86 & 0 & 0 & 0.72 & 0 & 0.71 & 0 & 0.79 & 0  \\ \cline{2-30}
+  & Sink 0.25 & 0 & 0 & 0.04 & 0.08 & 0.09 & 0.09 & 0 & 0 & 0.08 & 0 & 0 & 0 & 0.34 & 0 & 0 & 0 & 0.15 & 0 & 0.47 & 0.86 & 0 & 0 & 0.59 & 0 & 0.64 & 0 & 0.76 & 0  \\ \cline{2-30}
+  & In Meta & 0.02 & 0 & 0.04 & 0.04 & 0.09 & 0.09 & 0 & 0 & 0.42 & 0 & 0 & 0 & 0.27 & 0 & 0.02 & 0 & 0 & 0 & 0.32 & 0.92 & 0 & 0 & 0.71 & 0 & 0.69 & 0 & 0.73 & 0  \\ \cline{2-30}
+  & Whole & 0 & 0 & 0.09 & 0.09 & 0.03 & 0 & 0 & 0 & 1 & 1 & 0.05 & 0.86 &  &  & 0.05 & 0 & 1 & 1 & 0.97 & 0.97 & 0.99 & 0.99 & 0.03 & 0.03 & 0.85 & 0.84 & 0.69 & 0.69  \\ \hline
+\multirow{5}{1cm}{$N_e = 500$ Metapopulation $m = 0.01$} & Sink 0.01 & 0 & 0 & 0.97 & 0.92 & 1 & 1 & - & - & 1 & 0.99 & 0.12 & 0.04 & 0.93 & 0 & 0.33 & 0 & 0.63 & 0 & 0.96 & 0.94 & 0.25 & 0.05 & 0.97 & 0.25 & 0.97 & 0.29 & 0.99 & 0.56  \\ \cline{2-30}
+  & Sink 0.1 & 0 & 0 & 0.96 & 0.86 & 0.99 & 0.99 & - & - & 1 & 1 & 0.03 & 0 & 0.01 & 0 & 0.3 & 0 & 0.83 & 0 & 0.93 & 0.92 & 0.43 & 0.16 & 0.91 & 0.26 & 0.92 & 0.27 & 0.96 & 0.5  \\ \cline{2-30}
+  & Sink 0.25 & 0 & 0 & 0.98 & 0.95 & 0.99 & 0.99 & - & - & 1 & 0.99 & 0.07 & 0 & 0 & 0 & 0.59 & 0 & 0.76 & 0 & 0.99 & 0.96 & 0.45 & 0.15 & 0.89 & 0.12 & 0.9 & 0.15 & 0.95 & 0.43  \\ \cline{2-30}
+  & In Meta & 0 & 0 & 0.97 & 0.86 & 0.93 & 0.93 & - & - & 1 & 1 & 0.02 & 0.05 & 0.79 & 0 & 0.13 & 0 & 0.53 & 0 & 0.95 & 0.95 & 0.19 & 0.07 & 0.92 & 0.31 & 0.95 & 0.33 & 0.96 & 0.53  \\ \cline{2-30}
+  & Whole & 0 & 0 & 0.99 & 0.99 & 0.84 & 0 & - & - & 1 & 1 & 1 & 1 &  &  & 0 & 0 & 1 & 1 & 1 & 1 & 1 & 1 & 0 & 0 & 0.88 & 0.88 & 0.68 & 0.68  \\ \hline
+\multirow{5}{1cm}{$N_e = 500$ Metapopulation $m = 0.1$} & Sink 0.01 & 0.05 & 0 & 0 & 0 & 0 & 0 & - & - & 1 & 1 & 0 & 0 & 0 & 0 & 0.01 & 0 & 0.78 & 0.16 & 0.98 & 0.98 & 0.19 & 0.03 & 0.98 & 0.88 & 0.98 & 0.9 & 0.99 & 0.98  \\ \cline{2-30}
+  & Sink 0.1 & 0.09 & 0 & - & - & - & - & - & - & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0.95 & 0.95 & 0.86 & 0.86 & 0.16 & 0 & 0.96 & 0.96 & 0.96 & 0.96 & 0.85 & 0.85  \\ \cline{2-30}
+  & Sink 0.25 & 0.01 & 0 & - & - & - & - & - & - & 1 & 1 & 0 & 0 & 0 & 0 & 0.02 & 0 & 0.99 & 1 & 0.76 & 0.76 & 0.22 & 0 & 0.97 & 0.97 & 0.97 & 0.97 & 0.88 & 0.88  \\ \cline{2-30}
+  & In Meta & 0.04 & 0 & - & - & - & - & - & - & 1 & 1 & 0 & 0 & 0 & 0 & - & - & 0.98 & 0.98 & 0.76 & 0.76 & 0.09 & 0 & 0.99 & 0.99 & 0.99 & 0.99 & 0.9 & 0.9  \\ \cline{2-30}
+  & Whole & 0.26 & 0 & 0.75 & 0.75 & 0.75 & 0.74 & - & - & 1 & 1 & 0.91 & 1 &  &  & 0 & 0 & 1 & 1 & 1 & 1 & 1 & 1 & 0.01 & 0.01 & 0.99 & 0.99 & 0.99 & 0.99  \\ \hline
+\end{tabular}
 \bigskip{}
-{\footnotesize The coverage probability for the true value of $N_e$ being contained within the $95\%$ confidence intervals (``Within") and the percent of time the upper $95\%$ confidence interval spans to infinity (``Inf") across all methods for island model scenarios. Empty cells indicate cases where it was not applicable to estimate $N_e$ while dashes indicate cases where $N_e$ was not estimated due to computational limits (see text).}
+{\footnotesize \\ The coverage probability for the true value of $N_e$ being contained within the $95\%$ confidence intervals (``Within") and the percent of time the upper $95\%$ confidence interval spans to infinity (``Inf") across all methods for island model scenarios. Empty cells indicate cases where it was not applicable to estimate $N_e$ while dashes indicate cases where $N_e$ was not estimated due to computational limits (see text).}
 \end{table}
-
 
 \begin{table}[h]
-\centering \small
+\centering \tiny
 \caption[Stepping stone model (IBD) scenarios' coverage probability and infinite confidence intervals]{Stepping stone model (IBD) scenarios' coverage probability and infinite confidence intervals}
 \label{tab:ne8}
-
+\begin{tabular}{ | l| l|| l| l| l| l| l| l| l| l| l| l| l| l| l| l| l| l| l| l| l| l| l| l| l| l| l| l| l| l| }
+\hline
+\multicolumn{2}{l}{} & \multicolumn{2}{l}{Estim} & \multicolumn{4}{l}{Colony2} & \multicolumn{2}{l}{ONeSamp} & \multicolumn{2}{l}{CoNe} & \multicolumn{4}{l}{MLNe} & \multicolumn{2}{l}{TMVP} & \multicolumn{12}{l}{NeEstimator} \\ \hline
+\multicolumn{2}{l}{} & \multicolumn{2}{l}{ } & \multicolumn{2}{l}{ Het. Excess} & \multicolumn{2}{l}{ Sibship Likelihood} & \multicolumn{2}{l}{ } & \multicolumn{2}{l}{ } & \multicolumn{2}{l}{Likelihood} & \multicolumn{2}{l}{Like. w/ mig.} & \multicolumn{2}{l}{ } & \multicolumn{2}{l}{LDNe} & \multicolumn{2}{l}{Het. Excess} & \multicolumn{2}{l}{Coancestry} & \multicolumn{2}{l}{Pollak} & \multicolumn{2}{l}{Nei \& Tajima} & \multicolumn{2}{l}{Jorde \& Ryman} \\ \hline
+ &  & W/in & Inf & W/in & Inf & W/in & Inf & W/in & Inf & W/in & Inf & W/in & Inf & W/in & Inf & W/in & Inf & W/in & Inf & W/in & Inf & W/in & Inf & W/in & Inf & W/in & Inf & W/in & Inf  \\ \hline
+\multirow{3}{1cm}{$N_e = 50 ~ m = 0.01$} & Edge & 0 & 0 & 1 & 0.87 & 1 & 1 & 0.23 & 0 & 0.87 & 0.45 & 0.45 & 0 & 0.83 & 0 & 0.7 & 0 & 0.55 & 0 & 0.64 & 0.88 & 0.1 & 0.01 & 0.8 & 0 & 0.86 & 0 & 0.9 & 0  \\ \cline{2-30}
+  & In Meta & 0.01 & 0 & 0.8 & 0.73 & 0.85 & 0.85 & 0.04 & 0 & 0.85 & 0.52 & 0.31 & 0 & 0.71 & 0 & 0.69 & 0 & 0.61 & 0 & 0.59 & 0.89 & 0.09 & 0.02 & 0.85 & 0 & 0.81 & 0 & 0.82 & 0  \\ \cline{2-30}
+  & Whole & 0 & 0 & 1 & 1 & 1 & 1 & 0 & 0 & 1 & 1 & 1 & 1 &  &  & 0 & 0 & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 1 & 1 & 1 & 1 & 1  \\ \hline
+\multirow{3}{1cm}{$N_e = 50 ~ m = 0.1$} & Edge & 0 & 0 & 0.56 & 0.72 & 1 & 1 & 0.15 & 0 & 0.37 & 0 & 0 & 0 & 0.38 & 0 & 0.2 & 0 & 0.09 & 0 & 0.47 & 0.88 & 0 & 0 & 0.78 & 0 & 0.78 & 0 & 0.81 & 0  \\ \cline{2-30}
+  & In Meta & 0 & 0 & 0.44 & 0.62 & 0.85 & 0.85 & 0 & 0 & 0.49 & 0 & 0 & 0 & 0.39 & 0 & 0.15 & 0 & 0.05 & 0 & 0.47 & 0.87 & 0 & 0 & 0.8 & 0 & 0.81 & 0 & 0.87 & 0  \\ \cline{2-30}
+  & Whole & 0 & 0 & 0.03 & 0.03 & 0.03 & 0 & 0.06 & 0 & 1 & 1 & 0.04 & 1 &  &  & 0 & 0 & 0.05 & 0.05 & 1 & 1 & 0 & 0 & 0.95 & 0.93 & 0.96 & 0.93 & 0.99 & 0.99  \\ \hline
+\multirow{3}{1cm}{$N_e = 50 ~ m = 0.25$} & Edge & 0.03 & 0 & 0.48 & 0.63 & 0.58 & 0.61 & 0 & 0 & 0.02 & 0 & 0 & 0 & 0.09 & 0 & 0 & 0 & 0 & 0 & 0.61 & 0.87 & 0 & 0 & 0.71 & 0 & 0.73 & 0 & 0.79 & 0  \\ \cline{2-30}
+  & In Meta & 0.14 & 0 & 0.39 & 0.55 & 0.03 & 0.03 & 0 & 0 & 0.07 & 0 & 0 & 0 & 0.12 & 0 & 0 & 0 & 0 & 0 & 0.58 & 0.86 & 0 & 0 & 0.85 & 0 & 0.84 & 0 & 0.88 & 0  \\ \cline{2-30}
+  & Whole & 0 & 0 & 0.02 & 0.02 & 0.02 & 0 & 0 & 0 & 1 & 1 & 0 & 1 &  &  & 0 & 0 & 1 & 1 & 0.98 & 0.98 & 0 & 0 & 1 & 1 & 1 & 1 & 1 & 1  \\ \hline
+\multirow{3}{1cm}{$N_e = 500 ~ m = 0.01$} & Edge & 0 & 0 & 0.86 & 0.79 & 1 & 1 & - & - & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0.89 & 0.89 & 0.01 & 0 & 0 & 0 & 0 & 0 & 0 & 0  \\ \cline{2-30}
+  & In Meta & 0 & 0 & 0.77 & 0.71 & 1 & 1 & - & - & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0.89 & 0.88 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0  \\ \cline{2-30}
+  & Whole & 0 & 0 & 0.04 & 0.04 & 0.03 & 0 & - & - & 1 & 1 & 0.01 & 0.04 &  &  & - & - & 0.03 & 0.01 & 1 & 1 & 0 & 0 & 0.94 & 0.91 & 0.94 & 0.9 & 1 & 0.99  \\ \hline
+\multirow{3}{1cm}{$N_e = 500 ~ m = 0.1$} & Edge & 0 & 0 & 0 & 0 & 0 & 0 & - & - & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0.97 & 0.98 & 0 & 0 & 0 & 0 & 0 & 0 & 0.01 & 0.01  \\ \cline{2-30}
+  & In Meta & 0 & 0 & - & - & - & - & - & - & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0.93 & 0.92 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0  \\ \cline{2-30}
+  & Whole & 0.07 & 0 & - & - & - & - & - & - & 1 & 1 & 0 & 0 &  &  & - & - & 1 & 1 & 1 & 1 & 0.57 & 0.03 & 1 & 1 & 1 & 1 & 1 & 1  \\ \hline
+\multirow{3}{1cm}{$N_e = 500 ~ m = 0.25$} & Edge & 0 & 0 & - & - & - & - & - & - & 0 & 0 & 0 & 0 & 0 & 0 & - & - & 0.05 & 0.01 & 0.92 & 0.92 & 0 & 0 & 0.12 & 0.06 & 0.12 & 0.06 & 0.38 & 0.31  \\ \cline{2-30}
+  & In Meta & 0 & 0 & - & - & - & - & - & - & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0.08 & 0.07 & 0.97 & 0.97 & 0 & 0 & 0.14 & 0.1 & 0.14 & 0.1 & 0.61 & 0.51  \\ \cline{2-30}
+  & Whole & 0.02 & 0 & - & - & - & - & - & - & 1 & 1 & 0 & 0 &  &  & - & - & 1 & 1 & 1 & 1 & 0.76 & 0.06 & 1 & 1 & 1 & 1 & 1 & 1  \\ \hline
+\end{tabular}
 \bigskip{}
-{\footnotesize The coverage probability for the true value of $N_e$ being contained within the $95\%$ confidence intervals (``Within") and the percent of time the upper $95\%$ confidence interval spans to infinity (``Inf") across all methods for stepping stone model (IBD) scenarios. Empty cells indicate cases where it was not applicable to estimate $N_e$ while dashes indicate cases where $N_e$ was not estimated due to computational limits (see text).}
+{\footnotesize \\ The coverage probability for the true value of $N_e$ being contained within the $95\%$ confidence intervals (``Within") and the percent of time the upper $95\%$ confidence interval spans to infinity (``Inf") across all methods for stepping stone model (IBD) scenarios. Empty cells indicate cases where it was not applicable to estimate $N_e$ while dashes indicate cases where $N_e$ was not estimated due to computational limits (see text).}
 \end{table}
 
 
+\end{landscape}
 
 
 
 
-
-
+%%%%%%%%%%%%%%%%%%
 
 \section{Supplementary Figures}
 
-\begin{figure}[ht]
+\begin{figure}[!ht]
 \centering
 \makebox[\textwidth]{
         \includegraphics[width=0.35\linewidth]{Figures/SuppFigures/FigureS1_Demog.pdf}}
