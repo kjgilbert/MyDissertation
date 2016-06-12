@@ -129,11 +129,11 @@ We quantify range expansion with two main measures: the growth rate of the entir
 
 \subsection{Expansion on a linear gradient}
 
-We first determine the greatest steepness that allows expansion on a linear gradient, $b_{crit}$. This $b_{crit}$ value varied depending on the genetic architecture modeled. The small effect and large effect regimes showed the highest $b_{crit}$ values, while both medium effect regimes had lower $b_{crit}$ values. The medium-large regime had the lowest $b_{crit}$ value of all genetic architectures modeled (Figure \ref{fig:linearspeed}; i.e., lack of expansion at $b = 4$ [yellow] in both medium regimes and lack of expansion at $b = 3.5$ [light blue] for the medium-large regime). In all cases, as the steepness of the gradient approached $b_{crit}$, the rate of population growth decreased, indicating longer times to expand across these gradients. In the large effect regime for the steepest gradient on which expansion occurs ($b = 4$), only 2 replicates out of 10 expanded over the landscape to produce the calculated growth rate. These two replicates also did not immediately expand after the end of the burn-in, as did all other cases; they began to grow beyond the core $8300-13200$ generations later. A similar wait-time phenomenon was observed for the medium-large regime. In these cases, expansion began for all replicates within $4850$ generations (range $= 575-4850$, mean $= 2487.5$ generations). The total population size maintained across the landscape as well as average fitness were also lower as gradient steepness increased towards $b_{crit}$ (\color{red}Supplemental Figure of pop sizes and or fitness.\color{black} ).
+We first determine the greatest steepness that allows expansion on a linear gradient, $b_{crit}$. This $b_{crit}$ value varied depending on the genetic architecture modeled. The small effect and large effect regimes showed the highest $b_{crit}$ values, while both medium effect regimes had lower $b_{crit}$ values. The medium-large regime had the lowest $b_{crit}$ value of all genetic architectures modeled (Figure \ref{fig:linearspeed}; i.e., lack of expansion at $b = 4$ [yellow] in both medium regimes and lack of expansion at $b = 3.5$ [light blue] for the medium-large regime). In all cases, as the steepness of the gradient approached $b_{crit}$, the rate of population growth decreased, indicating longer times to expand across these gradients. In the large effect regime for the steepest gradient on which expansion occurs ($b = 4$), only 2 replicates out of 10 expanded over the landscape to produce the calculated growth rate. These two replicates also did not immediately expand after the end of the burn-in, as did all other cases; they began to grow beyond the core $8300-13200$ generations later. A similar wait-time phenomenon was observed for the medium-large regime. In these cases, expansion began for all replicates within $4850$ generations (range $= 575-4850$, mean $= 2487.5$ generations). The total population size maintained across the landscape as well as average fitness were also lower as gradient steepness increased towards $b_{crit}$ (Supplemental Figure \ref{fig:fitness_popsize}).
 
 % SY - do more reps on the linear gradients!, esp for large effect regime b=4
 
-\citet{Barton:2001} derives predictions for the value of $b_{crit}$, which depend on the genetic variance: $b_{crit} = \frac{V_G}{\sigma \sqrt{V_S}}$, where $\sigma$ is the standard deviation of distance travelled by combining both gamete and offspring dispersal, i.e. $\sigma = \sqrt{\sigma_{disperse}^2 + \frac{1}{2}\sigma_{breed}^2}$ (weighting $\sigma_{breed}$ by half derives from the fact that gametes from only one parent move during the breeding life cycle). We find that the genetic variance across the landscape increases in scenarios of steeper environmental gradients (Supplemental Figure S\ref{fig:VaAmong}). Because the genetic variance evolves differently on each gradient, we cannot make \emph{a priori} predictions for $b_{crit}$. We can calculate a $b_{crit}$ value using the genetic variance from the landscape core, but doing so creates a large underestimate of our realized $b_{crit}$ values (realized $b_{crit} = [4-4.5], [3.5-4], [3-3.5],$ and $[4-4.5]$; predicted $b_{crit} \approx 0.161, 0.125, 0.018,$ and $0.002$ for each genetic architecture respectively: small, medium-small, medium-large, and large). There are multiple reasons for this disparity in $b_{crit}$, which we consider in the Discussion.
+\citet{Barton:2001} derives predictions for the value of $b_{crit}$, which depend on the genetic variance: $b_{crit} = \frac{V_G}{\sigma \sqrt{V_S}}$, where $\sigma$ is the standard deviation of distance travelled by combining both gamete and offspring dispersal, i.e. $\sigma = \sqrt{\sigma_{disperse}^2 + \frac{1}{2}\sigma_{breed}^2}$ (weighting $\sigma_{breed}$ by half derives from the fact that gametes from only one parent move during the breeding life cycle). We find that the genetic variance across the landscape increases in scenarios of steeper environmental gradients (Supplemental Figure \ref{fig:VaAmong}). Because the genetic variance evolves differently on each gradient, we cannot make \emph{a priori} predictions for $b_{crit}$. We can calculate a $b_{crit}$ value using the genetic variance from the landscape core, but doing so creates a large underestimate of our realized $b_{crit}$ values (realized $b_{crit} = [4-4.5], [3.5-4], [3-3.5],$ and $[4-4.5]$; predicted $b_{crit} \approx 0.161, 0.125, 0.018,$ and $0.002$ for each genetic architecture respectively: small, medium-small, medium-large, and large). There are multiple reasons for this disparity in $b_{crit}$, which we consider in the Discussion.
 
 % SY - the underestimate of bcrit - REALLY cool, I like that you put it in terms of a comparison to analytical model, helps frame it. Suggests that migration-selection processes maintaining variance among and therefore within pops are critical (?)
 
@@ -186,14 +186,14 @@ On the weaker gradient, expansion failed when $\Delta z_{opt} = 15$ between two 
 
 % SY - Random thought: When the number of patches is small and they are each large, I think there is a relatively large subset of demes (each with n = 5) where all migrants will be to/from the same environment…this would reduce the effect of migration counteracting local adaptation, I think? (compared to a traditional two-patch popgen model). Thus, I would expect that patch width would affect migration-selection balance and maintenance of allelic differentiation, depending on effect size. [after reading the Discussion, you get a bit into these ideas there]
 
-We examine the ability of each genetic architecture to expand in a two patch model for a range of $\Delta z_{opt}$ values between the patches. The steepest $\Delta z_{opt}$ ($15$) matches the $\Delta z_{opt}$ in the previous section's weak gradient two-patch model. We find a pattern similar in the two patch models to that on the linear gradients (i.e., Figure \ref{fig:linearspeed}) for the ability of each genetic architecture to successfully expand (Figure \ref{fig:waittimes}). The small effect regime can cross a steep $\Delta z_{opt}$ ($12.5$), but requires time beyond the end of the burn-in to adapt and expand into the second patch. The medium-small regime has more difficulty at this value of $\Delta z_{opt}$, with only 3 of 20 replicates succeeding, and the medium-large regime does not expand at this or the next smallest $\Delta z_{opt}$ value ($10$). However, the large effect regime shows a qualitative change in its expansion ability by being able to cross a $\Delta z_{opt}$ that the medium-large regime could not. Despite the large regime exhibiting the lowest genetic variance of all cases simulated, it succeeds in expanding in a case where the medium-large regime could not. These expansions require additional time after the end of the burn-in when populations exist in the first patch and attempt to adapt to the second patch (Figure \ref{fig:waittimes}). The same trend is seen with a larger dispersal distance, where increased dispersal makes expansion more difficult at the same values of $\Delta z_{opt}$ (Supplemental Figure S\ref{fig:waittimes200}).
+We examine the ability of each genetic architecture to expand in a two patch model for a range of $\Delta z_{opt}$ values between the patches. The steepest $\Delta z_{opt}$ ($15$) matches the $\Delta z_{opt}$ in the previous section's weak gradient two-patch model. We find a pattern similar in the two patch models to that on the linear gradients (i.e., Figure \ref{fig:linearspeed}) for the ability of each genetic architecture to successfully expand (Figure \ref{fig:waittimes}). The small effect regime can cross a steep $\Delta z_{opt}$ ($12.5$), but requires time beyond the end of the burn-in to adapt and expand into the second patch. The medium-small regime has more difficulty at this value of $\Delta z_{opt}$, with only 3 of 20 replicates succeeding, and the medium-large regime does not expand at this or the next smallest $\Delta z_{opt}$ value ($10$). However, the large effect regime shows a qualitative change in its expansion ability by being able to cross a $\Delta z_{opt}$ that the medium-large regime could not. Despite the large regime exhibiting the lowest genetic variance of all cases simulated, it succeeds in expanding in a case where the medium-large regime could not. These expansions require additional time after the end of the burn-in when populations exist in the first patch and attempt to adapt to the second patch (Figure \ref{fig:waittimes}). The same trend is seen with a larger dispersal distance, where increased dispersal makes expansion more difficult at the same values of $\Delta z_{opt}$ (Supplemental Figure \ref{fig:waittimes200}).
 % SY - I only had to read this paragraph once! Nice and clear.
 
 \begin{figure}[ht]
 \centering
 \makebox[\textwidth]{
         \includegraphics[width=0.9\linewidth]{Figures/combined_wait_times.pdf}}
-\caption[~- Time spent before expansion into second patch.]{Time spent (in generations) before expansion into second patch for each genetic architecture regime. Points are jittered for visualization. All points beyond the vertical dashed line did not expand during the $20,000$ generations of the simulation. All cases shown are for $\sigma_{disperse} = 2$, while results for $\sigma_{disperse} = 4$ are shown in Supplemental Figure S\ref{fig:waittimes200}.}
+\caption[~- Time spent before expansion into second patch.]{Time spent (in generations) before expansion into second patch for each genetic architecture regime. Points are jittered for visualization. All points beyond the vertical dashed line did not expand during the $20,000$ generations of the simulation. All cases shown are for $\sigma_{disperse} = 2$, while results for $\sigma_{disperse} = 4$ are shown in Supplemental Figure \ref{fig:waittimes200}.}
 \label{fig:waittimes}
 \end{figure}
 % SY - adding b values to the legend would help reinforce what's going on here  (I think it might also be misleading - kjg)
@@ -228,7 +228,7 @@ the large effect regime produces more and greater magnitude differences between 
 % SY - From theory, Turelli (1984) showed that VG = 4 L mu Vs (and is indeed independent of alpha), but Burger et al. (1989) showed that there is a small effect of alpha, depending on Ne…figure 4 says that VG is constant with the three parameter sets where alpha varies…what is the basis for this? (in Yeaman and Guillaume (2009), we found that the sims VG matched Burger’s predictions very well, supp. mat. S1)
 % KJG - from the estimated VG - using either Nemo's va or vb outputs both show this to be true
 
-To examine if the amount of genetic variance, rather than mutational effect sizes, drives the ability for populations to expand and adapt, we analyze a subset of simulations with parameters (as described in the Methods) that created a constant $V_G$ instead of a constant $V_M$ (values of $V_G$ in Supplemental Figure S\ref{fig:VaConst}). With a decreasing $\alpha^2$, expansion became more difficult. Expansion no longer occurred for values of $\Delta z_{opt}$ where expansion was previously possible and became more difficult at lower values of $\Delta z_{opt}$ (Figure \ref{fig:waittimes}). In combination with Figure \ref{fig:effectsizes}, this shows that genetic variance was not the only determining factor for expansion, but that the availability of mutations of larger effect determined the ability to adapt and expand into the second patch. 
+To examine if the amount of genetic variance, rather than mutational effect sizes, drives the ability for populations to expand and adapt, we analyze a subset of simulations with parameters (as described in the Methods) that created a constant $V_G$ instead of a constant $V_M$ (values of $V_G$ in Supplemental Figure \ref{fig:VaConst}). With a decreasing $\alpha^2$, expansion became more difficult. Expansion no longer occurred for values of $\Delta z_{opt}$ where expansion was previously possible and became more difficult at lower values of $\Delta z_{opt}$ (Figure \ref{fig:waittimes}). In combination with Figure \ref{fig:effectsizes}, this shows that genetic variance was not the only determining factor for expansion, but that the availability of mutations of larger effect determined the ability to adapt and expand into the second patch. 
 
 
 \subsection{Combination of patch size and $\Delta z_{opt}$}
@@ -245,7 +245,7 @@ We have thus far shown that overall $b$ matters for range expansion, but also th
 \end{figure}
 
 We find growth rates are faster for larger patches (Figure \ref{fig:multistep}). % and with a lower $\Delta z_{opt}$ % SY - This seems obvious enough given previous figures that it doesn’t need repeating — doing so draws the focus away from the patch size
-As patch size decreases, population growth rate decreases, and this decrease is faster for the higher value of $\Delta z_{opt}$. Greater dispersal distances increase population growth rate with larger patches (Supplemental figure \color{red}XX\color{black}). However, at smaller patch sizes, greater dispersal leads to slower growth rates. At the lower $\Delta z_{opt}$ value, genetic architectures switch rank order for fastest population growth rate as patch size decreases. Smaller mutational effects exhibit slower growth on smaller patches and large mutational effects exhibit slower growth with larger patches, suggesting again the potential for mismatches between the scale of landscape patchiness and mutational changes at a given value of $\Delta z_{opt}$. 
+As patch size decreases, population growth rate decreases, and this decrease is faster for the higher value of $\Delta z_{opt}$. Greater dispersal distances increase population growth rate with larger patches (Supplemental figure \ref{fig:disp200_multistep}). However, at smaller patch sizes, greater dispersal leads to slower growth rates. At the lower $\Delta z_{opt}$ value, genetic architectures switch rank order for fastest population growth rate as patch size decreases. Smaller mutational effects exhibit slower growth on smaller patches and large mutational effects exhibit slower growth with larger patches, suggesting again the potential for mismatches between the scale of landscape patchiness and mutational changes at a given value of $\Delta z_{opt}$. 
 %%MCW - reword to talk directly about importance of patch width and explore why a bit:  In all cases, expansion fails on the linear gradient, as expected from our previous $b_{crit}$'s found on linear gradients. 
 Despite the ability of $\Delta z_{opt}$ to predict expansion in a two patch model, multiple patches of a given $\Delta z_{opt}$ can change the outcome of expansion, making a prediction based solely on $\Delta z_{opt}$ inaccurate.
 % SY - NICE! This is a challenging subject to get to because b, delta_zopt, and patch size all matter in different ways…I think you’ve done a nice job!
@@ -333,62 +333,7 @@ Our model has incorporated many realistically biological parameters, but also po
 We would like to thank Fr\'ed\'eric Guillaume for help coding \textsc{nemo}, Sam Yeaman,\color{red}you!\color{black}, and members of the Whitlock lab for comments and feedback.
 
 
-\section{(To be) Supplemental Materials}
 
-%<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
-\begin{table}[h]
-\centering \footnotesize
-\caption[Per locus effect size differences]{Per locus effect size differences across scenarios of genetic architecture regimes. The range from minimum to maximum is shown for each scenario, as well as the mean.}
-\label{tab:effects}
-\begin{tabular}{ccc}
-Genetic architecture	&	$\Delta z_{opt}$	&	Per locus difference: range (mean)  \\ \hline \hline
-$\mu = 10^{-2}$	& $5$		& $-0.0674 - 0.4603 ~ (0.0190)$	\\ 
-$\alpha^2 = 0.005$	& $7.5$		& $-0.0993 - 0.4884 ~ (0.0321)$	\\ 
-				& $10$		& $-0.3633 - 0.5311 ~ (0.0479)$	\\ 
-				& $12.5$		& $-0.4187 - 0.5464 ~ (0.0583)$	\\ \hline
-$\mu = 10^{-3}$	& $5$		& $-0.0655 - 0.2864 ~ (0.0103)$	\\ 
-$\alpha^2 = 0.05$	& $7.5$		& $-0.1233 - 0.7258 ~ (0.0277)$	\\ 
-				& $10$		& $-0.4088 - 0.8786 ~ (0.0447)$	\\ 
-				& $12.5$		& $-0.4308 - 0.6513 ~ (0.0596)$	\\ \hline
-$\mu = 10^{-4}$	& $5$		& $-0.0144 - 1.1386 ~ (0.01799)$	\\ 
-$\alpha^2 = 0.5$	& $7.5$		& $-0.2206 - 2.6775 ~ (0.0251)$	\\ 
-				& $10$		& No expansion	\\ 
-				& $12.5$		& No expansion	\\ \hline
-$\mu = 10^{-5}$	& $5$		& ${-0.0055} - 2.6881 ~ (0.0228)$	\\ 
-$\alpha^2 = 5.0$	& $7.5$		& $-0.1967 - 4.8746 ~ (0.0190)$	\\ 
-				& $10$		& $-0.6236 - 6.4207 ~ (0.0522)$	\\ 
-				& $12.5$		& No expansion	\\ \hline
-\end{tabular}
-\end{table}
-%<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
-
-
-
-\begin{figure}[h]
-\centering
-\makebox[\textwidth]{
-        \includegraphics[width=0.9\linewidth]{Figures/CompareVa_OnePlot.png}}
-\caption[~- Genetic variance across parameter sets.]{Genetic variance across parameter sets approaching respective equilibria during simulation burn-in.}
-\label{fig:VaAmong}
-\end{figure}
-
-
-\begin{figure}[h]
-\centering
-\makebox[\textwidth]{
-        \includegraphics[width=1\linewidth]{Figures/wait_times_200.pdf}}
-\caption[~- Time spent before expansion into second patch.]{Time spent (in generations) before expansion into second patch for each genetic architecture regime with a larger dispersal kernel of $\sigma_{disperse} = 4$. Points are jittered for visualization. All points beyond the vertical dashed line are censored and did not expand during the course of the simulation.}
-\label{fig:waittimes200}
-\end{figure}
-
-
-\begin{figure}[h]
-\centering
-\makebox[\textwidth]{
-        \includegraphics[width=0.9\linewidth]{Figures/constVg_CompareVa_OnePlot.png}}
-\caption[~- Approximately constant genetic variance across parameter sets.]{Approximately constant genetic variance across parameter sets approaching respective equilibria during simulation burn-in.}
-\label{fig:VaConst}
-\end{figure}
 
 
 %%% Local Variables:
