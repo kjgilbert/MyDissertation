@@ -1,25 +1,9 @@
 \chapter{Evaluating methods for estimating local effective population size with and without migration}
 \label{chap:effectivepopsize}
 
-\section{Summary}
+%%\section{Summary}
 
-Effective population size is a fundamental parameter in population genetics, evolutionary 
-biology, and conservation biology, yet its estimation can be fraught with difficulties. 
-Several methods to estimate $N_e$ from genetic data have been developed that take 
-advantage of various approaches for inferring Ne. The ability of these methods to accurately 
-estimate $N_e$, however, has not been comprehensively examined. In this study, we 
-employ seven of the most cited methods for estimating $N_e$ from genetic data 
-(\textsc{colony2}, \textsc{cone}, \textsc{estim}, \textsc{mlne}, \textsc{onesamp}, \textsc{tmvp}, 
-and \textsc{neestimator} including \textsc{ldne}) across simulated datasets with populations 
-experiencing migration or no migration. The simulated population demographies are an isolated 
-population with no immigration, an island model metapopulation with a sink population receiving 
-immigrants, and an isolation by distance stepping stone model of populations. We find considerable 
-variance in performance of these methods, both within and across demographic scenarios, with 
-some methods performing very poorly. The most accurate estimates of $N_e$ can be 
-obtained by using \textsc{ldne}, \textsc{mlne}, or \textsc{tmvp}; however each of these 
-approaches is outperformed by another in a differing demographic scenario. Knowledge of the 
-approximate demography of population as well as the availability of temporal data largely 
-improves $N_e$ estimates.
+%%Effective population size is a fundamental parameter in population genetics, evolutionary biology, and conservation biology, yet its estimation can be fraught with difficulties. Several methods to estimate $N_e$ from genetic data have been developed that take advantage of various approaches for inferring Ne. The ability of these methods to accurately estimate $N_e$, however, has not been comprehensively examined. In this study, we employ seven of the most cited methods for estimating $N_e$ from genetic data (\textsc{colony2}, \textsc{cone}, \textsc{estim}, \textsc{mlne}, \textsc{onesamp}, \textsc{tmvp}, and \textsc{neestimator} including \textsc{ldne}) across simulated datasets with populations experiencing migration or no migration. The simulated population demographies are an isolated population with no immigration, an island model metapopulation with a sink population receiving immigrants, and an isolation by distance stepping stone model of populations. We find considerable variance in performance of these methods, both within and across demographic scenarios, with some methods performing very poorly. The most accurate estimates of $N_e$ can be obtained by using \textsc{ldne}, \textsc{mlne}, or \textsc{tmvp}; however each of these approaches is outperformed by another in a differing demographic scenario. Knowledge of the approximate demography of population as well as the availability of temporal data largely improves $N_e$ estimates.
 
 \section{Introduction}
 Effective population size ($N_e$) is defined by \citet{Wright:1931} as the size of 
