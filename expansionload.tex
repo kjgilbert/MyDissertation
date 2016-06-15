@@ -108,7 +108,7 @@ expansion~load = 1 - \frac{edge ~ w_D}{core ~ w_D}
 
 Because expansion proceeded at different rates in different scenarios, to create an equivalent comparison of fitness on the landscape we measured populations at the latest recorded point in the simulations before any individuals had dispersed into the last $20$ cross-sections of the landscape. Since individuals can at most disperse 16 units, this prevented bias from edge effects that might arise upon filling the landscape. We averaged population sizes and fitness within cross-sections of the landscape, as we saw no major variation along this axis.
 
-We also examine the distribution of effect sizes for deleterious mutations accumulated at the range edge. We examined the distribution of alleles contributing to expansion load across cases of $U_D$ and $b$. Deleterious mutations were binned by effect size into $40$ quantiles based on the underlying gamma distribution of homozygous effects. Within a given simulation, we calculated the average load due to loci present within each of these bins as follows. For the edge or the core, we calculated fitness in a given bin  of $n$ loci as $w_D =  \prod_{i=1}^{n} (1 - h_i s_i \phi_{het,i} - s_i \phi_{hom,i})$, where $\phi_{het,i}$ is the frequency of heterozygotes for a given locus $i$, and $\phi_{hom,i}$ is the frequency of homozygotes. Expansion load was then calculated for each bin with equation \eqref{eq:load}. Because fitness is multiplicative across loci, we then calculated average expansion load per locus in each bin as $1 - \sqrt[n]{1 - expansion~load}$.
+We also examine the distribution of effect sizes for deleterious mutations accumulated at the range edge. We examined the distribution of alleles contributing to expansion load across cases of $U_D$ and $b$. Deleterious mutations were binned by effect size into $40$ quantiles based on the underlying gamma distribution of homozygous effects. Within a given simulation, we calculated the average load due to loci present within each of these bins as follows. For the edge or the core, we calculated fitness in a given bin  of $n$ loci as $w_D =  \prod_{i=1}^{n} (1 - h_i s_i \phi_{het,i} - s_i \phi_{hom,i})$, where $\phi_{het,i}$ is the frequency of heterozygotes for a given locus $i$, and $\phi_{hom,i}$ is the frequency of homozygotes. Expansion load was then calculated for each bin with equation \ref{eq:load}. Because fitness is multiplicative across loci, we then calculated average expansion load per locus in each bin as $1 - \sqrt[n]{1 - expansion~load}$.
 
 \section{Results}
 
@@ -156,7 +156,7 @@ Across the two $U_D$ cases, $U_D = 1$ has a 2.95-fold increase in expansion load
 \end{figure}
 
 
-Leptokurtic dispersal increased expansion speed, but did not significantly change fitness from the Gaussian results (Supplemental Figure \ref{fig:leptokurt}). At a given point on the landscape, fitness recovered after the expanding front passes (Supplemental Figure \ref{fig:recovery}). Supplemental movies (Figures \ref{fig:fitmov1} - \ref{fig:fitmov3}) show the effects on fitness reduction at the range edge due to surfing and local maladaptation, as well as recovery through time due to evolutionary rescue. 
+Leptokurtic dispersal increased expansion speed, but did not significantly change fitness from the Gaussian results (Supplemental Figure \ref{fig:leptokurt}). At a given point on the landscape, fitness recovered after the expanding front passes (Supplemental Figure \ref{fig:recovery}). Supplemental movies show the effects on fitness reduction at the range edge due to surfing and local maladaptation, as well as recovery through time due to evolutionary rescue. 
 
 
 % is amount of migration load/lack of local adaptation impacted by expansion load
@@ -168,11 +168,7 @@ We next investigate how each individual component of fitness is affected by redu
 Second, we find that the severity of expansion load is substantially reduced by the presence of an environmental gradient (Figure \ref{fig:load}). Expansion load decreases with increasing gradient steepness. In the case of $U_D = 1$, there is a $54\%$ reduction in expansion load from the no gradient to the steepest gradient. In the case of $U_D = 0.1$, expansion load is reduced by the steepest gradient by $73\%$ compared to the case with no environmental gradient. 
 
 
-\subsection{Loci Contributing to Expansion Load}
-% what is the mechanism of expansion load (effect sizes)
-We investigated the distribution of effect sizes for deleterious mutations accumulating on the expanding population front. For $U_D = 1$, the majority of expansion load is due to alleles of intermediate effect (Figure \ref{fig:loci}b). On the steep gradient ($b = 0.375$), there is less load overall due to each locus, but a more even distribution across loci of both intermediate and large effect. On the shallow gradient and with no gradient, there are fewer large-effect alleles contributing to load relative to the steep gradient, but also many more intermediate-sized alleles contributing to more overall load. For $U_D = 0.1$ (Figure \ref{fig:loci}a), there is less overall load, so lower averages within most ranges of allelic effect size. However, we see an inflation of larger effect alleles above that seen for the $U_D= 1$ case in the absence of an environmental gradient.
-
-\begin{figure}[H]
+\begin{figure}[!ht]
 \centering
 \makebox[\textwidth]{
         \includegraphics[width=0.9\linewidth]{Figures/load_locibinned.pdf}}
@@ -180,10 +176,16 @@ We investigated the distribution of effect sizes for deleterious mutations accum
 \label{fig:loci}
 \end{figure}
 
-There are very few loci present in the larger effect size classes that contribute disproportionately to expansion load. As can be seen in Figure \ref{fig:allfreqs}, some of these larger effect loci have fixed at the range edge (see also Supplemental Figure \ref{fig:fixedload}). The effect of surfing that contributes to the fixation of these strongly-deleterious alleles can be seen in animation over time in Supplemental Figure \ref{fig:allfreqmov}, where recovery from fixation follows behind the expanding wave front.
+\subsection{Loci Contributing to Expansion Load}
+% what is the mechanism of expansion load (effect sizes)
+We investigated the distribution of effect sizes for deleterious mutations accumulating on the expanding population front. For $U_D = 1$, the majority of expansion load is due to alleles of intermediate effect (Figure \ref{fig:loci}b). On the steep gradient ($b = 0.375$), there is less load overall due to each locus, but a more even distribution across loci of both intermediate and large effect. On the shallow gradient and with no gradient, there are fewer large-effect alleles contributing to load relative to the steep gradient, but also many more intermediate-sized alleles contributing to more overall load. For $U_D = 0.1$ (Figure \ref{fig:loci}a), there is less overall load, so lower averages within most ranges of allelic effect size. However, we see an inflation of larger effect alleles above that seen for the $U_D= 1$ case in the absence of an environmental gradient.
 
 
-\begin{figure}[h]
+
+There are very few loci present in the larger effect size classes that contribute disproportionately to expansion load. As can be seen in Figure \ref{fig:allfreqs}, some of these larger effect loci have fixed at the range edge (see also Supplemental Figure \ref{fig:fixedload}). The effect of surfing that contributes to the fixation of these strongly-deleterious alleles can be seen in animation over time in a supplemental movie, where recovery from fixation follows behind the expanding wave front.
+
+
+\begin{figure}[ht]
 \centering
 \makebox[\textwidth]{
         \includegraphics[width=0.9\linewidth]{Figures/example_allfreqs.png}}
