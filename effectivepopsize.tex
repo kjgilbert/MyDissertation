@@ -27,8 +27,7 @@ taken from two or more time points to estimate $N_e$ \citep{Nei:1981, Pollak:198
 Wang:2003, Anderson:2005, Jorde:2007}. While allele frequency change over time gives the most 
 direct estimate of drift, obtaining samples from multiple generations 
 may be difficult in some systems. With genetic data from one point in time, $N_e$ can be 
-estimated by inferring drift or inbreeding from the latter quantities \citep{Hill:1981, Pudovkin:1996, Vitalis:2001a, Nomura:2008, Waples:2008, Wang:2009} or even from a combination of %% what does latter refer to here
-some properties \citep{Tallmon:2008}. Details on the approach each program takes to estimate 
+estimated by inferring drift or inbreeding from measures such as LD or other non-allele frequency measures described above \citep{Hill:1981, Pudovkin:1996, Vitalis:2001a, Nomura:2008, Waples:2008, Wang:2009}, or even from a combination of some properties \citep{Tallmon:2008}. Details on the approach each program takes to estimate 
 $N_e$ are fully described in the Methods.
 
 Genetic drift is not the only process that may cause changes in these population genetic 
@@ -67,9 +66,9 @@ Baalsrud:2014}. However, the true effective population size cannot be known in a
 system. Thus, evaluating the accuracy of a method is not possible through these comparisons.
 
 Simulated datasets allow the true $N_e$ to be known, therefore allowing estimation 
-accuracy to be assessed. By simulating more complicated demographic scenarios, nonideal situations 
+accuracy to be assessed. By simulating more complicated demographic scenarios, non-ideal situations 
 similar to those found in the real world can be addressed. Three such studies have attempted an 
-evaluation of $N_e$ estimates in the presence of migration; however they have used only 
+evaluation of $N_e$ estimates in the presence of migration; however, they have used only 
 a small subset of existing estimation methods in varying demographic scenarios \citep{Waples:2011, Neel:2013, Ryman:2013}. 
 These studies give valuable insight into the performance of those 
 methods when the assumption of a single isolated population is not true. They show that the performance 
@@ -174,11 +173,11 @@ $\ddagger$ \footnotesize{\textsc{mlne} did not allow larger maximum $N_e$ due to
 
 Individuals were simulated to represent genotypes with neutral microsatellite markers, as 
 microsatellite data has been the main data type originally intended for programs used. The 
-life cycle modeled in \textsc{nemo} was breeding with backward migration followed by population 
+life cycles modeled in \textsc{nemo} were breeding combined with migration (defined by backward migration rates) followed by population 
 regulation. In each generation, offspring are created from randomly chosen hermaphroditic parents 
-until the population is of the desired size, \emph{N}. Generations were nonoverlapping. We simulate 
+until the population is of the desired size, \emph{N}. Generations were non-overlapping. We simulate 
 a Wright-Fisher model where each offspring has an equal and random chance of coming from any given 
-parent. By definition, this sets our $N_e$ equal to \emph{N}, though should clarify that 
+parent. By definition, this sets our $N_e$ equal to \emph{N}, though we clarify that 
 this value differs slightly from the number of breeders that could be captured by viewing the population 
 at a specific point in time \citep{Waples:2009}. Mutation rate was set at 10$^{-5}$ with a single 
 step microsatellite mutation model, and 40 freely recombining polymorphic loci were used per individual, 
@@ -212,7 +211,7 @@ is an importance sampling method that calculates the likelihood of $N_e$ with te
 data using Monte Carlo sampling under the coalescent model of \citet{Berthier:2002}, based on 
 the coalescent of gene copies drawn from the more recent time sample.
 
-\textsc{neestimator} v2.01 \citep{Do:2014} performs six different calculation methods, three 
+\textsc{neestimator} v2.01 \citep{Do:2014} performs six different estimation methods, three 
 of which use temporal data. These three approaches are based on calculations of variance of 
 change in allele frequencies as defined by \citet{Nei:1981} and \citet{Pollak:1983}, which 
 have slight variations in calculations and weightings of loci, and more recently by \citet{Jorde:2007} 
@@ -284,7 +283,7 @@ differ from the expectation of the Wright-Fisher model, because of random deviat
 the expected distribution of reproductive success \citep{Waples:2009}. This generates 
 an additional source of error in the estimation of the $N_e$ of the system using 
 data from a single generation. However, the goal of most studies is to estimate the $N_e$ 
-(or $\frac{1}{N_e}$) of a population over all instantiations of the drift process; this expected 
+(or $\frac{1}{N_e}$) of a population over all instances of the drift process; this expected 
 $N_e$ is what helps best predict the amount of drift in a population in future generations 
 (for conservation purposes) or for comparison to other species with different mating systems or 
 life histories (for basic science reasons). Therefore we use the expected $N_e$ 
@@ -328,7 +327,7 @@ in (A), as the intervals are smaller or equal to the point size for all but ten 
 \end{figure}
 
 The best (i.e., lowest) RMSE on average across all possible demographic scenarios was \textsc{mlne}'s 
-likelihood method (RMSE = 0.00240; see Table \ref{tab:ne-2}). However, because RMSE varied highly across demographic 
+likelihood method (RMSE = 0.00240; see Table \ref{tab:ne-2}). However, because RMSE varied greatly across demographic 
 scenarios, we describe results per class of scenario in the following sections. We group results 
 into demographic classes of no migration, which contains scenarios of isolated populations, and 
 migration scenarios which contain groupings of single patches as either sinks or within the island 
@@ -469,7 +468,7 @@ was improved in cases where either a correct or incorrect source population was 
 demography, or not at all for the stepping stone cases. \textsc{mlne}'s moment method showed different 
 but equally inconsistent results. For $N_e = 50$, different demographies produced $N_e$ 
 estimates that were more or less accurate with a migration source. While at population size 500, not providing 
-any migration source was consistently better than providing one for the island model cases, whereas the 
+any migration source was consistently better than providing one for the island model cases, the 
 opposite was true in the stepping stone model where providing a correct or closely related source both 
 consistently improved upon $N_e$ estimates (where the correct source provided was consistently 
 better than the related source).
@@ -507,7 +506,7 @@ performers. However, the third most highly cited program, \textsc{onesamp}, has 
 suboptimally in our demographic scenarios. We found no cases where it showed the lowest RMSE of all 
 possible methods in any of our scenarios. Given that this method uses a Bayesian approach, adjusting 
 the prior expectation may improve results, as is claimed by \citet{Holleley:2013}. However, it seems 
-unlikely that the majority of systems in which $N_e$ is estimated are well-studied enough to 
+unlikely that the majority of systems in which $N_e$ is estimated are studied well enough to 
 create an informative prior; therefore we believe the wide prior we provided is a valid assessment of 
 this method. Additionally, this program is subject to very long-run times, a limitation in our study 
 that prevented assessing the method at all of our larger $N_e$ cases since individual run 
@@ -521,7 +520,7 @@ the lack of accuracy in those cases. Yet even when $N_e = 50$, these methods (he
 excess methods of \textsc{colony2} and \textsc{neestimator}) were worse than others. Though 
 \textsc{colony2}'s likelihood approach, which is implemented alongside its heterozygote excess method, 
 largely produced infinite estimates of $N_e$ with no sibship data provided, this method is 
-expected to improve when such data is available.
+expected to improve when such data are available.
 
 The methods which we found to perform best were \textsc{ldne}, \textsc{mlne}, and \textsc{tmvp}. 
 These methods were shown to be more reliable in terms of most consistently estimating $N_e$ 
