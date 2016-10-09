@@ -360,14 +360,13 @@ demographic groupings.} \\
 
 \subsection{No Migration Scenarios}
 The three isolation scenarios ($N_e = 50$, $500$, $5000$), in which populations experience 
-no migration, showed \textsc{ldne} to consistently have the lowest RMSE. At $N_e = 500$, \textsc{onesamp} closely compares to 
-\textsc{ldne}, but is one of the worst methods at $N_e = 50$. \textsc{estim} has a low RMSE 
-at both $N_e = 500$ and 5000, but at $N_e = 50$ \textsc{estim} largely overestimates 
+no migration, showed \textsc{ldne} to consistently have the lowest RMSE. At $N_e = 500$, \textsc{onesamp} closely compares to \textsc{ldne}, but is one of the worst methods at $N_e = 50$. \textsc{estim} has a low RMSE 
+at both $N_e = 500$ and $5000$, but at $N_e = 50$ \textsc{estim} largely overestimates 
 $N_e$ with many very large or infinite estimates. \textsc{colony}'s heterozygote 
 excess method tends to estimate infinite $N_e$ in all cases, reflected by its 
-large RMSE at 50 and 500 (Fig. \ref{fig:ne-2}A). \textsc{mlne}'s likelihood estimate performs next best 
-after \textsc{ldne} at 500 and 5000 while the remaining majority of methods performed equally 
-well at size 50. It is worth noting that the heterozygote excess method \citep{Pudovkin:1996} 
+large RMSE at $50$ and $500$ (Fig. \ref{fig:ne-2}A). \textsc{mlne}'s likelihood estimate performs next best 
+after \textsc{ldne} at $500$ and $5000$ while the remaining majority of methods performed equally 
+well at size $50$. It is worth noting that the heterozygote excess method \citep{Pudovkin:1996} 
 and the coancestry method \citep{Nomura:2008} as implemented in \textsc{neestimator} perform poorly at all population sizes.
 
 For the most accurate methods in the isolation scenarios, \textsc{ldne} and \textsc{mlne} 
