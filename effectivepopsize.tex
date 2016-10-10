@@ -402,7 +402,7 @@ stepping stone model scenarios, and \textsc{mlne}'s likelihood method with no so
 showed the best RMSE for the whole metapopulation at $N_e = 500$ in the island model 
 scenarios, but includes many estimates at the upper bound of the prior, effectively leaving 
 \textsc{mlne}'s moment method as the more accurate method in this case. In the stepping stone scenarios, 
-again \textsc{mlne}'s likelihood method is best in single patch cases at both $N_e = 50$ and 500 
+again \textsc{mlne}'s likelihood method is best in single patch cases at both $N_e = 50$ and $500$ 
 while the moment method is best for the metapopulation cases, once accounting for $N_e$ estimates 
 at the upper bound of the prior.
 
@@ -463,10 +463,10 @@ text for descriptions of demographic groupings.} \\
 We found no consistent effect of different source populations on the performance of \textsc{mlne} when 
 estimating $N_e$ (see Fig. \ref{fig:supp_rmsemig}). RMSE for \textsc{mlne}'s likelihood method at $N_e = 50$ 
 was improved in cases where either a correct or incorrect source population was identified. At a local size of 
-500, these results changed, where improvement only occurred in certain cases for the island model 
+$500$, these results changed, where improvement only occurred in certain cases for the island model 
 demography, or not at all for the stepping stone cases. \textsc{mlne}'s moment method showed different 
 but equally inconsistent results. For $N_e = 50$, different demographies produced $N_e$ 
-estimates that were more or less accurate with a migration source. While at population size 500, not providing 
+estimates that were more or less accurate with a migration source. While at population size $500$, not providing 
 any migration source was consistently better than providing one for the island model cases, the 
 opposite was true in the stepping stone model where providing a correct or closely related source both 
 consistently improved upon $N_e$ estimates (where the correct source provided was consistently 
@@ -584,7 +584,7 @@ in cases of migration and population substructure and found bias towards underes
 \textsc{mlne}'s likelihood method shows this trend only in the stepping stone scenarios at $N_e = 500$ 
 when using a single focal patch (i.e., not the entire metapopulation). The moment method of \textsc{mlne} shows 
 a similar bias toward underestimating $N_e$ in those same stepping stone single population 
-cases at both $N_e = 50$ and 500 as well as very slight underestimation of the true $N_e$ 
+cases at both $N_e = 50$ and $500$ as well as very slight underestimation of the true $N_e$ 
 in the island model sink populations with higher migration rates. Barring those cases, \textsc{mlne} shows 
 very accurate estimates of $N_e$. As described by \citet{Ryman:2013}, estimating the whole 
 metapopulation $N_e$ may be improved by increasing sampling. Without increasing our sample size, 
@@ -595,7 +595,7 @@ accurately, or when less accurate, is still the most accurate estimate out of al
 its adequate estimating ability, \textsc{tmvp} proved to be one of the most difficult analyses to conduct. 
 Because the method uses importance sampling and MCMC, the parameter settings for each run must be set to 
 allow for the results to converge on one estimate of $N_e$, which proved incredibly difficult at 
-some of our larger $N_e$ and m cases. For those that we did succeed in finding a suitable set of 
+some of our larger $N_e$ and $m$ cases. For those that we did succeed in finding a suitable set of 
 run parameters, run times exceeded several weeks, therefore we did not run \textsc{tmvp} for all 
 replicates of simulated datasets.
 
