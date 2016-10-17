@@ -244,7 +244,7 @@ implemented in the program \textsc{ldne} \citep{Waples:2008}, another form of th
 method as described in \citet{Pudovkin:1996}, and a method by \citet{Nomura:2008} using a parent-based coancestry 
 estimate among individuals in one cohort. \textsc{ldne} estimates $N_e$ based on the 
 amount of LD within a deme \citep{Hill:1981} and corrects for bias in calculating over a wide range of 
-sample sizes \citep{Waples:2008}. Confidence intervals were obtained from the jackknife option, 
+sample sizes \citep{Waples:2008}. 95\% confidence intervals were obtained from the jackknife option, 
 as parametric CIs are believed to be too narrow when locus pairs are not entirely independent. 
 \textsc{neestimator} allows minimum allele frequency (MAF) cutoff values to be chosen for the analysis 
 for which we chose a cutoff value of 0.05 as recommended by the authors to ensure that results were 
@@ -297,7 +297,7 @@ temporal \textsc{neestimator} methods produced zero estimates in a subset of cas
 personal communication with R. Vitalis and C. Do confirmed that these are cases where the 
 user is best to apply a different estimation method.) Additionally, as described by \citet{Do:2014}, 
 negative estimates from \textsc{neestimator} were taken to indicate an infinitely large $N_e$. 
-Confidence intervals for RMSE were obtained by bootstrapping across $N_e$ estimates within a 
+95\% confidence intervals for RMSE were obtained by bootstrapping across $N_e$ estimates within a 
 demographic scenario with 10,000 replicate bootstrap samples each. Methods were further assessed per 
 specific demographic scenario individually. We also examined the coverage probability of containing 
 the true value of $N_e$ for confidence intervals produced from each estimate.
